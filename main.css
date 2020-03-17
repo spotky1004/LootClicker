@@ -1,0 +1,210 @@
+* {
+  padding: 0;
+  margin: 0;
+  font-family: 'Do Hyeon', sans-serif;
+}
+#warpAll {
+  display: flex;
+  flex-direction: column-reverse;
+}
+#warpAll2 {
+  flex: 1;
+}
+.stageNav {
+  margin: 0 auto;
+  width: 15vw;
+  height: 5vw;
+  background-color: balck;
+}
+.stageNav > div {
+  margin: auto;
+  float: left;
+}
+.stageNavNum {
+  padding: 5px;
+  color: white;
+  font-weight: bold;
+  font-size: 1.5em;
+  float: left;
+}
+.stageNavNumButton {
+  float: left;
+  width: 45px;
+  height: 45px;
+  background-size: cover;
+  cursor: pointer;
+}
+#basicStatus {
+  padding: 2px 5px;
+  background-image: url(bg/bg.png);
+  color: white;
+}
+#basicStatus > div:not(:last-child) {
+  margin-bottom: 2px;
+}
+.levelup {
+  color: #fcf44e;
+  text-shadow: 0 0 7px #fcf44e;
+}
+.levelup2 {
+  color: white;
+  text-shadow: 0 0 0 hsla(0, 0%, 0%, 0);
+
+  transition: color 10s ease 0s, text-shadow 10s ease 0s;
+}
+#mainNav {
+
+}
+#mainNav > div {
+  padding: 5px 0;
+  width: 25%;
+  float: left;
+  cursor: pointer;
+  text-align: center;
+  color: white;
+  background-color: #d18330;
+
+  transition: color 0.3s ease 0s, background-color 0.3s ease 0s;
+}
+#mainNav > div:hover {
+  color: #d18330;
+  background-color: #ebb173;
+
+  transition: color 0.3s ease 0s, background-color 0.3s ease 0s;
+}
+#menusWarp > div {
+  padding-top: 20px;
+  height: auto;
+}
+#fieldWarp {
+  background-size: cover;
+  text-align: center;
+}
+#monster {
+  margin: 0 auto;
+  margin-top: 4px;
+  width: 35vh;
+  height: 35vh;
+  cursor: pointer;
+  background-size: auto;
+  background-repeat: no-repeat;
+  background-position: center center;
+}
+#monLevel {
+  font-size: 1.5em;
+}
+#monsterStatus {
+  font-size: 3em;
+}
+#monsterHpProgress {
+  width: 60vw;
+}
+#monsterHpProgressNum {
+  width: 50px;
+  background-color: balck;
+}
+#lootWarp {
+  background-image: url(bg/loot_bg.png);
+}
+.lootSection {
+  width: inherit;
+  overflow-x: hidden;
+}
+.bulkOpenSelect {
+  border: 5px solid black;
+  border-radius: 3px;
+  margin-left: 10px;
+  font-size: 3em;
+  cursor: pointer;
+  background-color: white;
+}
+.lootMark {
+  width: inherit;
+  padding-left: 5px;
+  margin: 10px 0;
+  background-color: white;
+  font-weight: bold;
+}
+.lootItem {
+  display: inline-block;
+  width: 23vw;
+  height: 100%;
+  float: left;
+  cursor: pointer;
+  border: 5px solid black;
+  border-radius: 3px;
+}
+.lootImg {
+  width: 10vh;
+  height: 10vh;
+  background-size: cover;
+}
+#inventoryWarp {
+  background-image: url(bg/inventory_bg.png);
+}
+#weaponWarp {
+  margin: 3px auto;
+  width: 80%;
+  height: 16vw;
+}
+.weapon {
+  width: 15vw;
+  height: 15vw;
+  background-size: cover;
+  float: left;
+  cursor: pointer;
+  margin: 0 auto;
+  margin-top: 4px;
+  cursor: pointer;
+  object-fit: contain;
+  object-position: center;
+}
+.weapon:not(:first-child) {
+  margin-left: 3px;
+}
+#weaponStatus {
+  margin: 0 auto;
+  background-color: white;
+  width: 60%;
+  border: 5px solid #db7f2e;
+  border-radius: 3px;
+}
+#weaponName {
+  font-size: 3em;
+  font-weight: bold;
+  text-shadow: 0px 0px 3px black;
+  background-color: #d6d6d6;
+}
+.totalCombatStatus {
+  color: white;
+}
+#settingDiv > p {
+  font-size: 4em;
+  padding-left: 5px;
+  font-weight: bold;
+  color: #777777;
+}
+#extraStatus {
+  text-align: center;
+  color: white;
+  background-image: url(bg/bg.png);
+  background-size: cover;
+  overflow-y: hidden;
+  font-size: 15pt;
+  height: 300px;
+}
+.rare {
+  color: #42f5bf;
+  text-shadow: 0 0 3px #42f5bf;
+}
+.maxLv {
+  color: #ffb521;
+  text-shadow: 0 0 3px #ffb521;
+}
+.loot {
+  color: #81f059;
+  text-shadow: 0 0 3px #81f059;
+}
+.black {
+  color: black;
+}
