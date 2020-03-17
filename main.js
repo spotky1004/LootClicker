@@ -191,10 +191,11 @@ $(function (){
     } else {
       monsterNow = Math.floor(Math.random()*(playerLevel-(stagePage-1)*10))+1+(stagePage-1)*10;
     }
-  }
-  function stageChange() {
     monsterHpM = (monsterNow**(1+monsterNow/5)*10)*3;
     monsterHp = monsterHpM;
+    monsterStatus();
+  }
+  function stageChange() {
     summonMonster();
     $("#fieldWarp").attr({
       'style' : 'background-image: url(bg/world' + stagePage + '.png);'
@@ -248,7 +249,7 @@ $(function (){
       lootQuantity[1] = lootQuantity[1] - bulk;
       a = 1;
       while (a <= bulk) {
-        playerExp = playerExp + Math.random()*playerExpNeed/(3*((playerLevel+1)**1.2))*bulk;
+        playerExp = playerExp + Math.random()*playerExpNeed/(3*((playerLevel+1)**1.2))/5*bulk;
         a++;
       }
     }
