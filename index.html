@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="kr">
+  <head>
+    <meta charset="utf-8">
+    <script
+  src="https://code.jquery.com/jquery-3.4.1.min.js"
+  integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="
+  crossorigin="anonymous"></script>
+  <script src="main.js"></script>
+  <script src="nameData.js"></script>
+  <link href="https://fonts.googleapis.com/css?family=Do+Hyeon&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="main.css">
+    <title>Break Universe</title>
+  </head>
+  <body>
+    <div id="warpAll">
+      <div id="warpAll2">
+        <div id="basicStatus">
+          <div id="levelStat">
+            <span id="playerLevel">Level 1</span>
+            <span id="playerExp"> - 0/10 EXP (0.00%)</span>
+          </div>
+          <div id="coin">0 Coin</div>
+          <div id="token">0 Token</div>
+        </div>
+        <div id="mainNav">
+          <div class="mainMenu">Field</div>
+          <div class="mainMenu">Loot</div>
+          <div calss="mainMenu">Inventory</div>
+          <div class="mainMenu">Setting</div>
+        </div>
+        <div id="menusWarp">
+          <div id="fieldWarp" style="background-image: url(bg/world1.png);">
+            <div id="monster" style="background-image: url(monster/1.png);"></div>
+            <div id="monLevel">Lv 1</div>
+            <div id="monsterStatus">슬라임 (hp: 10 / 10)</div>
+            <progress id="monsterHpProgress" value="1" max="1"></progress><span id="monsterHpProgressNum">100%</span>
+            <div class="stageNav">
+              <span id="stageL" class="stageNavNumButton stageNavNumButtonL" style="background-image: url(etc/previous.png);"></span>
+              <span id="stageNum" class="stageNavNum black">1</span>
+              <span id="stageR" class="stageNavNumButton stageNavNumButtonR" style="background-image: url(etc/next.png);"></span>
+            </div>
+            <div class="totalCombatStatus black">
+              Dmg: 1<br>Hit/s: 0
+            </div>
+          </div>
+          <div id="lootWarp">
+            <div class="lootSection">
+              <div class="lootMark">유틸리티</div>
+              <span class="lootItem">
+                <div class="lootName">경험치 병 - 0</div>
+                <div id="EXPBottle" class="lootImg" style="background-image: url(loot/exp_bottle.png);"></div>
+              </span>
+              <span class="lootItem">
+                <div class="lootName">의문의 상자 - 0</div>
+                <div id="mysteryChest" class="lootImg" style="background-image: url(loot/mystery_chest.png);"></div>
+              </span>
+            </div>
+            <div id="bulkOpen">
+              <span id="bulk1" class="bulkOpenSelect">x1</span>
+              <span id="bulk2" class="bulkOpenSelect">x10</span>
+              <span id="bulk3" class="bulkOpenSelect">x100</span>
+              <span id="bulk4" class="bulkOpenSelect">x1000</span>
+              <span id="bulk5" class="bulkOpenSelect">xMax</span>
+            </div>
+            <div class="lootSection">
+              <div class="lootMark">유틸리티</div>
+              <span id="EXPBottleC" class="lootItem">
+                <div id="EXPBottleQ" class="lootName">경험치 병 - 0</div>
+                <div id="EXPBottle" class="lootImg" style="background-image: url(loot/exp_bottle.png);"></div>
+              </span>
+              <span id="mysteryChestC" class="lootItem">
+                <div id="mysteryChestQ" class="lootName">의문의 상자 - 0</div>
+                <div id="mysteryChest" class="lootImg" style="background-image: url(loot/mystery_chest.png);"></div>
+              </span>
+            </div>
+            <div id="tierLoot" class="lootSection">
+              <div id="tierLootMark" class="lootMark">티어 1</div>
+              <span id="lootBag1" class="lootItem">
+                <div class="lootName">슬라임 가방 - 0</div>
+                <div class="lootImg" style="background-image: url(loot/1.png);"></div>
+              </span>
+              <span id="lootBag2" class="lootItem">
+                <div class="lootName">반짝이는 슬라임 가방 - 0</div>
+                <div class="lootImg" style="background-image: url(loot/2.png);"></div>
+              </span>
+              <span id="lootBag3" class="lootItem">
+                <div class="lootName">고블린 가방 - 0</div>
+                <div class="lootImg" style="background-image: url(loot/3.png);"></div>
+              </span>
+              <span id="lootBag4" class="lootItem">
+                <div class="lootName">반짝이는 고블린 가방 - 0</div>
+                <div class="lootImg" style="background-image: url(loot/4.png);"></div>
+              </span>
+            </div>
+            <div class="stageNav">
+              <span id="lootL" class="stageNavNumButton stageNavNumButtonL" style="background-image: url(etc/previous.png);"></span>
+              <span id="lootNum"class="stageNavNum black">1</span>
+              <span id="lootR" class="stageNavNumButton stageNavNumButtonR" style="background-image: url(etc/next.png);"></span>
+            </div>
+          </div>
+          <div id="inventoryWarp">
+            <div id="weaponWarp">
+              <img class="weapon" src="weapon/0.png" style="background-image: url(etc/mystery_weapon.png);"></img>
+              <img class="weapon" src="weapon/0.png" style="background-image: url(etc/mystery_weapon.png);"></img>
+              <img class="weapon" src="weapon/0.png" style="background-image: url(etc/mystery_weapon.png);"></img>
+              <img class="weapon" src="weapon/0.png" style="background-image: url(etc/mystery_weapon.png);"></img>
+              <img class="weapon" src="weapon/0.png" style="background-image: url(etc/mystery_weapon.png);"></img>
+            </div>
+            <div class="stageNav">
+              <span id="weaponL" class="stageNavNumButton stageNavNumButtonL" style="background-image: url(etc/previous.png);"></span>
+              <span id="weaponNum" class="stageNavNum">1</span>
+              <span id="weaponR" class="stageNavNumButton stageNavNumButtonR" style="background-image: url(etc/next.png);"></span>
+            </div>
+            <div id="weaponStatus">
+              <div id="weaponName">무기 +0</div>
+              <div id="totalWeaponStatus">
+                Dmg: 0<br>Hit/s: 0
+              </div>
+            </div>
+            <div class="totalCombatStatus">
+              Total Status<br>Dmg: 1<br>Hit/s: 0
+            </div>
+          </div>
+          <div id="settingDiv">
+            <p>Setting</p>
+          </div>
+        </div>
+        <div id="extraStatus">
+          !!!
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
