@@ -41,8 +41,8 @@ $(function (){
     var willCookieString = '{';
     var cookies = document.cookie.split(";");
     for(var i in cookies) {
-      if(cookies[i].search('CookieName') != -1) {
-        savedFile = decodeURIComponent(cookies[i].replace('CookieName' + "=", ""));
+      if(cookies[i].search('saveData') != -1) {
+        savedFile = decodeURIComponent(cookies[i].replace('saveData' + "=", ""));
       }
     }
     a = 0;
