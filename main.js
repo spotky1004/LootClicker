@@ -13,7 +13,7 @@ $(function (){
       }
     }
   }
-  function save() {
+  function gameSave() {
     var date = new Date();
     date.setDate(date.getDate() + 2000);
 
@@ -31,7 +31,7 @@ $(function (){
 
     document.cookie = willCookie;
   }
-  function load() {
+  function gameLoad() {
     var cookies = document.cookie.split(";");
     for(var i in cookies) {
       if(cookies[i].search('saveData') != -1) {
