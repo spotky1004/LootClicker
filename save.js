@@ -3,7 +3,7 @@ $(function (){
   date.setDate(date.getDate() + 7);
 
   var willCookie = "";
-  willCookie += "CookieName=Value;";
+  willCookie += "CookieName=Value2;";
   willCookie += "expires=" + date.toUTCString();
 
   document.cookie = willCookie;
