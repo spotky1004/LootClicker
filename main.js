@@ -32,19 +32,17 @@ $(function (){
     document.cookie = willCookie;
   }
   function gameLoad() {
-    function getCookie(name) {
-      var cookies = document.cookie.split(";");
-      for(var i in cookies) {
-        if(cookies[i].search('saveData') != -1) {
-          savedFile = alert(decodeURIComponent(cookies[i].replace('saveData' + "=", "")));
-        }
+    var cookies = document.cookie.split(";");
+    for(var i in cookies) {
+      if(cookies[i].search('saveData') != -1) {
+        savedFile = decodeURIComponent(cookies[i].replace('saveData' + "=", ""));
       }
     }
     a = 0;
-    const obj = JSON.parse(savedFile);
+    const savedArray = JSON.values(savedFile);
     while ((a+1) <= varData.length) {
-      varName = varData[a];
-      eval(varName = obj.varName);
+      loadString = varData[a] + ' =' savedArray[a];
+      eval(loadString);
       a++;
     }
   }
