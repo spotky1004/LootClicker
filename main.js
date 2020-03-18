@@ -46,10 +46,10 @@ $(function (){
       }
     }
     a = 0;
-    const obj = JSON.parse(json);
+    const obj = JSON.parse(savedFile);
     while ((a+1) <= varData.length) {
       varName = varData[a];
-      eval(varName = obj.varName;);
+      eval(varName = obj.varName[a];);
       a++;
     }
   }
