@@ -444,5 +444,6 @@ $(function (){
   }, 10);
   setInterval( function (){
     gameSave();
-  }, 10000);
+    thinking = 42;
+  }, 5000);
 });
