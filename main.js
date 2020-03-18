@@ -42,7 +42,6 @@ $(function (){
     savedArray = JSON.values(savedFile);
     while ((a+1) <= varData.length) {
       loadString = varData[a] + ' =' savedArray[a];
-      thinking = 42;
       eval(loadString);
       a++;
     }
