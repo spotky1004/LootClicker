@@ -399,7 +399,6 @@ $(function (){
   weapon();
   rand = Math.floor(Math.random()*6);
   extraStstusSet(extraStatusTips[rand]);
-  load();
   setInterval( function (){
     hitMonster(playerDmg/100*playerHitPS);
   }, 10);

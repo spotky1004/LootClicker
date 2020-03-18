@@ -24,18 +24,18 @@ $(function (){
         JSON.parse(decodeURIComponent(cookies[i].replace('saveData' + "=", "")));
       }
     }
-    a = 0;
     var willCookieString = '{';
     var cookies = document.cookie.split(";");
     for(var i in cookies) {
       if(cookies[i].search('CookieName') != -1) {
-        savedFile = decodeURIComponent(cookies[i].replace('CookieName' + "=", "")));
+        savedFile = decodeURIComponent(cookies[i].replace('CookieName' + "=", ""));
       }
     }
+    a = 0;
     const obj = JSON.parse(json);
     while ((a+1) <= varData.length) {
       varName = varData[a];
-      eval(varName = );
+      eval(varName);
       a++;
     }
   }
