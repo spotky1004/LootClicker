@@ -49,7 +49,7 @@ $(function (){
     const obj = JSON.parse(json);
     while ((a+1) <= varData.length) {
       varName = varData[a];
-      eval(varName);
+      eval(varName = obj.varName;);
       a++;
     }
   }
@@ -437,6 +437,7 @@ $(function (){
   monsterStatus();
   loot();
   weapon();
+  gameLoad();
   rand = Math.floor(Math.random()*6);
   extraStstusSet(extraStatusTips[rand]);
   setInterval( function (){
