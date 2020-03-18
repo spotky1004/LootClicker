@@ -39,7 +39,7 @@ $(function (){
       }
     }
     a = 0;
-    savedArray = JSON.values(savedFile);
+    savedArray = Object.values(savedFile);
     while ((a+1) <= varData.length) {
       loadString = varData[a] + ' =' + savedArray[a];
       eval(loadString);
