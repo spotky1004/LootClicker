@@ -82,3 +82,8 @@ extraStatusTips = [
   '무기 레벨 100 마다 Hit/s가 1씩 늘어납니다!',
   '???'
 ]
+varData = [
+  'playerLevel', 'stageUnlocked', 'playerExp', 'playerExpNeed', 'token',
+  'monsterNow', 'collectedWeapon', 'weaponMastery', 'playerDmg', 'playerHitPS',
+  'weaponLevel', 'lootQuantity'
+];

@@ -116,6 +116,7 @@ $(function (){
         playerDmg = playerDmg + ((num*2)**(1+(num*2)/5)*10)/(1+(num*2)**2)*quantity;
         playerHitPS = playerHitPS + (Math.floor((weaponLevel[num])/100)-Math.floor((weaponLevel[num]-quantity)/100));
         token = token + (Math.floor((weaponLevel[num])/10)-Math.floor((weaponLevel[num]-quantity)/10));
+        collectedWeapon = collectedWeapon + quantity;
         if (weaponLevel[num] == 999) {
           strA = '<span class="maxLv">' + weaponName[num] + ' 999강화 달성! +' + (weaponLevel[num]-quantity) + ' ▶ +' + weaponLevel[num] + '</span>'
           token = token + 10;
@@ -374,7 +375,6 @@ $(function (){
   stageUnlocked = 1;
   playerExp = 0;
   playerExpNeed = 10;
-  coin = 0;
   token = 0;
   monsterNow = 1;
   monsterHpM = (monsterNow**(1+monsterNow/5)*10)*3;
@@ -399,6 +399,7 @@ $(function (){
   weapon();
   rand = Math.floor(Math.random()*6);
   extraStstusSet(extraStatusTips[rand]);
+  load();
   setInterval( function (){
     hitMonster(playerDmg/100*playerHitPS);
   }, 10);
