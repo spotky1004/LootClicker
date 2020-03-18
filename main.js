@@ -49,7 +49,7 @@ $(function (){
     const obj = JSON.parse(savedFile);
     while ((a+1) <= varData.length) {
       varName = varData[a];
-      eval(varName = obj.varName[a]);
+      eval(varName[a] = obj.varName[a]);
       a++;
     }
   }
