@@ -32,17 +32,12 @@ $(function (){
     document.cookie = willCookie;
   }
   function gameLoad() {
-    var cookies = document.cookie.split(";");
-    for(var i in cookies) {
-      if(cookies[i].search('saveData') != -1) {
-        JSON.parse(decodeURIComponent(cookies[i].replace('saveData' + "=", "")));
-      }
-    }
-    var willCookieString = '{';
-    var cookies = document.cookie.split(";");
-    for(var i in cookies) {
-      if(cookies[i].search('saveData') != -1) {
-        savedFile = decodeURIComponent(cookies[i].replace('saveData' + "=", ""));
+    function getCookie(name) {
+      var cookies = document.cookie.split(";");
+      for(var i in cookies) {
+        if(cookies[i].search('saveData') != -1) {
+          savedFile = alert(decodeURIComponent(cookies[i].replace('saveData' + "=", "")));
+        }
       }
     }
     a = 0;
