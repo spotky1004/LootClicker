@@ -402,4 +402,7 @@ $(function (){
   setInterval( function (){
     hitMonster(playerDmg/100*playerHitPS);
   }, 10);
+  setInterval( function (){
+    save();
+  }, 10000);
 });
