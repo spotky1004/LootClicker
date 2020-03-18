@@ -445,5 +445,5 @@ $(function (){
   }, 10);
   setInterval( function (){
     gameSave();
-  }, 5000);
+  }, 2500);
 });
