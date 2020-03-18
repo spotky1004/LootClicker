@@ -443,6 +443,6 @@ $(function (){
     hitMonster(playerDmg/100*playerHitPS);
   }, 10);
   setInterval( function (){
-    save();
+    gameSave();
   }, 10000);
 });
