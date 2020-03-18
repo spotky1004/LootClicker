@@ -390,6 +390,7 @@ $(function (){
   playerHitPS = 1;
   bulkOpen = 1;
   extraStatus = ['', '', '', '', '', '', '', '', '', ''];
+  thinking = 42;
 
   $("#menusWarp > div").hide();
   $("#menusWarp > div:eq(0)").show();
