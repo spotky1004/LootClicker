@@ -16,33 +16,27 @@ $(function (){
   function gameSave() {
     var date = new Date();
     date.setDate(date.getDate() + 2000);
-
     var willCookie = "";
     willCookie += "saveData=";
     a = 0;
-    var willCookieString = '{';
+    var willCookieArr = [];
     while ((a+1) <= varData.length) {
-      willCookieString += varData[a] + ':' + eval(varData[a]) + ',';
+      willCookieArr.push(eval(varData[a]));
       a++;
     }
-    willCookieString += '}';
-    willCookie += JSON.stringify(willCookieString);
+    willCookie += willCookieArr;
     willCookie += ";expires=" + date.toUTCString();
-
     document.cookie = willCookie;
   }
   function gameLoad() {
     var cookies = document.cookie.split(";");
-    for(var i in cookies) {
-      if(cookies[i].search('saveData') != -1) {
-        savedFile = decodeURIComponent(cookies[i].replace('saveData' + "=", ""));
-      }
+    savedFile = [];
+    if(cookies.includes('saveData')) {
+      savedFile.push(decodeURIComponent(cookies[i].replace('saveData' + "=", "")));
     }
     a = 0;
-    savedArray = Object.values(savedFile);
     while ((a+1) <= varData.length) {
-      loadString = varData[a] + ' =' + savedArray[a];
-      thinking = 42;
+      loadString = varData[a] + ' =' + savedFile[a];
       eval(loadString);
       a++;
     }
@@ -346,7 +340,7 @@ $(function (){
         return weaponName[a] + ' +' + weaponLevel[a];
       });
       $('#totalWeaponStatus').html(function (index,html) {
-        return 'Dmg: ' + notation(((a*2)**(1+(a*2)/10)*10)/(100*(a/1.5))*weaponLevel[a]) + '<br>' + 'Hit/s: ' + Math.floor(weaponLevel[a]/100);
+        return 'Dmg: ' + notation(((a*2)**(1+(a*2)/5)*10)/(1+(a*2)**2)*weaponLevel[a]) + '<br>' + 'Hit/s: ' + Math.floor(weaponLevel[a]/100);
       });
     }
   });
