@@ -18,27 +18,27 @@ $(function (){
     date.setDate(date.getDate() + 2000);
     var willCookie = "";
     willCookie += "saveData=";
-    a = 0;
     var willCookieArr = [];
-    while ((a+1) <= varData.length) {
-      willCookieArr.push(eval(varData[a]));
-      a++;
+    for(var i = 0; i < varData.length - 1; i++) {
+      willCookieArr.push(eval(varData[i]));
     }
     willCookie += willCookieArr;
     willCookie += ";expires=" + date.toUTCString();
     document.cookie = willCookie;
   }
   function gameLoad() {
-    var cookies = document.cookie.split(";");
     savedFile = [];
-    if(cookies.includes('saveData')) {
-      savedFile.push(decodeURIComponent(cookies[i].replace('saveData' + "=", "")));
+    var cookies = document.cookie.split(";");
+    for(var i in cookies) {
+      if(cookies[i].search('saveData') != -1) {
+        savedFile = decodeURIComponent(cookies[i].replace('saveData' + "=", ""));
+      }
     }
-    a = 0;
-    while ((a+1) <= varData.length) {
-      loadString = varData[a] + ' =' + savedFile[a];
+    let temp = savedFile
+    let tempToArray = temp.split(',')
+    for(var i = 0; i < 9; i++) {
+      loadString = varData[a] + ' =' + tempToArray[a];
       eval(loadString);
-      a++;
     }
   }
   function playerStatus() {
