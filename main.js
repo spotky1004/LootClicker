@@ -44,12 +44,10 @@ $(function (){
       eval(loadString);
     }
     for(var i = 10; i < 51; i++) {
-      loadString = weaponLevel[i-9] + ' = ' + tempToArray[i];
-      eval(loadString);
+      lootQuantity[i-9] = eval(tempToArray[i]);
     }
     for(var i = 52; i < 101; i++) {
-      loadString = weaponLevel[i-51] + ' = ' + tempToArray[i];
-      eval(loadString);
+      weaponLevel[i-51] = eval(tempToArray[i]);
     }
   }
   function playerStatus() {
@@ -408,6 +406,15 @@ $(function (){
   });
   $("#bulk5").click(function () {
     bulkOpen = 10000000;
+  });
+  $("#resetButton").click(function () {
+    if(confirm("Reset game?") == true){
+       gameSave();
+      window.location.reload();
+    }
+    else{
+      return ;
+    }
   });
 
   playerLevel = 0;
