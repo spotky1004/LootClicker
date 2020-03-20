@@ -40,7 +40,15 @@ $(function (){
     let temp = savedFile
     let tempToArray = temp.split(',')
     for(var i = 0; i < 9; i++) {
-      loadString = varData[i] + ' =' + tempToArray[i];
+      loadString = varData[i] + ' = ' + tempToArray[i];
+      eval(loadString);
+    }
+    for(var i = 10; i < 51; i++) {
+      loadString = weaponLevel[i-9] + ' = ' + tempToArray[i];
+      eval(loadString);
+    }
+    for(var i = 52; i < 101; i++) {
+      loadString = weaponLevel[i-51] + ' = ' + tempToArray[i];
       eval(loadString);
     }
   }
