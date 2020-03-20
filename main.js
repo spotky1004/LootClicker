@@ -32,12 +32,15 @@ $(function (){
     for(var i in cookies) {
       if(cookies[i].search('saveData') != -1) {
         savedFile = decodeURIComponent(cookies[i].replace('saveData' + "=", ""));
+        if (savedFile) {
+
+        }
       }
     }
     let temp = savedFile
     let tempToArray = temp.split(',')
     for(var i = 0; i < 9; i++) {
-      loadString = varData[a] + ' =' + tempToArray[a];
+      loadString = varData[i] + ' =' + tempToArray[i];
       eval(loadString);
     }
   }
