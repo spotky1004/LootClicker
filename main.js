@@ -13,26 +13,25 @@ $(function (){
       }
     }
   }
+  function makeSave() {
+    var saveFile = [];
+    for(var i = 0; i < 9; i++) {
+      saveFile.push(eval(varData[i]));
+    }
+    for(var i = 9; i < 51; i++) {
+      saveFile.push(eval(lootQuantity[i-9]));
+    }
+    for(var i = 51; i < 101; i++) {
+      saveFile.push(eval(weaponLevel[i-51]));
+    }
+  }
   function gameSave() {
     var date = new Date();
     date.setDate(date.getDate() + 2000);
     var willCookie = "";
     willCookie += "saveData=";
-    var willCookieArr = [];
-    t = 0;
-    for(var i = 0; i < 9; i++) {
-      willCookieArr.push(eval(varData[i]));
-      t++;
-    }
-    for(var i = 9; i < 51; i++) {
-      willCookieArr.push(eval(lootQuantity[i-9]));
-      t++;
-    }
-    for(var i = 51; i < 101; i++) {
-      willCookieArr.push(eval(weaponLevel[i-51]));
-      t++;
-    }
-    willCookie += willCookieArr;
+    makeSave();
+    willCookie += saveFile;
     willCookie += ";expires=" + date.toUTCString();
     document.cookie = willCookie;
   }
@@ -468,6 +467,21 @@ $(function (){
     else{
       return ;
     }
+  });
+  $("#exportButton").click(function () {
+    makeSave();
+    prompt('Exported Save', saveFile);
+  });
+  $("#importButton").click(function () {
+    var inputedSave = prompt('Import Save', '');
+    var date = new Date();
+    date.setDate(date.getDate() + 2000);
+    var willCookie = "";
+    willCookie += "saveData=";
+    willCookie += inputedSave;
+    willCookie += ";expires=" + date.toUTCString();
+    document.cookie = willCookie;
+    gameLoad();
   });
 
   playerLevel = 0;

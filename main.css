@@ -208,3 +208,9 @@
 .black {
   color: black;
 }
+#settingDiv > div {
+  margin-bottom: 8px;
+}
+#resetButton {
+  color: red;
+}
