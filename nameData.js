@@ -84,6 +84,6 @@ extraStatusTips = [
 ]
 varData = [
   'playerLevel', 'stageUnlocked', 'playerExp', 'playerExpNeed', 'token',
-  'monsterNow', 'collectedWeapon', 'weaponMastery', 'playerDmg', 'playerHitPS',
+  'playerHitPS', 'collectedWeapon', 'weaponMastery', 'playerDmg', 'monsterNow',
   'weaponLevel', 'lootQuantity'
 ];
