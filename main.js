@@ -19,8 +19,17 @@ $(function (){
     var willCookie = "";
     willCookie += "saveData=";
     var willCookieArr = [];
-    for(var i = 0; i < varData.length - 1; i++) {
+    for(var i = 0; i < 101 - 1; i++) {
       willCookieArr.push(eval(varData[i]));
+      for(var i = 0; i < 9; i++) {
+        willCookieArr.push(eval(varData[i]));
+      }
+      for(var i = 10; i < 51; i++) {
+        willCookieArr.push(eval(lootQuantity[i-9]));
+      }
+      for(var i = 52; i < 101; i++) {
+        willCookieArr.push(eval(weaponLevel[i-51]));
+      }
     }
     willCookie += willCookieArr;
     willCookie += ";expires=" + date.toUTCString();
