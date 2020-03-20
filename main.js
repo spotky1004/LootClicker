@@ -418,7 +418,53 @@ $(function (){
   });
   $("#resetButton").click(function () {
     if(confirm("Reset game?") == true){
-       gameSave();
+      playerLevel = 0;
+      stageUnlocked = 1;
+      playerExp = 0;
+      playerExpNeed = 10;
+      token = 0;
+      monsterNow = 1;
+      monsterHpM = (monsterNow**(1+monsterNow/5)*10)*3;
+      monsterHp = monsterHpM;
+      collectedWeapon = 0;
+      weaponMastery = 0;
+      stagePage = 1;
+      lootPage = 1;
+      weaponPage = 1;
+      menuPage = 0;
+      weaponSelect = 0;
+      playerDmg = 1;
+      playerHitPS = 1;
+      bulkOpen = 1;
+      extraStatus = ['', '', '', '', '', '', '', '', '', ''];
+      lootQuantity = [
+        '0',
+        0, 0,
+        0, 0, 0, 0,
+        0, 0, 0, 0,
+        0, 0, 0, 0,
+        0, 0, 0, 0,
+        0, 0, 0, 0,
+        0, 0, 0, 0,
+        0, 0, 0, 0,
+        0, 0, 0, 0,
+        0, 0, 0, 0,
+        0, 0, 0, 0,
+      ];
+      weaponLevel = [
+        '0',
+        0, 0, 0, 0, 0,
+        0, 0, 0, 0, 0,
+        0, 0, 0, 0, 0,
+        0, 0, 0, 0, 0,
+        0, 0, 0, 0, 0,
+        0, 0, 0, 0, 0,
+        0, 0, 0, 0, 0,
+        0, 0, 0, 0, 0,
+        0, 0, 0, 0, 0,
+        0, 0, 0, 0, 0,
+      ];
+      gameSave();
       window.location.reload();
     }
     else{
