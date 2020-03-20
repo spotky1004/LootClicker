@@ -19,17 +19,18 @@ $(function (){
     var willCookie = "";
     willCookie += "saveData=";
     var willCookieArr = [];
-    for(var i = 0; i < 101 - 1; i++) {
+    t =0;
+    for(var i = 0; i < 9; i++) {
       willCookieArr.push(eval(varData[i]));
-      for(var i = 0; i < 9; i++) {
-        willCookieArr.push(eval(varData[i]));
-      }
-      for(var i = 10; i < 51; i++) {
-        willCookieArr.push(eval(lootQuantity[i-9]));
-      }
-      for(var i = 52; i < 101; i++) {
-        willCookieArr.push(eval(weaponLevel[i-51]));
-      }
+      t++;
+    }
+    for(var i = 10; i < 51; i++) {
+      willCookieArr.push(eval(lootQuantity[i-9]));
+      t++;
+    }
+    for(var i = 52; i < 101; i++) {
+      willCookieArr.push(eval(weaponLevel[i-51]));
+      t++;
     }
     willCookie += willCookieArr;
     willCookie += ";expires=" + date.toUTCString();
@@ -41,9 +42,6 @@ $(function (){
     for(var i in cookies) {
       if(cookies[i].search('saveData') != -1) {
         savedFile = decodeURIComponent(cookies[i].replace('saveData' + "=", ""));
-        if (savedFile) {
-
-        }
       }
     }
     let temp = savedFile
