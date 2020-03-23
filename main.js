@@ -503,6 +503,24 @@ $(function (){
       gameLoad();
     }
   });
+  $("#translate").click(function () {
+    translateNum++;
+    if (translateNum > translate.length-1) {
+      translateNum = 0;
+    }
+    for (var i = 0; i < toTranslate.length-1; i++) {
+      translateString = toTranslate[i] + ' = ' + toTranslate[i] + translate[translateNum]
+      eval(translateString);
+    }
+    $('#translate').html(function (index,html) {
+      return translate[translateNum];
+    });
+    playerStatus();
+    monsterStatus();
+    loot();
+    weapon();
+    rand = Math.floor(Math.random()*6);
+  });
 
   playerLevel = 0;
   stageUnlocked = 1;
@@ -522,6 +540,7 @@ $(function (){
   playerDmg = 1;
   playerHitPS = 1;
   bulkOpen = 1;
+  translateNum = 0;
   extraStatus = ['', '', '', '', '', '', '', '', '', ''];
 
   $("#menusWarp > div").hide();
