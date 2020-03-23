@@ -57,7 +57,9 @@
 }
 #mainNav > div {
   padding: 5px 0;
-  width: 25%;
+  width: 16.666666%;
+  height: 18px;
+  font-style: 9pt;
   float: left;
   cursor: pointer;
   text-align: center;

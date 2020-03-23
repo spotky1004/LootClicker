@@ -115,14 +115,38 @@ $(function (){
     });
   }
   function loot() {
+    switch (translateNum) {
+      case 0:
+        translateTxt = 'EXP Bottle'
+        break;
+      case 1:
+        translateTxt = '경험치 병'
+        break;
+    }
     $('#EXPBottleQ').html(function (index,html) {
-      return '경험치 병 - ' + lootQuantity[1];
+      return translateTxt + ' - ' + lootQuantity[1];
     });
+    switch (translateNum) {
+      case 0:
+        translateTxt = 'Mysterious Chest'
+        break;
+      case 1:
+        translateTxt = '의문의 상자'
+        break;
+    }
     $('#mysteryChestQ').html(function (index,html) {
-      return '의문의 상자 - ' + lootQuantity[2];
+      return translateTxt + ' - ' + lootQuantity[2];
     });
+    switch (translateNum) {
+      case 0:
+        translateTxt = 'Tier'
+        break;
+      case 1:
+        translateTxt = '티어'
+        break;
+    }
     $('#tierLootMark').html(function (index,html) {
-      return '티어 ' + lootPage;
+      return translateTxt + ' ' + lootPage;
     });
     a = 1;
     while(a <= 4){
@@ -170,13 +194,29 @@ $(function (){
         token = token + (Math.floor((weaponLevel[num])/10)-Math.floor((weaponLevel[num]-quantity)/10));
         collectedWeapon = collectedWeapon + quantity;
         if (weaponLevel[num] == 999) {
-          strA = '<span class="maxLv">' + weaponName[num] + ' reach 999Level! +' + (weaponLevel[num]-quantity) + ' ▶ +' + weaponLevel[num] + '</span>'
+          switch (translateNum) {
+            case 0:
+              translateTxt = 'reached 999Level!'
+              break;
+            case 1:
+              translateTxt = '999레벨 달성!'
+              break;
+          }
+          strA = '<span class="maxLv">' + weaponName[num] + ' ' + translateTxt + ' +' + (weaponLevel[num]-quantity) + ' ▶ +' + weaponLevel[num] + '</span>'
           token = token + 10;
         } else {
+          switch (translateNum) {
+            case 0:
+              translateTxt = 'level up!'
+              break;
+            case 1:
+              translateTxt = '획득!'
+              break;
+          }
           if (num%5 == 0) {
-            strA = '<span class="rare">' + weaponName[num] + ' level up! +' + (weaponLevel[num]-quantity) + ' ▶ +' + weaponLevel[num] + '</span>'
+            strA = '<span class="rare">' + weaponName[num] + ' ' + translateTxt + ' +' + (weaponLevel[num]-quantity) + ' ▶ +' + weaponLevel[num] + '</span>'
           } else {
-            strA = weaponName[num] + ' level up! +' + (weaponLevel[num]-quantity) + ' ▶ +' + weaponLevel[num];
+            strA = weaponName[num] + ' ' + translateTxt + ' +' + (weaponLevel[num]-quantity) + ' ▶ +' + weaponLevel[num];
           }
         }
         extraStstusSet(strA);
@@ -214,14 +254,42 @@ $(function (){
         lootNum = (Math.ceil(monsterNow/5)*2)+1;
         lootQuantity[lootNum] = lootQuantity[lootNum] + 1;
         if (menuPage == 0) {
-          extraStstusSet(lootName[lootNum-2] + ' got! (Have' + lootQuantity[lootNum] + ')');
+          switch (translateNum) {
+            case 0:
+              translateTxt = 'You got '
+              translateTxt2 = ''
+              translateTxt3 = 'Have '
+              translateTxt4 = ''
+              break;
+            case 1:
+            translateTxt = ''
+            translateTxt2 = '획득'
+            translateTxt3 = ''
+            translateTxt4 = '개 보유'
+              break;
+          }
+          extraStstusSet(translateTxt + lootName[lootNum-2] + ' ' + translateTxt2 + '! (' + translateTxt3 + lootQuantity[lootNum] + translateTxt4 + ')');
         }
         loot();
       } else if (50+loot1Chance <= luck && luck < 100) {
         lootNum = (Math.ceil(monsterNow/5)*2)+2;
         lootQuantity[lootNum] = lootQuantity[lootNum] + 1;
         if (menuPage == 0) {
-          extraStstusSet(lootName[lootNum-2] + ' got! (Have' + lootQuantity[lootNum] + ')');
+          switch (translateNum) {
+            case 0:
+              translateTxt = 'You got '
+              translateTxt2 = ''
+              translateTxt3 = 'Have '
+              translateTxt4 = ''
+              break;
+            case 1:
+            translateTxt = ''
+            translateTxt2 = '획득'
+            translateTxt3 = ''
+            translateTxt4 = '개 보유'
+              break;
+          }
+          extraStstusSet(translateTxt + lootName[lootNum-2] + ' ' + translateTxt2 + '! (' + translateTxt3 + lootQuantity[lootNum] + translateTxt4 + ')');
         }
         loot();
       }
