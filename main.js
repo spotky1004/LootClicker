@@ -170,13 +170,13 @@ $(function (){
         token = token + (Math.floor((weaponLevel[num])/10)-Math.floor((weaponLevel[num]-quantity)/10));
         collectedWeapon = collectedWeapon + quantity;
         if (weaponLevel[num] == 999) {
-          strA = '<span class="maxLv">' + weaponName[num] + ' 999강화 달성! +' + (weaponLevel[num]-quantity) + ' ▶ +' + weaponLevel[num] + '</span>'
+          strA = '<span class="maxLv">' + weaponName[num] + ' reach 999Level! +' + (weaponLevel[num]-quantity) + ' ▶ +' + weaponLevel[num] + '</span>'
           token = token + 10;
         } else {
           if (num%5 == 0) {
-            strA = '<span class="rare">' + weaponName[num] + ' 획득! +' + (weaponLevel[num]-quantity) + ' ▶ +' + weaponLevel[num] + '</span>'
+            strA = '<span class="rare">' + weaponName[num] + ' level up! +' + (weaponLevel[num]-quantity) + ' ▶ +' + weaponLevel[num] + '</span>'
           } else {
-            strA = weaponName[num] + ' 획득! +' + (weaponLevel[num]-quantity) + ' ▶ +' + weaponLevel[num];
+            strA = weaponName[num] + ' level up! +' + (weaponLevel[num]-quantity) + ' ▶ +' + weaponLevel[num];
           }
         }
         extraStstusSet(strA);
@@ -214,14 +214,14 @@ $(function (){
         lootNum = (Math.ceil(monsterNow/5)*2)+1;
         lootQuantity[lootNum] = lootQuantity[lootNum] + 1;
         if (menuPage == 0) {
-          extraStstusSet(lootName[lootNum-2] + ' 획득! (' + lootQuantity[lootNum] + '개 소지중)');
+          extraStstusSet(lootName[lootNum-2] + ' got! (Have' + lootQuantity[lootNum] + ')');
         }
         loot();
       } else if (50+loot1Chance <= luck && luck < 100) {
         lootNum = (Math.ceil(monsterNow/5)*2)+2;
         lootQuantity[lootNum] = lootQuantity[lootNum] + 1;
         if (menuPage == 0) {
-          extraStstusSet(lootName[lootNum-2] + ' 획득! (' + lootQuantity[lootNum] + '개 소지중)');
+          extraStstusSet(lootName[lootNum-2] + ' got! (Have' + lootQuantity[lootNum] + ')');
         }
         loot();
       }
