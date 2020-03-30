@@ -40,7 +40,7 @@ $(function (){
       }
     }
     if (typeof(savedFile) === "undefined") {
-      gameReset();
+      
     } else {
       for (var i = 0; i < varData.length - 1; i++) {
         loadStr = varData[i] + ' = ' + savedFile[i]
