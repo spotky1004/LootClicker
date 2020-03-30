@@ -102,7 +102,7 @@ $(function (){
       3, 5, 10, 50, 5, 10
     ];
     gameSave();
-    gameDisplay();
+    location.reload();
   }
   function gameDisplay() {
     playerStatus();
