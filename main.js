@@ -25,7 +25,7 @@ $(function (){
     var willCookie = "";
     willCookie += "saveData=";
     makeSave();
-    willCookie += saveFile;
+    willCookie += JSON.stringify(saveFile);
     willCookie += ";expires=" + date.toUTCString();
     document.cookie = willCookie;
   }
@@ -33,11 +33,11 @@ $(function (){
     var cookies = document.cookie.split(";");
     for(var i in cookies) {
       if(cookies[i].search('saveData') != -1) {
-        const savedFile = decodeURIComponent(cookies[i].replace('saveData' + "=", ""));
+        savedFile = decodeURIComponent(cookies[i].replace('saveData' + "=", ""));
       }
     }
     if (savedFile === undefined) {
-
+      gameReset();
     } else {
       for (var i = 0; i < varData.length - 1; i++) {
         loadStr = varData[i] + ' = ' + savedFile[i]
@@ -91,6 +91,12 @@ $(function (){
       0, 0, 0, 0, 0,
       0, 0, 0, 0, 0,
       0, 0, 0, 0, 0,
+    ];
+    tokenUpgrade = [
+      0, 0, 0, 0, 0, 0
+    ];
+    tokenUpgradePrice = [
+      3, 5, 10, 50, 5, 10
     ];
     gameSave();
     window.location.reload();
@@ -761,7 +767,7 @@ $(function (){
   monsterDefeated = 0;
   playerExp = 0;
   playerExpNeed = 10;
-  token = 999999;
+  token = 0;
   tokenTimer = 120;
   monsterNow = 1;
   monsterHpM = (monsterNow**(1+monsterNow/5)*10)*3;
@@ -779,7 +785,7 @@ $(function (){
   translateNum = 0;
   ehhhhhhhhhhh = '이예ㅔㅔㅔㅔㅔ';
   extraStatus = ['', '', '', '', '', '', '', '', '', ''];
-  
+
   $("#menusWarp > div").hide();
   $("#menusWarp > div:eq(0)").show();
   gameDisplay();
