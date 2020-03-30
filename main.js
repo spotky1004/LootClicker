@@ -37,14 +37,11 @@ $(function (){
     for(var i in cookies) {
       if(cookies[i].search('saveData') != -1) {
         const savedFile = JSON.parse(decodeURIComponent(cookies[i].replace('saveData' + "=", "")));
-      }
-    }
-    if (typeof(savedFile) === "undefined") {
-      
-    } else {
-      for (var i = 0; i < varData.length - 1; i++) {
-        loadStr = varData[i] + ' = ' + savedFile[i]
-        eval(loadStr);
+        for (var i = 0; i < varData.length; i++) {
+          this[varData[i]] = savedFile[i];
+          console.log(typeof(savedFile[i]));
+        }
+        debugStr = savedFile;
       }
     }
   }
@@ -777,6 +774,7 @@ $(function (){
   bulkOpen = 1;
   translateNum = 0;
   ehhhhhhhhhhh = '이예ㅔㅔㅔㅔㅔ';
+  debugStr = 0;
   extraStatus = ['', '', '', '', '', '', '', '', '', ''];
 
   $("#menusWarp > div").hide();
