@@ -3,6 +3,9 @@
   margin: 0;
   font-family: 'Do Hyeon', sans-serif;
 }
+*::selection {
+  background: #ffc670;
+}
 #warpAll {
   display: flex;
   flex-direction: column-reverse;
