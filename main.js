@@ -24,7 +24,10 @@ $(function (){
     date.setDate(date.getDate() + 2000);
     var willCookie = "";
     willCookie += "saveData=";
-    makeSave();
+    saveFile = {};
+    for (var i = 0; i < varData.length; i++) {
+      saveFile[i] = eval(varData[i]);
+    }
     willCookie += JSON.stringify(saveFile);
     willCookie += ";expires=" + date.toUTCString();
     document.cookie = willCookie;
@@ -106,8 +109,6 @@ $(function (){
     monsterStatus();
     loot();
     weapon();
-    rand = Math.floor(Math.random()*6);
-    extraStstusSet(extraStatusTips[rand]);
     translateFun();
     tokenShop();
     tokenBuffCalc();
@@ -788,6 +789,8 @@ $(function (){
   $("#menusWarp > div:eq(0)").show();
   gameLoad();
   gameDisplay();
+  rand = Math.floor(Math.random()*6);
+  extraStstusSet(extraStatusTips[rand]);
   setInterval( function (){
     hitMonster(playerDmg/100*playerHitPS);
     tokenTimer = tokenTimer - 0.01;
