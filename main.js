@@ -14,15 +14,9 @@ $(function (){
     }
   }
   function makeSave() {
-    var saveFile = [];
-    for(var i = 0; i < 9; i++) {
-      saveFile.push(eval(varData[i]));
-    }
-    for(var i = 9; i < 51; i++) {
-      saveFile.push(eval(lootQuantity[i-9]));
-    }
-    for(var i = 51; i < 101; i++) {
-      saveFile.push(eval(weaponLevel[i-51]));
+    var saveFile = {};
+    for (var i = 0; i < varData.length; i++) {
+      saveFile[i] = eval(varData[i]);
     }
   }
   function gameSave() {
@@ -30,40 +24,88 @@ $(function (){
     date.setDate(date.getDate() + 2000);
     var willCookie = "";
     willCookie += "saveData=";
-    var saveFile = [];
-    for(var i = 0; i < 9; i++) {
-      saveFile.push(eval(varData[i]));
-    }
-    for(var i = 9; i < 51; i++) {
-      saveFile.push(eval(lootQuantity[i-9]));
-    }
-    for(var i = 51; i < 101; i++) {
-      saveFile.push(eval(weaponLevel[i-51]));
-    }
+    makeSave();
     willCookie += saveFile;
     willCookie += ";expires=" + date.toUTCString();
     document.cookie = willCookie;
   }
   function gameLoad() {
-    savedFile = [];
     var cookies = document.cookie.split(";");
     for(var i in cookies) {
       if(cookies[i].search('saveData') != -1) {
-        savedFile = decodeURIComponent(cookies[i].replace('saveData' + "=", ""));
+        const savedFile = decodeURIComponent(cookies[i].replace('saveData' + "=", ""));
       }
     }
-    let temp = savedFile
-    let tempToArray = temp.split(',')
-    for(var i = 0; i < 9; i++) {
-      loadString = varData[i] + ' = ' + tempToArray[i];
-      eval(loadString);
+    if (savedFile === undefined) {
+
+    } else {
+      for (var i = 0; i < varData.length - 1; i++) {
+        loadStr = varData[i] + ' = ' + savedFile[i]
+        eval(loadStr);
+      }
     }
-    for(var i = 10; i < 51; i++) {
-      lootQuantity[i-9] = eval(tempToArray[i]);
-    }
-    for(var i = 52; i < 101; i++) {
-      weaponLevel[i-51] = eval(tempToArray[i]);
-    }
+  }
+  function gameReset() {
+    playerLevel = 0;
+    stageUnlocked = 1;
+    playerExp = 0;
+    playerExpNeed = 10;
+    token = 0;
+    monsterNow = 1;
+    monsterHpM = (monsterNow**(1+monsterNow/5)*10)*3;
+    monsterHp = monsterHpM;
+    collectedWeapon = 0;
+    weaponMastery = 0;
+    stagePage = 1;
+    lootPage = 1;
+    weaponPage = 1;
+    menuPage = 0;
+    weaponSelect = 0;
+    playerDmg = 1;
+    playerHitPS = 1;
+    bulkOpen = 1;
+    extraStatus = ['', '', '', '', '', '', '', '', '', ''];
+    lootQuantity = [
+      '0',
+      0, 0,
+      0, 0, 0, 0,
+      0, 0, 0, 0,
+      0, 0, 0, 0,
+      0, 0, 0, 0,
+      0, 0, 0, 0,
+      0, 0, 0, 0,
+      0, 0, 0, 0,
+      0, 0, 0, 0,
+      0, 0, 0, 0,
+      0, 0, 0, 0,
+    ];
+    weaponLevel = [
+      '0',
+      0, 0, 0, 0, 0,
+      0, 0, 0, 0, 0,
+      0, 0, 0, 0, 0,
+      0, 0, 0, 0, 0,
+      0, 0, 0, 0, 0,
+      0, 0, 0, 0, 0,
+      0, 0, 0, 0, 0,
+      0, 0, 0, 0, 0,
+      0, 0, 0, 0, 0,
+      0, 0, 0, 0, 0,
+    ];
+    gameSave();
+    window.location.reload();
+  }
+  function gameDisplay() {
+    playerStatus();
+    monsterStatus();
+    loot();
+    weapon();
+    gameLoad();
+    rand = Math.floor(Math.random()*6);
+    extraStstusSet(extraStatusTips[rand]);
+    translateFun();
+    tokenShop();
+    tokenBuffCalc();
   }
   function playerStatus() {
     if (playerExp >= playerExpNeed) {
@@ -97,7 +139,7 @@ $(function (){
       return notation(coin) + ' coin';
     });
     $('#token').html(function (index,html) {
-      return notation(token) + ' token';
+      return notation(token) + ' token (' + tokenTimer.toFixed(0) + 's)';
     });
     $('.totalCombatStatus').html(function (index,html) {
       return 'Total Status<br>Dmg: ' + notation(playerDmg) + '<br>' + 'Hit/s: ' + playerHitPS;
@@ -243,9 +285,9 @@ $(function (){
     });
   }
   function hitMonster(dmg) {
-    monsterHp = monsterHp - dmg;
+    monsterHp = monsterHp - dmg*tokenBuff0N;
     if (monsterHp <= 0) {
-      playerExp = playerExp + Math.random()*(2.85**(monsterNow));
+      playerExp = playerExp + Math.random()*(tokenBuff3N**(monsterNow))*tokenBuff2N;
       luck = Math.floor(Math.random()*100);
       loot1Chance = (50-(stagePage-1)*3)*(1-(((monsterNow-1)%5))*0.25);
       if (0 <= luck &&  luck < 50+(stagePage-1)*3) {
@@ -337,21 +379,146 @@ $(function (){
     });
     weapon();
   }
+  function tokenShop() {
+    tokenBuffCalc();
+    $('#tokenDisplay').html(function (index,html) {
+      return 'You Have ' + token + ' Tokens'
+    });
+    $('#tokenBuff1').html(function (index,html) {
+      return 'x' + tokenBuff0N + ' -> x'+ tokenBuff0L
+    });
+    $('#tokenBuff2').html(function (index,html) {
+      return 'x' + tokenBuff1N + ' -> x'+ tokenBuff1L
+    });
+    $('#tokenBuff3').html(function (index,html) {
+      return 'x' + tokenBuff2N + ' -> x'+ tokenBuff2L
+    });
+    $('#tokenBuff4').html(function (index,html) {
+      return '^' + tokenBuff3N + ' -> ^'+ tokenBuff3L
+    });
+    $('#tokenBuff5').html(function (index,html) {
+      return tokenBuff4N + '% -> '+ tokenBuff4L + '%'
+    });
+    $('#tokenBuff6').html(function (index,html) {
+      return tokenBuff5N + 's -> '+ tokenBuff5L + 's'
+    });
+    $('#tokenBuy1').html(function (index,html) {
+      return 'Buy (' + tokenUpgradePrice[0] + ' Token)'
+    });
+    $('#tokenBuy2').html(function (index,html) {
+      return 'Buy (' + tokenUpgradePrice[1] + ' Token)'
+    });
+    $('#tokenBuy3').html(function (index,html) {
+      return 'Buy (' + tokenUpgradePrice[2] + ' Token)'
+    });
+    $('#tokenBuy4').html(function (index,html) {
+      return 'Buy (' + tokenUpgradePrice[3] + ' Token)'
+    });
+    $('#tokenBuy5').html(function (index,html) {
+      return 'Buy (' + tokenUpgradePrice[4] + ' Token)'
+    });
+    $('#tokenBuy6').html(function (index,html) {
+      return 'Buy (' + tokenUpgradePrice[5] + ' Token)'
+    });
+    $('#tokenLevel1').html(function (index,html) {
+      return tokenUpgrade[0]
+    });
+    $('#tokenLevel2').html(function (index,html) {
+      return tokenUpgrade[1]
+    });
+    $('#tokenLevel3').html(function (index,html) {
+      return tokenUpgrade[2]
+    });
+    $('#tokenLevel4').html(function (index,html) {
+      return tokenUpgrade[3]
+    });
+    $('#tokenLevel5').html(function (index,html) {
+      return tokenUpgrade[4]
+    });
+    $('#tokenLevel6').html(function (index,html) {
+      return tokenUpgrade[5]
+    });
+    $('#tokenName1').html(function (index,html) {
+      return tokenUpgradeName[0]
+    });
+    $('#tokenName2').html(function (index,html) {
+      return tokenUpgradeName[1]
+    });
+    $('#tokenName3').html(function (index,html) {
+      return tokenUpgradeName[2]
+    });
+    $('#tokenName4').html(function (index,html) {
+      return tokenUpgradeName[3]
+    });
+    $('#tokenName5').html(function (index,html) {
+      return tokenUpgradeName[4]
+    });
+    $('#tokenName6').html(function (index,html) {
+      return tokenUpgradeName[5]
+    });
+  }
+  function tokenBuffCalc() {
+    tokenBuff0N = 1 + tokenUpgrade[0]*0.2;
+    tokenBuff0L = 1 + (tokenUpgrade[0]+1)*0.2;
+    tokenBuff1N = 1 + tokenUpgrade[1]*(tokenUpgrade[1]+1)/2;
+    tokenBuff1L = 1 + (tokenUpgrade[1]+1)*(tokenUpgrade[1]+2)/2;
+    tokenBuff2N = 1 + tokenUpgrade[2]*0.1;
+    tokenBuff2L = 1 + (tokenUpgrade[2]+1)*0.1;
+    tokenBuff3N = (2.85 + tokenUpgrade[3]*0.01).toFixed(2);
+    tokenBuff3L = (2.85 + (tokenUpgrade[3]+1)*0.01).toFixed(2)
+    tokenBuff4N = 1 + tokenUpgrade[4];
+    tokenBuff4L = 1 + (tokenUpgrade[4]+1)*1;
+    tokenBuff5N = 120 - tokenUpgrade[5]*2;
+    tokenBuff5L = 120 - (tokenUpgrade[5]+1)*2;
+  }
+  function translateFun() {
+    for (var i = 0; i < toTranslate.length; i++) {
+      translateString = toTranslate[i] + ' = ' + toTranslate[i] + translate[translateNum]
+      eval(translateString);
+    }
+    $('#translate').html(function (index,html) {
+      return translate[translateNum];
+    });
+    gameDisplay();
+  }
+  function setPopup(msg) {
+    setTimeout(function() {
+      $('#popupLayer').html(function (index,html) {
+        return msg;
+      });
+  		$('#popupLayer').css({
+  			"top": divTop,
+  			"left": divLeft,
+  			"position": "absolute"
+  		}).show();
+      var timerId1 = setTimeout(function() {
+        $('#popupLayer').hide();
+      }, 1000);
+    }, 0);
+  }
   $("#mainNav > div").click(function () {
     a = $("#mainNav > div").index(this);
-    $("#menusWarp > div").hide();
-    $("#menusWarp > div:eq(" + a + ")").show();
-    menuPage = $("#mainNav > div").index(this);
-    switch ($("#mainNav > div").index(this)) {
-      case 0:
-        monsterStatus();
-        break;
-      case 1:
-        loot();
-        break;
-      case 2:
-        weapon();
-        break;
+    menuCheck = 0;
+    if (a != 3 && a != 4) {
+      menuCheck = 1;
+    } else if (a == 3) {
+      if (playerLevel >= 31) {
+        menuCheck = 1;
+      } else {
+        setPopup(popupMsg[1] + ' ' + 31 + ' ' + popupMsg[2]);
+      }
+    } else if (a == 4) {
+      if (playerLevel >= 101) {
+        menuCheck = 1;
+      } else {
+        setPopup(popupMsg[1] + ' ' + 101 + ' ' + popupMsg[2]);
+      }
+    }
+    if (menuCheck == 1) {
+      $("#menusWarp > div").hide();
+      $("#menusWarp > div:eq(" + a + ")").show();
+      menuPage = $("#mainNav > div").index(this);
+      gameDisplay();
     }
   });
   $(".lootItem").click(function () {
@@ -361,18 +528,22 @@ $(function (){
     }, 0);
   });
   $("#EXPBottleC").click(function () {
-    if (lootQuantity[1] >= 1) {
-      if (lootQuantity[1] < bulkOpen) {
-        bulk = lootQuantity[1];
-      } else {
-        bulk = bulkOpen;
+    if (1 == 2) {
+      if (lootQuantity[1] >= 1) {
+        if (lootQuantity[1] < bulkOpen) {
+          bulk = lootQuantity[1];
+        } else {
+          bulk = bulkOpen;
+        }
+        lootQuantity[1] = lootQuantity[1] - bulk;
+        a = 1;
+        while (a <= bulk) {
+          playerExp = playerExp + Math.random()*playerExpNeed/(3*((playerLevel+1)**1.2))/5*bulk;
+          a++;
+        }
       }
-      lootQuantity[1] = lootQuantity[1] - bulk;
-      a = 1;
-      while (a <= bulk) {
-        playerExp = playerExp + Math.random()*playerExpNeed/(3*((playerLevel+1)**1.2))/5*bulk;
-        a++;
-      }
+    } else {
+      setPopup('Comming Soon');
     }
   });
   $("#tierLoot > span").click(function () {
@@ -391,7 +562,7 @@ $(function (){
         luck = Math.floor(Math.random()*100);
         if ((b-2)%2 == 1) {
           if (0 <= luck && luck< 20+(lootPage-1)*2) {
-            playerExp = playerExp + Math.random()*(2.8**((b-2)*2));
+            playerExp = playerExp + Math.random()*(2.8**((b-2)*2))*tokenBuff2N;
           } else if (20+(lootPage-1)*2 <= luck && luck < 85+(lootPage-1)*1) {
             gotWeapon[0]++;
           } else if (85+(lootPage-1)*1 <= luck && luck < 98) {
@@ -402,7 +573,7 @@ $(function (){
           }
         } else {
           if (0 <= luck && luck< 20+(lootPage-1)*2) {
-            playerExp = playerExp + Math.random()*(2.8**(b*2));
+            playerExp = playerExp + Math.random()*(2.8**(b*2))*tokenBuff2N;
           } else if (20+(lootPage-1)*2 <= luck && luck < 85+(lootPage-1)*1) {
             gotWeapon[0]++;
           } else if (85+(lootPage-1)*1 <= luck && luck < 98) {
@@ -437,7 +608,11 @@ $(function (){
     }
   });
   $("#monster").click(function () {
-    hitMonster(playerDmg);
+    hitMonster(playerDmg*tokenBuff1N);
+    luck = Math.floor(Math.random()*100);
+    if (0 <= luck &&  luck < 50+(stagePage-1)*3) {
+
+    }
   });
   $("#stageL").click(function () {
     if (stagePage > 1) {
@@ -449,6 +624,10 @@ $(function (){
     if (stagePage < stageUnlocked && stagePage < 10) {
       stagePage = stagePage + 1;
       stageChange();
+    } else if (stagePage >= 10) {
+      setPopup(popupMsg[0]);
+    } else {
+      setPopup(popupMsg[1] + ' ' + ((stagePage*10)+1) + ' ' + popupMsg[2]);
     }
   });
   $("#lootL").click(function () {
@@ -492,54 +671,7 @@ $(function (){
   });
   $("#resetButton").click(function () {
     if(confirm("Reset game?") == true){
-      playerLevel = 0;
-      stageUnlocked = 1;
-      playerExp = 0;
-      playerExpNeed = 10;
-      token = 0;
-      monsterNow = 1;
-      monsterHpM = (monsterNow**(1+monsterNow/5)*10)*3;
-      monsterHp = monsterHpM;
-      collectedWeapon = 0;
-      weaponMastery = 0;
-      stagePage = 1;
-      lootPage = 1;
-      weaponPage = 1;
-      menuPage = 0;
-      weaponSelect = 0;
-      playerDmg = 1;
-      playerHitPS = 1;
-      bulkOpen = 1;
-      extraStatus = ['', '', '', '', '', '', '', '', '', ''];
-      lootQuantity = [
-        '0',
-        0, 0,
-        0, 0, 0, 0,
-        0, 0, 0, 0,
-        0, 0, 0, 0,
-        0, 0, 0, 0,
-        0, 0, 0, 0,
-        0, 0, 0, 0,
-        0, 0, 0, 0,
-        0, 0, 0, 0,
-        0, 0, 0, 0,
-        0, 0, 0, 0,
-      ];
-      weaponLevel = [
-        '0',
-        0, 0, 0, 0, 0,
-        0, 0, 0, 0, 0,
-        0, 0, 0, 0, 0,
-        0, 0, 0, 0, 0,
-        0, 0, 0, 0, 0,
-        0, 0, 0, 0, 0,
-        0, 0, 0, 0, 0,
-        0, 0, 0, 0, 0,
-        0, 0, 0, 0, 0,
-        0, 0, 0, 0, 0,
-      ];
-      gameSave();
-      window.location.reload();
+      gameReset();
     }
     else{
       return ;
@@ -576,25 +708,61 @@ $(function (){
     if (translateNum > translate.length-1) {
       translateNum = 0;
     }
-    for (var i = 0; i < toTranslate.length-1; i++) {
-      translateString = toTranslate[i] + ' = ' + toTranslate[i] + translate[translateNum]
-      eval(translateString);
-    }
-    $('#translate').html(function (index,html) {
-      return translate[translateNum];
-    });
-    playerStatus();
-    monsterStatus();
-    loot();
-    weapon();
-    rand = Math.floor(Math.random()*6);
+    translateFun();
   });
+  $(".tokenList").click(function () {
+    clickedA = $("#tokenShopList > .tokenList").index(this);
+  });
+  $(".tokenBuy").click(function () {
+    setTimeout(function() {
+      if (tokenUpgradePrice[clickedA] <= token && tokenUpgradeCap[clickedA] > tokenUpgrade[clickedA]) {
+        token = token - tokenUpgradePrice[clickedA];
+        tokenUpgrade[clickedA]++;
+        switch (clickedA) {
+          case 0:
+            tokenUpgradePrice[clickedA] = Number((tokenUpgradePrice[clickedA]+3).toFixed(0));
+            break;
+          case 1:
+            tokenUpgradePrice[clickedA] = Number((tokenUpgradePrice[clickedA]*1.15).toFixed(0));
+            break;
+          case 2:
+            tokenUpgradePrice[clickedA] = Number((tokenUpgradePrice[clickedA]+10).toFixed(0));
+            break;
+          case 3:
+            tokenUpgradePrice[clickedA] = Number((tokenUpgradePrice[clickedA]*3).toFixed(0));
+            break;
+          case 4:
+            tokenUpgradePrice[clickedA] = Number((tokenUpgradePrice[clickedA]+(tokenUpgrade[clickedA]+5)).toFixed(0));
+            break;
+          case 5:
+            tokenUpgradePrice[clickedA] = Number((tokenUpgradePrice[clickedA]+20).toFixed(0));
+            break;
+        }
+        tokenShop();
+        playerStatus();
+      }
+    }, 0);
+  });
+  $('*').click(function(e){
+    var sWidth = window.innerWidth;
+		var sHeight = window.innerHeight;
+		var oWidth = $('.popupLayer').width();
+		var oHeight = $('.popupLayer').height();
+		divLeft = e.clientX + 10;
+		divTop = e.clientY - 50;
+		if( divLeft + oWidth > sWidth ) divLeft -= oWidth;
+		if( divTop + oHeight > sHeight ) divTop -= oHeight;
+		if( divLeft < 0 ) divLeft = 0;
+		if( divTop < 0 ) divTop = 0;
+	});
 
-  playerLevel = 0;
+  playerLevel = 31;
   stageUnlocked = 1;
+  monsterDefeated = 0;
   playerExp = 0;
   playerExpNeed = 10;
-  token = 0;
+  token = 999999;
+  tokenTimer = 120;
   monsterNow = 1;
   monsterHpM = (monsterNow**(1+monsterNow/5)*10)*3;
   monsterHp = monsterHpM;
@@ -609,21 +777,23 @@ $(function (){
   playerHitPS = 1;
   bulkOpen = 1;
   translateNum = 0;
+  ehhhhhhhhhhh = '이예ㅔㅔㅔㅔㅔ';
   extraStatus = ['', '', '', '', '', '', '', '', '', ''];
-
+  
   $("#menusWarp > div").hide();
   $("#menusWarp > div:eq(0)").show();
-  playerStatus();
-  monsterStatus();
-  loot();
-  weapon();
-  gameLoad();
-  rand = Math.floor(Math.random()*6);
-  extraStstusSet(extraStatusTips[rand]);
+  gameDisplay();
   setInterval( function (){
     hitMonster(playerDmg/100*playerHitPS);
+    tokenTimer = tokenTimer - 0.01;
+    if (tokenTimer <= 0) {
+      token = token + 1;
+      tokenTimer = tokenBuff5N;
+    }
+    playerStatus();
   }, 10);
   setInterval( function (){
     gameSave();
+    gameDisplay();
   }, 2500);
 });

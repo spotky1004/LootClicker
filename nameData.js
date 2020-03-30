@@ -180,12 +180,40 @@ extraStatusTipsEng = [
 ];
 varData = [
   'playerLevel', 'stageUnlocked', 'playerExp', 'playerExpNeed', 'token',
-  'playerHitPS', 'collectedWeapon', 'weaponMastery', 'playerDmg', 'monsterNow',
-  'weaponLevel', 'lootQuantity'
+  'playerHitPS', 'collectedWeapon', 'weaponMastery', 'playerDmg', 'translateNum',
+  'weaponLevel', 'lootQuantity', 'tokenUpgrade', 'tokenUpgradePrice', 'tokenUpgrade',
+  'tokenUpgradePrice'
+];
+popupMsg = [
+  'Reached max stage!', 'Reach Level', 'to Open'
+];
+popupMsgKor = [
+  '최대 단계 도달!', '', '레벨에 도달하여 해금'
+];
+popupMsgEng = [
+  'Reached max stage!', 'Reach Level', 'to Open'
+];
+tokenUpgradeName = [
+  'Damage Buff', 'Click Buff', 'EXP Buff', 'Monster EXP Buff', 'Token (Click)', 'Token (Timer)'
+];
+tokenUpgradeNameKor = [
+  '공격력 버프', '클릭 버프', '경험치 버프', '몬스터 경험치 버프', '토큰 획득 (클릭)', '토큰 획득 (타이머)'
+];
+tokenUpgradeNameEng = [
+  'Damage Buff', 'Click Buff', 'EXP Buff', 'Monster EXP Buff', 'Token (Click)', 'Token (Timer)'
+];
+tokenUpgrade = [
+  0, 0, 0, 0, 0, 0
+];
+tokenUpgradePrice = [
+  3, 5, 10, 50, 5, 10
+];
+tokenUpgradeCap = [
+  99, 99, 99, 10, 99, 59
 ];
 translate = [
   'Eng', 'Kor'
 ];
 toTranslate = [
-  'monName', 'lootName', 'weaponName', 'extraStatusTips'
+  'monName', 'lootName', 'weaponName', 'extraStatusTips', 'popupMsg'
 ];
