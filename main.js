@@ -484,7 +484,6 @@ $(function (){
     $('#translate').html(function (index,html) {
       return translate[translateNum];
     });
-    gameDisplay();
   }
   function setPopup(msg) {
     setTimeout(function() {
