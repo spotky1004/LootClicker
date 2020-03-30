@@ -36,7 +36,7 @@ $(function (){
     var cookies = document.cookie.split(";");
     for(var i in cookies) {
       if(cookies[i].search('saveData') != -1) {
-        savedFile = decodeURIComponent(cookies[i].replace('saveData' + "=", ""));
+        savedFile = JSON.parse(decodeURIComponent(cookies[i].replace('saveData' + "=", "")));
       }
     }
     if (savedFile === undefined) {
