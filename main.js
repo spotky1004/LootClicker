@@ -106,7 +106,6 @@ $(function (){
     monsterStatus();
     loot();
     weapon();
-    gameLoad();
     rand = Math.floor(Math.random()*6);
     extraStstusSet(extraStatusTips[rand]);
     translateFun();
@@ -762,7 +761,7 @@ $(function (){
 		if( divTop < 0 ) divTop = 0;
 	});
 
-  playerLevel = 31;
+  playerLevel = 1;
   stageUnlocked = 1;
   monsterDefeated = 0;
   playerExp = 0;
@@ -788,6 +787,7 @@ $(function (){
 
   $("#menusWarp > div").hide();
   $("#menusWarp > div:eq(0)").show();
+  gameLoad();
   gameDisplay();
   setInterval( function (){
     hitMonster(playerDmg/100*playerHitPS);
