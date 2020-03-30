@@ -153,7 +153,7 @@ standardNotation3 = [
 ];
 extraStatusTips = [
   'The maximum level of the weapon is +999!',
-  'Rare-grade black damage is low, but with experience bottle!',
+  'Rare-grade sword damage is low, but with experience bottle!',
   'Tokens can be earned each time a weapon reaches level 10.!',
   'The amount of experience required is tripled each time the level goes up.!',
   'There are 100 monsters!',
