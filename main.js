@@ -39,9 +39,7 @@ $(function (){
         const savedFile = JSON.parse(decodeURIComponent(cookies[i].replace('saveData' + "=", "")));
         for (var i = 0; i < varData.length; i++) {
           this[varData[i]] = savedFile[i];
-          console.log(typeof(savedFile[i]));
         }
-        debugStr = savedFile;
       }
     }
   }
@@ -683,18 +681,20 @@ $(function (){
     for (var i = 0; i < varData.length; i++) {
       saveFile[i] = eval(varData[i]);
     }
-    prompt('Exported Save', saveFile);
+    prompt('Exported Save', JSON.stringify(saveFile));
   });
   $("#importButton").click(function () {
     var inputedSave = prompt('Import Save', '');
     if (inputedSave != '') {
-      var date = new Date();
-      date.setDate(date.getDate() + 2000);
-      var willCookie = "";
-      willCookie += "saveData=";
-      willCookie += JSON.parse(inputedSave);
-      willCookie += ";expires=" + date.toUTCString();
-      document.cookie = willCookie;
+      var cookies = document.cookie.split(";");
+      for(var i in cookies) {
+        if(cookies[i].search('saveData') != -1) {
+          const savedFile = JSON.parse(inputedSave);
+          for (var i = 0; i < varData.length; i++) {
+            this[varData[i]] = savedFile[i];
+          }
+        }
+      }
       gameLoad();
     }
   });
