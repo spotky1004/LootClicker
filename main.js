@@ -236,7 +236,6 @@ $(function (){
         weaponLevel[num] = weaponLevel[num] + quantity;
         playerDmg = playerDmg + ((num*2)**(1+(num*2)/5)*10)/(1+(num*2)**2)*quantity;
         playerHitPS = playerHitPS + (Math.floor((weaponLevel[num])/100)-Math.floor((weaponLevel[num]-quantity)/100));
-        token = token + (Math.floor((weaponLevel[num])/10)-Math.floor((weaponLevel[num]-quantity)/10));
         collectedWeapon = collectedWeapon + quantity;
         if (weaponLevel[num] == 999) {
           switch (translateNum) {
