@@ -52,7 +52,7 @@ $(function (){
     playerExpNeed = 10;
     token = 0;
     monsterNow = 1;
-    monsterHpM = (monsterNow**(1+monsterNow/5)*10)*3;
+    monsterHpM = (monsterNow**(1+monsterNow/5)*10)*3*(1+15/(100-monsterNow));
     monsterHp = monsterHpM;
     collectedWeapon = 0;
     weaponMastery = 0;
@@ -338,7 +338,7 @@ $(function (){
         loot();
       }
       summonMonster();
-      monsterHpM = (monsterNow**(1+monsterNow/5)*10)*3;
+      monsterHpM = (monsterNow**(1+monsterNow/5)*10)*3*(1+15/(100-monsterNow));
       monsterHp = monsterHpM;
     }
     monsterStatus();
@@ -356,7 +356,7 @@ $(function (){
     } else {
       monsterNow = Math.floor(Math.random()*(playerLevel-(stagePage-1)*10))+1+(stagePage-1)*10;
     }
-    monsterHpM = (monsterNow**(1+monsterNow/5)*10)*3;
+    monsterHpM = (monsterNow**(1+monsterNow/5)*10)*3*(1+15/(100-monsterNow));
     monsterHp = monsterHpM;
     monsterStatus();
   }
@@ -715,19 +715,19 @@ $(function (){
         tokenUpgrade[clickedA]++;
         switch (clickedA) {
           case 0:
-            tokenUpgradePrice[clickedA] = Number((tokenUpgradePrice[clickedA]+3).toFixed(0));
+            tokenUpgradePrice[clickedA] = Number((tokenUpgradePrice[clickedA]+tokenUpgrade[clickedA]+3).toFixed(0));
             break;
           case 1:
             tokenUpgradePrice[clickedA] = Number((tokenUpgradePrice[clickedA]*1.15).toFixed(0));
             break;
           case 2:
-            tokenUpgradePrice[clickedA] = Number((tokenUpgradePrice[clickedA]+10).toFixed(0));
+            tokenUpgradePrice[clickedA] = Number((tokenUpgradePrice[clickedA]+10+tokenUpgrade[clickedA]*4).toFixed(0));
             break;
           case 3:
             tokenUpgradePrice[clickedA] = Number((tokenUpgradePrice[clickedA]*3).toFixed(0));
             break;
           case 4:
-            tokenUpgradePrice[clickedA] = Number((tokenUpgradePrice[clickedA]+(tokenUpgrade[clickedA]+5)).toFixed(0));
+            tokenUpgradePrice[clickedA] = Number((tokenUpgradePrice[clickedA]+(tokenUpgrade[clickedA])**1.5+1).toFixed(0));
             break;
           case 5:
             tokenUpgradePrice[clickedA] = Number((tokenUpgradePrice[clickedA]+20).toFixed(0));
@@ -759,7 +759,7 @@ $(function (){
   token = 0;
   tokenTimer = 120;
   monsterNow = 1;
-  monsterHpM = (monsterNow**(1+monsterNow/5)*10)*3;
+  monsterHpM = (monsterNow**(1+monsterNow/5)*10)*3*(1+15/(100-monsterNow));
   monsterHp = monsterHpM;
   collectedWeapon = 0;
   weaponMastery = 0;
