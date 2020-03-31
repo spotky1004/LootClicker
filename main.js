@@ -611,8 +611,8 @@ $(function (){
   $("#monster").click(function () {
     hitMonster(playerDmg*tokenBuff1N);
     luck = Math.floor(Math.random()*100);
-    if (0 <= luck &&  luck < 50+(stagePage-1)*3) {
-
+    if (0 <= luck &&  luck < tokenBuff4N) {
+      token = token + 1;
     }
   });
   $("#stageL").click(function () {
