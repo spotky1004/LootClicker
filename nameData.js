@@ -215,5 +215,5 @@ translate = [
   'Eng', 'Kor'
 ];
 toTranslate = [
-  'monName', 'lootName', 'weaponName', 'extraStatusTips', 'popupMsg'
+  'monName', 'lootName', 'weaponName', 'extraStatusTips', 'popupMsg', 'tokenUpgradeName'
 ];
