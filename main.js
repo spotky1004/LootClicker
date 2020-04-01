@@ -606,8 +606,8 @@ $(function (){
         gotWeaponCalc(((lootPage-1)*5+2+a), gotWeapon[1]);
         gotWeaponCalc(((lootPage)*5), gotWeapon[2]);
       } else {
-        gotWeaponCalc(((lootPage-1)*5+a), gotWeapon[0]);
-        gotWeaponCalc(((lootPage-1)*5+1+a), gotWeapon[1]);
+        gotWeaponCalc(((lootPage-1)*5+1+a), gotWeapon[0]);
+        gotWeaponCalc(((lootPage-1)*5+a), gotWeapon[1]);
         gotWeaponCalc(((lootPage)*5), gotWeapon[2]);
       }
     }
