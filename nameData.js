@@ -154,28 +154,22 @@ standardNotation3 = [
 extraStatusTips = [
   'The maximum level of the weapon is +999!',
   'Rare-grade sword damage is low, but with experience bottle!',
-  'Tokens can be earned each time a weapon reaches level 10.!',
   'The amount of experience required is tripled each time the level goes up.!',
   'There are 100 monsters!',
-  'Hit / s increases by 1 for every 100 weapon levels!',
   '???'
 ];
 extraStatusTipsKor = [
   '무기의 최대 레벨은 +999 입나다!',
   '희귀등급 검은 대미지는 낮지만 경험치 병이 딸려옵니다!',
-  '토큰은 무기가 10레벨이 오를때 마다 얻을수 있습니다!',
   '필요 경험치량은 레벨이 오를때마다 3배씩 증가합니다!',
   '몬스터는 100마리가 있습니다!',
-  '무기 레벨 100 마다 Hit/s가 1씩 늘어납니다!',
   '???'
 ];
 extraStatusTipsEng = [
   'The maximum level of the weapon is +999!',
   'Rare-grade sword damage is low, but with experience bottle!',
-  'Tokens can be earned each time a weapon reaches level 10.!',
   'The amount of experience required is tripled each time the level goes up.!',
   'There are 100 monsters!',
-  'Hit / s increases by 1 for every 100 weapon levels!',
   '???'
 ];
 varData = [
@@ -203,13 +197,13 @@ tokenUpgradeNameEng = [
   'Damage Buff', 'Click Buff', 'EXP Buff', 'Monster EXP Buff', 'Token (Click)', 'Token (Timer)'
 ];
 tokenUpgrade = [
-  0, 0, 0, 0, 0, 0
+  0, 0, 0, 0, 0, 0, 0
 ];
 tokenUpgradePrice = [
-  3, 5, 10, 50, 5, 10
+  3, 5, 10, 50, 5, 10, 100
 ];
 tokenUpgradeCap = [
-  99, 99, 99, 10, 99, 59
+  99999, 99, 99, 20, 99, 59, 9999
 ];
 translate = [
   'Eng', 'Kor'
