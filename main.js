@@ -611,7 +611,7 @@ $(function (){
   function lv11Skip() {
     playerLevel = 11;
     stageUnlocked = 2;
-    token = 1000;
+    token = 200;
     lootQuantity = [
       '0',
       0, 0,
@@ -630,7 +630,7 @@ $(function (){
   function lv31Skip() {
     playerLevel = 31;
     stageUnlocked = 4;
-    token = 100000;
+    token = 10000;
     lootQuantity = [
       '0',
       0, 0,
@@ -649,7 +649,7 @@ $(function (){
   function lv71Skip() {
     playerLevel = 71;
     stageUnlocked = 8;
-    token = 10000000;
+    token = 100000;
     lootQuantity = [
       '0',
       0, 0,
@@ -668,7 +668,7 @@ $(function (){
   function lv101Skip() {
     playerLevel = 101;
     stageUnlocked = 11;
-    token = 100000000;
+    token = 500000;
     lootQuantity = [
       '0',
       0, 0,
