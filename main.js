@@ -110,6 +110,7 @@ $(function (){
     translateFun();
     tokenShop();
     tokenBuffCalc();
+    playerUnlock();
   }
   function playerStatus() {
     if (playerExp >= playerExpNeed) {
@@ -148,6 +149,29 @@ $(function (){
     $('.totalCombatStatus').html(function (index,html) {
       return 'Total Status<br>Dmg: ' + notation(playerDmg) + '<br>' + 'Hit/s: ' + playerHitPS;
     });
+  }
+  function playerUnlock() {
+    if (playerLevel >= 71) {
+      $('.mainMenu').css('width', '12.499999%');
+      $('#mainNav > div:eq(6)').show();
+      $('#mainNav > div:eq(5)').show();
+      $('#mainNav > div:eq(4)').show();
+    } else if (playerLevel >= 31) {
+      $('.mainMenu').css('width', '14.285713%');
+      $('#mainNav > div:eq(6)').hide();
+      $('#mainNav > div:eq(5)').show();
+      $('#mainNav > div:eq(4)').show();
+    } else if (playerLevel >= 11) {
+      $('.mainMenu').css('width', '16.666666%');
+      $('#mainNav > div:eq(6)').hide();
+      $('#mainNav > div:eq(5)').hide();
+      $('#mainNav > div:eq(4)').show();
+    } else {
+      $('.mainMenu').css('width', '19.999999%');
+      $('#mainNav > div:eq(6)').hide();
+      $('#mainNav > div:eq(5)').hide();
+      $('#mainNav > div:eq(4)').hide();
+    }
   }
   function monsterStatus() {
     $("#monster").attr({
@@ -515,20 +539,37 @@ $(function (){
   $("#mainNav > div").click(function () {
     a = $("#mainNav > div").index(this);
     menuCheck = 0;
-    if (a != 3 && a != 4) {
-      menuCheck = 1;
-    } else if (a == 3) {
-      if (playerLevel >= 11) {
+    switch (a) {
+      case 3:
+        if (playerLevel >= 11) {
+          menuCheck = 1;
+        } else {
+          setPopup(popupMsg[1] + ' ' + 11 + ' ' + popupMsg[2]);
+        }
+        break;
+      case 4:
+        if (playerLevel >= 31) {
+          menuCheck = 1;
+        } else {
+          setPopup(popupMsg[1] + ' ' + 31 + ' ' + popupMsg[2]);
+        }
+        break;
+      case 5:
+        if (playerLevel >= 71) {
+          menuCheck = 1;
+        } else {
+          setPopup(popupMsg[1] + ' ' + 71 + ' ' + popupMsg[2]);
+        }
+        break;
+      case 6:
+        if (playerLevel >= 101) {
+          menuCheck = 1;
+        } else {
+          setPopup(popupMsg[1] + ' ' + 101 + ' ' + popupMsg[2]);
+        }
+        break;
+      default:
         menuCheck = 1;
-      } else {
-        setPopup(popupMsg[1] + ' ' + 11 + ' ' + popupMsg[2]);
-      }
-    } else if (a == 4) {
-      if (playerLevel >= 101) {
-        menuCheck = 1;
-      } else {
-        setPopup(popupMsg[1] + ' ' + 101 + ' ' + popupMsg[2]);
-      }
     }
     if (menuCheck == 1) {
       $("#menusWarp > div").hide();
