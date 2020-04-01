@@ -499,8 +499,8 @@ $(function (){
   function tokenBuffCalc() {
     tokenBuff0N = 1 + tokenUpgrade[0]*0.2;
     tokenBuff0L = 1 + (tokenUpgrade[0]+1)*0.2;
-    tokenBuff1N = 1 + tokenUpgrade[1]**1.1;
-    tokenBuff1L = 1 + (tokenUpgrade[1]+1)**1.1;
+    tokenBuff1N = (1 + tokenUpgrade[1]**1.1).toFixed(1);
+    tokenBuff1L = (1 + (tokenUpgrade[1]+1)**1.1).toFixed(1);
     tokenBuff2N = 1 + tokenUpgrade[2]*0.1;
     tokenBuff2L = 1 + (tokenUpgrade[2]+1)*0.1;
     tokenBuff3N = (2.8 + tokenUpgrade[3]*0.01).toFixed(2);
