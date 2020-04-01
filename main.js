@@ -315,6 +315,7 @@ $(function (){
     if (monsterHp <= 0) {
       playerExp = playerExp + Math.random()*(tokenBuff3N**(monsterNow))*tokenBuff2N;
       luck = Math.floor(Math.random()*100);
+      mobKilled[monsterNow]++;
       loot1Chance = (50-(stagePage-1)*3)*(1-(((monsterNow-1)%5))*0.25);
       if (0 <= luck &&  luck < 50+(stagePage-1)*3) {
 
@@ -835,6 +836,7 @@ $(function (){
   translateNum = 0;
   ehhhhhhhhhhh = '이예ㅔㅔㅔㅔㅔ';
   debugStr = 0;
+  brokeUniverse = 0;
   extraStatus = ['', '', '', '', '', '', '', '', '', ''];
 
   $("#menusWarp > div").hide();

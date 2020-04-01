@@ -37,6 +37,19 @@ monNameEng = [
   '9-1', '9-2', '9-3', '9-4', '9-5', '9-6', '9-7', '9-8', '9-9', '9-0',
   '0-1', '0-2', '0-3', '0-4', '0-5', '0-6', '0-7', '0-8', '0-9', '0-0',
 ];
+mobKilled = [
+  '0',
+  0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+  0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+  0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+  0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+  0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+  0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+  0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+  0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+  0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+  0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+];
 lootName = [
   '0',
   'Slime Loot', 'Shiny Slime Loot', 'Goblin Loot', 'Shiny Goblin Loot',
@@ -176,16 +189,16 @@ varData = [
   'playerLevel', 'stageUnlocked', 'playerExp', 'playerExpNeed', 'token',
   'playerHitPS', 'collectedWeapon', 'weaponMastery', 'playerDmg', 'translateNum',
   'weaponLevel', 'lootQuantity', 'tokenUpgrade', 'tokenUpgradePrice', 'tokenUpgrade',
-  'tokenUpgradePrice'
+  'tokenUpgradePrice', 'mobKilled', 'brokeUniverse'
 ];
 popupMsg = [
-  'Reached max stage!', 'Reach Level', 'to Open'
+  'Reached max stage!', 'Reach Level', 'to Open', 'Break The Universe to Open'
 ];
 popupMsgKor = [
-  '최대 단계 도달!', '', '레벨에 도달하여 해금'
+  '최대 단계 도달!', '', '레벨에 도달하여 해금', '우주를 파괴하여 해금'
 ];
 popupMsgEng = [
-  'Reached max stage!', 'Reach Level', 'to Open'
+  'Reached max stage!', 'Reach Level', 'to Open', 'Break The Universe to Open'
 ];
 tokenUpgradeName = [
   'Damage Buff', 'Click Buff', 'EXP Buff', 'Monster EXP Buff', 'Token (Click)', 'Token (Timer)'
