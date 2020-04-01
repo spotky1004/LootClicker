@@ -2,6 +2,7 @@
   padding: 0;
   margin: 0;
   font-family: 'Do Hyeon', sans-serif;
+  font-variant-numeric: tabular-nums;
 }
 *::selection {
   background: #ffc670;
@@ -22,7 +23,6 @@
   margin: 0 auto;
   width: 15vw;
   height: 5vw;
-  background-color: balck;
 }
 .stageNav > div {
   margin: auto;
@@ -111,7 +111,6 @@
 }
 #monsterHpProgressNum {
   width: 50px;
-  background-color: balck;
 }
 #lootWarp {
   background-image: url(bg/loot_bg.png);

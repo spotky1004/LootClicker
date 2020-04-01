@@ -619,7 +619,7 @@ $(function (){
         return weaponName[a] + ' +' + weaponLevel[a];
       });
       $('#totalWeaponStatus').html(function (index,html) {
-        return 'Dmg: ' + notation(((a*2)**(1+(a*2)/5)*10)/(1+(a*2)**3)*weaponLevel[a]) + '<br>' + 'Hit/s: ' + Math.floor(weaponLevel[a]/100);
+        return 'Dmg: ' + notation(((a*2)**(1+(a*2)/5)*10)/(1+(a*2)**3)*weaponLevel[a]);
       });
     }
   });
