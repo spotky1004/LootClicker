@@ -583,7 +583,7 @@ $(function (){
             gotWeapon[0]++;
           } else if (85+(lootPage-1)*1 <= luck && luck < 98) {
             gotWeapon[1]++;
-          } else if (98 <= luck && luck <= 100 && a == 4) {
+          } else if (98 <= luck && luck <= 100 && a == 3) {
             lootQuantity[1] = lootQuantity[1] + Math.floor(Math.random()*(5+(b-3)));
             gotWeapon[2]++;
           }
@@ -594,7 +594,7 @@ $(function (){
             gotWeapon[0]++;
           } else if (85+(lootPage-1)*1 <= luck && luck < 98) {
             gotWeapon[1]++;
-          } else if (98 <= luck && luck <= 100 && a == 4) {
+          } else if (98 <= luck && luck <= 100 && a == 3) {
             lootQuantity[1] = lootQuantity[1] + Math.floor(Math.random()*(5+(b-3)));
             gotWeapon[2]++;
           }
