@@ -143,7 +143,7 @@ $(function (){
       return notation(coin) + ' coin';
     });
     $('#token').html(function (index,html) {
-      return notation(token) + ' token (' + tokenTimer.toFixed(0) + 's)';
+      return notation(token) + ' token (' + tokenTimer.toFixed(1) + 's)';
     });
     $('.totalCombatStatus').html(function (index,html) {
       return 'Total Status<br>Dmg: ' + notation(playerDmg) + '<br>' + 'Hit/s: ' + playerHitPS;
@@ -474,16 +474,16 @@ $(function (){
   function tokenBuffCalc() {
     tokenBuff0N = 1 + tokenUpgrade[0]*0.2;
     tokenBuff0L = 1 + (tokenUpgrade[0]+1)*0.2;
-    tokenBuff1N = 1 + tokenUpgrade[1]*(tokenUpgrade[1]+1)/2;
-    tokenBuff1L = 1 + (tokenUpgrade[1]+1)*(tokenUpgrade[1]+2)/2;
+    tokenBuff1N = 1 + tokenUpgrade[1]**1.1;
+    tokenBuff1L = 1 + (tokenUpgrade[1]+1)**1.1;
     tokenBuff2N = 1 + tokenUpgrade[2]*0.1;
     tokenBuff2L = 1 + (tokenUpgrade[2]+1)*0.1;
     tokenBuff3N = (2.8 + tokenUpgrade[3]*0.01).toFixed(2);
     tokenBuff3L = (2.8 + (tokenUpgrade[3]+1)*0.01).toFixed(2)
     tokenBuff4N = 1 + tokenUpgrade[4];
     tokenBuff4L = 1 + (tokenUpgrade[4]+1)*1;
-    tokenBuff5N = 120 - tokenUpgrade[5]*2;
-    tokenBuff5L = 120 - (tokenUpgrade[5]+1)*2;
+    tokenBuff5N = 600*0.9**tokenUpgrade[5];
+    tokenBuff5L = 600*0.9**(tokenUpgrade[5]+1);
     tokenBuff6N = tokenUpgrade[6];
     tokenBuff6L = (tokenUpgrade[6]+1);
     playerHitPS = tokenBuff6N;
@@ -735,7 +735,7 @@ $(function (){
             tokenUpgradePrice[clickedA] = Number((tokenUpgradePrice[clickedA]+tokenUpgrade[clickedA]+3).toFixed(0));
             break;
           case 1:
-            tokenUpgradePrice[clickedA] = Number((tokenUpgradePrice[clickedA]*1.15).toFixed(0));
+            tokenUpgradePrice[clickedA] = Number((tokenUpgradePrice[clickedA]+tokenUpgrade[clickedA]*2).toFixed(0));
             break;
           case 2:
             tokenUpgradePrice[clickedA] = Number((tokenUpgradePrice[clickedA]+10+tokenUpgrade[clickedA]*4).toFixed(0));
@@ -777,7 +777,7 @@ $(function (){
   playerExp = 0;
   playerExpNeed = 10;
   token = 0;
-  tokenTimer = 120;
+  tokenTimer = 600*0.9**tokenUpgrade[5];
   monsterNow = 1;
   monsterHpM = (monsterNow**(1+monsterNow/5)*10)*(1+30/(monsterNow/100+1))/10-0.7;
   monsterHp = monsterHpM;
