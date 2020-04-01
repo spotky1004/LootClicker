@@ -216,7 +216,7 @@ tokenUpgradePrice = [
   3, 5, 10, 50, 5, 10, 100
 ];
 tokenUpgradeCap = [
-  99999, 4000, 99, 15, 99, 80, 9999
+  99999, 4000, 99, 15, 99, 85, 9999
 ];
 translate = [
   'Eng', 'Kor'

@@ -50,15 +50,8 @@ $(function (){
     playerExpNeed = 10;
     token = 0;
     monsterNow = 1;
-    monsterHpM = (monsterNow**(1+monsterNow/5)*10)*(1+30/(monsterNow/100+1))/10-0.7;
-    monsterHp = monsterHpM;
     collectedWeapon = 0;
     weaponMastery = 0;
-    stagePage = 1;
-    lootPage = 1;
-    weaponPage = 1;
-    menuPage = 0;
-    weaponSelect = 0;
     playerDmg = 1;
     playerHitPS = 1;
     bulkOpen = 1;
@@ -95,9 +88,6 @@ $(function (){
     ];
     tokenUpgradePrice = [
       3, 5, 10, 50, 5, 10, 100
-    ];
-    tokenUpgradeCap = [
-      99999, 99, 99, 20, 99, 59, 9999
     ];
     mobKilled = [
       '0',
@@ -376,8 +366,7 @@ $(function (){
         loot();
       }
       summonMonster();
-      monsterHpM = (monsterNow**(1+monsterNow/5)*10)*(1+30/(monsterNow/100+1))/10-0.7;
-      monsterHp = monsterHpM;
+      monsterHpCalc();
     }
     monsterStatus();
     playerStatus();
@@ -394,9 +383,12 @@ $(function (){
     } else {
       monsterNow = Math.floor(Math.random()*(playerLevel-(stagePage-1)*10))+1+(stagePage-1)*10;
     }
+    monsterHpCalc();
+    monsterStatus();
+  }
+  function monsterHpCalc() {
     monsterHpM = (monsterNow**(1+monsterNow/5)*10)*(1+30/(monsterNow/100+1))/10-0.7;
     monsterHp = monsterHpM;
-    monsterStatus();
   }
   function stageChange() {
     summonMonster();
@@ -425,13 +417,13 @@ $(function (){
       return 'You Have ' + token + ' Tokens'
     });
     $('#tokenBuff1').html(function (index,html) {
-      return 'x' + tokenBuff0N + ' -> x'+ tokenBuff0L
+      return 'x' + tokenBuff0N.toFixed(1) + ' -> x'+ tokenBuff0L.toFixed(1)
     });
     $('#tokenBuff2').html(function (index,html) {
       return 'x' + tokenBuff1N + ' -> x'+ tokenBuff1L
     });
     $('#tokenBuff3').html(function (index,html) {
-      return 'x' + tokenBuff2N + ' -> x'+ tokenBuff2L
+      return 'x' + tokenBuff2N.toFixed(1) + ' -> x'+ tokenBuff2L.toFixed(1)
     });
     $('#tokenBuff4').html(function (index,html) {
       return '^' + tokenBuff3N + ' -> ^'+ tokenBuff3L
@@ -440,7 +432,7 @@ $(function (){
       return tokenBuff4N + '% -> '+ tokenBuff4L + '%'
     });
     $('#tokenBuff6').html(function (index,html) {
-      return tokenBuff5N + 's -> '+ tokenBuff5L + 's'
+      return tokenBuff5N.toFixed(3) + 's -> '+ tokenBuff5L.toFixed(3) + 's'
     });
     $('#tokenBuff7').html(function (index,html) {
       return tokenBuff6N + '/s -> '+ tokenBuff6L + '/s'
@@ -549,6 +541,148 @@ $(function (){
         $('#popupLayer').hide();
       }, 1000);
     }, 0);
+  }
+  function lv0Skip() {
+    playerLevel = 0;
+    stageUnlocked = 1;
+    playerExp = 0;
+    playerExpNeed = 10;
+    token = 0;
+    monsterNow = 1;
+    monsterHpCalc();
+    collectedWeapon = 0;
+    weaponMastery = 0;
+    stagePage = 1;
+    lootPage = 1;
+    weaponPage = 1;
+    menuPage = 0;
+    weaponSelect = 0;
+    playerDmg = 1;
+    playerHitPS = 1;
+    bulkOpen = 1;
+    extraStatus = ['', '', '', '', '', '', '', '', '', ''];
+    lootQuantity = [
+      '0',
+      0, 0,
+      0, 0, 0, 0,
+      0, 0, 0, 0,
+      0, 0, 0, 0,
+      0, 0, 0, 0,
+      0, 0, 0, 0,
+      0, 0, 0, 0,
+      0, 0, 0, 0,
+      0, 0, 0, 0,
+      0, 0, 0, 0,
+      0, 0, 0, 0,
+    ];
+    weaponLevel = [
+      '0',
+      0, 0, 0, 0, 0,
+      0, 0, 0, 0, 0,
+      0, 0, 0, 0, 0,
+      0, 0, 0, 0, 0,
+      0, 0, 0, 0, 0,
+      0, 0, 0, 0, 0,
+      0, 0, 0, 0, 0,
+      0, 0, 0, 0, 0,
+      0, 0, 0, 0, 0,
+      0, 0, 0, 0, 0,
+    ];
+    tokenUpgrade = [
+      0, 0, 0, 0, 0, 0, 0
+    ];
+    tokenUpgradePrice = [
+      3, 5, 10, 50, 5, 10, 100
+    ];
+    mobKilled = [
+      '0',
+      0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+      0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+      0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+      0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+      0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+      0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+      0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+      0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+      0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+      0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+    ];
+  }
+  function lv11Skip() {
+    playerLevel = 11;
+    stageUnlocked = 2;
+    token = 1000;
+    lootQuantity = [
+      '0',
+      0, 0,
+      1000, 1000, 1000, 1000,
+      0, 0, 0, 0,
+      0, 0, 0, 0,
+      0, 0, 0, 0,
+      0, 0, 0, 0,
+      0, 0, 0, 0,
+      0, 0, 0, 0,
+      0, 0, 0, 0,
+      0, 0, 0, 0,
+      0, 0, 0, 0,
+    ];
+  }
+  function lv31Skip() {
+    playerLevel = 31;
+    stageUnlocked = 4;
+    token = 100000;
+    lootQuantity = [
+      '0',
+      0, 0,
+      1000, 1000, 1000, 1000,
+      1000, 1000, 1000, 1000,
+      1000, 1000, 1000, 1000,
+      0, 0, 0, 0,
+      0, 0, 0, 0,
+      0, 0, 0, 0,
+      0, 0, 0, 0,
+      0, 0, 0, 0,
+      0, 0, 0, 0,
+      0, 0, 0, 0,
+    ];
+  }
+  function lv71Skip() {
+    playerLevel = 71;
+    stageUnlocked = 8;
+    token = 10000000;
+    lootQuantity = [
+      '0',
+      0, 0,
+      1000, 1000, 1000, 1000,
+      1000, 1000, 1000, 1000,
+      1000, 1000, 1000, 1000,
+      1000, 1000, 1000, 1000,
+      1000, 1000, 1000, 1000,
+      1000, 1000, 1000, 1000,
+      1000, 1000, 1000, 1000,
+      0, 0, 0, 0,
+      0, 0, 0, 0,
+      0, 0, 0, 0,
+    ];
+  }
+  function lv101Skip() {
+    playerLevel = 101;
+    stageUnlocked = 11;
+    token = 100000000;
+    lootQuantity = [
+      '0',
+      0, 0,
+      1000, 1000, 1000, 1000,
+      1000, 1000, 1000, 1000,
+      1000, 1000, 1000, 1000,
+      1000, 1000, 1000, 1000,
+      1000, 1000, 1000, 1000,
+      1000, 1000, 1000, 1000,
+      1000, 1000, 1000, 1000,
+      1000, 1000, 1000, 1000,
+      1000, 1000, 1000, 1000,
+      1000, 1000, 1000, 1000,
+    ];
   }
   $("#mainNav > div").click(function () {
     a = $("#mainNav > div").index(this);
@@ -749,25 +883,33 @@ $(function (){
     }
   });
   $("#exportButton").click(function () {
-    saveFile = {};
-    for (var i = 0; i < varData.length; i++) {
-      saveFile[i] = eval(varData[i]);
+    if (1 == 2) {
+      saveFile = {};
+      for (var i = 0; i < varData.length; i++) {
+        saveFile[i] = eval(varData[i]);
+      }
+      prompt('Exported Save', JSON.stringify(saveFile));
+    } else {
+      setPopup('Comming Soon');
     }
-    prompt('Exported Save', JSON.stringify(saveFile));
   });
   $("#importButton").click(function () {
-    var inputedSave = prompt('Import Save', '');
-    if (inputedSave != '') {
-      var cookies = document.cookie.split(";");
-      for(var i in cookies) {
-        if(cookies[i].search('saveData') != -1) {
-          const savedFile = JSON.parse(inputedSave);
-          for (var i = 0; i < varData.length; i++) {
-            this[varData[i]] = savedFile[i];
+    if (1 == 2) {
+      var inputedSave = prompt('Import Save', '');
+      if (inputedSave != '') {
+        var cookies = document.cookie.split(";");
+        for(var i in cookies) {
+          if(cookies[i].search('saveData') != -1) {
+            const savedFile = JSON.parse(inputedSave);
+            for (var i = 0; i < varData.length; i++) {
+              this[varData[i]] = savedFile[i];
+            }
           }
         }
+        gameLoad();
       }
-      gameLoad();
+    } else {
+      setPopup('Comming Soon');
     }
   });
   $("#translate").click(function () {
@@ -776,6 +918,22 @@ $(function (){
       translateNum = 0;
     }
     translateFun();
+  });
+  $("#codeButton").click(function () {
+    inputedCode = prompt('Enter Skip Code', '');
+    if (inputedCode == 'skip121') {
+      lv0Skip();
+      lv11Skip();
+    } else if (inputedCode == 'skip961') {
+      lv0Skip();
+      lv31Skip();
+    } else if (inputedCode == 'skip5041') {
+      lv0Skip();
+      lv71Skip();
+    } else if (inputedCode == 'skip10201') {
+      lv0Skip();
+      lv101Skip();
+    }
   });
   $(".tokenList").click(function () {
     clickedA = $("#tokenShopList > .tokenList").index(this);
@@ -802,7 +960,8 @@ $(function (){
             tokenUpgradePrice[clickedA] = Number((tokenUpgradePrice[clickedA]+(tokenUpgrade[clickedA])**1.5+1).toFixed(0));
             break;
           case 5:
-            tokenUpgradePrice[clickedA] = Number((tokenUpgradePrice[clickedA]+20).toFixed(0));
+            tokenUpgradePrice[clickedA] = Number((tokenUpgradePrice[clickedA]*1.15).toFixed(0));
+            tokenTimer = tokenBuff5N;
             break;
           case 6:
             tokenUpgradePrice[clickedA] = Number((tokenUpgradePrice[clickedA]+100).toFixed(0));
@@ -834,8 +993,7 @@ $(function (){
   token = 0;
   tokenTimer = 600*0.9**tokenUpgrade[5];
   monsterNow = 1;
-  monsterHpM = (monsterNow**(1+monsterNow/5)*10)*(1+30/(monsterNow/100+1))/10-0.7;
-  monsterHp = monsterHpM;
+  monsterHpCalc();
   collectedWeapon = 0;
   weaponMastery = 0;
   stagePage = 1;
@@ -864,6 +1022,7 @@ $(function (){
     if (tokenTimer <= 0) {
       token = token + 1;
       tokenTimer = tokenBuff5N;
+      tokenShop();
     }
     playerStatus();
   }, 10);
