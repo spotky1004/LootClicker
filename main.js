@@ -518,10 +518,10 @@ $(function (){
     if (a != 3 && a != 4) {
       menuCheck = 1;
     } else if (a == 3) {
-      if (playerLevel >= 16) {
+      if (playerLevel >= 11) {
         menuCheck = 1;
       } else {
-        setPopup(popupMsg[1] + ' ' + 16 + ' ' + popupMsg[2]);
+        setPopup(popupMsg[1] + ' ' + 11 + ' ' + popupMsg[2]);
       }
     } else if (a == 4) {
       if (playerLevel >= 101) {
