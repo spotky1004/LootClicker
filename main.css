@@ -131,7 +131,6 @@
   background-image: url(bg/bg.png);
   background-size: cover;
   overflow-y: scroll;
-  overflow-x: scroll;
 }
 #masteryQuest > div {
   float: left;
