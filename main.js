@@ -141,6 +141,7 @@ $(function (){
     masteryQuest();
   }
   function playerStatus() {
+    stageUnlocked = Math.floor((playerLevel-1)/10)+1;
     if (playerExp >= playerExpNeed) {
       playerExp = playerExp - playerExpNeed;
       playerLevel = playerLevel + 1;
@@ -159,7 +160,6 @@ $(function (){
           'class' : 'levelup2'
         });
       }, 1000);
-      stageUnlocked = Math.floor((playerLevel-1)/10)+1;
     }
     $('#playerLevel').html(function (index,html) {
       return 'Level ' + playerLevel;
