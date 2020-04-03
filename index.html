@@ -10,7 +10,7 @@
   <script src="main.js"></script>
   <link href="https://fonts.googleapis.com/css?family=Do+Hyeon&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="main.css">
-    <title>Loot Clicker v1.9.0.2</title>
+    <title>Loot Clicker v1.9.1.1</title>
   </head>
   <body>
     <div id="warpAll">
@@ -34,15 +34,39 @@
         </div>
         <div id="menusWarp">
           <div id="fieldWarp" style="background-image: url(bg/world1.png);">
-            <div id="monster" style="background-image: url(monster/1.png);"></div>
-            <div id="monLevel">Lv 1</div>
-            <div id="monsterStatus">슬라임 (hp: 10 / 10)</div>
-            <progress id="monsterHpProgress" value="1" max="1"></progress><span id="monsterHpProgressNum">100%</span>
-            <div class="stageNav">
-              <span id="stageL" class="stageNavNumButton stageNavNumButtonL" style="background-image: url(etc/previous.png);"></span>
-              <span id="stageNum" class="stageNavNum black">1</span>
-              <span id="stageR" class="stageNavNumButton stageNavNumButtonR" style="background-image: url(etc/next.png);"></span>
-            </div>
+            <span class="left" style="width: 79.999%;">
+              <div id="monster" style="background-image: url(monster/1.png);"></div>
+              <div id="monLevel">Lv 1</div>
+              <div id="monsterStatus">슬라임 (hp: 10 / 10)</div>
+              <progress id="monsterHpProgress" value="1" max="1"></progress><span id="monsterHpProgressNum">100%</span>
+              <div class="stageNav">
+                <span id="stageL" class="stageNavNumButton stageNavNumButtonL" style="background-image: url(etc/previous.png);"></span>
+                <span id="stageNum" class="stageNavNum black">1</span>
+                <span id="stageR" class="stageNavNumButton stageNavNumButtonR" style="background-image: url(etc/next.png);"></span>
+              </div>
+            </span>
+            <span class="left" style="width: 19.999%;">
+              <div id="masteryQuest">
+                <div>Player Level (0/35)</div><span class="buySkillPointY">+3 SP</span><br>
+                <div>Collect Token (0/1000)</div><span class="buySkillPointY">+2 SP</span><br>
+                <div>Token Upgrade (0/100)</div><span class="buySkillPointY">+2 SP</span><br>
+                <div>Monster Lv1 (0/1000)</div><span class="buySkillPointY">+1 SP</span><br>
+                <div>Monster Lv2 (0/1000)</div><span class="buySkillPointY">+1 SP</span><br>
+                <div>Monster Lv3 (0/1000)</div><span class="buySkillPointY">+1 SP</span><br>
+                <div>Monster Lv4 (0/1000)</div><span class="buySkillPointY">+1 SP</span><br>
+                <div>Monster Lv5 (0/1000)</div><span class="buySkillPointY">+1 SP</span><br>
+                <div>Monster Lv6 (0/1000)</div><span class="buySkillPointY">+1 SP</span><br>
+                <div>Monster Lv7 (0/1000)</div><span class="buySkillPointY">+1 SP</span><br>
+                <div>Monster Lv8 (0/1000)</div><span class="buySkillPointY">+1 SP</span><br>
+                <div>Monster Lv9 (0/1000)</div><span class="buySkillPointY">+1 SP</span><br>
+                <div>Monster Lv10 (0/1000)</div><span class="buySkillPointY">+1 SP</span><br>
+                <div>Sword Nr1 (0/999)</div><span class="buySkillPointY">+1 SP</span><br>
+                <div>Sword Nr2 (0/999)</div><span class="buySkillPointY">+1 SP</span><br>
+                <div>Sword Nr3 (0/999)</div><span class="buySkillPointY">+1 SP</span><br>
+                <div>Sword Nr4 (0/999)</div><span class="buySkillPointY">+1 SP</span><br>
+                <div>Sword Nr5 (0/999)</div><span class="buySkillPointY">+2 SP</span><br>
+              </div>
+            </span>
             <div class="totalCombatStatus black">
               Dmg: 1<br>Hit/s: 0
             </div>
@@ -166,7 +190,49 @@
             </div>
           </div>
           <div id="masteryWarp">
-
+            <span id="skillPoint">You Have 0 Skill Point</span>
+            <div class="skillLine">
+              <div class="skillSel" id="skill11">
+                1
+              </div>
+              <div class="skillSel" id="skill12">
+                2
+              </div>
+              <div class="skillSel" id="skill13">
+                3
+              </div>
+              <div class="skillSel" id="skill14">
+                4
+              </div>
+            </div>
+            <div class="skillLine">
+              <div class="skillSel" id="skill21">
+                1
+              </div>
+              <div class="skillSel" id="skill22">
+                2
+              </div>
+              <div class="skillSel" id="skill23">
+                3
+              </div>
+              <div class="skillSel" id="skill24">
+                4
+              </div>
+            </div>
+            <div class="skillLine">
+              <div class="skillSel" id="skill31">
+                1
+              </div>
+              <div class="skillSel" id="skill32">
+                2
+              </div>
+              <div class="skillSel" id="skill33">
+                3
+              </div>
+              <div class="skillSel" id="skill34">
+                4
+              </div>
+            </div>
           </div>
           <div id="dungeonWarp">
 

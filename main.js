@@ -114,6 +114,7 @@ $(function (){
     tokenShop();
     tokenBuffCalc();
     playerUnlock();
+    masteryQuest();
   }
   function playerStatus() {
     if (playerExp >= playerExpNeed) {
@@ -156,21 +157,29 @@ $(function (){
   function playerUnlock() {
     if (playerLevel >= 71) {
       $('.mainMenu').css('width', '12.499999%');
+      $('#fieldWarp > span:eq(0)').attr( 'style', 'width: 79.999%;' );
+      $('#fieldWarp > span:eq(1)').show();
       $('#mainNav > div:eq(6)').show();
       $('#mainNav > div:eq(5)').show();
       $('#mainNav > div:eq(4)').show();
     } else if (playerLevel >= 31) {
       $('.mainMenu').css('width', '14.285713%');
+      $('#fieldWarp > span:eq(0)').attr( 'style', 'width: 79.999%;' );
+      $('#fieldWarp > span:eq(1)').show();
       $('#mainNav > div:eq(6)').hide();
       $('#mainNav > div:eq(5)').show();
       $('#mainNav > div:eq(4)').show();
     } else if (playerLevel >= 11) {
       $('.mainMenu').css('width', '16.666666%');
+      $('#fieldWarp > span:eq(0)').attr( 'style', 'width: 99.999%;' );
+      $('#fieldWarp > span:eq(1)').hide();
       $('#mainNav > div:eq(6)').hide();
       $('#mainNav > div:eq(5)').hide();
       $('#mainNav > div:eq(4)').show();
     } else {
       $('.mainMenu').css('width', '19.999999%');
+      $('#fieldWarp > span:eq(0)').attr( 'style', 'width: 99.999%;' );
+      $('#fieldWarp > span:eq(1)').hide();
       $('#mainNav > div:eq(6)').hide();
       $('#mainNav > div:eq(5)').hide();
       $('#mainNav > div:eq(4)').hide();
@@ -318,7 +327,9 @@ $(function (){
     if (monsterHp <= 0) {
       playerExp = playerExp + Math.random()*(tokenBuff3N**(monsterNow))*tokenBuff2N;
       luck = Math.floor(Math.random()*100);
-      mobKilled[monsterNow]++;
+      if (playerLevel >= 31) {
+        mobKilled[monsterNow]++;
+      }
       loot1Chance = (50-(stagePage-1)*3)*(1-(((monsterNow-1)%5))*0.25);
       if (0 <= luck &&  luck < 50+(stagePage-1)*3) {
 
@@ -340,7 +351,9 @@ $(function (){
             translateTxt4 = '개 보유'
               break;
           }
-          extraStstusSet(translateTxt + lootName[lootNum-2] + ' ' + translateTxt2 + '! (' + translateTxt3 + lootQuantity[lootNum] + translateTxt4 + ')');
+          if (stageUnlocked = stagePage) {
+            extraStstusSet(translateTxt + lootName[lootNum-2] + ' ' + translateTxt2 + '! (' + translateTxt3 + lootQuantity[lootNum] + translateTxt4 + ')');
+          }
         }
         loot();
       } else if (50+loot1Chance <= luck && luck < 100) {
@@ -361,7 +374,9 @@ $(function (){
             translateTxt4 = '개 보유'
               break;
           }
-          extraStstusSet(translateTxt + lootName[lootNum-2] + ' ' + translateTxt2 + '! (' + translateTxt3 + lootQuantity[lootNum] + translateTxt4 + ')');
+          if (stageUnlocked = stagePage) {
+            extraStstusSet(translateTxt + lootName[lootNum-2] + ' ' + translateTxt2 + '! (' + translateTxt3 + lootQuantity[lootNum] + translateTxt4 + ')');
+          }
         }
         loot();
       }
@@ -370,6 +385,7 @@ $(function (){
     }
     monsterStatus();
     playerStatus();
+    masteryQuest();
     $("#monsterHpProgress").attr({
       'value' : monsterHp / monsterHpM
     });
@@ -504,8 +520,8 @@ $(function (){
   function tokenBuffCalc() {
     tokenBuff0N = 1 + tokenUpgrade[0]*0.2;
     tokenBuff0L = 1 + (tokenUpgrade[0]+1)*0.2;
-    tokenBuff1N = (1 + tokenUpgrade[1]**1.1).toFixed(1);
-    tokenBuff1L = (1 + (tokenUpgrade[1]+1)**1.1).toFixed(1);
+    tokenBuff1N = (1 + (tokenUpgrade[1]**1.1)/5).toFixed(1);
+    tokenBuff1L = (1 + ((tokenUpgrade[1]+1)**1.1)/5).toFixed(1);
     tokenBuff2N = 1 + tokenUpgrade[2]*0.1;
     tokenBuff2L = 1 + (tokenUpgrade[2]+1)*0.1;
     tokenBuff3N = (2.8 + tokenUpgrade[3]*0.01).toFixed(2);
@@ -517,6 +533,68 @@ $(function (){
     tokenBuff6N = tokenUpgrade[6];
     tokenBuff6L = (tokenUpgrade[6]+1);
     playerHitPS = tokenBuff6N;
+  }
+  function masteryQuest() {
+    $('#masteryQuest > div:eq(0)').html(function (index,html) {
+      return 'Player Level (' + playerLevel + '/' + (masteryCompeleted[0]*5+35) + ')';
+    });
+    if (playerLevel >= (masteryCompeleted[0]*5+35)) {
+      $('#masteryQuest > span:eq(0)').attr('class', 'buySkillPointY');
+    } else {
+      $('#masteryQuest > span:eq(0)').attr('class', 'buySkillPointN');
+    }
+    $('#masteryQuest > div:eq(1)').html(function (index,html) {
+      return 'Collect Token (' + token + '/' + (1000*2**masteryCompeleted[1]) + ')';
+    });
+    if (token >= (1000*2**masteryCompeleted[1])) {
+      $('#masteryQuest > span:eq(1)').attr('class', 'buySkillPointY');
+    } else {
+      $('#masteryQuest > span:eq(1)').attr('class', 'buySkillPointN');
+    }
+    totTokenUpgrede = 0;
+    for (var i = 0; i < tokenUpgrade.length; i++) {
+      totTokenUpgrede += tokenUpgrade[i];
+    }
+    $('#masteryQuest > div:eq(2)').html(function (index,html) {
+      return 'Token Upgrade (' + totTokenUpgrede + '/' + (100*(masteryCompeleted[2]+1)) + ')';
+    });
+    if (totTokenUpgrede >= (100*(masteryCompeleted[2]+1))) {
+      $('#masteryQuest > span:eq(2)').attr('class', 'buySkillPointY');
+    } else {
+      $('#masteryQuest > span:eq(2)').attr('class', 'buySkillPointN');
+    }
+    for (var i = 3; i < 13; i++) {
+      if (masteryCompeleted[((stagePage-1)*5+a)+90] >= 1) {
+        $('#masteryQuest > div:eq(' + i + ')').hide();
+        $('#masteryQuest > span:eq(' + i + ')').hide();
+        $('#masteryQuest > br:eq(' + i + ')').hide();
+      } else {
+        $('#masteryQuest > div:eq(' + i + ')').html(function (index,html) {
+          return 'Monster Lv' + ((stagePage-1)*10+i-2) + ' (' + mobKilled[((stagePage-1)*10+i-2)] + '/' + ((1000+500*(stagePage-1))*1.3**(masteryCompeleted[((stagePage-1)*10+i)])).toFixed(0) + ')';
+        });
+        if (mobKilled[((stagePage-1)*10+i-2)] >= ((1000+500*(stagePage-1))*1.3**(masteryCompeleted[((stagePage-1)*10+i)])).toFixed(0)) {
+          $('#masteryQuest > span:eq(' + i + ')').attr('class', 'buySkillPointY');
+        } else {
+          $('#masteryQuest > span:eq(' + i + ')').attr('class', 'buySkillPointN');
+        }
+      }
+    }
+    for (var i = 13; i < 18; i++) {
+      if (masteryCompeleted[((stagePage-1)*5+i)+90] >= 1) {
+        $('#masteryQuest > div:eq(' + i + ')').hide();
+        $('#masteryQuest > span:eq(' + i + ')').hide();
+        $('#masteryQuest > br:eq(' + i + ')').hide();
+      } else {
+        $('#masteryQuest > div:eq(' + i + ')').html(function (index,html) {
+          return 'Sword Nr' + ((stagePage-1)*5+i-12) + ' (' + weaponLevel[((stagePage-1)*10+i-12)] + '/' + '999' + ')';
+        });
+        if (weaponLevel[((stagePage-1)*10+i-12)] >= 999) {
+          $('#masteryQuest > span:eq(' + i + ')').attr('class', 'buySkillPointY');
+        } else {
+          $('#masteryQuest > span:eq(' + i + ')').attr('class', 'buySkillPointN');
+        }
+      }
+    }
   }
   function translateFun() {
     for (var i = 0; i < toTranslate.length; i++) {
@@ -823,16 +901,62 @@ $(function (){
     if (stagePage > 1) {
       stagePage = stagePage - 1;
       stageChange();
+      masteryQuest();
     }
   });
   $("#stageR").click(function () {
     if (stagePage < stageUnlocked && stagePage < 10) {
       stagePage = stagePage + 1;
       stageChange();
+      masteryQuest();
     } else if (stagePage >= 10) {
       setPopup(popupMsg[0]);
     } else {
       setPopup(popupMsg[1] + ' ' + ((stagePage*10)+1) + ' ' + popupMsg[2]);
+    }
+  });
+  $("#masteryQuest > span").click(function () {
+    a = $("#masteryQuest > span").index(this);
+    strA = 0;
+    if (a == 0) {
+      if (playerLevel >= (masteryCompeleted[0]*5+35)) {
+        masteryCompeleted[0]++;
+        playerSP += 3;
+        strA = 3;
+      }
+    } else if (a == 1) {
+      if (token >= (1000*2**masteryCompeleted[1])) {
+        masteryCompeleted[1]++;
+        playerSP += 2;
+        strA = 2;
+      }
+    } else if (a == 2) {
+      if (totTokenUpgrede >= (100*(masteryCompeleted[2]+1))) {
+        masteryCompeleted[2]++;
+        playerSP += 2;
+        strA = 2;
+      }
+    } else if (3 <= a && a <= 12) {
+      if (mobKilled[((stagePage-1)*10+a-2)] >= ((1000+500*(stagePage-1))*1.3**(masteryCompeleted[((stagePage-1)*10+a)])).toFixed(0)) {
+        masteryCompeleted[(stagePage-1)*10+a]++;
+        playerSP += 1;
+        strA = 1;
+      }
+    } else if (13 <= a && a <= 16) {
+      if (weaponLevel[((stagePage-1)*10+a-12)] >= 999) {
+        masteryCompeleted[((stagePage-1)*5+a)+90]++;
+        playerSP += 1;
+        strA = 1;
+      }
+    } else if (a == 17) {
+      if (weaponLevel[((stagePage-1)*10+a-12)] >= 999) {
+        masteryCompeleted[((stagePage-1)*5+a)+90]++;
+        playerSP += 2;
+        strA = 2;
+      }
+    }
+    if (strA > 0) {
+      extraStstusSet('<span class="sp">You Got ' + strA + ' SP (Have ' + playerSP + ')</span>');
     }
   });
   $("#lootL").click(function () {
@@ -990,6 +1114,7 @@ $(function (){
   monsterDefeated = 0;
   playerExp = 0;
   playerExpNeed = 10;
+  playerSP = 0;
   token = 0;
   tokenTimer = 600*0.9**tokenUpgrade[5];
   monsterNow = 1;
@@ -1029,5 +1154,5 @@ $(function (){
   setInterval( function (){
     gameSave();
     gameDisplay();
-  }, 2500);
+  }, 1000);
 });

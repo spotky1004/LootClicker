@@ -7,12 +7,14 @@
 *::selection {
   background: #ffc670;
 }
+.left {
+  float: left;
+}
 #warpAll {
-  display: flex;
-  flex-direction: column-reverse;
+
 }
 #warpAll2 {
-  flex: 1;
+
 }
 #popupLayer {
   padding: 0 30px 20px 30px;
@@ -87,6 +89,7 @@
   height: auto;
 }
 #fieldWarp {
+  height: 80vh;
   background-size: cover;
   text-align: center;
 }
@@ -111,6 +114,30 @@
 }
 #monsterHpProgressNum {
   width: 50px;
+}
+#monsterMastery {
+  margin: 10px 0;
+  height: 60vh;
+  font-size: 1.3em;
+  background-image: url(bg/bg.png);
+  background-size: cover;
+  overflow-y: scroll;
+  overflow-x: scroll;
+}
+#masteryQuest {
+  margin: 10px 0;
+  height: 60vh;
+  font-size: 1.3em;
+  background-image: url(bg/bg.png);
+  background-size: cover;
+  overflow-y: scroll;
+  overflow-x: scroll;
+}
+#masteryQuest > div {
+  float: left;
+}
+#masteryQuest > span {
+  float: inherit;
 }
 #lootWarp {
   background-image: url(bg/loot_bg.png);
@@ -247,6 +274,82 @@
 
   transition: all 0.7s;
 }
+.buySkillPointN {
+  margin: 2px 2px;
+  padding: 0 3px;
+  width: 10px;
+  text-align: center;
+  color: white;
+  border: 4px solid #252433;
+  border-radius: 3px;
+  background: linear-gradient(0deg, #474747, #7d7d7d);
+}
+.buySkillPointY {
+  margin: 2px 2px;
+  padding: 0 3px;
+  width: 10px;
+  text-align: center;
+  color: white;
+  border: 4px solid #252433;
+  border-radius: 3px;
+  background: linear-gradient(0deg, #5203fc, #181191);
+
+  transition: all 0.7s;
+}
+.buySkillPointY:hover {
+  color: #62f0e4;
+  padding: 0 6px;
+  width: 15px;
+  background: linear-gradient(0deg, #181191, #5203fc);
+
+  transition: all 0.7s;
+}
+#masteryWarp {
+  padding-top: 20px;
+  background-image: url(bg/mastery_bg.png);
+  text-align: center;
+}
+#skillPoint {
+  font-size: 2.5em;
+  animation-duration: 13s;
+  animation-name: skillShiny;
+  animation-iteration-count: infinite;
+  animation-direction: alternate;
+}
+@keyframes skillShiny {
+  from {
+    color: #410d94;
+    text-shadow: 0 0 7px #410d94;
+  }
+  50% {
+    color: #752516;
+    text-shadow: 0 0 15px #752516;
+  }
+  to {
+    color: #410d94;
+    text-shadow: 0 0 7px #410d94;
+  }
+}
+.skillLine {
+  margin: 0 auto;
+  width: 80%;
+  height: 12.5vh;
+}
+.skillLine:not(:last-child) {
+  margin-bottom: 10px;
+}
+.skillSel {
+  margin: auto 0;
+  width: 18vw;
+  height: 12.5vh;
+  float: left;
+}
+.skillSel:not(:last-child) {
+  margin-right: 2vw;
+}
+.skillInfo {
+  width: auto;
+}
 #settingDiv > p {
   font-size: 4em;
   padding-left: 5px;
@@ -254,6 +357,7 @@
   color: #777777;
 }
 #extraStatus {
+  width: 100%;
   text-align: center;
   color: white;
   background-image: url(bg/bg.png);
@@ -273,6 +377,10 @@
 .loot {
   color: #81f059;
   text-shadow: 0 0 3px #81f059;
+}
+.sp {
+  color: #ae83f2;
+  text-shadow: 0 0 5px #39135c, 0 0 5px #39135c;
 }
 .black {
   color: black;

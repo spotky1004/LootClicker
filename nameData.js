@@ -189,7 +189,7 @@ varData = [
   'playerLevel', 'stageUnlocked', 'playerExp', 'playerExpNeed', 'token',
   'playerHitPS', 'collectedWeapon', 'weaponMastery', 'playerDmg', 'translateNum',
   'weaponLevel', 'lootQuantity', 'tokenUpgrade', 'tokenUpgradePrice', 'tokenUpgrade',
-  'tokenUpgradePrice', 'mobKilled', 'brokeUniverse'
+  'tokenUpgradePrice', 'mobKilled', 'brokeUniverse', 'masteryCompeleted', 'playerSP'
 ];
 popupMsg = [
   'Reached max stage!', 'Reach Level', 'to Open', 'Break The Universe to Open'
@@ -216,7 +216,30 @@ tokenUpgradePrice = [
   3, 5, 10, 50, 5, 10, 100
 ];
 tokenUpgradeCap = [
-  99999, 4000, 99, 15, 99, 85, 9999
+  9999, 4000, 99, 15, 99, 85, 9999
+];
+masteryCompeleted = [
+  0, 0, 0,
+  0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+  0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+  0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+  0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+  0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+  0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+  0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+  0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+  0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+  0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+  0, 0, 0, 0, 0,
+  0, 0, 0, 0, 0,
+  0, 0, 0, 0, 0,
+  0, 0, 0, 0, 0,
+  0, 0, 0, 0, 0,
+  0, 0, 0, 0, 0,
+  0, 0, 0, 0, 0,
+  0, 0, 0, 0, 0,
+  0, 0, 0, 0, 0,
+  0, 0, 0, 0, 0
 ];
 translate = [
   'Eng', 'Kor'
