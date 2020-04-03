@@ -48,6 +48,7 @@ $(function (){
     stageUnlocked = 1;
     playerExp = 0;
     playerExpNeed = 10;
+    playerSP = 0;
     token = 0;
     monsterNow = 1;
     collectedWeapon = 0;
@@ -558,6 +559,9 @@ $(function (){
     playerHitPS = tokenBuff6N;
   }
   function masteryQuest() {
+    $('#skillPoint').html(function (index,html) {
+      return 'You Have ' + playerSP + ' Skill Point';
+    });
     $('#masteryQuest > div:eq(0)').html(function (index,html) {
       return 'Player Level (' + playerLevel + '/' + (masteryCompeleted[0]*5+35) + ')';
     });
@@ -648,6 +652,7 @@ $(function (){
     stageUnlocked = 1;
     playerExp = 0;
     playerExpNeed = 10;
+    playerSP = 0;
     token = 0;
     monsterNow = 1;
     monsterHpCalc();
