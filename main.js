@@ -597,6 +597,9 @@ $(function (){
         $('#masteryQuest > br:eq(' + i + ')').hide();
       } else {
         $('#masteryQuest > div:eq(' + i + ')').html(function (index,html) {
+          $('#masteryQuest > div:eq(' + i + ')').show();
+          $('#masteryQuest > span:eq(' + i + ')').show();
+          $('#masteryQuest > br:eq(' + i + ')').show();
           return 'Monster Lv' + ((stagePage-1)*10+i-2) + ' (' + mobKilled[((stagePage-1)*10+i-2)] + '/' + ((1000+500*(stagePage-1))*1.3**(masteryCompeleted[((stagePage-1)*10+i)])).toFixed(0) + ')';
         });
         if (mobKilled[((stagePage-1)*10+i-2)] >= ((1000+500*(stagePage-1))*1.3**(masteryCompeleted[((stagePage-1)*10+i)])).toFixed(0)) {
@@ -613,6 +616,9 @@ $(function (){
         $('#masteryQuest > br:eq(' + i + ')').hide();
       } else {
         $('#masteryQuest > div:eq(' + i + ')').html(function (index,html) {
+          $('#masteryQuest > div:eq(' + i + ')').show();
+          $('#masteryQuest > span:eq(' + i + ')').show();
+          $('#masteryQuest > br:eq(' + i + ')').show();
           return 'Sword Nr' + ((stagePage-1)*5+i-12) + ' (' + weaponLevel[((stagePage-1)*10+i-12)] + '/' + '999' + ')';
         });
         if (weaponLevel[((stagePage-1)*10+i-12)] >= 999) {
