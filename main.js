@@ -591,7 +591,7 @@ $(function (){
       $('#masteryQuest > span:eq(2)').attr('class', 'buySkillPointN');
     }
     for (var i = 3; i < 13; i++) {
-      if (masteryCompeleted[((stagePage-1)*5+a)+90] >= 1) {
+      if (masteryCompeleted[((stagePage-1)*10+i)] >= 1) {
         $('#masteryQuest > div:eq(' + i + ')').hide();
         $('#masteryQuest > span:eq(' + i + ')').hide();
         $('#masteryQuest > br:eq(' + i + ')').hide();
@@ -1160,7 +1160,7 @@ $(function (){
 		if( divTop < 0 ) divTop = 0;
 	});
 
-  playerLevel = 0;
+  playerLevel = 31;
   stageUnlocked = 1;
   monsterDefeated = 0;
   playerExp = 0;
