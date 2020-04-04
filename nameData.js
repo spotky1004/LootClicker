@@ -167,21 +167,21 @@ standardNotation3 = [
 extraStatusTips = [
   'The maximum level of the weapon is +999!',
   'Rare-grade sword damage is low, but with experience bottle!',
-  'The amount of experience required is tripled each time the level goes up.!',
+  'The amount of experience required is x3.2 each time the level goes up.!',
   'There are 100 monsters!',
   '???'
 ];
 extraStatusTipsKor = [
   '무기의 최대 레벨은 +999 입나다!',
   '희귀등급 검은 대미지는 낮지만 경험치 병이 딸려옵니다!',
-  '필요 경험치량은 레벨이 오를때마다 3배씩 증가합니다!',
+  '필요 경험치량은 레벨이 오를때마다 3.2배씩 증가합니다!',
   '몬스터는 100마리가 있습니다!',
   '???'
 ];
 extraStatusTipsEng = [
   'The maximum level of the weapon is +999!',
   'Rare-grade sword damage is low, but with experience bottle!',
-  'The amount of experience required is tripled each time the level goes up.!',
+  'The amount of experience required is x3.2 each time the level goes up.!',
   'There are 100 monsters!',
   '???'
 ];
