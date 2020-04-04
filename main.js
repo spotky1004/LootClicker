@@ -69,7 +69,7 @@ $(function (){
     if (playerExp >= playerExpNeed) {
       playerExp = playerExp - playerExpNeed;
       playerLevel = playerLevel + 1;
-      playerExpNeed = 3.1**playerLevel*10;
+      playerExpNeed = 3.2**playerLevel*10;
       $("#playerLevel").attr({
         'class' : 'levelup'
       });
