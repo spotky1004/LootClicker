@@ -489,9 +489,6 @@ $(function (){
     playerHitPS = tokenBuff6N;
   }
   function masteryQuest() {
-    $('#skillPoint').html(function (index,html) {
-      return 'You Have ' + playerSP + ' Skill Point';
-    });
     $('#masteryQuest > div:eq(0)').html(function (index,html) {
       return 'Player Level (' + playerLevel + '/' + (masteryCompeleted[0]*5+35) + ')';
     });
@@ -573,6 +570,9 @@ $(function (){
     masteryBuff21 = 1;
     masteryBuff22 = 1;
     masteryBuff23 = 1;
+    $('#skillPoint').html(function (index,html) {
+      return 'You Have ' + playerSP + ' Skill Point';
+    });
     for (var i = 0; i < 3; i++) {
       for (var j = 0; j < 4; j++) {
         eval('masteryBuff' + i + j + 'R = (masteryBought[' + (i*4+j) + '] == 1) ? masteryBuff' + i + j + ' : 1');
