@@ -382,7 +382,7 @@ $(function (){
   function tokenShop() {
     tokenBuffCalc();
     $('#tokenDisplay').html(function (index,html) {
-      return 'You Have ' + token + ' Tokens'
+      return 'You Have ' + token.toFixed(0) + ' Tokens'
     });
     $('#tokenBuff1').html(function (index,html) {
       return 'x' + tokenBuff0N.toFixed(1) + ' -> x'+ tokenBuff0L.toFixed(1)
