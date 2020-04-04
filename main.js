@@ -1088,8 +1088,6 @@ $(function (){
   brokeUniverse = 0;
   extraStatus = ['', '', '', '', '', '', '', '', '', ''];
   tokenTimer = 600*0.9**tokenUpgrade[5];
-  lv0Skip();
-  lv31Skip();
 
   $("#menusWarp > div").hide();
   $("#menusWarp > div:eq(0)").show();
