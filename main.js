@@ -547,9 +547,9 @@ $(function (){
           $('#masteryQuest > div:eq(' + i + ')').show();
           $('#masteryQuest > span:eq(' + i + ')').show();
           $('#masteryQuest > br:eq(' + i + ')').show();
-          return 'Sword Nr' + ((stagePage-1)*5+i-12) + ' (' + weaponLevel[((stagePage-1)*10+i-12)] + '/' + '999' + ')';
+          return 'Sword Nr' + ((stagePage-1)*5+i-12) + ' (' + weaponLevel[((stagePage-1)*5+i-12)] + '/' + '999' + ')';
         });
-        if (weaponLevel[((stagePage-1)*10+i-12)] >= 999) {
+        if (weaponLevel[((stagePage-1)*5+i-12)] >= 999) {
           $('#masteryQuest > span:eq(' + i + ')').attr('class', 'buySkillPointY');
         } else {
           $('#masteryQuest > span:eq(' + i + ')').attr('class', 'buySkillPointN');
@@ -890,7 +890,7 @@ $(function (){
         strA = 1;
       }
     } else if (a == 17) {
-      if (weaponLevel[((stagePage-1)*10+a-12)] >= 999) {
+      if (weaponLevel[((stagePage-1)*5+a-12)] >= 999) {
         masteryCompeleted[((stagePage-1)*5+a)+90]++;
         playerSP += 2;
         strA = 2;
