@@ -1100,6 +1100,9 @@ $(function (){
   setInterval( function (){
     hitMonster(playerDmg/100*playerHitPS);
     tokenTimer = tokenTimer - 0.01;
+    if (tokenTimer > 600*0.9**tokenUpgrade[5]) {
+      tokenTimer = 600*0.9**tokenUpgrade[5];
+    }
     if (tokenTimer <= 0) {
       token += 1*masteryBuff03R;
       tokenTimer = tokenBuff5N;
