@@ -1070,7 +1070,6 @@ $(function (){
   playerExpNeed = 10;
   playerSP = 0;
   token = 0;
-  tokenTimer = 600*0.9**tokenUpgrade[5];
   monsterNow = 1;
   monsterHpCalc();
   collectedWeapon = 0;
@@ -1088,6 +1087,9 @@ $(function (){
   debugStr = 0;
   brokeUniverse = 0;
   extraStatus = ['', '', '', '', '', '', '', '', '', ''];
+  setTimeout(function() {
+    tokenTimer = 600*0.9**tokenUpgrade[5];
+  }, 0);
   lv0Skip();
   lv31Skip();
 
