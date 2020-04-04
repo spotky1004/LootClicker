@@ -892,8 +892,8 @@ $(function (){
     } else if (a == 17) {
       if (weaponLevel[((stagePage-1)*5+a-12)] >= 999) {
         masteryCompeleted[((stagePage-1)*5+a)+90]++;
-        playerSP += 2;
-        strA = 2;
+        playerSP += 3;
+        strA = 3;
       }
     }
     if (strA > 0) {
