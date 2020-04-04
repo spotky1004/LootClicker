@@ -375,7 +375,7 @@ $(function (){
             translateTxt4 = '개 보유'
               break;
           }
-          if (stageUnlocked = stagePage) {
+          if (stageUnlocked == stagePage) {
             extraStstusSet(translateTxt + lootName[lootNum-2] + ' ' + translateTxt2 + '! (' + translateTxt3 + lootQuantity[lootNum] + translateTxt4 + ')');
           }
         }
@@ -398,7 +398,7 @@ $(function (){
             translateTxt4 = '개 보유'
               break;
           }
-          if (stageUnlocked = stagePage) {
+          if (stageUnlocked == stagePage) {
             extraStstusSet(translateTxt + lootName[lootNum-2] + ' ' + translateTxt2 + '! (' + translateTxt3 + lootQuantity[lootNum] + translateTxt4 + ')');
           }
         }
