@@ -1087,9 +1087,7 @@ $(function (){
   debugStr = 0;
   brokeUniverse = 0;
   extraStatus = ['', '', '', '', '', '', '', '', '', ''];
-  setTimeout(function() {
-    tokenTimer = 600*0.9**tokenUpgrade[5];
-  }, 0);
+  tokenTimer = 600*0.9**tokenUpgrade[5];
   lv0Skip();
   lv31Skip();
 
