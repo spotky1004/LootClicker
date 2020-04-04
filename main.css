@@ -7,6 +7,9 @@
 *::selection {
   background: #ffc670;
 }
+body {
+  overflow-y: scroll;
+}
 .left {
   float: left;
 }

@@ -37,95 +37,19 @@ $(function (){
     for(var i in cookies) {
       if(cookies[i].search('saveData') != -1) {
         const savedFile = JSON.parse(decodeURIComponent(cookies[i].replace('saveData' + "=", "")));
+        dataCopy = resetData;
+        Object.assign(dataCopy, savedFile);
         for (var i = 0; i < varData.length; i++) {
-          this[varData[i]] = savedFile[i];
+          this[varData[i]] = dataCopy[i];
         }
+        debugStr = resetDataCopy;
       }
     }
   }
   function gameReset() {
-    playerLevel = 0;
-    stageUnlocked = 1;
-    playerExp = 0;
-    playerExpNeed = 10;
-    playerSP = 0;
-    token = 0;
-    monsterNow = 1;
-    collectedWeapon = 0;
-    weaponMastery = 0;
-    playerDmg = 1;
-    playerHitPS = 1;
-    bulkOpen = 1;
-    extraStatus = ['', '', '', '', '', '', '', '', '', ''];
-    lootQuantity = [
-      '0',
-      0, 0,
-      0, 0, 0, 0,
-      0, 0, 0, 0,
-      0, 0, 0, 0,
-      0, 0, 0, 0,
-      0, 0, 0, 0,
-      0, 0, 0, 0,
-      0, 0, 0, 0,
-      0, 0, 0, 0,
-      0, 0, 0, 0,
-      0, 0, 0, 0,
-    ];
-    weaponLevel = [
-      '0',
-      0, 0, 0, 0, 0,
-      0, 0, 0, 0, 0,
-      0, 0, 0, 0, 0,
-      0, 0, 0, 0, 0,
-      0, 0, 0, 0, 0,
-      0, 0, 0, 0, 0,
-      0, 0, 0, 0, 0,
-      0, 0, 0, 0, 0,
-      0, 0, 0, 0, 0,
-      0, 0, 0, 0, 0,
-    ];
-    tokenUpgrade = [
-      0, 0, 0, 0, 0, 0, 0
-    ];
-    tokenUpgradePrice = [
-      3, 5, 10, 50, 5, 10, 100
-    ];
-    mobKilled = [
-      '0',
-      0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
-      0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
-      0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
-      0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
-      0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
-      0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
-      0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
-      0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
-      0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
-      0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
-    ];
-    masteryCompeleted = [
-      0, 0, 0,
-      0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
-      0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
-      0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
-      0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
-      0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
-      0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
-      0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
-      0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
-      0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
-      0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
-      0, 0, 0, 0, 0,
-      0, 0, 0, 0, 0,
-      0, 0, 0, 0, 0,
-      0, 0, 0, 0, 0,
-      0, 0, 0, 0, 0,
-      0, 0, 0, 0, 0,
-      0, 0, 0, 0, 0,
-      0, 0, 0, 0, 0,
-      0, 0, 0, 0, 0,
-      0, 0, 0, 0, 0
-    ];
+    for (var i = 0; i < varData.length; i++) {
+      this[varData[i]] = resetData[i];
+    }
     gameSave();
     location.reload();
   }
@@ -1166,7 +1090,7 @@ $(function (){
 		if( divTop < 0 ) divTop = 0;
 	});
 
-  playerLevel = 31;
+  playerLevel = 0;
   stageUnlocked = 1;
   monsterDefeated = 0;
   playerExp = 0;
