@@ -42,7 +42,7 @@ $(function (){
         for (var i = 0; i < varData.length; i++) {
           this[varData[i]] = dataCopy[i];
         }
-        debugStr = resetDataCopy;
+        debugStr = dataCopy;
       }
     }
   }
