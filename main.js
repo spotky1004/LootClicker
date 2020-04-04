@@ -107,6 +107,7 @@ $(function (){
       $('.mainMenu').css('width', '12.499999%');
       $('#fieldWarp > span:eq(0)').attr( 'style', 'width: 79.999%;' );
       $('#fieldWarp > span:eq(1)').show();
+      $('#masteryWarp > .skillLine:eq(2)').show();
       $('#mainNav > div:eq(6)').show();
       $('#mainNav > div:eq(5)').show();
       $('#mainNav > div:eq(4)').show();
@@ -114,6 +115,7 @@ $(function (){
       $('.mainMenu').css('width', '14.285713%');
       $('#fieldWarp > span:eq(0)').attr( 'style', 'width: 79.999%;' );
       $('#fieldWarp > span:eq(1)').show();
+      $('#masteryWarp > .skillLine:eq(2)').hide();
       $('#mainNav > div:eq(6)').hide();
       $('#mainNav > div:eq(5)').show();
       $('#mainNav > div:eq(4)').show();
