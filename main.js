@@ -51,7 +51,6 @@ $(function (){
       this[varData[i]] = resetData[i];
     }
     gameSave();
-    location.reload();
   }
   function gameDisplay() {
     playerStatus();
@@ -63,6 +62,7 @@ $(function (){
     tokenBuffCalc();
     playerUnlock();
     masteryQuest();
+    mastery();
   }
   function playerStatus() {
     stageUnlocked = Math.floor((playerLevel-1)/10)+1;
@@ -271,9 +271,9 @@ $(function (){
     });
   }
   function hitMonster(dmg) {
-    monsterHp = monsterHp - dmg*tokenBuff0N;
+    monsterHp = monsterHp - dmg*tokenBuff0N*masteryBuff00R;
     if (monsterHp <= 0) {
-      playerExp = playerExp + Math.random()*(tokenBuff3N**(monsterNow))*tokenBuff2N;
+      playerExp = playerExp + Math.random()*(tokenBuff3N**(monsterNow))*tokenBuff2N*masteryBuff02;
       luck = Math.floor(Math.random()*100);
       if (playerLevel >= 31) {
         mobKilled[monsterNow]++;
@@ -283,7 +283,11 @@ $(function (){
 
       } else if (50+(stagePage-1)*3 <= luck && luck < 50+loot1Chance) {
         lootNum = (Math.ceil(monsterNow/5)*2)+1;
-        lootQuantity[lootNum] = lootQuantity[lootNum] + 1;
+        gotLoot = 1;
+        if (Math.random() < 1-masteryBuff01R) {
+          gotLoot = 2;
+        }
+        lootQuantity[lootNum] = lootQuantity[lootNum] + gotLoot;
         if (menuPage == 0) {
           switch (translateNum) {
             case 0:
@@ -553,6 +557,47 @@ $(function (){
       }
     }
   }
+  function mastery() {
+    masteryBuff00 = (playerLevel >= 30) ? (playerLevel - 30)*0.05 + 1 : 1;
+    masteryBuff01 = 0.5;
+    masteryBuff02 = collectedWeapon/9990 + 1;
+    masteryBuff03 = (playerLevel >= 30) ? (playerLevel - 30)*0.1 + 1 : 1;
+    masteryBuff04 = 1;
+    masteryBuff10 = 1;
+    masteryBuff11 = 1;
+    masteryBuff12 = 1;
+    masteryBuff13 = 1;
+    masteryBuff20 = 1;
+    masteryBuff21 = 1;
+    masteryBuff22 = 1;
+    masteryBuff23 = 1;
+    for (var i = 0; i < 3; i++) {
+      for (var j = 0; j < 4; j++) {
+        eval('masteryBuff' + i + j + 'R = (masteryBought[' + (i*4+j) + '] == 1) ? masteryBuff' + i + j + ' : 1');
+        $('.skillLine:eq(' + i + ') > .skillSel:eq(' + j + ') > p:eq(0)').html(function (index,html) {
+          return masteryInfo[i*4+j] + '<br>' + ((eval('masteryBuff' + i + j) >= 1) ? "x" + eval('masteryBuff' + i + j).toFixed(2) : (eval('masteryBuff' + i + j)*100).toFixed(0) + "%");
+        });
+        $('.skillLine:eq(' + i + ') > .skillSel:eq(' + j + ') > p:eq(1)').html(function (index,html) {
+          return masteryPrice[i*4+j] + ' SP';
+        });
+        if (masteryBought[i*4+j] == 1) {
+          $('.skillLine:eq(' + i + ') > .skillSel:eq(' + j + ')').attr({
+            'class' : 'skillSel skillY'
+          });
+        } else if (masteryPrice[i*4+j] <= playerSP) {
+          $('.skillLine:eq(' + i + ') > .skillSel:eq(' + j + ')').attr({
+            'class' : 'skillSel skillM'
+          });
+          if (i == 0 && j == 1 || i == 0 && j == 2 || i == 0 && j == 3) {
+          }
+        } else {
+          $('.skillLine:eq(' + i + ') > .skillSel:eq(' + j + ')').attr({
+            'class' : 'skillSel skillN'
+          });
+        }
+      }
+    }
+  }
   function translateFun() {
     for (var i = 0; i < toTranslate.length; i++) {
       translateString = toTranslate[i] + ' = ' + toTranslate[i] + translate[translateNum]
@@ -578,94 +623,9 @@ $(function (){
     }, 0);
   }
   function lv0Skip() {
-    playerLevel = 0;
-    stageUnlocked = 1;
-    playerExp = 0;
-    playerExpNeed = 10;
-    playerSP = 0;
-    token = 0;
-    monsterNow = 1;
-    monsterHpCalc();
-    collectedWeapon = 0;
-    weaponMastery = 0;
-    stagePage = 1;
-    lootPage = 1;
-    weaponPage = 1;
-    menuPage = 0;
-    weaponSelect = 0;
-    playerDmg = 1;
-    playerHitPS = 1;
-    bulkOpen = 1;
-    extraStatus = ['', '', '', '', '', '', '', '', '', ''];
-    lootQuantity = [
-      '0',
-      0, 0,
-      0, 0, 0, 0,
-      0, 0, 0, 0,
-      0, 0, 0, 0,
-      0, 0, 0, 0,
-      0, 0, 0, 0,
-      0, 0, 0, 0,
-      0, 0, 0, 0,
-      0, 0, 0, 0,
-      0, 0, 0, 0,
-      0, 0, 0, 0,
-    ];
-    weaponLevel = [
-      '0',
-      0, 0, 0, 0, 0,
-      0, 0, 0, 0, 0,
-      0, 0, 0, 0, 0,
-      0, 0, 0, 0, 0,
-      0, 0, 0, 0, 0,
-      0, 0, 0, 0, 0,
-      0, 0, 0, 0, 0,
-      0, 0, 0, 0, 0,
-      0, 0, 0, 0, 0,
-      0, 0, 0, 0, 0,
-    ];
-    tokenUpgrade = [
-      0, 0, 0, 0, 0, 0, 0
-    ];
-    tokenUpgradePrice = [
-      3, 5, 10, 50, 5, 10, 100
-    ];
-    mobKilled = [
-      '0',
-      0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
-      0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
-      0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
-      0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
-      0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
-      0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
-      0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
-      0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
-      0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
-      0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
-    ];
-    masteryCompeleted = [
-      0, 0, 0,
-      0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
-      0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
-      0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
-      0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
-      0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
-      0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
-      0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
-      0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
-      0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
-      0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
-      0, 0, 0, 0, 0,
-      0, 0, 0, 0, 0,
-      0, 0, 0, 0, 0,
-      0, 0, 0, 0, 0,
-      0, 0, 0, 0, 0,
-      0, 0, 0, 0, 0,
-      0, 0, 0, 0, 0,
-      0, 0, 0, 0, 0,
-      0, 0, 0, 0, 0,
-      0, 0, 0, 0, 0
-    ];
+    for (var i = 0; i < varData.length; i++) {
+      this[varData[i]] = resetData[i];
+    }
   }
   function lv11Skip() {
     playerLevel = 11;
@@ -826,7 +786,7 @@ $(function (){
         luck = Math.floor(Math.random()*100);
         if ((b-2)%2 == 1) {
           if (0 <= luck && luck< 20+(lootPage-1)*2) {
-            playerExp = playerExp + Math.random()*(2.8**((b-2)*2))*tokenBuff2N;
+            playerExp = playerExp + Math.random()*(2.8**((b-2)*2))*tokenBuff2N*masteryBuff02;
           } else if (20+(lootPage-1)*2 <= luck && luck < 85+(lootPage-1)*1) {
             gotWeapon[0]++;
           } else if (85+(lootPage-1)*1 <= luck && luck < 98) {
@@ -837,7 +797,7 @@ $(function (){
           }
         } else {
           if (0 <= luck && luck< 20+(lootPage-1)*2) {
-            playerExp = playerExp + Math.random()*(2.8**(b*2))*tokenBuff2N;
+            playerExp = playerExp + Math.random()*(2.8**(b*2))*tokenBuff2N*masteryBuff02;
           } else if (20+(lootPage-1)*2 <= luck && luck < 85+(lootPage-1)*1) {
             gotWeapon[0]++;
           } else if (85+(lootPage-1)*1 <= luck && luck < 98) {
@@ -875,7 +835,7 @@ $(function (){
     hitMonster(playerDmg*tokenBuff1N);
     luck = Math.floor(Math.random()*100);
     if (0 <= luck &&  luck < tokenBuff4N) {
-      token = token + 1;
+      token += 1*masteryBuff03R;
     }
   });
   $("#stageL").click(function () {
@@ -1065,7 +1025,7 @@ $(function (){
             tokenUpgradePrice[clickedA] = Number((tokenUpgradePrice[clickedA]+(tokenUpgrade[clickedA])**1.5+1).toFixed(0));
             break;
           case 5:
-            tokenUpgradePrice[clickedA] = Number((tokenUpgradePrice[clickedA]*1.15).toFixed(0));
+            tokenUpgradePrice[clickedA] = Number((tokenUpgradePrice[clickedA]*1.2).toFixed(0));
             tokenTimer = tokenBuff5N;
             break;
           case 6:
@@ -1076,6 +1036,19 @@ $(function (){
         playerStatus();
       }
     }, 0);
+  });
+  $(".skillSel").click(function () {
+    a = $(".skillLine > .skillSel").index(this);
+    if (masteryBought[a] != 1) {
+      if (playerSP >= masteryPrice[a]) {
+        playerSP -= masteryPrice[a];
+        masteryBought[a] = 1;
+      }
+    } else {
+      playerSP += masteryPrice[a];
+      masteryBought[a] = 0;
+    }
+    mastery();
   });
   $('*').click(function(e){
     var sWidth = window.innerWidth;
@@ -1115,6 +1088,8 @@ $(function (){
   debugStr = 0;
   brokeUniverse = 0;
   extraStatus = ['', '', '', '', '', '', '', '', '', ''];
+  lv0Skip();
+  lv31Skip();
 
   $("#menusWarp > div").hide();
   $("#menusWarp > div:eq(0)").show();
@@ -1126,7 +1101,7 @@ $(function (){
     hitMonster(playerDmg/100*playerHitPS);
     tokenTimer = tokenTimer - 0.01;
     if (tokenTimer <= 0) {
-      token = token + 1;
+      token += 1*masteryBuff03R;
       tokenTimer = tokenBuff5N;
       tokenShop();
     }

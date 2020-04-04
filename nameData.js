@@ -189,7 +189,8 @@ varData = [
   'playerLevel', 'stageUnlocked', 'playerExp', 'playerExpNeed', 'token',
   'playerHitPS', 'collectedWeapon', 'weaponMastery', 'playerDmg', 'translateNum',
   'weaponLevel', 'lootQuantity', 'tokenUpgrade', 'tokenUpgradePrice', 'tokenUpgrade',
-  'tokenUpgradePrice', 'mobKilled', 'brokeUniverse', 'masteryCompeleted', 'playerSP'
+  'tokenUpgradePrice', 'mobKilled', 'brokeUniverse', 'masteryCompeleted', 'playerSP',
+  'masteryBought'
 ];
 resetData = {
   0: 0, 1: 0, 2: 0, 3: 10, 4: 0,
@@ -203,7 +204,8 @@ resetData = {
   16: ['0', 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
   17: 0,
   18: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-  19: 0
+  19: 0,
+  20: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
 };
 popupMsg = [
   'Reached max stage!', 'Reach Level', 'to Open', 'Break The Universe to Open'
@@ -255,9 +257,62 @@ masteryCompeleted = [
   0, 0, 0, 0, 0,
   0, 0, 0, 0, 0
 ];
+masteryBought = [
+  0, 0, 0, 0,
+  0, 0, 0, 0,
+  0, 0, 0, 0
+];
+masteryPrice = [
+  12, 12, 15, 30,
+  0, 0, 0, 0,
+  0, 0, 0, 0
+]
+masteryInfo = [
+  '',
+  '',
+  '',
+  '',
+  '',
+  '',
+  '',
+  '',
+  '',
+  '',
+  '',
+  '',
+];
+masteryInfoKor = [
+  '레벨에 비례한 추가 데미지',
+  '몬스터를 잡을때 loot를 하나 더 얻을 확률',
+  '모든 무기 레벨의 합산에 비례한 경험치 부스트',
+  '현재 레벨에 비례한 얻는 토큰 양 부스트',
+  '',
+  '',
+  '',
+  '',
+  '',
+  '',
+  '',
+  '',
+];
+masteryInfoEng = [
+  '',
+  '',
+  '',
+  '',
+  '',
+  '',
+  '',
+  '',
+  '',
+  '',
+  '',
+  '',
+];
 translate = [
   'Eng', 'Kor'
 ];
 toTranslate = [
-  'monName', 'lootName', 'weaponName', 'extraStatusTips', 'popupMsg', 'tokenUpgradeName'
+  'monName', 'lootName', 'weaponName', 'extraStatusTips', 'popupMsg',
+  'tokenUpgradeName', 'masteryInfo'
 ];

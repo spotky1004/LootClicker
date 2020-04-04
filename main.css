@@ -307,7 +307,7 @@ body {
   transition: all 0.7s;
 }
 #masteryWarp {
-  padding-top: 20px;
+  padding: 20px 0;
   background-image: url(bg/mastery_bg.png);
   text-align: center;
 }
@@ -334,20 +334,38 @@ body {
 }
 .skillLine {
   margin: 0 auto;
-  width: 80%;
+  width: 85%;
   height: 12.5vh;
 }
 .skillLine:not(:last-child) {
   margin-bottom: 10px;
 }
 .skillSel {
+  border-radius: 3px;
   margin: auto 0;
-  width: 18vw;
+  width: 17vw;
   height: 12.5vh;
   float: left;
 }
 .skillSel:not(:last-child) {
   margin-right: 2vw;
+}
+.skillN {
+  border: 3px solid #a4352d;
+  background: linear-gradient(0deg, #f5a8a2, #d96259);
+}
+.skillM {
+  border: 3px solid #35a42d;
+  background: linear-gradient(0deg, #a8f5a3, #61d959);
+  cursor: pointer;
+}
+.skillY {
+  border: 3px solid #2c70a3;
+  background: linear-gradient(0deg, #a2d1f5, #59a2d9);
+  cursor: pointer;
+}
+.skillSel > p {
+  font-size: 1.2em;
 }
 .skillInfo {
   width: auto;
