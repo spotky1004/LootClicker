@@ -334,10 +334,10 @@ $(function (){
       }
       summonMonster();
       monsterHpCalc();
+      masteryQuest();
     }
     monsterStatus();
     playerStatus();
-    masteryQuest();
     $("#monsterHpProgress").attr({
       'value' : monsterHp / monsterHpM
     });
