@@ -51,6 +51,7 @@ $(function (){
       this[varData[i]] = resetData[i];
     }
     gameSave();
+    location.reload();
   }
   function gameDisplay() {
     playerStatus();
