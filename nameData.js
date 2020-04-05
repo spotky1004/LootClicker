@@ -298,8 +298,8 @@ masteryInfoKor = [
 masteryInfoEng = [
   'Additional damage based on level',
   'Chance to get another loot when defeating a monster',
-  'Boost experience in based on the sum of all weapon levels',
-  'Boost amount of tokens gained based on current level',
+  'Boost EXP gain based on the Sum of all weapon Levels',
+  'Boost amount of tokens gained based on Level',
   'Powerful monster appears (Loot x100)',
   'Rare-class sword chance x2',
   '',
