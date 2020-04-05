@@ -24,6 +24,22 @@ body {
   font-size: 1.5em;
   background-color: rgba(94, 94, 94, 0.6);
 }
+#popupDmg {
+  background: linear-gradient(to right, #ab453c, #e33e30);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  font-weight: bold;
+  font-size: 1.2em;
+  user-select: none;
+}
+#popupToken {
+  background: linear-gradient(to right, #e3b330, #9c7b22);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  font-weight: bold;
+  font-size: 1.5em;
+  user-select: none;
+}
 .stageNav {
   margin: 0 auto;
   width: 15vw;

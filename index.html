@@ -10,7 +10,7 @@
   <script src="main.js"></script>
   <link href="https://fonts.googleapis.com/css?family=Do+Hyeon&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="main.css">
-    <title>Loot Clicker v1.9.1.34</title>
+    <title>Loot Clicker v1.9.1.35</title>
   </head>
   <body>
     <div id="warpAll">
@@ -38,7 +38,7 @@
               <div id="monster" style="background-image: url(monster/1.png);"></div>
               <div id="monLevel">Lv 1</div>
               <div id="monsterStatus">슬라임 (hp: 10 / 10)</div>
-              <progress id="monsterHpProgress" value="1" max="1"></progress><span id="monsterHpProgressNum">100%</span>
+              <meter id="monsterHpProgress" value="1" max="1"></meter><span id="monsterHpProgressNum">100%</span>
               <div class="stageNav">
                 <span id="stageL" class="stageNavNumButton stageNavNumButtonL" style="background-image: url(etc/previous.png);"></span>
                 <span id="stageNum" class="stageNavNum black">1</span>
@@ -275,6 +275,12 @@
           </div>
           <div id="popupLayer">
             설명
+          </div>
+          <div id="popupToken">
+            +1
+          </div>
+          <div id="popupDmg">
+            -0
           </div>
         </div>
         <div id="extraStatus">

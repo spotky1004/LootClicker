@@ -366,7 +366,7 @@ $(function (){
       monsterHpM = ((monsterNow**(1+monsterNow/5)*10)*(1+30/(monsterNow/100+1))/10-0.7)*80;
       monsterHp = monsterHpM;
       if (stageUnlocked == stagePage) {
-        extraStstusSet('Rare Monster Appears! (' + monsterNow + ' Lv)');
+        extraStstusSet('<span class="rareMob">Rare Monster Appears! (' + monsterNow + ' Lv)</span>');
       }
     } else {
       rareMob = 0;
@@ -571,13 +571,13 @@ $(function (){
     }
   }
   function mastery() {
-    masteryBuff00 = (playerLevel >= 30) ? (playerLevel - 30)*0.05 + 1 : 1;
+    masteryBuff00 = (playerLevel >= 30) ? (playerLevel - 30)*0.05 + 2 : 2;
     masteryBuff01 = 0.5;
     masteryBuff02 = collectedWeapon/9990 + 1;
-    masteryBuff03 = (playerLevel >= 30) ? (playerLevel - 30)*0.1 + 1 : 1;
+    masteryBuff03 = (playerLevel >= 30) ? (playerLevel - 30)*0.15 + 2 : 2;
     masteryBuff10 = 0.01;
     masteryBuff11 = 0.02;
-    masteryBuff12 = 1;
+    masteryBuff12 = (playerLevel >= 30) ? (playerLevel - 30)*0.5 + 5 : 5;
     masteryBuff13 = 1;
     masteryBuff20 = 1;
     masteryBuff21 = 1;
@@ -603,8 +603,6 @@ $(function (){
           $('.skillLine:eq(' + i + ') > .skillSel:eq(' + j + ')').attr({
             'class' : 'skillSel skillM'
           });
-          if (i == 0 && j == 1 || i == 0 && j == 2 || i == 0 && j == 3) {
-          }
         } else {
           $('.skillLine:eq(' + i + ') > .skillSel:eq(' + j + ')').attr({
             'class' : 'skillSel skillN'
@@ -635,6 +633,36 @@ $(function (){
       var timerId1 = setTimeout(function() {
         $('#popupLayer').hide();
       }, 1000);
+    }, 0);
+  }
+  function setDmg(msg) {
+    setTimeout(function() {
+      $('#popupDmg').html(function (index,html) {
+        return '-' + notation(msg) + ' hp';
+      });
+  		$('#popupDmg').css({
+  			"top": divTop,
+  			"left": divLeft,
+  			"position": "absolute"
+  		}).show();
+      var timerId1 = setTimeout(function() {
+        $('#popupDmg').hide();
+      }, 100);
+    }, 0);
+  }
+  function setToken(msg) {
+    setTimeout(function() {
+      $('#popupToken').html(function (index,html) {
+        return '+' + notation(msg) + ' token';
+      });
+  		$('#popupToken').css({
+  			"top": divTop,
+  			"left": divLeft,
+  			"position": "absolute"
+  		}).show();
+      var timerId1 = setTimeout(function() {
+        $('#popupToken').hide();
+      }, 500);
     }, 0);
   }
   function lv0Skip() {
@@ -799,7 +827,7 @@ $(function (){
       gotWeapon = [0, 0, 0];
       luckP = 0;
       if (masteryBuff11R != 1) {
-        luckP = 2;
+        luckP = masteryBuff11R*100;
       }
       while (c <= bulk) {
         luck = Math.floor(Math.random()*100);
@@ -851,10 +879,33 @@ $(function (){
     }
   });
   $("#monster").click(function () {
-    hitMonster(playerDmg*tokenBuff1N);
+    infDmg = playerDmg*tokenBuff1N*(Math.random()*0.4+0.8)
+    hitMonster(infDmg);
+    setDmg(infDmg);
     luck = Math.floor(Math.random()*100);
     if (0 <= luck &&  luck < tokenBuff4N) {
       token += 1*masteryBuff03R;
+      setToken(1*masteryBuff03R);
+    }
+  });
+  $("#popupDmg").click(function () {
+    infDmg = playerDmg*tokenBuff1N*(Math.random()*0.4+0.8)
+    hitMonster(infDmg);
+    setDmg(infDmg);
+    luck = Math.floor(Math.random()*100);
+    if (0 <= luck &&  luck < tokenBuff4N) {
+      token += 1*masteryBuff03R;
+      setToken(1*masteryBuff03R);
+    }
+  });
+  $("#popupToken").click(function () {
+    infDmg = playerDmg*tokenBuff1N*(Math.random()*0.4+0.8)
+    hitMonster(infDmg);
+    setDmg(infDmg);
+    luck = Math.floor(Math.random()*100);
+    if (0 <= luck &&  luck < tokenBuff4N) {
+      token += 1*masteryBuff03R;
+      setToken(1*masteryBuff03R);
     }
   });
   $("#stageL").click(function () {
@@ -1109,12 +1160,15 @@ $(function (){
   extraStstusSet(extraStatusTips[rand]);
   setInterval( function (){
     hitMonster(playerDmg/100*playerHitPS);
+    if (masteryBuff13R != 1 && Math.random() < masteryBuff13R/100) {
+      token += 1*masteryBuff03R;
+    }
     tokenTimer = tokenTimer - 0.01;
     if (tokenTimer > 600*0.9**tokenUpgrade[5]) {
       tokenTimer = 600*0.9**tokenUpgrade[5];
     }
     if (tokenTimer <= 0) {
-      token += 1*masteryBuff03R;
+      token += 1*masteryBuff03R*masteryBuff12R;
       tokenTimer = tokenBuff5N;
       tokenShop();
     }

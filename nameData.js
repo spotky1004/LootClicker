@@ -220,10 +220,10 @@ tokenUpgradeName = [
   'Damage Buff', 'Click Buff', 'EXP Buff', 'Monster EXP Buff', 'Token (Click)', 'Token (Timer)'
 ];
 tokenUpgradeNameKor = [
-  '공격력 버프', '클릭 버프', '경험치 버프', '몬스터 경험치 버프', '토큰 획득 (클릭)', '토큰 획득 (타이머)'
+  '공격력 버프', '클릭 버프', '경험치 버프', '몬스터 경험치 버프', '토큰 획득 (클릭)', '토큰 획득 (타이머)', '자동 클릭'
 ];
 tokenUpgradeNameEng = [
-  'Damage Buff', 'Click Buff', 'EXP Buff', 'Monster EXP Buff', 'Token (Click)', 'Token (Timer)'
+  'Damage Buff', 'Click Buff', 'EXP Buff', 'Monster EXP Buff', 'Token (Click)', 'Token (Timer)', 'Auto Click'
 ];
 tokenUpgrade = [
   0, 0, 0, 0, 0, 0, 0
@@ -264,7 +264,7 @@ masteryBought = [
 ];
 masteryPrice = [
   12, 12, 15, 30,
-  40, 42, 9999, 9999,
+  40, 42, 55, 70,
   9999, 9999, 9999, 9999
 ]
 masteryInfo = [
@@ -288,8 +288,8 @@ masteryInfoKor = [
   '현재 레벨에 비례한 얻는 토큰 양 부스트',
   '강력한 몬스터 등장(Loot x100)',
   '레어 등급의 검이 나올 확률 x2',
-  '',
-  '',
+  '레벨에 비례한 타이머로 획득한 토큰 부스트',
+  '자동클릭으로도 토큰 획득 가능',
   '',
   '',
   '',
