@@ -562,9 +562,8 @@ $(function (){
     masteryBuff01 = 0.5;
     masteryBuff02 = collectedWeapon/9990 + 1;
     masteryBuff03 = (playerLevel >= 30) ? (playerLevel - 30)*0.1 + 1 : 1;
-    masteryBuff04 = 1;
-    masteryBuff10 = 1;
-    masteryBuff11 = 1;
+    masteryBuff10 = 0.01;
+    masteryBuff11 = 2;
     masteryBuff12 = 1;
     masteryBuff13 = 1;
     masteryBuff20 = 1;
@@ -951,33 +950,24 @@ $(function (){
     }
   });
   $("#exportButton").click(function () {
-    if (1 == 2) {
-      saveFile = {};
-      for (var i = 0; i < varData.length; i++) {
-        saveFile[i] = eval(varData[i]);
-      }
-      prompt('Exported Save', JSON.stringify(saveFile));
-    } else {
-      setPopup('Comming Soon');
+    saveFile = {};
+    for (var i = 0; i < varData.length; i++) {
+      saveFile[i] = eval(varData[i]);
     }
+    prompt('Exported Save', JSON.stringify(saveFile));
   });
   $("#importButton").click(function () {
-    if (1 == 2) {
-      var inputedSave = prompt('Import Save', '');
-      if (inputedSave != '') {
-        var cookies = document.cookie.split(";");
-        for(var i in cookies) {
-          if(cookies[i].search('saveData') != -1) {
-            const savedFile = JSON.parse(inputedSave);
-            for (var i = 0; i < varData.length; i++) {
-              this[varData[i]] = savedFile[i];
-            }
-          }
+    var inputedSave = prompt('Import Save', '');
+    if (inputedSave != '') {
+      var cookies = document.cookie.split(";");
+      const savedFile = JSON.parse(inputedSave);
+      dataCopy = JSON.parse(JSON.stringify(resetData));
+      Object.assign(dataCopy, savedFile);
+      setTimeout(function(){
+        for (var i = 0; i < varData.length; i++) {
+          this[varData[i]] = dataCopy[i];
         }
-        gameLoad();
-      }
-    } else {
-      setPopup('Comming Soon');
+      }, 0);
     }
   });
   $("#translate").click(function () {
