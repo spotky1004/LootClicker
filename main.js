@@ -288,7 +288,10 @@ $(function (){
         lootNum = (Math.ceil(monsterNow/5)*2)+1;
         gotLoot = 1;
         if (Math.random() < 1-masteryBuff01R) {
-          gotLoot = 2;
+          gotLoot = gotLoot * 2;
+        }
+        if (rareMob == 1) {
+          gotLoot = gotLoot * 100;
         }
         lootQuantity[lootNum] = lootQuantity[lootNum] + gotLoot;
         if (menuPage == 0) {
@@ -358,8 +361,18 @@ $(function (){
     monsterStatus();
   }
   function monsterHpCalc() {
-    monsterHpM = (monsterNow**(1+monsterNow/5)*10)*(1+30/(monsterNow/100+1))/10-0.7;
-    monsterHp = monsterHpM;
+    if (masteryBuff10R != 1 && Math.random() < masteryBuff10) {
+      rareMob = 1;
+      monsterHpM = ((monsterNow**(1+monsterNow/5)*10)*(1+30/(monsterNow/100+1))/10-0.7)*80;
+      monsterHp = monsterHpM;
+      if (stageUnlocked == stagePage) {
+        extraStstusSet('Rare Monster Appears! (' + monsterNow + ' Lv)');
+      }
+    } else {
+      rareMob = 0;
+      monsterHpM = (monsterNow**(1+monsterNow/5)*10)*(1+30/(monsterNow/100+1))/10-0.7;
+      monsterHp = monsterHpM;
+    }
   }
   function stageChange() {
     summonMonster();
@@ -563,7 +576,7 @@ $(function (){
     masteryBuff02 = collectedWeapon/9990 + 1;
     masteryBuff03 = (playerLevel >= 30) ? (playerLevel - 30)*0.1 + 1 : 1;
     masteryBuff10 = 0.01;
-    masteryBuff11 = 2;
+    masteryBuff11 = 0.02;
     masteryBuff12 = 1;
     masteryBuff13 = 1;
     masteryBuff20 = 1;
@@ -784,27 +797,31 @@ $(function (){
       lootQuantity[b] = lootQuantity[b] - bulk;
       c = 1;
       gotWeapon = [0, 0, 0];
+      luckP = 0;
+      if (masteryBuff11R != 1) {
+        luckP = 2;
+      }
       while (c <= bulk) {
         luck = Math.floor(Math.random()*100);
         if ((b-2)%2 == 1) {
           if (0 <= luck && luck< 20+(lootPage-1)*2) {
             playerExp = playerExp + Math.random()*(2.8**((b-2)*2))*tokenBuff2N*masteryBuff02;
-          } else if (20+(lootPage-1)*2 <= luck && luck < 85+(lootPage-1)*1) {
+          } else if (20+(lootPage-1)*2-luckP <= luck && luck < 85+(lootPage-1)-luckP) {
             gotWeapon[0]++;
-          } else if (85+(lootPage-1)*1 <= luck && luck < 98) {
+          } else if (85+(lootPage-1)-luckP <= luck && luck < 98-luckP) {
             gotWeapon[1]++;
-          } else if (98 <= luck && luck <= 100 && a == 3) {
+          } else if (98-luckP <= luck && luck <= 100 && a == 3) {
             lootQuantity[1] = lootQuantity[1] + Math.floor(Math.random()*(5+(b-3)));
             gotWeapon[2]++;
           }
         } else {
           if (0 <= luck && luck< 20+(lootPage-1)*2) {
             playerExp = playerExp + Math.random()*(2.8**(b*2))*tokenBuff2N*masteryBuff02;
-          } else if (20+(lootPage-1)*2 <= luck && luck < 85+(lootPage-1)*1) {
+          } else if (20+(lootPage-1)*2-luckP <= luck && luck < 85+(lootPage-1)-luckP) {
             gotWeapon[0]++;
-          } else if (85+(lootPage-1)*1 <= luck && luck < 98) {
+          } else if (85+(lootPage-1)-luckP <= luck && luck < 98-luckP) {
             gotWeapon[1]++;
-          } else if (98 <= luck && luck <= 100 && a == 3) {
+          } else if (98-luckP <= luck && luck <= 100 && a == 3) {
             lootQuantity[1] = lootQuantity[1] + Math.floor(Math.random()*(5+(b-3)));
             gotWeapon[2]++;
           }
@@ -1056,15 +1073,14 @@ $(function (){
 		if( divTop < 0 ) divTop = 0;
 	});
 
-  playerLevel = 0;
+  playerLevel = 1;
   stageUnlocked = 1;
   monsterDefeated = 0;
   playerExp = 0;
   playerExpNeed = 10;
   playerSP = 0;
   token = 0;
-  monsterNow = 1;
-  monsterHpCalc();
+  monsterNow = 1
   collectedWeapon = 0;
   weaponMastery = 0;
   stagePage = 1;
@@ -1079,8 +1095,11 @@ $(function (){
   ehhhhhhhhhhh = '이예ㅔㅔㅔㅔㅔ';
   debugStr = 0;
   brokeUniverse = 0;
+  rareMob = 0;
   extraStatus = ['', '', '', '', '', '', '', '', '', ''];
-  tokenTimer = 600*0.9**tokenUpgrade[5];
+  tokenTimer = 600;
+  mastery();
+  monsterHpCalc();
 
   $("#menusWarp > div").hide();
   $("#menusWarp > div:eq(0)").show();

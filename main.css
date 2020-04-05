@@ -386,6 +386,10 @@ body {
   font-size: 15pt;
   height: 300px;
 }
+.rareMob {
+  color: #77eb34;
+  text-shadow: 0 0 3px #77eb34;
+}
 .rare {
   color: #42f5bf;
   text-shadow: 0 0 3px #42f5bf;
