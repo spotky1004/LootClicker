@@ -146,7 +146,7 @@ body {
 #masteryQuest {
   margin: 10px 0;
   height: 60vh;
-  font-size: 1.3em;
+  font-size: 0.9em;
   background-image: url(bg/bg.png);
   background-size: cover;
   overflow-y: scroll;
@@ -351,7 +351,7 @@ body {
 .skillLine {
   margin: 0 auto;
   width: 85%;
-  height: 12.5vh;
+  height: 16vh;
 }
 .skillLine:not(:last-child) {
   margin-bottom: 10px;
@@ -360,7 +360,7 @@ body {
   border-radius: 3px;
   margin: auto 0;
   width: 17vw;
-  height: 12.5vh;
+  height: 16vh;
   float: left;
 }
 .skillSel:not(:last-child) {
@@ -381,10 +381,13 @@ body {
   cursor: pointer;
 }
 .skillSel > p {
-  font-size: 1.2em;
+  font-size: 1em;
 }
 .skillInfo {
   width: auto;
+}
+#settingDiv {
+  background-color: white;
 }
 #settingDiv > p {
   font-size: 4em;
