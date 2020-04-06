@@ -882,7 +882,7 @@ $(function (){
     }
   });
   $("#monster").click(function () {
-    infDmg = playerDmg*tokenBuff1N*(Math.random()*0.4+0.8)
+    infDmg = playerDmg*tokenBuff1N*(Math.random()*0.4+0.8)*tokenBuff0N*masteryBuff00R;
     hitMonster(infDmg);
     setDmg(infDmg);
     luck = Math.floor(Math.random()*100);
@@ -892,7 +892,7 @@ $(function (){
     }
   });
   $("#popupDmg").click(function () {
-    infDmg = playerDmg*tokenBuff1N*(Math.random()*0.4+0.8)
+    infDmg = playerDmg*tokenBuff1N*(Math.random()*0.4+0.8)*tokenBuff0N*masteryBuff00R;
     hitMonster(infDmg);
     setDmg(infDmg);
     luck = Math.floor(Math.random()*100);
@@ -902,7 +902,7 @@ $(function (){
     }
   });
   $("#popupToken").click(function () {
-    infDmg = playerDmg*tokenBuff1N*(Math.random()*0.4+0.8)
+    infDmg = playerDmg*tokenBuff1N*(Math.random()*0.4+0.8)*tokenBuff0N*masteryBuff00R;
     hitMonster(infDmg);
     setDmg(infDmg);
     luck = Math.floor(Math.random()*100);
