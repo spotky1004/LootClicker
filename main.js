@@ -957,13 +957,13 @@ $(function (){
         strA = 1;
       }
     } else if (13 <= a && a <= 16) {
-      if (weaponLevel[((stagePage-1)*5+a-12)] >= 999) {
+      if (weaponLevel[((stagePage-1)*5+a-12)] >= 999 && masteryCompeleted[((stagePage-1)*5+a)+90] < 1) {
         masteryCompeleted[((stagePage-1)*5+a)+90]++;
         playerSP += 1;
         strA = 1;
       }
     } else if (a == 17) {
-      if (weaponLevel[((stagePage-1)*5+a-12)] >= 999) {
+      if (weaponLevel[((stagePage-1)*5+a-12)] >= 999 && masteryCompeleted[((stagePage-1)*5+a)+90] < 1) {
         masteryCompeleted[((stagePage-1)*5+a)+90]++;
         playerSP += 3;
         strA = 3;
