@@ -64,6 +64,9 @@ $(function (){
     playerUnlock();
     masteryQuest();
     mastery();
+    $('#playtime').html(function (index,html) {
+      return 'Total Play Time: ' + playtime.toFixed(3) + 'h';
+    });
   }
   function playerStatus() {
     stageUnlocked = Math.floor((playerLevel-1)/10)+1;
@@ -1149,6 +1152,7 @@ $(function (){
   rareMob = 0;
   extraStatus = ['', '', '', '', '', '', '', '', '', ''];
   tokenTimer = 600;
+  playtime = 0;
   mastery();
   monsterHpCalc();
 
@@ -1159,6 +1163,7 @@ $(function (){
   rand = Math.floor(Math.random()*4);
   extraStstusSet(extraStatusTips[rand]);
   setInterval( function (){
+    playtime += 2.7777777777e-6;
     hitMonster(playerDmg/100*playerHitPS);
     if (masteryBuff13R != 1 && Math.random() < masteryBuff13R/100) {
       token += 1*masteryBuff03R;
