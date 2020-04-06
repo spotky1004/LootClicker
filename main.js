@@ -882,9 +882,9 @@ $(function (){
     }
   });
   $("#monster").click(function () {
-    infDmg = playerDmg*tokenBuff1N*(Math.random()*0.4+0.8)*tokenBuff0N*masteryBuff00R;
+    infDmg = playerDmg*tokenBuff1N*(Math.random()*0.4+0.8);
     hitMonster(infDmg);
-    setDmg(infDmg);
+    setDmg(infDmg*tokenBuff0N*masteryBuff00R);
     luck = Math.floor(Math.random()*100);
     if (0 <= luck &&  luck < tokenBuff4N) {
       token += 1*masteryBuff03R;
@@ -892,9 +892,9 @@ $(function (){
     }
   });
   $("#popupDmg").click(function () {
-    infDmg = playerDmg*tokenBuff1N*(Math.random()*0.4+0.8)*tokenBuff0N*masteryBuff00R;
+    infDmg = playerDmg*tokenBuff1N*(Math.random()*0.4+0.8);
     hitMonster(infDmg);
-    setDmg(infDmg);
+    setDmg(infDmg*tokenBuff0N*masteryBuff00R);
     luck = Math.floor(Math.random()*100);
     if (0 <= luck &&  luck < tokenBuff4N) {
       token += 1*masteryBuff03R;
@@ -902,9 +902,9 @@ $(function (){
     }
   });
   $("#popupToken").click(function () {
-    infDmg = playerDmg*tokenBuff1N*(Math.random()*0.4+0.8)*tokenBuff0N*masteryBuff00R;
+    infDmg = playerDmg*tokenBuff1N*(Math.random()*0.4+0.8);
     hitMonster(infDmg);
-    setDmg(infDmg);
+    setDmg(infDmg*tokenBuff0N*masteryBuff00R);
     luck = Math.floor(Math.random()*100);
     if (0 <= luck &&  luck < tokenBuff4N) {
       token += 1*masteryBuff03R;
