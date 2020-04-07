@@ -581,7 +581,7 @@ $(function (){
     masteryBuff10 = 0.01;
     masteryBuff11 = 0.02;
     masteryBuff12 = (playerLevel >= 30) ? (playerLevel - 30)*0.5 + 5 : 5;
-    masteryBuff13 = 1;
+    masteryBuff13 = 0.99;
     masteryBuff20 = 1;
     masteryBuff21 = 1;
     masteryBuff22 = 1;
@@ -1165,7 +1165,7 @@ $(function (){
   setInterval( function (){
     playtime += 2.7777777777e-6;
     hitMonster(playerDmg/100*playerHitPS);
-    if (masteryBuff13R != 1 && Math.random() < masteryBuff13R/100) {
+    if (masteryBuff13R != 1 && Math.random() < (1 + tokenUpgrade[4])/10000) {
       token += 1*masteryBuff03R;
     }
     tokenTimer = tokenTimer - 0.01;
