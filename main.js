@@ -279,6 +279,13 @@ $(function (){
   function hitMonster(dmg) {
     monsterHp = monsterHp - dmg*tokenBuff0N*masteryBuff00R;
     if (monsterHp <= 0) {
+      gotLoot = 1;
+      if (Math.random() < 1-masteryBuff01R) {
+        gotLoot = gotLoot * 2;
+      }
+      if (rareMob == 1) {
+        gotLoot = gotLoot * 100;
+      }
       playerExp = playerExp + Math.random()*(tokenBuff3N**(monsterNow))*tokenBuff2N*masteryBuff02*gotLoot;
       luck = Math.floor(Math.random()*100);
       if (playerLevel >= 31) {
@@ -289,13 +296,6 @@ $(function (){
 
       } else if (50+(stagePage-1)*3 <= luck && luck < 50+loot1Chance) {
         lootNum = (Math.ceil(monsterNow/5)*2)+1;
-        gotLoot = 1;
-        if (Math.random() < 1-masteryBuff01R) {
-          gotLoot = gotLoot * 2;
-        }
-        if (rareMob == 1) {
-          gotLoot = gotLoot * 100;
-        }
         lootQuantity[lootNum] = lootQuantity[lootNum] + gotLoot;
         if (menuPage == 0) {
           switch (translateNum) {
