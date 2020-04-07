@@ -279,7 +279,7 @@ $(function (){
   function hitMonster(dmg) {
     monsterHp = monsterHp - dmg*tokenBuff0N*masteryBuff00R;
     if (monsterHp <= 0) {
-      playerExp = playerExp + Math.random()*(tokenBuff3N**(monsterNow))*tokenBuff2N*masteryBuff02;
+      playerExp = playerExp + Math.random()*(tokenBuff3N**(monsterNow))*tokenBuff2N*masteryBuff02*gotLoot;
       luck = Math.floor(Math.random()*100);
       if (playerLevel >= 31) {
         mobKilled[monsterNow]++;
@@ -319,7 +319,7 @@ $(function (){
         loot();
       } else if (50+loot1Chance <= luck && luck < 100) {
         lootNum = (Math.ceil(monsterNow/5)*2)+2;
-        lootQuantity[lootNum] = lootQuantity[lootNum] + 1;
+        lootQuantity[lootNum] = lootQuantity[lootNum] + gotLoot;
         if (menuPage == 0) {
           switch (translateNum) {
             case 0:
