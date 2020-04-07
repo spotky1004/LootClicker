@@ -370,13 +370,16 @@ $(function (){
   function monsterHpCalc() {
     extraMonsterHp = 1;
     if (monsterNow >= 71) {
-      extraMonsterHp = (10**((monsterNow-70)/10))
+      extraMonsterHp = (10**((monsterNow-70)/10));
+      if (monsterNow > 100) {
+        extraMonsterHp = extraMonsterHp*1000;
+      }
     }
     if (masteryBuff10R != 1 && Math.random() < masteryBuff10) {
       rareMob = 1;
       monsterHpM = (((monsterNow**(1+monsterNow/5)*10)*(1+30/(monsterNow/100+1))/10-0.7)*80)*extraMonsterHp;
       monsterHp = monsterHpM;
-      if (stageUnlocked == stagePage) {
+      if (stageUnlocked-1 <= stagePage) {
         extraStstusSet('<span class="rareMob">Rare Monster Appears! (' + monsterNow + ' Lv)</span>');
       }
     } else {
@@ -1165,8 +1168,6 @@ $(function (){
   playtime = 0;
   mastery();
   monsterHpCalc();
-  lv0Skip();
-  lv71Skip();
 
   $("#menusWarp > div").hide();
   $("#menusWarp > div:eq(0)").show();
