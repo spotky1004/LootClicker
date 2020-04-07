@@ -97,7 +97,7 @@ $(function (){
       return ' - ' + notation(playerExp) + '/' + notation(playerExpNeed) + ' EXP (' + expPer + '%)';
     });
     $('#coin').html(function (index,html) {
-      return notation(coin) + ' coin';
+      return notation(coin) + ' coin (+' + notation(cps) + '/s)';
     });
     $('#token').html(function (index,html) {
       return notation(token) + ' token (' + tokenTimer.toFixed(1) + 's)';
@@ -112,6 +112,7 @@ $(function (){
       $('#fieldWarp > span:eq(0)').attr( 'style', 'width: 79.999%;' );
       $('#fieldWarp > span:eq(1)').show();
       $('#masteryWarp > .skillLine:eq(2)').show();
+      $('#coin').show();
       $('#mainNav > div:eq(6)').show();
       $('#mainNav > div:eq(5)').show();
       $('#mainNav > div:eq(4)').show();
@@ -120,6 +121,7 @@ $(function (){
       $('#fieldWarp > span:eq(0)').attr( 'style', 'width: 79.999%;' );
       $('#fieldWarp > span:eq(1)').show();
       $('#masteryWarp > .skillLine:eq(2)').hide();
+      $('#coin').hide();
       $('#mainNav > div:eq(6)').hide();
       $('#mainNav > div:eq(5)').show();
       $('#mainNav > div:eq(4)').show();
@@ -127,6 +129,7 @@ $(function (){
       $('.mainMenu').css('width', '16.666666%');
       $('#fieldWarp > span:eq(0)').attr( 'style', 'width: 99.999%;' );
       $('#fieldWarp > span:eq(1)').hide();
+      $('#coin').hide();
       $('#mainNav > div:eq(6)').hide();
       $('#mainNav > div:eq(5)').hide();
       $('#mainNav > div:eq(4)').show();
@@ -134,6 +137,7 @@ $(function (){
       $('.mainMenu').css('width', '19.999999%');
       $('#fieldWarp > span:eq(0)').attr( 'style', 'width: 99.999%;' );
       $('#fieldWarp > span:eq(1)').hide();
+      $('#coin').hide();
       $('#mainNav > div:eq(6)').hide();
       $('#mainNav > div:eq(5)').hide();
       $('#mainNav > div:eq(4)').hide();
@@ -364,16 +368,20 @@ $(function (){
     monsterStatus();
   }
   function monsterHpCalc() {
+    extraMonsterHp = 1;
+    if (monsterNow >= 71) {
+      extraMonsterHp = (10**((monsterNow-70)/10))
+    }
     if (masteryBuff10R != 1 && Math.random() < masteryBuff10) {
       rareMob = 1;
-      monsterHpM = ((monsterNow**(1+monsterNow/5)*10)*(1+30/(monsterNow/100+1))/10-0.7)*80;
+      monsterHpM = (((monsterNow**(1+monsterNow/5)*10)*(1+30/(monsterNow/100+1))/10-0.7)*80)*extraMonsterHp;
       monsterHp = monsterHpM;
       if (stageUnlocked == stagePage) {
         extraStstusSet('<span class="rareMob">Rare Monster Appears! (' + monsterNow + ' Lv)</span>');
       }
     } else {
       rareMob = 0;
-      monsterHpM = (monsterNow**(1+monsterNow/5)*10)*(1+30/(monsterNow/100+1))/10-0.7;
+      monsterHpM = ((monsterNow**(1+monsterNow/5)*10)*(1+30/(monsterNow/100+1))/10-0.7)*extraMonsterHp;
       monsterHp = monsterHpM;
     }
   }
@@ -1134,6 +1142,8 @@ $(function (){
   playerExpNeed = 10;
   playerSP = 0;
   token = 0;
+  coin = 0;
+  cps = 0;
   monsterNow = 1
   collectedWeapon = 0;
   weaponMastery = 0;
@@ -1155,6 +1165,8 @@ $(function (){
   playtime = 0;
   mastery();
   monsterHpCalc();
+  lv0Skip();
+  lv71Skip();
 
   $("#menusWarp > div").hide();
   $("#menusWarp > div:eq(0)").show();
