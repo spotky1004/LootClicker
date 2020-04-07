@@ -205,17 +205,17 @@ $(function (){
       weaponNum = (weaponPage - 1) * 5 + a;
       if (weaponLevel[weaponNum] >= 1) {
         weaponRank = Math.floor(Math.sqrt(weaponLevel[weaponNum]));
-        $("#weaponWarp > .weapon:eq(" + (a-1) + ")").attr({
+        $(".weaponBg > .weapon:eq(" + (a-1) + ")").attr({
           'src' : 'weapon/' + weaponNum + '.png'
         });
-        $("#weaponWarp > .weapon:eq(" + (a-1) + ")").attr({
+        $("#weaponWarp > .weaponBg:eq(" + (a-1) + ")").attr({
           'style' : 'background-image: url(rank/' + weaponRank + '.png);'
         });
       } else {
-        $("#weaponWarp > .weapon:eq(" + (a-1) + ")").attr({
+        $(".weaponBg > .weapon:eq(" + (a-1) + ")").attr({
           'src' : 'weapon/0.png'
         });
-        $("#weaponWarp > .weapon:eq(" + (a-1) + ")").attr({
+        $("#weaponWarp > .weaponBg:eq(" + (a-1) + ")").attr({
           'style' : 'background-image: url(etc/mystery_weapon.png);'
         });
       }
