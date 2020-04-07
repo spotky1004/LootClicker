@@ -1029,7 +1029,7 @@ $(function (){
   });
   $("#importButton").click(function () {
     var inputedSave = prompt('Import Save', '');
-    if (inputedSave != '') {
+    if (inputedSave != null && inputedSave != '') {
       var cookies = document.cookie.split(";");
       const savedFile = JSON.parse(inputedSave);
       dataCopy = JSON.parse(JSON.stringify(resetData));
@@ -1166,7 +1166,7 @@ $(function (){
     playtime += 2.7777777777e-6;
     hitMonster(playerDmg/100*playerHitPS);
     if (masteryBuff13R != 1 && Math.random() < (1 + tokenUpgrade[4])/10000) {
-      token += 1*masteryBuff03R;
+      token += 1*masteryBuff03R*(1 + tokenUpgrade[6]);
     }
     tokenTimer = tokenTimer - 0.01;
     if (tokenTimer > 600*0.9**tokenUpgrade[5]) {
