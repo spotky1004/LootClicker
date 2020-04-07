@@ -881,8 +881,8 @@ $(function (){
       }
     }
   });
-  $("#weaponWarp > .weapon").click(function () {
-    a = (weaponPage-1)*5 + $("#weaponWarp > .weapon").index(this) + 1;
+  $("#weaponWarp > .weaponBg").click(function () {
+    a = (weaponPage-1)*5 + $("#weaponWarp > .weaponBg").index(this) + 1;
     if (weaponLevel[a] >= 1) {
       $('#weaponName').html(function (index,html) {
         return weaponName[a] + ' +' + weaponLevel[a];

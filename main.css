@@ -207,6 +207,7 @@ body {
   width: 11vw;
   height: 11vw;
   float: left;
+  cursor: pointer;
 }
 .weaponBg:not(:first-child) {
   margin-left: 3px;
@@ -217,7 +218,6 @@ body {
   margin: 0 auto;
   float: left;
   background-size: cover;
-  cursor: pointer;
   margin: 0 auto;
   margin-top: 4px;
   cursor: pointer;
