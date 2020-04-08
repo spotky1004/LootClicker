@@ -1173,6 +1173,7 @@ $(function (){
   $("#menusWarp > div:eq(0)").show();
   gameLoad();
   gameDisplay();
+  extraStstusSet('<a href="https://discord.gg/wkdVQxT" target="_blank">My Discord Sever!</a>');
   rand = Math.floor(Math.random()*4);
   extraStstusSet(extraStatusTips[rand]);
   setInterval( function (){
