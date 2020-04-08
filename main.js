@@ -1203,7 +1203,7 @@ $(function (){
   $("#menusWarp > div:eq(0)").show();
   gameLoad();
   gameDisplay();
-  extraStstusSet('<span class="discord"><a href="https://discord.gg/wkdVQxT" target="_blank">Join My Discord Sever!</a></span>');
+  extraStstusSet('<span class="discord"><a href="https://discord.gg/wkdVQxT" target="_blank">Join My Discord Server!</a></span>');
   rand = Math.floor(Math.random()*4);
   extraStstusSet(extraStatusTips[rand]);
   setInterval( function (){
