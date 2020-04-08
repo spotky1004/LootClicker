@@ -1060,7 +1060,7 @@ $(function (){
     translateFun();
   });
   $("#codeButton").click(function () {
-    inputedCode = prompt('Enter Skip Code', '');
+    inputedCode = prompt('Enter Code', '');
     if (inputedCode == 'skip121') {
       lv0Skip();
       lv11Skip();
@@ -1073,6 +1073,35 @@ $(function (){
     } else if (inputedCode == 'skip10201') {
       lv0Skip();
       lv101Skip();
+    }
+    switch (inputedCode) {
+      case 'secret':
+        if (codeEnterd[0] == 0) {
+          codeEnterd[0]++;
+          totalCode++;
+          playerLevel++;
+          token += 10000;
+          extraStstusSet('<span class="code">Code:secret, You got a Level and 10k tokens (' + totalCode + ')</span>');
+        }
+        break;
+      case 'first code':
+        if (codeEnterd[1] == 0) {
+          codeEnterd[1]++;
+          totalCode++;
+          playerLevel++;
+          token += 10000;
+          extraStstusSet('<span class="code">Code:first code, You got a Level and 10k tokens (' + totalCode + ')</span>');
+        }
+        break;
+      case 'Code':
+        if (codeEnterd[2] == 0) {
+          codeEnterd[2]++;
+          totalCode++;
+          playerLevel++;
+          token += 10000;
+          extraStstusSet('<span class="code">Code:code, You got a Level and 10k tokens (' + totalCode + ')</span>');
+        }
+        break;
     }
   });
   $(".tokenList").click(function () {
@@ -1166,6 +1195,7 @@ $(function (){
   extraStatus = ['', '', '', '', '', '', '', '', '', ''];
   tokenTimer = 600;
   playtime = 0;
+  totalCode = 0;
   mastery();
   monsterHpCalc();
 
@@ -1173,7 +1203,7 @@ $(function (){
   $("#menusWarp > div:eq(0)").show();
   gameLoad();
   gameDisplay();
-  extraStstusSet('<a href="https://discord.gg/wkdVQxT" target="_blank">My Discord Sever!</a>');
+  extraStstusSet('<span class="discord"><a href="https://discord.gg/wkdVQxT" target="_blank">Join My Discord Sever!</a></span>');
   rand = Math.floor(Math.random()*4);
   extraStstusSet(extraStatusTips[rand]);
   setInterval( function (){

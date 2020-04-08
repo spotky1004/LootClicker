@@ -433,6 +433,42 @@ body {
   color: #ae83f2;
   text-shadow: 0 0 5px #39135c, 0 0 5px #39135c;
 }
+.discord {
+  color: #4775cc;
+  text-shadow: 0 0 2px #4775cc, 0 0 2px #4775cc;
+
+  transition: all 0.7s;
+}
+.discord:hover {
+  color: #33589e;
+  text-shadow: 0 0 10px #33589e, 0 0 8px #33589e;
+
+  transition: all 0.7s;
+}
+.discord > a {
+  text-decoration: none;
+  color: inherit;
+}
+.code {
+  animation-duration: 2s;
+  animation-name: codeShiny;
+  animation-iteration-count: infinite;
+  animation-direction: alternate;
+}
+@keyframes codeShiny {
+  from {
+    color: #cc58b3;
+    text-shadow: 0 0 7px #cc58b3;
+  }
+  50% {
+    color: #f57fdb;
+    text-shadow: 0 0 15px #f57fdb;
+  }
+  to {
+    color: #cc58b3;
+    text-shadow: 0 0 7px #cc58b3;
+  }
+}
 .black {
   color: black;
 }

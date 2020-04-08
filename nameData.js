@@ -175,14 +175,14 @@ extraStatusTipsKor = [
   '무기의 최대 레벨은 +999 입나다!',
   '희귀등급 검은 데미지는 낮지만 경험치 병이 딸려옵니다!',
   '필요 경험치량은 레벨이 오를때마다 3.2배씩 증가합니다!',
-  '몬스터는 100마리가 있습니다!',
+  '몬스터는 101마리가 있습니다!',
   '???'
 ];
 extraStatusTipsEng = [
   'The maximum level of the weapon is +999!',
   'Rare-grade sword damage is low, but with experience bottle!',
   'The amount of experience required is x3.2 each time the level goes up.!',
-  'There are 100 monsters!',
+  'There are 101 monsters!',
   '???'
 ];
 varData = [
@@ -190,7 +190,7 @@ varData = [
   'playerHitPS', 'collectedWeapon', 'weaponMastery', 'playerDmg', 'translateNum',
   'weaponLevel', 'lootQuantity', 'tokenUpgrade', 'tokenUpgradePrice', 'tokenUpgrade',
   'tokenUpgradePrice', 'mobKilled', 'brokeUniverse', 'masteryCompeleted', 'playerSP',
-  'masteryBought', 'playtime'
+  'masteryBought', 'playtime', 'codeEnterd', 'totalCode'
 ];
 resetData = {
   0: 0, 1: 0, 2: 0, 3: 10, 4: 0,
@@ -206,7 +206,9 @@ resetData = {
   18: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
   19: 0,
   20: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-  21: 0
+  21: 0,
+  22: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+  23: 0
 };
 popupMsg = [
   'Reached max stage!', 'Reach Level', 'to Open', 'Break The Universe to Open'
@@ -309,6 +311,18 @@ masteryInfoEng = [
   '',
   '',
   '',
+];
+codeEnterd = [
+  0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+  0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+  0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+  0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+  0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+  0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+  0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+  0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+  0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+  0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
 ];
 translate = [
   'Eng', 'Kor'
