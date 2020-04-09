@@ -1048,10 +1048,11 @@ $(function (){
     for (var i = 0; i < varData.length; i++) {
       saveFile[i] = eval(varData[i]);
     }
-    prompt('Exported Save', JSON.stringify(saveFile));
+    prompt('Exported Save', btoa(JSON.stringify(saveFile)));
   });
   $("#importButton").click(function () {
-    var inputedSave = prompt('Import Save', '');
+    var inputedSaveN = prompt('Import Save', '');
+    var inputedSave = atob(inputedSaveN);
     if (inputedSave != null && inputedSave != '') {
       var cookies = document.cookie.split(";");
       const savedFile = JSON.parse(inputedSave);
