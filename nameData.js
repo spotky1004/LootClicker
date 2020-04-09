@@ -190,7 +190,7 @@ varData = [
   'playerHitPS', 'collectedWeapon', 'weaponMastery', 'playerDmg', 'translateNum',
   'weaponLevel', 'lootQuantity', 'tokenUpgrade', 'tokenUpgradePrice', 'tokenUpgrade',
   'tokenUpgradePrice', 'mobKilled', 'brokeUniverse', 'masteryCompeleted', 'playerSP',
-  'masteryBought', 'playtime', 'codeEnterd', 'totalCode'
+  'masteryBought', 'playtime', 'codeEnterd', 'totalCode', 'notationForm'
 ];
 resetData = {
   0: 0, 1: 0, 2: 0, 3: 10, 4: 0,
@@ -208,7 +208,8 @@ resetData = {
   20: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
   21: 0,
   22: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-  23: 0
+  23: 0,
+  24: 0
 };
 popupMsg = [
   'Reached max stage!', 'Reach Level', 'to Open', 'Break The Universe to Open'
