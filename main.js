@@ -111,7 +111,7 @@ $(function (){
       return notation(token) + ' token (' + tokenTimer.toFixed(1) + 's)';
     });
     $('.totalCombatStatus').html(function (index,html) {
-      return 'Total Status<br>Dmg: ' + notation(playerDmg) + '<br>' + 'Hit/s: ' + playerHitPS;
+      return 'Total Status<br>Dmg: ' + notation(playerDmg) + '<br>' + 'Hit/s: ' + (playerHitPS+1);
     });
   }
   function playerUnlock() {
@@ -1204,7 +1204,7 @@ $(function (){
   menuPage = 0;
   weaponSelect = 0;
   playerDmg = 1;
-  playerHitPS = 0;
+  playerHitPS = 1;
   bulkOpen = 1;
   translateNum = 0;
   ehhhhhhhhhhh = '이예ㅔㅔㅔㅔㅔ';
@@ -1228,7 +1228,7 @@ $(function (){
   extraStstusSet(extraStatusTips[rand]);
   setInterval( function (){
     playtime += 2.7777777777e-6;
-    hitMonster(playerDmg/100*playerHitPS);
+    hitMonster(playerDmg/100*(playerHitPS+1));
     if (masteryBuff13R != 1 && Math.random() < (1 + tokenUpgrade[4])/10000) {
       token += 1*masteryBuff03R*(1 + tokenUpgrade[6]);
     }
