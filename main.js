@@ -144,9 +144,7 @@ $(function (){
     }
   }
   function monsterStatus() {
-    $("#monster").attr({
-      'style' : 'background-image: url(monster/' + monsterNow + '.png);'
-    });
+    $("#monster").css('background-image', 'url(monster/' + monsterNow + '.png)');
     $('#monLevel').html(function (index,html) {
       return 'Lv ' + monsterNow;
     });
@@ -893,6 +891,12 @@ $(function (){
     }
   });
   $("#monster").click(function () {
+    $('.monsterMove').css("bottom", (Math.random()-0.5)*10 + 'px');
+    $('.monsterMove').css("right", (Math.random()-0.5)*10 + 'px');
+    setTimeout(function(){
+      $('.monsterMove').css("bottom", 0);
+      $('.monsterMove').css("right", 0);
+    }, 50);
     infDmg = playerDmg*tokenBuff1N*(Math.random()*0.4+0.8);
     hitMonster(infDmg);
     setDmg(infDmg*tokenBuff0N*masteryBuff00R);

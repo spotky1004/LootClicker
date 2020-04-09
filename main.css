@@ -113,14 +113,19 @@ body {
   text-align: center;
 }
 #monster {
+  position: relative;
   margin: 0 auto;
   margin-top: 4px;
   width: 35vh;
   height: 35vh;
   cursor: pointer;
-  background-size: auto;
+  background-size: auto 30vh;
   background-repeat: no-repeat;
   background-position: center center;
+}
+.monsterMove {
+  bottom: 0;
+  right: 0;
 }
 #monLevel {
   font-size: 1.5em;
