@@ -271,7 +271,7 @@ masteryBought = [
 masteryPrice = [
   12, 12, 15, 30,
   40, 42, 55, 70,
-  9999, 9999, 9999, 9999
+  85, 9999, 9999, 9999
 ]
 masteryInfo = [
   '',
@@ -296,7 +296,7 @@ masteryInfoKor = [
   '레어 등급의 검이 나올 확률 x2',
   '레벨에 비례한 타이머로 획득한 토큰 부스트',
   '자동클릭으로도 토큰 획득 가능',
-  '',
+  '몬스터 처치 스탯 x3',
   '',
   '',
   '',
@@ -310,7 +310,7 @@ masteryInfoEng = [
   'Rare-class sword chance x2',
   'Token boost obtained with timer based on Level',
   'Tokens can also be obtained by Auto Click',
-  '',
+  'Monster Kill Stat x3',
   '',
   '',
   '',

@@ -299,7 +299,7 @@ $(function (){
       playerExp = playerExp + Math.random()*(tokenBuff3N**(monsterNow))*tokenBuff2N*masteryBuff02*gotLoot;
       luck = Math.floor(Math.random()*100);
       if (playerLevel >= 31) {
-        mobKilled[monsterNow]++;
+        mobKilled[monsterNow] += 1*masteryBuff20R;
       }
       loot1Chance = (50-(stagePage-1)*3)*(1-(((monsterNow-1)%5))*0.25);
       if (0 <= luck &&  luck < 50+(stagePage-1)*3) {
@@ -602,7 +602,7 @@ $(function (){
     masteryBuff11 = 0.02;
     masteryBuff12 = (playerLevel >= 30) ? (playerLevel - 30)*0.5 + 5 : 5;
     masteryBuff13 = 0.99;
-    masteryBuff20 = 1;
+    masteryBuff20 = 3;
     masteryBuff21 = 1;
     masteryBuff22 = 1;
     masteryBuff23 = 1;
