@@ -210,7 +210,11 @@ $(function (){
     while(a <= 5){
       weaponNum = (weaponPage - 1) * 5 + a;
       if (weaponLevel[weaponNum] >= 1) {
-        weaponRank = Math.floor(Math.sqrt(weaponLevel[weaponNum]));
+        if (weaponLevel[weaponNum] != 999) {
+          weaponRank = Math.floor((weaponLevel[weaponNum]/100)+1);
+        } else {
+          weaponRank = 11;
+        }
         $(".weaponBg > .weapon:eq(" + (a-1) + ")").attr({
           'src' : 'weapon/' + weaponNum + '.png'
         });
@@ -896,9 +900,17 @@ $(function (){
   });
   $("#weaponWarp > .weaponBg").click(function () {
     a = (weaponPage-1)*5 + $("#weaponWarp > .weaponBg").index(this) + 1;
+    if (weaponLevel[a] != 999) {
+      weaponRank = Math.floor((weaponLevel[a]/100)+1);
+    } else {
+      weaponRank = 11;
+    }
     if (weaponLevel[a] >= 1) {
       $('#weaponName').html(function (index,html) {
         return weaponName[a] + ' +' + weaponLevel[a];
+      });
+      $("#weaponName").attr({
+        'class' : 'weaponRank' + weaponRank
       });
       $('#totalWeaponStatus').html(function (index,html) {
         return 'Dmg: ' + notation(((a*2)**(1+(a*2)/5)*10)/(1+(a*2)**3)*weaponLevel[a]);
