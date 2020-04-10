@@ -523,6 +523,9 @@ $(function (){
     playerHitPS = tokenBuff6N;
   }
   function masteryQuest() {
+    if (totalToken < token) {
+      totalToken = token;
+    }
     $('#masteryQuest > div:eq(0)').html(function (index,html) {
       return 'Player Level (' + playerLevel + '/' + (masteryCompeleted[0]*5+35) + ')';
     });
@@ -532,7 +535,7 @@ $(function (){
       $('#masteryQuest > span:eq(0)').attr('class', 'buySkillPointN');
     }
     $('#masteryQuest > div:eq(1)').html(function (index,html) {
-      return 'Collect Token (' + token.toFixed(0) + '/' + (1000*2**masteryCompeleted[1]) + ')';
+      return 'Collect Token (' + totalToken.toFixed(0) + '/' + (1000*2**masteryCompeleted[1]) + ')';
     });
     if (token >= (1000*2**masteryCompeleted[1])) {
       $('#masteryQuest > span:eq(1)').attr('class', 'buySkillPointY');
@@ -911,6 +914,7 @@ $(function (){
     luck = Math.floor(Math.random()*100);
     if (0 <= luck &&  luck < tokenBuff4N) {
       token += 1*masteryBuff03R;
+      totalToken += 1*masteryBuff03R;
       setToken(1*masteryBuff03R);
     }
   });
@@ -921,6 +925,7 @@ $(function (){
     luck = Math.floor(Math.random()*100);
     if (0 <= luck &&  luck < tokenBuff4N) {
       token += 1*masteryBuff03R;
+      totalToken += 1*masteryBuff03R;
       setToken(1*masteryBuff03R);
     }
   });
@@ -931,6 +936,7 @@ $(function (){
     luck = Math.floor(Math.random()*100);
     if (0 <= luck &&  luck < tokenBuff4N) {
       token += 1*masteryBuff03R;
+      totalToken += 1*masteryBuff03R;
       setToken(1*masteryBuff03R);
     }
   });
@@ -962,7 +968,7 @@ $(function (){
         strA = 3;
       }
     } else if (a == 1) {
-      if (token >= (1000*2**masteryCompeleted[1])) {
+      if (totalToken >= (1000*2**masteryCompeleted[1])) {
         masteryCompeleted[1]++;
         playerSP += 2;
         strA = 2;
@@ -1193,6 +1199,7 @@ $(function (){
   playerExpNeed = 10;
   playerSP = 0;
   token = 0;
+  totalToken = 0;
   coin = 0;
   cps = 0;
   monsterNow = 1
@@ -1237,6 +1244,7 @@ $(function (){
     hitMonster(playerDmg/100*(playerHitPS+1));
     if (masteryBuff13R != 1 && Math.random() < (1 + tokenUpgrade[4])/10000) {
       token += 1*masteryBuff03R*(1 + tokenUpgrade[6]);
+      totalToken += 1*masteryBuff03R*(1 + tokenUpgrade[6]);
     }
     tokenTimer = tokenTimer - 0.01;
     if (tokenTimer > 600*0.9**tokenUpgrade[5]) {
@@ -1244,6 +1252,7 @@ $(function (){
     }
     if (tokenTimer <= 0) {
       token += 1*masteryBuff03R*masteryBuff12R;
+      totalToken += 1*masteryBuff03R*masteryBuff12R;
       tokenTimer = tokenBuff5N;
       tokenShop();
     }
