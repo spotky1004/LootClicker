@@ -171,6 +171,9 @@ body {
   width: inherit;
   overflow-x: hidden;
 }
+#bulkOpen {
+  margin-top: 20px;
+}
 .bulkOpenSelect {
   border: 5px solid black;
   border-radius: 3px;
