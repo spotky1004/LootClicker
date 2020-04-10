@@ -1226,6 +1226,12 @@ $(function (){
   extraStstusSet('<span class="discord"><a href="https://discord.gg/wkdVQxT" target="_blank">Join My Discord Server!</a></span>');
   rand = Math.floor(Math.random()*4);
   extraStstusSet(extraStatusTips[rand]);
+  setTimeout(function(){
+    $('#warpAll2').show();
+    $("#warpAll").attr({
+      'style' : 'background-image: url(bg/white.png);'
+    });
+  }, 3000);
   setInterval( function (){
     playtime += 2.7777777777e-6;
     hitMonster(playerDmg/100*(playerHitPS+1));
