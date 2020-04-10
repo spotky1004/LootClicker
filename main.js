@@ -537,7 +537,7 @@ $(function (){
     $('#masteryQuest > div:eq(1)').html(function (index,html) {
       return 'Collect Token (' + totalToken.toFixed(0) + '/' + (1000*2**masteryCompeleted[1]) + ')';
     });
-    if (token >= (1000*2**masteryCompeleted[1])) {
+    if (totalToken >= (1000*2**masteryCompeleted[1])) {
       $('#masteryQuest > span:eq(1)').attr('class', 'buySkillPointY');
     } else {
       $('#masteryQuest > span:eq(1)').attr('class', 'buySkillPointN');
