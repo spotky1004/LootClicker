@@ -1080,16 +1080,16 @@ $(function (){
   });
   $("#codeButton").click(function () {
     inputedCode = prompt('Enter Code', '');
-    if (inputedCode == 'skip121') {
+    if (inputedCode == 'DEVskip121') {
       lv0Skip();
       lv11Skip();
-    } else if (inputedCode == 'skip961') {
+    } else if (inputedCode == 'DEVskip961') {
       lv0Skip();
       lv31Skip();
-    } else if (inputedCode == 'skip5041') {
+    } else if (inputedCode == 'DEVskip5041') {
       lv0Skip();
       lv71Skip();
-    } else if (inputedCode == 'skip10201') {
+    } else if (inputedCode == 'DEVskip10201') {
       lv0Skip();
       lv101Skip();
     }
