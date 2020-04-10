@@ -613,7 +613,11 @@ $(function (){
       for (var j = 0; j < 4; j++) {
         eval('masteryBuff' + i + j + 'R = (masteryBought[' + (i*4+j) + '] == 1) ? masteryBuff' + i + j + ' : 1');
         $('.skillLine:eq(' + i + ') > .skillSel:eq(' + j + ') > p:eq(0)').html(function (index,html) {
-          return masteryInfo[i*4+j] + '<br>' + ((eval('masteryBuff' + i + j) >= 1) ? "x" + eval('masteryBuff' + i + j).toFixed(2) : (eval('masteryBuff' + i + j)*100).toFixed(0) + "%");
+          if (i*4+j != 7) {
+            return masteryInfo[i*4+j] + '<br>' + ((eval('masteryBuff' + i + j) >= 1) ? "x" + eval('masteryBuff' + i + j).toFixed(2) : (eval('masteryBuff' + i + j)*100).toFixed(0) + "%");
+          } else {
+            return masteryInfo[i*4+j];
+          }
         });
         $('.skillLine:eq(' + i + ') > .skillSel:eq(' + j + ') > p:eq(1)').html(function (index,html) {
           return masteryPrice[i*4+j] + ' SP';
