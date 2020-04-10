@@ -1087,15 +1087,33 @@ $(function (){
     if (inputedCode == 'DEVskip121') {
       lv0Skip();
       lv11Skip();
+      extraStstusSet('<span class="devCode">You used DEV code. (Level 11)</span>');
     } else if (inputedCode == 'DEVskip961') {
       lv0Skip();
       lv31Skip();
+      extraStstusSet('<span class="devCode">You used DEV code. (Level 31)</span>');
     } else if (inputedCode == 'DEVskip5041') {
       lv0Skip();
       lv71Skip();
+      extraStstusSet('<span class="devCode">You used DEV code. (Level 71)</span>');
     } else if (inputedCode == 'DEVskip10201') {
       lv0Skip();
       lv101Skip();
+      extraStstusSet('<span class="devCode">You used DEV code. (Level 101)</span>');
+    } else if (inputedCode == 'DEVsp') {
+      playerSP = 9999;
+      extraStstusSet('<span class="devCode">You used DEV code. (9999 SP)</span>');
+    } else if (inputedCode == 'DEVtoken') {
+      token = 1e25;
+      extraStstusSet('<span class="devCode">You used DEV code. (1e25 token)</span>');
+    } else if (inputedCode == 'DEVnull') {
+      setInterval( function (){
+        $('*').css("color", 'red');
+      }, 10);
+      setInterval( function (){
+        $('*').css("color", 'blue');
+      }, 15);
+      extraStstusSet('<span class="devCode">You used DEV code. (lol)</span>');
     }
     switch (inputedCode) {
       case 'secret':

@@ -483,6 +483,26 @@ body {
 .black {
   color: black;
 }
+.devCode {
+  animation-duration: 2s;
+  animation-name: devCodeShiny;
+  animation-iteration-count: infinite;
+  animation-direction: alternate;
+}
+@keyframes devCodeShiny {
+  from {
+    color: #332436;
+    text-shadow: 0 0 7px #332436;
+  }
+  50% {
+    color: #6c626e;
+    text-shadow: 0 0 15px #6c626e;
+  }
+  to {
+    color: #332436;
+    text-shadow: 0 0 7px #332436;
+  }
+}
 #settingDiv > div {
   margin-bottom: 8px;
 }
