@@ -16,6 +16,7 @@ body {
 #warpAll {
   height: 99vh;
   width: 99vw;
+  background-size: cover;
 }
 #warpAll2 {
 
