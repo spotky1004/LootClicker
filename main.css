@@ -415,7 +415,8 @@ body {
 }
 #extraStatus {
   width: 100%;
-  text-align: center;
+  padding-left: 30px;
+  text-align: left;
   color: white;
   background-image: url(bg/bg.png);
   background-size: cover;

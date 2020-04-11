@@ -280,7 +280,7 @@ $(function (){
       extraStatus[a+1] = extraStatus[a]
       a--;
     }
-    extraStatus[0] = str;
+    extraStatus[0] =  '- '+ str;
     d = 0;
     extraStatusStr = '';
     while (d <= 9) {
