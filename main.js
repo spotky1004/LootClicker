@@ -110,9 +110,11 @@ $(function (){
     $('#token').html(function (index,html) {
       return notation(token) + ' token (' + tokenTimer.toFixed(1) + 's)';
     });
-    $('.totalCombatStatus').html(function (index,html) {
-      return 'Total Status<br>Dmg: ' + notation(playerDmg) + '<br>' + 'Hit/s: ' + (playerHitPS+1);
-    });
+    setTimeout(function(){
+      $('.totalCombatStatus').html(function (index,html) {
+        return 'Total Status<br>Dmg: ' + notation(playerDmg*tokenBuff0N*masteryBuff00R) + '<br>' + 'Hit/s: ' + (playerHitPS+1);
+      });
+    }, 10);
   }
   function playerUnlock() {
     if (playerLevel >= 71) {
