@@ -300,8 +300,8 @@ masteryInfoKor = [
   '자동클릭으로도 토큰 획득 가능',
   '몬스터 처치 스탯 x3',
   '',
-  '',
-  '',
+  '아티팩트 발견 확률 x2',
+  ''
 ];
 masteryInfoEng = [
   'Additional damage based on level',
@@ -314,8 +314,8 @@ masteryInfoEng = [
   'Tokens can also be obtained by Auto Click',
   'Monster Kill Stat x3',
   '',
-  '',
-  '',
+  'Chance to Discover Artifact x2',
+  ''
 ];
 codeEnterd = [
   0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
