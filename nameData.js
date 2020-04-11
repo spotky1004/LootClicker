@@ -157,6 +157,35 @@ weaponLevel = [
   0, 0, 0, 0, 0,
   0, 0, 0, 0, 0,
 ];
+artifactName = [
+
+];
+artifactNameKor = [
+  '',
+  '초원의 정수', '사막의 정수', '얼음의 정수', '정글의 정수', '던전의 정수', '실험실의 정수', '화산의 정수', '하늘의 정수', '태양계의 정수', '우주의 정수',
+  '젤', '2-1', '3-1', '4-1', '5-1', '6-1', '7-1', '8-1', '9-1', '0-1',
+  '철판', '2-2', '3-2', '4-2', '5-2', '6-2', '7-2', '8-2', '9-2', '0-2',
+  '에메랄드', '2-3', '3-3', '4-3', '5-3', '6-3', '7-3', '8-3', '9-3', '0-3',
+  'A-1', 'A-2', 'A-3', 'A-4', 'A-5', 'A-6', 'A-7', 'A-8', 'A-9', 'A-0',
+  '', '', '', '', '', '', '', '', '', '',
+  '', '', '', '', '', '', '', '', '', '',
+  '', '', '', '', '', '', '', '', '', '',
+  '', '', '', '', '', '', '', '', '', '',
+  '', '', '', '', '', '', '', '', '', ''
+];
+artifactNameEng = [
+  '',
+  'Grassland Essence', 'Desert Essence', 'Ice Essence', 'Jungle Essence', 'Dungeon Essence', 'Lab Essence', 'Volcano Essence', 'Sky Essence', 'Solar system Essence', 'Universe Essence',
+  'Gel', '2-1', '3-1', '4-1', '5-1', '6-1', '7-1', '8-1', '9-1', '0-1',
+  'Iron Plate', '2-2', '3-2', '4-2', '5-2', '6-2', '7-2', '8-2', '9-2', '0-2',
+  'Emerald', '2-3', '3-3', '4-3', '5-3', '6-3', '7-3', '8-3', '9-3', '0-3',
+  'A-1', 'A-2', 'A-3', 'A-4', 'A-5', 'A-6', 'A-7', 'A-8', 'A-9', 'A-0',
+  '', '', '', '', '', '', '', '', '', '',
+  '', '', '', '', '', '', '', '', '', '',
+  '', '', '', '', '', '', '', '', '', '',
+  '', '', '', '', '', '', '', '', '', '',
+  '', '', '', '', '', '', '', '', '', ''
+];
 standardNotation = [
   '', 'K', 'M', 'B', 'T', 'Qu', 'Qi', 'Sx', 'Sp', 'O', 'N',
 ];
@@ -193,7 +222,7 @@ varData = [
   'weaponLevel', 'lootQuantity', 'tokenUpgrade', 'tokenUpgradePrice', 'tokenUpgrade',
   'tokenUpgradePrice', 'mobKilled', 'brokeUniverse', 'masteryCompeleted', 'playerSP',
   'masteryBought', 'playtime', 'codeEnterd', 'totalCode', 'notationForm',
-  'totalToken'
+  'totalToken', 'artifactQuantity'
 ];
 resetData = {
   0: 0, 1: 0, 2: 0, 3: 10, 4: 0,
@@ -213,7 +242,8 @@ resetData = {
   22: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
   23: 0,
   24: 0,
-  25: 0
+  25: 0,
+  26: ['0', 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
 };
 popupMsg = [
   'Reached max stage!', 'Reach Level', 'to Open', 'Break The Universe to Open'
@@ -273,7 +303,7 @@ masteryBought = [
 masteryPrice = [
   12, 12, 15, 30,
   40, 42, 55, 70,
-  85, 9999, 9999, 9999
+  85, 85, 120, 9999
 ]
 masteryInfo = [
   '',
@@ -291,7 +321,7 @@ masteryInfo = [
 ];
 masteryInfoKor = [
   '레벨에 비례한 추가 데미지',
-  '몬스터를 잡을때 loot를 하나 더 얻을 확률',
+  '몬스터를 잡을때 loot를 두배로 얻을 확률',
   '모든 무기 레벨의 합산에 비례한 경험치 부스트',
   '현재 레벨에 비례한 얻는 토큰 양 부스트',
   '강력한 몬스터 등장(Loot x100)',
@@ -299,13 +329,13 @@ masteryInfoKor = [
   '레벨에 비례한 타이머로 획득한 토큰 부스트',
   '자동클릭으로도 토큰 획득 가능',
   '몬스터 처치 스탯 x3',
-  '',
+  '토큰 클릭 업그레이드가 자동 클릭에도 적용',
   '아티팩트 발견 확률 x2',
   ''
 ];
 masteryInfoEng = [
   'Additional damage based on level',
-  'Chance to get another loot when defeating a monster',
+  'Chance to get double loot when defeating a monster',
   'Boost EXP gain based on the Sum of all weapon Levels',
   'Boost amount of tokens gained based on Level',
   'Powerful monster appears (Loot x100)',
@@ -313,9 +343,59 @@ masteryInfoEng = [
   'Token boost obtained with timer based on Level',
   'Tokens can also be obtained by Auto Click',
   'Monster Kill Stat x3',
-  '',
+  'Token click upgrade applies to automatic clicks, too',
   'Chance to Discover Artifact x2',
   ''
+];
+artifactQuantity = [
+  '0',
+  0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+  0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+  0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+  0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+  0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+  0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+  0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+  0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+  0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+  0, 0, 0, 0, 0, 0, 0, 0, 0, 0
+];
+artifactEffect = [
+  '0',
+  1, 2, 3, 4, 6, 7, 8, 10, 11, 12,
+  6, 3, 1, 0, 0, 0, 0, 0, 0, 0,
+  0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+  0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+  4, 5, 2, 0, 0, 0, 0, 0, 0, 0,
+  0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+  0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+  0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+  0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+  0, 0, 0, 0, 0, 0, 0, 0, 0, 0
+];
+artifactEffectPow = [
+  '0',
+  0.1, 0.05, 1, 0.2, 0.1, 0.5, 0.01, 0.01, 0.1, 0.05,
+  0.1, 0.5, 1, 0, 0, 0, 0, 0, 0, 0,
+  0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+  1, 1, 1, 0, 0, 0, 0, 0, 0, 0,
+  0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+  0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+  0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+  0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+  0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+  0, 0, 0, 0, 0, 0, 0, 0, 0, 0
+];
+artiBuffNameStr = [
+  'DMG Boost', 'EXP Boost', 'Crit Chance', 'Crit DMG', 'Bonus Loot',
+  'Token Boost (All)', 'Token Boost (Timer)', 'Token Boost (Click)', 'Monster Kill Stat', 'Monster Weakness',
+  'Monster Weakness Cap', 'Mysterious Chest Chance'
+];
+artifactOverBoost = [
+  '0',
+  0, 0, 0, 0, 0,
+  0, 0, 0, 0, 0,
+  0, 0
 ];
 codeEnterd = [
   0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
@@ -334,5 +414,5 @@ translate = [
 ];
 toTranslate = [
   'monName', 'lootName', 'weaponName', 'extraStatusTips', 'popupMsg',
-  'tokenUpgradeName', 'masteryInfo'
+  'tokenUpgradeName', 'masteryInfo', 'artifactName'
 ];

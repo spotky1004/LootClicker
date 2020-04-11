@@ -72,6 +72,7 @@ $(function (){
     playerUnlock();
     masteryQuest();
     mastery();
+    artifact();
     $('#playtime').html(function (index,html) {
       return 'Total Play Time: ' + playtime.toFixed(3) + 'h';
     });
@@ -112,7 +113,11 @@ $(function (){
     });
     setTimeout(function(){
       $('.totalCombatStatus').html(function (index,html) {
-        return 'Total Status<br>Dmg: ' + notation(playerDmg*tokenBuff0N*masteryBuff00R) + '<br>' + 'Hit/s: ' + (playerHitPS+1);
+        if (playerLevel < 71) {
+          return 'Total Status<br>Dmg: ' + notation(playerDmg*tokenBuff0N*masteryBuff00R*artifactOverBoost[1]) + '<br>' + 'Hit/s: ' + (playerHitPS+1);
+        } else {
+          return 'Total Status<br>Dmg: ' + notation(playerDmg*tokenBuff0N*masteryBuff00R*artifactOverBoost[1]) + '(Weakness: x' + monsterWeakness.toFixed(2) + ')<br>' + 'Hit/s: ' + (playerHitPS+1);
+        }
       });
     }, 10);
   }
@@ -275,7 +280,7 @@ $(function (){
     }
   }
   function extraStstusSet(str) {
-    a = 8;
+    a = 48;
     while (a >= 0) {
       extraStatus[a+1] = extraStatus[a]
       a--;
@@ -283,7 +288,7 @@ $(function (){
     extraStatus[0] =  '- '+ str;
     d = 0;
     extraStatusStr = '';
-    while (d <= 9) {
+    while (d <= 49 && extraStatus[d] != '') {
       extraStatusStr = extraStatusStr + extraStatus[d] + '<br>';
       d++;
     }
@@ -293,20 +298,21 @@ $(function (){
     });
   }
   function hitMonster(dmg) {
-    monsterHp = monsterHp - dmg*tokenBuff0N*masteryBuff00R;
+    monsterHp = monsterHp - dmg*tokenBuff0N*masteryBuff00R*artifactOverBoost[1]*monsterWeakness;
     if (monsterHp <= 0) {
-      gotLoot = 1;
+      monsterWeakness = 1;
+      gotLoot = (1+artifactOverBoost[5]);
       if (Math.random() < 1-masteryBuff01R) {
         gotLoot = gotLoot * 2;
       }
       if (rareMob == 1) {
         gotLoot = gotLoot * 100;
       }
-      playerExp = playerExp + Math.random()*(tokenBuff3N**(monsterNow))*tokenBuff2N*masteryBuff02*gotLoot;
+      playerExp = playerExp + Math.random()*(tokenBuff3N**(monsterNow))*tokenBuff2N*masteryBuff02*gotLoot*artifactOverBoost[2];
       luck = Math.floor(Math.random()*100);
       if (playerLevel >= 31) {
         if (monsterNow < 101) {
-          mobKilled[monsterNow] += 1*masteryBuff20R;
+          mobKilled[monsterNow] += 1*masteryBuff20R+artifactOverBoost[9];
         } else {
           brokeUniverse = 1;
         }
@@ -659,8 +665,8 @@ $(function (){
     masteryBuff12 = (playerLevel >= 30) ? (playerLevel - 30)*0.5 + 5 : 5;
     masteryBuff13 = 0.99;
     masteryBuff20 = 3;
-    masteryBuff21 = 1;
-    masteryBuff22 = 1;
+    masteryBuff21 = Number(tokenBuff1N);
+    masteryBuff22 = 2;
     masteryBuff23 = 1;
     $('#skillPoint').html(function (index,html) {
       return 'You Have ' + playerSP + ' Skill Point';
@@ -691,6 +697,45 @@ $(function (){
             'class' : 'skillSel skillN'
           });
         }
+      }
+    }
+  }
+  function artifact() {
+    artifactOverBoost = ['0', 1, 1, 0, 1, 0, 1, 1, 1, 0, 0, 2, 1];
+    for (var i = 1; i < artifactQuantity.length; i++) {
+      effNum = artifactEffect[i];
+      artifactOverBoost[effNum] += (artifactQuantity[i]*artifactEffectPow[i]);
+    }
+    artiStr = '';
+    for (var i = 1; i < artifactOverBoost.length; i++) {
+      if (i == 1 || i == 2 || i == 4 || i == 6 || i == 7 || i == 8 || i == 11 || i == 12) {
+        artiStr += artiBuffNameStr[i-1] + ': x' + artifactOverBoost[i] + '<br>';
+      } else if (i == 3) {
+        artiStr += artiBuffNameStr[i-1] + ': +' + artifactOverBoost[i] + '%<br>';
+      } else if (i == 5 || i == 9) {
+        artiStr += artiBuffNameStr[i-1] + ': +' + artifactOverBoost[i] + '<br>';
+      } else if (i == 10) {
+        artiStr += artiBuffNameStr[i-1] + ': +x' + artifactOverBoost[i] + '<br>';
+      }
+    }
+    $('#overallArtifact').html(function (index,html) {
+      return artiStr;
+    });
+    for (var i = 0; i < 51; i++) {
+      if (artifactQuantity[i] >= 1) {
+        $(".artifactBg:eq(" + (i-1) + ")").attr({
+          'style' : 'background-image: url(rank/' + artifactQuantity[i] + '.png);'
+        });
+        $(".artifact:eq(" + (i-1) + ")").attr({
+          'src' : 'artifact/' + i + '.png'
+        });
+      } else {
+        $(".artifactBg:eq(" + (i-1) + ")").attr({
+          'style' : 'background-image: url(etc/mystery_weapon.png);'
+        });
+        $(".artifact:eq(" + (i-1) + ")").attr({
+          'src' : 'artifact/0.png'
+        });
       }
     }
   }
@@ -916,7 +961,7 @@ $(function (){
         luck = Math.floor(Math.random()*100);
         if ((b-2)%2 == 1) {
           if (0 <= luck && luck< 20+(lootPage-1)*2) {
-            playerExp = playerExp + Math.random()*(2.8**((b-2)*2))*tokenBuff2N*masteryBuff02;
+            playerExp = playerExp + Math.random()*(2.8**((b-2)*2))*tokenBuff2N*masteryBuff02*artifactOverBoost[2];
           } else if (20+(lootPage-1)*2-luckP <= luck && luck < 85+(lootPage-1)-luckP) {
             gotWeapon[0]++;
           } else if (85+(lootPage-1)-luckP <= luck && luck < 98-luckP) {
@@ -927,7 +972,7 @@ $(function (){
           }
         } else {
           if (0 <= luck && luck< 20+(lootPage-1)*2) {
-            playerExp = playerExp + Math.random()*(2.8**(b*2))*tokenBuff2N*masteryBuff02;
+            playerExp = playerExp + Math.random()*(2.8**(b*2))*tokenBuff2N*masteryBuff02*artifactOverBoost[2];
           } else if (20+(lootPage-1)*2-luckP <= luck && luck < 85+(lootPage-1)-luckP) {
             gotWeapon[0]++;
           } else if (85+(lootPage-1)-luckP <= luck && luck < 98-luckP) {
@@ -962,7 +1007,7 @@ $(function (){
         return weaponName[a] + ' +' + weaponLevel[a];
       });
       $("#weaponName").attr({
-        'class' : 'weaponRank' + weaponRank
+        'class' : 'rank' + weaponRank
       });
       $('#totalWeaponStatus').html(function (index,html) {
         return 'Dmg: ' + notation(((a*2)**(1+(a*2)/5)*10)/(1+(a*2)**3)*weaponLevel[a]);
@@ -976,35 +1021,59 @@ $(function (){
       $('.monsterMove').css("bottom", 0);
       $('.monsterMove').css("right", 0);
     }, 50);
-    infDmg = playerDmg*tokenBuff1N*(Math.random()*0.4+0.8);
+    infDmg = 1;
+    if (Math.random() < artifactOverBoost[3]/100) {
+      infDmg = infDmg*artifactOverBoost[4];
+    }
+    infDmg = infDmg*playerDmg*tokenBuff1N*(Math.random()*0.4+0.8*artifactOverBoost[1]);
     hitMonster(infDmg);
     setDmg(infDmg*tokenBuff0N*masteryBuff00R);
     luck = Math.floor(Math.random()*100);
     if (0 <= luck &&  luck < tokenBuff4N) {
       token += 1*masteryBuff03R;
-      totalToken += 1*masteryBuff03R;
+      totalToken += 1*masteryBuff03R*artifactOverBoost[6]*artifactOverBoost[8];
       setToken(1*masteryBuff03R);
     }
   });
   $("#popupDmg").click(function () {
-    infDmg = playerDmg*tokenBuff1N*(Math.random()*0.4+0.8);
+    $('.monsterMove').css("bottom", (Math.random()-0.5)*10 + 'px');
+    $('.monsterMove').css("right", (Math.random()-0.5)*10 + 'px');
+    setTimeout(function(){
+      $('.monsterMove').css("bottom", 0);
+      $('.monsterMove').css("right", 0);
+    }, 50);
+    infDmg = 1;
+    if (Math.random() < artifactOverBoost[3]/100) {
+      infDmg = infDmg*artifactOverBoost[4];
+    }
+    infDmg = infDmg*playerDmg*tokenBuff1N*(Math.random()*0.4+0.8*artifactOverBoost[1]);
     hitMonster(infDmg);
     setDmg(infDmg*tokenBuff0N*masteryBuff00R);
     luck = Math.floor(Math.random()*100);
     if (0 <= luck &&  luck < tokenBuff4N) {
       token += 1*masteryBuff03R;
-      totalToken += 1*masteryBuff03R;
+      totalToken += 1*masteryBuff03R*artifactOverBoost[6]*artifactOverBoost[8];
       setToken(1*masteryBuff03R);
     }
   });
   $("#popupToken").click(function () {
-    infDmg = playerDmg*tokenBuff1N*(Math.random()*0.4+0.8);
+    $('.monsterMove').css("bottom", (Math.random()-0.5)*10 + 'px');
+    $('.monsterMove').css("right", (Math.random()-0.5)*10 + 'px');
+    setTimeout(function(){
+      $('.monsterMove').css("bottom", 0);
+      $('.monsterMove').css("right", 0);
+    }, 50);
+    infDmg = 1;
+    if (Math.random() < artifactOverBoost[3]/100) {
+      infDmg = infDmg*artifactOverBoost[4];
+    }
+    infDmg = infDmg*playerDmg*tokenBuff1N*(Math.random()*0.4+0.8*artifactOverBoost[1]);
     hitMonster(infDmg);
     setDmg(infDmg*tokenBuff0N*masteryBuff00R);
     luck = Math.floor(Math.random()*100);
     if (0 <= luck &&  luck < tokenBuff4N) {
       token += 1*masteryBuff03R;
-      totalToken += 1*masteryBuff03R;
+      totalToken += 1*masteryBuff03R*artifactOverBoost[6]*artifactOverBoost[8];
       setToken(1*masteryBuff03R);
     }
   });
@@ -1265,6 +1334,31 @@ $(function (){
     }
     mastery();
   });
+  $(".artifactBg").click(function () {
+    a = ($(".artifactBg").index(this)+1);
+    if (artifactQuantity[a] >= 1) {
+      $('#artifactName').html(function (index,html) {
+        return artifactName[a] + ' +' + artifactQuantity[a];
+      });
+      $("#artifactName").attr({
+        'class' : 'rank' + artifactQuantity[a]
+      });
+      $('#aArtifactStatus').html(function (index,html) {
+        i = artifactEffect[a];
+        if (i == 1 || i == 2 || i == 4 || i == 6 || i == 7 || i == 8 || i == 11 || i == 12) {
+          return artiBuffNameStr[i-1] + ': +x' + (artifactQuantity[a]*artifactEffectPow[a]);
+        } else if (i == 3) {
+          return artiBuffNameStr[i-1] + ': +' + (artifactQuantity[a]*artifactEffectPow[a]) + '%';
+        } else if (i == 5 || i == 9) {
+          return artiBuffNameStr[i-1] + ': +' + (artifactQuantity[a]*artifactEffectPow[a]);
+        } else if (i == 10) {
+          return artiBuffNameStr[i-1] + ': +x' + (artifactQuantity[a]*artifactEffectPow[a]);
+        } else {
+          return 'Comming Soon...'
+        }
+      });
+    }
+  });
   $('*').click(function(e){
     var sWidth = window.innerWidth;
 		var sHeight = window.innerHeight;
@@ -1280,6 +1374,7 @@ $(function (){
 
   playerLevel = 1;
   stageUnlocked = 1;
+  monsterWeakness = 1;
   monsterDefeated = 0;
   playerExp = 0;
   playerExpNeed = 10;
@@ -1304,18 +1399,24 @@ $(function (){
   debugStr = 0;
   brokeUniverse = 0;
   rareMob = 0;
-  extraStatus = ['', '', '', '', '', '', '', '', '', ''];
+  extraStatus = ['', '', '', '', '', '', '', '', '', '','', '', '', '', '', '', '', '', '', '','', '', '', '', '', '', '', '', '', '','', '', '', '', '', '', '', '', '', '','', '', '', '', '', '', '', '', '', ''];
   tokenTimer = 600;
   playtime = 0;
   totalCode = 0;
   notationForm = 0;
+  tokenBuff1N = 1;
   mastery();
   monsterHpCalc();
+  lv0Skip();
+  lv101Skip();
 
   $("#menusWarp > div").hide();
   $("#menusWarp > div:eq(0)").show();
   gameLoad();
-  gameDisplay();
+  setTimeout(function(){
+    gameDisplay();
+  }, 0);
+
   extraStstusSet('<span class="discord"><a href="https://discord.gg/wkdVQxT" target="_blank">Join My Discord Server!</a></span>');
   rand = Math.floor(Math.random()*4);
   extraStstusSet(extraStatusTips[rand]);
@@ -1327,10 +1428,10 @@ $(function (){
   }, 3000);
   setInterval( function (){
     playtime += 2.7777777777e-6;
-    hitMonster(playerDmg/100*(playerHitPS+1));
+    hitMonster(playerDmg/100*(playerHitPS+1)*masteryBuff21R*((artifactOverBoost[3]*artifactOverBoost[4]/100)+1));
     if (masteryBuff13R != 1 && Math.random() < (1 + tokenUpgrade[4])/10000) {
       token += 1*masteryBuff03R*(1 + tokenUpgrade[6]);
-      totalToken += 1*masteryBuff03R*(1 + tokenUpgrade[6]);
+      totalToken += 1*masteryBuff03R*(1 + tokenUpgrade[6])*artifactOverBoost[6]*artifactOverBoost[8];
     }
     tokenTimer = tokenTimer - 0.01;
     if (tokenTimer > 600*0.9**tokenUpgrade[5]) {
@@ -1338,9 +1439,14 @@ $(function (){
     }
     if (tokenTimer <= 0) {
       token += 1*masteryBuff03R*masteryBuff12R;
-      totalToken += 1*masteryBuff03R*masteryBuff12R;
+      totalToken += 1*masteryBuff03R*masteryBuff12R*artifactOverBoost[6]*artifactOverBoost[7];
       tokenTimer = tokenBuff5N;
       tokenShop();
+    }
+    if (monsterWeakness > artifactOverBoost[11]) {
+      monsterWeakness += artifactOverBoost[10]/100;
+    } else {
+      monsterWeakness = artifactOverBoost[11];
     }
     playerStatus();
   }, 10);

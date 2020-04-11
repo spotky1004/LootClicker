@@ -407,6 +407,49 @@ body {
 #settingDiv {
   background-color: white;
 }
+#artifactWarp {
+  padding: 20px 0;
+  background-image: url(bg/artifact_bg.png);
+  text-align: center;
+}
+#artifactCollection {
+  margin: 20px auto 20px auto;
+  width: 90%;
+}
+.artifactLine {
+  margin-bottom: 8px;
+  height: 8vw;
+}
+.artifactBg {
+  padding-top: 1vw;
+  width: 8vw;
+  height: 7vw;
+  text-align: center;
+  float: left;
+  background-size: cover;
+}
+.artifactBg:not(:last-child) {
+  margin-right: 0.99vw;
+}
+.artifact {
+  height: 6.5vw;
+  width: 6.5vw;
+}
+#overallArtifactTxt {
+  font-size: 1.2em;
+  color: #2b6f82;
+  text-shadow: 0 0 2px #2b6f82;
+}
+#artifactStatus {
+  margin: 10px auto 0 auto;
+  width: 75%;
+  border: 5px solid #2b8182;
+  border-radius: 3px;
+  background-color: white;
+}
+#artifactName {
+  background-color: #d6d6d6;
+}
 #settingDiv > p {
   font-size: 4em;
   padding-left: 5px;
@@ -423,6 +466,7 @@ body {
   overflow-y: hidden;
   font-size: 15pt;
   height: 300px;
+  overflow-y: scroll;
 }
 .rareMob {
   color: #77eb34;
@@ -503,52 +547,76 @@ body {
     text-shadow: 0 0 7px #332436;
   }
 }
-.weaponRank0 {
+.rank0 {
   text-shadow: 0px 0px 3px black;
 }
-.weaponRank1 {
+.rank1 {
   color: black;
   text-shadow: 0px 0px 3px black;
 }
-.weaponRank2 {
+.rank2 {
   color: #3e7acf;
   text-shadow: 0px 0px 3.5px #3e7acf;
 }
-.weaponRank3 {
+.rank3 {
   color: #d6853e;
   text-shadow: 0px 0px 4px #d6853e;
 }
-.weaponRank4 {
+.rank4 {
   color: #d6ca3e;
   text-shadow: 0px 0px 4px #d6ca3e;
 }
-.weaponRank5 {
+.rank5 {
   color: #3dbbdb;
   text-shadow: 0px 0px 4.5px #3dbbdb;
 }
-.weaponRank6 {
+.rank6 {
   color: #3de0de;
   text-shadow: 0px 0px 5px #3de0de;
 }
-.weaponRank7 {
+.rank7 {
   color: #3bd9b4;
   text-shadow: 0px 0px 5.5px #3bd9b4;
 }
-.weaponRank8 {
+.rank8 {
   color: #383dc2;
   text-shadow: 0px 0px 6px #383dc2;
 }
-.weaponRank9 {
+.rank9 {
   color: #9c2da8;
   text-shadow: 0px 0px 6.5px #9c2da8;
 }
-.weaponRank10 {
+.rank10 {
   color: #9c8128;
   text-shadow: 0px 0px 7px #9c8128;
 }
-.weaponRank11 {
-  color: #c9705f;
-  text-shadow: 0px 0px 2px #c9705f, 0px 0px 2px #c9705f, 0px 0px 2px #c9705f, 0px 0px 2px #c9705f, 0px 0px 4px #d1d169, 0px 0px 4px #d1d169, 0px 0px 4px #d1d169, 0px 0px 4px #d1d169, 0px 0px 6px #93d16d, 0px 0px 6px #93d16d, 0px 0px 8px #72d690;
+.rank11 {
+  animation-duration: 10s;
+  animation-name: rank11Shiny;
+  animation-iteration-count: infinite;
+  animation-direction: alternate;
+}
+@keyframes rank11Shiny {
+  from {
+    color: #c9705f;
+    text-shadow: 0px 0px 2px #c9705f, 0px 0px 2px #c9705f;
+  }
+  25% {
+    color: #d1d169;
+    text-shadow: 0px 0px 4px #d1d169, 0px 0px 4px #d1d169;
+  }
+  50% {
+    color: #93d16d;
+    text-shadow: 0px 0px 6px #93d16d, 0px 0px 6px #93d16d;
+  }
+  75% {
+    color: #72d690;
+    text-shadow: 0px 0px 8px #72d690, 0px 0px 8px #72d690;
+  }
+  to {
+    color: #c9705f;
+    text-shadow: 0px 0px 2px #c9705f, 0px 0px 2px #c9705f;
+  }
 }
 .spaceText {
   animation-duration: 10s;
