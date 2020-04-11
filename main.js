@@ -812,7 +812,7 @@ $(function (){
         }
         break;
       case 6:
-        if (brokeUniverse >= 101) {
+        if (brokeUniverse >= 1) {
           menuCheck = 1;
         } else {
           setPopup(popupMsg[3]);
