@@ -116,7 +116,7 @@ $(function (){
         if (playerLevel < 71) {
           return 'Total Status<br>Dmg: ' + notation(playerDmg*tokenBuff0N*masteryBuff00R*artifactOverBoost[1]) + '<br>' + 'Hit/s: ' + (playerHitPS+1);
         } else {
-          return 'Total Status<br>Dmg: ' + notation(playerDmg*tokenBuff0N*masteryBuff00R*artifactOverBoost[1]) + '(Weakness: x' + monsterWeakness.toFixed(2) + ')<br>' + 'Hit/s: ' + (playerHitPS+1);
+          return 'Total Status<br>Dmg: ' + notation(playerDmg*tokenBuff0N*masteryBuff00R*artifactOverBoost[1]) + ' (Weakness: x' + monsterWeakness.toFixed(2) + ')<br>' + 'Hit/s: ' + (playerHitPS+1);
         }
       });
     }, 10);
@@ -793,6 +793,12 @@ $(function (){
       }, 500);
     }, 0);
   }
+  function gotArtifact(num) {
+    if (artifactQuantity[num] != 11) {
+      artifactQuantity[num]++;
+      extraStstusSet('<span class="gotArtifact">You Got Artifact: ' + artifactName[num] + '</span>');
+    }
+  }
   function lv0Skip() {
     for (var i = 0; i < varData.length; i++) {
       this[varData[i]] = resetData[i];
@@ -1407,8 +1413,6 @@ $(function (){
   tokenBuff1N = 1;
   mastery();
   monsterHpCalc();
-  lv0Skip();
-  lv101Skip();
 
   $("#menusWarp > div").hide();
   $("#menusWarp > div:eq(0)").show();
@@ -1443,7 +1447,7 @@ $(function (){
       tokenTimer = tokenBuff5N;
       tokenShop();
     }
-    if (monsterWeakness > artifactOverBoost[11]) {
+    if (monsterWeakness < artifactOverBoost[11]) {
       monsterWeakness += artifactOverBoost[10]/100;
     } else {
       monsterWeakness = artifactOverBoost[11];
