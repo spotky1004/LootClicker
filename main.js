@@ -382,7 +382,7 @@ $(function (){
   function monsterHpCalc() {
     extraMonsterHp = 1;
     if (monsterNow >= 71) {
-      extraMonsterHp = (10**((monsterNow-70)/10));
+      extraMonsterHp = (100**((monsterNow-70)/10));
       if (monsterNow > 100) {
         extraMonsterHp = extraMonsterHp*1000;
       }
