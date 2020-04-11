@@ -331,7 +331,7 @@ masteryInfoKor = [
   '몬스터 처치 스탯 x3',
   '토큰 클릭 업그레이드가 자동 클릭에도 적용',
   '아티팩트 발견 확률 x2',
-  ''
+  '의문의 상자 발견 확률 x2'
 ];
 masteryInfoEng = [
   'Additional damage based on level',

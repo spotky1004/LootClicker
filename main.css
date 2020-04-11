@@ -642,38 +642,8 @@ body {
   }
 }
 .gotArtifact {
-  position: absolute;
-  animation-duration: 3s;
-  animation-name: gotArtifactShiny;
-  animation-iteration-count: infinite;
-  animation-direction: alternate;
-}
-@keyframes gotArtifactShiny {
-  from {
-    color: #e81e1e;
-    text-shadow: 0 0 3px #e81e1e;
-    left: 45px;
-  }
-  25% {
-    color: #86e81e;
-    text-shadow: 0 0 5px #86e81e;
-    left: 50px;
-  }
-  50% {
-    color: #1a52ed;
-    text-shadow: 0 0 7px #1a52ed;
-    left: 45px;
-  }
-  75% {
-    color: #d91ed6;
-    text-shadow: 0 0 8px #d91ed6;
-    left: 50px;
-  }
-  to {
-    color: #e81e1e;
-    text-shadow: 0 0 3px #e81e1e;
-    left: 45px;
-  }
+  color: #86e81e;
+  text-shadow: 0 0 5px #86e81e;
 }
 #settingDiv > div {
   margin-bottom: 8px;
