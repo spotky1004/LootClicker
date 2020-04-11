@@ -305,7 +305,11 @@ $(function (){
       playerExp = playerExp + Math.random()*(tokenBuff3N**(monsterNow))*tokenBuff2N*masteryBuff02*gotLoot;
       luck = Math.floor(Math.random()*100);
       if (playerLevel >= 31) {
-        mobKilled[monsterNow] += 1*masteryBuff20R;
+        if (monsterNow < 101) {
+          mobKilled[monsterNow] += 1*masteryBuff20R;
+        } else {
+          brokeUniverse = 1;
+        }
       }
       loot1Chance = (50-(stagePage-1)*3)*(1-(((monsterNow-1)%5))*0.25);
       if (0 <= luck &&  luck < 50+(stagePage-1)*3) {
@@ -358,7 +362,6 @@ $(function (){
         loot();
       }
       summonMonster();
-      monsterHpCalc();
       masteryQuest();
     }
     monsterStatus();
@@ -371,10 +374,14 @@ $(function (){
     });
   }
   function summonMonster() {
-    if (stagePage*10 <= playerLevel) {
-      monsterNow = Math.floor(Math.random()*10)+1+(stagePage-1)*10;
+    if (stagePage != 11) {
+      if (stagePage*10 <= playerLevel) {
+        monsterNow = Math.floor(Math.random()*10)+1+(stagePage-1)*10;
+      } else {
+        monsterNow = Math.floor(Math.random()*(playerLevel-(stagePage-1)*10))+1+(stagePage-1)*10;
+      }
     } else {
-      monsterNow = Math.floor(Math.random()*(playerLevel-(stagePage-1)*10))+1+(stagePage-1)*10;
+      monsterNow = 101;
     }
     monsterHpCalc();
     monsterStatus();
@@ -383,8 +390,8 @@ $(function (){
     extraMonsterHp = 1;
     if (monsterNow >= 71) {
       extraMonsterHp = (100**((monsterNow-70)/10));
-      if (monsterNow > 100) {
-        extraMonsterHp = extraMonsterHp*1000;
+      if (monsterNow >= 101) {
+        extraMonsterHp = extraMonsterHp**(monsterNow-98.5)
       }
     }
     if (masteryBuff10R != 1 && Math.random() < masteryBuff10) {
@@ -805,10 +812,10 @@ $(function (){
         }
         break;
       case 6:
-        if (playerLevel >= 101) {
+        if (brokeUniverse >= 101) {
           menuCheck = 1;
         } else {
-          setPopup(popupMsg[1] + ' ' + 101 + ' ' + popupMsg[2]);
+          setPopup(popupMsg[3]);
         }
         break;
       default:
@@ -966,11 +973,11 @@ $(function (){
     }
   });
   $("#stageR").click(function () {
-    if (stagePage < stageUnlocked && stagePage < 10) {
+    if (stagePage < stageUnlocked && stagePage < 11) {
       stagePage = stagePage + 1;
       stageChange();
       masteryQuest();
-    } else if (stagePage >= 10) {
+    } else if (stagePage >= 11) {
       setPopup(popupMsg[0]);
     } else {
       setPopup(popupMsg[1] + ' ' + ((stagePage*10)+1) + ' ' + popupMsg[2]);
