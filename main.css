@@ -550,6 +550,29 @@ body {
   color: #c9705f;
   text-shadow: 0px 0px 2px #c9705f, 0px 0px 2px #c9705f, 0px 0px 2px #c9705f, 0px 0px 2px #c9705f, 0px 0px 4px #d1d169, 0px 0px 4px #d1d169, 0px 0px 4px #d1d169, 0px 0px 4px #d1d169, 0px 0px 6px #93d16d, 0px 0px 6px #93d16d, 0px 0px 8px #72d690;
 }
+.spaceText {
+  animation-duration: 10s;
+  animation-name: spaceTextShiny;
+  animation-iteration-count: infinite;
+  animation-direction: alternate;
+}
+@keyframes spaceTextShiny {
+  from {
+    text-shadow: 0 0 0px black;
+  }
+  10% {
+    text-shadow: 0 0 0px black;
+  }
+  50% {
+    text-shadow: 0 0 15px white;
+  }
+  90% {
+    text-shadow: 0 0 0px black;
+  }
+  to {
+    text-shadow: 0 0 0px black;
+  }
+}
 #settingDiv > div {
   margin-bottom: 8px;
 }

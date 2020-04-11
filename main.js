@@ -415,6 +415,21 @@ $(function (){
     $('#stageNum').html(function (index,html) {
       return stagePage;
     });
+    if (stagePage != 11) {
+      $("#monsterStatus").attr({
+        'class' : ' '
+      });
+      $("#monsterHpProgressNum").attr({
+        'class' : ' '
+      });
+    } else  {
+      $("#monsterStatus").attr({
+        'class' : 'spaceText'
+      });
+      $("#monsterHpProgressNum").attr({
+        'class' : 'spaceText'
+      });
+    }
   }
   function lootChange() {
     $('#lootNum').html(function (index,html) {
