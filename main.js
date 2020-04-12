@@ -1547,7 +1547,7 @@ $(function (){
     playtime += 2.7777777777e-6;
     hitMonster(playerDmg/100*(playerHitPS+1)*masteryBuff21R*((artifactOverBoost[3]*artifactOverBoost[4]/100)+1));
     if (masteryBuff13R != 1 && Math.random() < (1 + tokenUpgrade[4])/10000) {
-      token += 1*masteryBuff03R*(1 + tokenUpgrade[6]);
+      token += 1*masteryBuff03R*(1 + tokenUpgrade[6])*artifactOverBoost[6]*artifactOverBoost[8];
       totalToken += 1*masteryBuff03R*(1 + tokenUpgrade[6])*artifactOverBoost[6]*artifactOverBoost[8];
     }
     tokenTimer = tokenTimer - 0.01;
@@ -1555,7 +1555,7 @@ $(function (){
       tokenTimer = 600*0.9**tokenUpgrade[5];
     }
     if (tokenTimer <= 0) {
-      token += 1*masteryBuff03R*masteryBuff12R;
+      token += 1*masteryBuff03R*masteryBuff12R*artifactOverBoost[6]*artifactOverBoost[7];
       totalToken += 1*masteryBuff03R*masteryBuff12R*artifactOverBoost[6]*artifactOverBoost[7];
       tokenTimer = tokenBuff5N;
       tokenShop();
