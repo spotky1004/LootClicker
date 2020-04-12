@@ -1407,7 +1407,7 @@ $(function (){
     }
   });
   $("#mysteryChestC").click(function () {
-    if (lootQuantity[2] >= 1) {
+    if (lootQuantity[2] >= 1 && playerLevel >= 71) {
       lootQuantity[2]--;
       luck = Math.random();
       if (luck < 0.25) {
@@ -1418,6 +1418,11 @@ $(function (){
         luck2 = Math.floor(11-Math.pow(Math.random()*1000+1, 1/3));
         gotArtifact(40+luck2);
       }
+      luck4 = Math.random();
+      token += (luck4*0.4+0.8)*100000000;
+      totalToken += (luck4*0.4+0.8)*100000000;
+    } else (lootQuantity[2] >= 1 && playerLevel < 71) {
+      setPopup('Need at least 71 lever to open Chest');
     }
   });
   $('*').click(function(e){
