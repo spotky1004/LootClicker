@@ -1421,7 +1421,7 @@ $(function (){
       luck4 = Math.random();
       token += (luck4*0.4+0.8)*100000000;
       totalToken += (luck4*0.4+0.8)*100000000;
-    } else (lootQuantity[2] >= 1 && playerLevel < 71) {
+    } else if (lootQuantity[2] >= 1 && playerLevel < 71) {
       setPopup('Need at least 71 lever to open Chest');
     }
   });
