@@ -21,6 +21,14 @@ $(function (){
       }
     }
   }
+  function copyToClipboard(val) {
+    var t = document.createElement("textarea");
+    document.body.appendChild(t);
+    t.value = val;
+    t.select();
+    document.execCommand('copy');
+    document.body.removeChild(t);
+  }
   function makeSave() {
     saveFile = {};
     for (var i = 0; i < varData.length; i++) {
@@ -121,12 +129,21 @@ $(function (){
     }, 10);
   }
   function playerUnlock() {
-    if (playerLevel >= 71) {
+    if (playerLevel >= 101) {
       $('.mainMenu').css('width', '12.499999%');
       $('#fieldWarp > span:eq(0)').attr( 'style', 'width: 79.999%;' );
       $('#fieldWarp > span:eq(1)').show();
       $('#masteryWarp > .skillLine:eq(2)').show();
       $('#coin').show();
+      $('#mainNav > div:eq(6)').show();
+      $('#mainNav > div:eq(5)').show();
+      $('#mainNav > div:eq(4)').show();
+    } else if (playerLevel >= 71) {
+      $('.mainMenu').css('width', '12.499999%');
+      $('#fieldWarp > span:eq(0)').attr( 'style', 'width: 79.999%;' );
+      $('#fieldWarp > span:eq(1)').show();
+      $('#masteryWarp > .skillLine:eq(2)').show();
+      $('#coin').hide();
       $('#mainNav > div:eq(6)').show();
       $('#mainNav > div:eq(5)').show();
       $('#mainNav > div:eq(4)').show();
@@ -156,6 +173,7 @@ $(function (){
       $('#mainNav > div:eq(5)').hide();
       $('#mainNav > div:eq(4)').hide();
     }
+
   }
   function monsterStatus() {
     $("#monster").css('background-image', 'url(monster/' + monsterNow + '.png)');
@@ -1208,7 +1226,7 @@ $(function (){
     for (var i = 0; i < varData.length; i++) {
       saveFile[i] = eval(varData[i]);
     }
-    prompt('Exported Save', btoa(JSON.stringify(saveFile)));
+    copyToClipboard(btoa(JSON.stringify(saveFile)));
   });
   $("#importButton").click(function () {
     var inputedSaveN = prompt('Import Save', '');
