@@ -1227,6 +1227,7 @@ $(function (){
       saveFile[i] = eval(varData[i]);
     }
     copyToClipboard(btoa(JSON.stringify(saveFile)));
+    alert('exported!');
   });
   $("#importButton").click(function () {
     var inputedSaveN = prompt('Import Save', '');
