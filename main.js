@@ -386,13 +386,13 @@ $(function (){
       }
       summonMonster();
       masteryQuest();
-      if (playerLevel >= 71 && Math.random() < masteryBuff22R*0.0003/(1.5**artifactQuantity[stagePage]) && stagePage != 11) {
+      if (playerLevel >= 71 && Math.random() < masteryBuff22R*0.0003/(2**artifactQuantity[stagePage]) && stagePage != 11) {
         gotArtifact(stagePage);
       }
-      if (playerLevel >= 71 && Math.random() < masteryBuff22R*0.00003/(1.5**artifactQuantity[((stagePage-1)*3)+10+Math.floor((monsterNow-(stagePage-1)*10)/5)+1]) && stagePage != 11) {
+      if (playerLevel >= 71 && Math.random() < masteryBuff22R*0.00003/(2**artifactQuantity[((stagePage-1)*3)+10+Math.floor((monsterNow-(stagePage-1)*10)/5)+1]) && stagePage != 11) {
         gotArtifact(Math.floor(((stagePage-1)*3)+10+Math.floor((monsterNow-(stagePage-1)*10)/5))+1);
       }
-      if (playerLevel >= 71 && Math.random() < artifactOverBoost[12]*masteryBuff23R*0.000005*(6**(stagePage-8)) && stagePage >= 8) {
+      if (playerLevel >= 71 && Math.random() < artifactOverBoost[12]*masteryBuff23R*0.000005*(4**(stagePage-8)) && stagePage >= 8) {
         gotArtifact(100);
       }
     }
@@ -1444,7 +1444,7 @@ $(function (){
     if (lootQuantity[2] >= 1 && playerLevel >= 71) {
       lootQuantity[2]--;
       luck = Math.random();
-      if (luck < 0.25) {
+      if (luck < 0.1) {
         luck2 = Math.floor(Math.random()*3+1);
         luck3 = Math.floor(Math.random()*stageUnlocked+1);
         gotArtifact(10+luck2+(luck3-1)*3);
@@ -1453,8 +1453,8 @@ $(function (){
         gotArtifact(40+luck2);
       }
       luck4 = Math.random();
-      token += (luck4*0.4+0.8)*100000000;
-      totalToken += (luck4*0.4+0.8)*100000000;
+      token += (luck4*0.4+0.8)*10000000;
+      totalToken += (luck4*0.4+0.8)*10000000;
     } else if (lootQuantity[2] >= 1 && playerLevel < 71) {
       setPopup('Need at least 71 lever to open Chest');
     }
