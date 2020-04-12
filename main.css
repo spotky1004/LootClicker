@@ -684,7 +684,7 @@ body {
   animation-iteration-count: infinite;
   animation-direction: alternate;
 }
-@keyframes spaceTextShiny {
+@keyframes brokeUnivShiny {
   from {
     text-shadow: 0 0 7px #7926a6;
   }
