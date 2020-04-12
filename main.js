@@ -386,10 +386,10 @@ $(function (){
       }
       summonMonster();
       masteryQuest();
-      if (playerLevel >= 71 && Math.random() < masteryBuff22R*0.0003/(2**artifactQuantity[stagePage]) && stagePage != 11) {
+      if (playerLevel >= 71 && Math.random() < masteryBuff22R*0.0003/(1.7**artifactQuantity[stagePage]) && stagePage != 11) {
         gotArtifact(stagePage);
       }
-      if (playerLevel >= 71 && Math.random() < masteryBuff22R*0.00003/(2**artifactQuantity[((stagePage-1)*3)+10+Math.floor((monsterNow-(stagePage-1)*10)/5)+1]) && stagePage != 11) {
+      if (playerLevel >= 71 && Math.random() < masteryBuff22R*0.00003/(1.7**artifactQuantity[((stagePage-1)*3)+10+Math.floor((monsterNow-(stagePage-1)*10)/5)+1]) && stagePage != 11) {
         gotArtifact(Math.floor(((stagePage-1)*3)+10+Math.floor((monsterNow-(stagePage-1)*10)/5))+1);
       }
       if (playerLevel >= 71 && Math.random() < artifactOverBoost[12]*masteryBuff23R*0.000005*(4**(stagePage-8)) && stagePage >= 8) {
