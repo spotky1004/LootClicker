@@ -678,6 +678,23 @@ body {
   color: #ebe53b;
   text-shadow: 0 0 7px #ebe53b;
 }
+.brokeUniv {
+  animation-duration: 5s;
+  animation-name: brokeUnivShiny;
+  animation-iteration-count: infinite;
+  animation-direction: alternate;
+}
+@keyframes spaceTextShiny {
+  from {
+    text-shadow: 0 0 7px #7926a6;
+  }
+  50% {
+    text-shadow: 0 0 10px #000000;
+  }
+  to {
+    text-shadow: 0 0 7px #7926a6;
+  }
+}
 #settingDiv > div {
   margin-bottom: 8px;
 }

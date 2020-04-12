@@ -331,6 +331,7 @@ $(function (){
           mobKilled[monsterNow] += 1*masteryBuff20R+artifactOverBoost[9];
         } else {
           brokeUniverse = 1;
+          extraStstusSet('<span class="brokeUniv">You Broke Universe! (Unlocked Otherworldy)</span>');
         }
       }
       loot1Chance = (50-(stagePage-1)*3)*(1-(((monsterNow-1)%5))*0.25);
@@ -354,7 +355,7 @@ $(function (){
             translateTxt4 = '개 보유'
               break;
           }
-          if (stageUnlocked == stagePage) {
+          if (stageUnlocked == stagePage && stagePage != 11) {
             extraStstusSet(translateTxt + lootName[lootNum-2] + ' ' + translateTxt2 + '! (' + translateTxt3 + lootQuantity[lootNum] + translateTxt4 + ')');
           }
         }
@@ -377,7 +378,7 @@ $(function (){
             translateTxt4 = '개 보유'
               break;
           }
-          if (stageUnlocked == stagePage) {
+          if (stageUnlocked == stagePage stagePage != 11) {
             extraStstusSet(translateTxt + lootName[lootNum-2] + ' ' + translateTxt2 + '! (' + translateTxt3 + lootQuantity[lootNum] + translateTxt4 + ')');
           }
         }
