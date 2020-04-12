@@ -686,12 +686,15 @@ body {
 }
 @keyframes brokeUnivShiny {
   from {
+    color: #7926a6;
     text-shadow: 0 0 7px #7926a6;
   }
   50% {
+    color: #000000;
     text-shadow: 0 0 10px #000000;
   }
   to {
+    color: #7926a6;
     text-shadow: 0 0 7px #7926a6;
   }
 }
