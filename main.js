@@ -422,7 +422,7 @@ $(function (){
     if (monsterNow >= 71) {
       extraMonsterHp = (100**((monsterNow-70)/10));
       if (monsterNow >= 101) {
-        extraMonsterHp = extraMonsterHp**(monsterNow-98.5)
+        extraMonsterHp = extraMonsterHp**(monsterNow-98.2)
       }
     }
     if (masteryBuff10R != 1 && Math.random() < masteryBuff10) {
@@ -1440,7 +1440,7 @@ $(function (){
         luck3 = Math.floor(Math.random()*stageUnlocked+1);
         gotArtifact(10+luck2+(luck3-1)*3);
       } else {
-        luck2 = Math.floor(11-Math.pow(Math.random()*1000+1, 1/3));
+        luck2 = Math.floor(11-Math.pow(Math.random()*997+4, 1/3));
         gotArtifact(40+luck2);
       }
       luck4 = Math.random();
