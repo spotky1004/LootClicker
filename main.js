@@ -447,7 +447,7 @@ $(function (){
     $('#stageNum').html(function (index,html) {
       return stagePage;
     });
-    if (stagePage >= 10) {
+    if (stagePage < 10) {
       $("#monsterStatus").attr({
         'class' : ' '
       });
@@ -660,7 +660,7 @@ $(function (){
           $('#masteryQuest > br:eq(' + i + ')').show();
           return 'Monster Lv' + ((stagePage-1)*10+i-2) + ' (' + mobKilled[((stagePage-1)*10+i-2)].toFixed(0) + '/' + ((1000+500*(stagePage-1))*1.3**(masteryCompeleted[((stagePage-1)*10+i)])).toFixed(0) + ')';
         });
-        if (mobKilled[((stagePage-1)*10+i-2)].toFixed(0) >= ((1000+500*(stagePage-1))*1.3**(masteryCompeleted[((stagePage-1)*10+i)])).toFixed(0)) {
+        if (mobKilled[((stagePage-1)*10+i-2)] >= ((1000+500*(stagePage-1))*1.3**(masteryCompeleted[((stagePage-1)*10+i)])).toFixed(0)) {
           $('#masteryQuest > span:eq(' + i + ')').attr('class', 'buySkillPointY');
         } else {
           $('#masteryQuest > span:eq(' + i + ')').attr('class', 'buySkillPointN');
@@ -1072,9 +1072,9 @@ $(function (){
     setDmg(infDmg*tokenBuff0N*masteryBuff00R);
     luck = Math.floor(Math.random()*100);
     if (0 <= luck &&  luck < tokenBuff4N) {
-      token += 1*masteryBuff03R;
+      token += 1*masteryBuff03R*artifactOverBoost[6]*artifactOverBoost[8];
       totalToken += 1*masteryBuff03R*artifactOverBoost[6]*artifactOverBoost[8];
-      setToken(1*masteryBuff03R);
+      setToken(1*masteryBuff03R*artifactOverBoost[6]*artifactOverBoost[8]);
     }
   });
   $("#popupDmg").click(function () {
@@ -1093,9 +1093,9 @@ $(function (){
     setDmg(infDmg*tokenBuff0N*masteryBuff00R);
     luck = Math.floor(Math.random()*100);
     if (0 <= luck &&  luck < tokenBuff4N) {
-      token += 1*masteryBuff03R;
+      token += 1*masteryBuff03R*artifactOverBoost[6]*artifactOverBoost[8];
       totalToken += 1*masteryBuff03R*artifactOverBoost[6]*artifactOverBoost[8];
-      setToken(1*masteryBuff03R);
+      setToken(1*masteryBuff03R*artifactOverBoost[6]*artifactOverBoost[8]);
     }
   });
   $("#popupToken").click(function () {
@@ -1109,14 +1109,14 @@ $(function (){
     if (Math.random() < artifactOverBoost[3]/100) {
       infDmg = infDmg*artifactOverBoost[4];
     }
-    infDmg = infDmg*playerDmg*tokenBuff1N*(Math.random()*0.4+0.8*artifactOverBoost[1])*monsterWeakness;
+    infDmg = infDmg*playerDmg*tokenBuff1N*(Math.random()*0.4+0.8*artifactOverBoost[1]*monsterWeakness);
     hitMonster(infDmg);
     setDmg(infDmg*tokenBuff0N*masteryBuff00R);
     luck = Math.floor(Math.random()*100);
     if (0 <= luck &&  luck < tokenBuff4N) {
-      token += 1*masteryBuff03R;
+      token += 1*masteryBuff03R*artifactOverBoost[6]*artifactOverBoost[8];
       totalToken += 1*masteryBuff03R*artifactOverBoost[6]*artifactOverBoost[8];
-      setToken(1*masteryBuff03R);
+      setToken(1*masteryBuff03R*artifactOverBoost[6]*artifactOverBoost[8]);
     }
   });
   $("#stageL").click(function () {
