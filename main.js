@@ -1069,7 +1069,7 @@ $(function (){
     }
     infDmg = infDmg*playerDmg*tokenBuff1N*(Math.random()*0.4+0.8*artifactOverBoost[1]*monsterWeakness);
     hitMonster(infDmg);
-    setDmg(infDmg*tokenBuff0N*masteryBuff00R*artifactOverBoost[1]);
+    setDmg(infDmg*tokenBuff0N*masteryBuff00R*artifactOverBoost[1]*monsterWeakness);
     luck = Math.floor(Math.random()*100);
     if (0 <= luck &&  luck < tokenBuff4N) {
       token += 1*masteryBuff03R*artifactOverBoost[6]*artifactOverBoost[8];
@@ -1090,7 +1090,7 @@ $(function (){
     }
     infDmg = infDmg*playerDmg*tokenBuff1N*(Math.random()*0.4+0.8*artifactOverBoost[1]*monsterWeakness);
     hitMonster(infDmg);
-    setDmg(infDmg*tokenBuff0N*masteryBuff00R);
+    setDmg(infDmg*tokenBuff0N*masteryBuff00R*artifactOverBoost[1]*monsterWeakness);
     luck = Math.floor(Math.random()*100);
     if (0 <= luck &&  luck < tokenBuff4N) {
       token += 1*masteryBuff03R*artifactOverBoost[6]*artifactOverBoost[8];
@@ -1111,7 +1111,7 @@ $(function (){
     }
     infDmg = infDmg*playerDmg*tokenBuff1N*(Math.random()*0.4+0.8*artifactOverBoost[1]*monsterWeakness);
     hitMonster(infDmg);
-    setDmg(infDmg*tokenBuff0N*masteryBuff00R);
+    setDmg(infDmg*tokenBuff0N*masteryBuff00R*artifactOverBoost[1]*monsterWeakness);
     luck = Math.floor(Math.random()*100);
     if (0 <= luck &&  luck < tokenBuff4N) {
       token += 1*masteryBuff03R*artifactOverBoost[6]*artifactOverBoost[8];
