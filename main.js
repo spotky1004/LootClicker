@@ -1329,6 +1329,14 @@ $(function (){
           extraStstusSet('<span class="code">Code:some chest, You got 2 chests (' + totalCode + ')</span>');
         }
         break;
+      case 'opps!':
+        if (codeEnterd[4] == 0) {
+          codeEnterd[4]++;
+          totalCode++;
+          lootQuantity[2] += 700;
+          extraStstusSet('<span class="code">Code:some chest, You got 700 chests (' + totalCode + ')</span>');
+        }
+        break;
     }
   });
   $("#changeNotation").click(function () {
@@ -1440,7 +1448,7 @@ $(function (){
         luck3 = Math.floor(Math.random()*stageUnlocked+1);
         gotArtifact(10+luck2+(luck3-1)*3);
       } else {
-        luck2 = Math.floor(11-Math.pow(Math.random()*995+6, 1/3));
+        luck2 = Math.floor(11-Math.pow(Math.random()*100, 1/2));
         gotArtifact(40+luck2);
       }
       luck4 = Math.random();
