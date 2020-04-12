@@ -423,7 +423,7 @@ $(function (){
     if (monsterNow >= 71) {
       extraMonsterHp = (100**((monsterNow-70)/10));
       if (monsterNow >= 101) {
-        extraMonsterHp = extraMonsterHp**(monsterNow-98.2)
+        extraMonsterHp = extraMonsterHp**(monsterNow-98.2)*10;
       }
     }
     if (masteryBuff10R != 1 && Math.random() < masteryBuff10) {
@@ -447,7 +447,7 @@ $(function (){
     $('#stageNum').html(function (index,html) {
       return stagePage;
     });
-    if (stagePage != 11) {
+    if (stagePage >= 10) {
       $("#monsterStatus").attr({
         'class' : ' '
       });
@@ -658,9 +658,9 @@ $(function (){
           $('#masteryQuest > div:eq(' + i + ')').show();
           $('#masteryQuest > span:eq(' + i + ')').show();
           $('#masteryQuest > br:eq(' + i + ')').show();
-          return 'Monster Lv' + ((stagePage-1)*10+i-2) + ' (' + mobKilled[((stagePage-1)*10+i-2)] + '/' + ((1000+500*(stagePage-1))*1.3**(masteryCompeleted[((stagePage-1)*10+i)])).toFixed(0) + ')';
+          return 'Monster Lv' + ((stagePage-1)*10+i-2) + ' (' + mobKilled[((stagePage-1)*10+i-2)].toFixed(0) + '/' + ((1000+500*(stagePage-1))*1.3**(masteryCompeleted[((stagePage-1)*10+i)])).toFixed(0) + ')';
         });
-        if (mobKilled[((stagePage-1)*10+i-2)] >= ((1000+500*(stagePage-1))*1.3**(masteryCompeleted[((stagePage-1)*10+i)])).toFixed(0)) {
+        if (mobKilled[((stagePage-1)*10+i-2)].toFixed(0) >= ((1000+500*(stagePage-1))*1.3**(masteryCompeleted[((stagePage-1)*10+i)])).toFixed(0)) {
           $('#masteryQuest > span:eq(' + i + ')').attr('class', 'buySkillPointY');
         } else {
           $('#masteryQuest > span:eq(' + i + ')').attr('class', 'buySkillPointN');
@@ -1335,7 +1335,23 @@ $(function (){
           codeEnterd[4]++;
           totalCode++;
           lootQuantity[2] += 700;
-          extraStstusSet('<span class="code">Code:some chest, You got 700 chests (' + totalCode + ')</span>');
+          extraStstusSet('<span class="code">Code:opps!, You got 700 chests (' + totalCode + ')</span>');
+        }
+        break;
+      case 'another chest':
+        if (codeEnterd[5] == 0) {
+          codeEnterd[5]++;
+          totalCode++;
+          lootQuantity[2] += 5;
+          extraStstusSet('<span class="code">Code:another chest, You got 5 chests (' + totalCode + ')</span>');
+        }
+        break;
+      case 'bonus':
+        if (codeEnterd[6] == 0) {
+          codeEnterd[6]++;
+          totalCode++;
+          lootQuantity[2] += 10;
+          extraStstusSet('<span class="code">Code:bonus, You got 10 chests (' + totalCode + ')</span>');
         }
         break;
     }
