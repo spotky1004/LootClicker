@@ -11,6 +11,11 @@
 body {
   overflow-y: scroll;
 }
+.clearFix::after {
+  clear: both;
+  content: '';
+  display: block;
+}
 .left {
   float: left;
 }
@@ -254,6 +259,31 @@ body {
   padding-bottom: 40px;
   text-align: center;
   background: linear-gradient(45deg, blueviolet, aquamarine);
+}
+#tokenBulkOpenWarp {
+  margin-bottom: 5px;
+  float: none;
+  width: 100%;
+}
+#tokenBulkOpen {
+  margin: 0 auto;
+  width: 80%;
+  background-color: inherit;
+}
+#tokenBulkOpen > div {
+  margin-right: 0.9%;
+  float: left;
+  font-size: 1.5em;
+  width: 24%;
+  text-align: center;
+  background-color: rgba(173, 173, 173, 0.5);
+
+  transition: all 0.7s;
+}
+#tokenBulkOpen > div:hover {
+  background-color: rgba(173, 173, 173, 0.9);
+
+  transition: all 0.7s;
 }
 #tokenDisplay {
   font-size: 2.5em;

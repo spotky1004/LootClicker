@@ -1294,40 +1294,59 @@ $(function (){
       notationForm = 0;
     }
   });
+  $("#tokenBulkOpen > div").click(function () {
+    a = $("#tokenBulkOpen > div").index(this);
+    switch (a) {
+      case 0:
+        tokenBulk = 1;
+        break;
+      case 1:
+        tokenBulk = 10;
+        break;
+      case 2:
+        tokenBulk = 100;
+        break;
+      case 3:
+        tokenBulk = 1000;
+        break;
+    }
+  });
   $(".tokenList").click(function () {
     clickedA = $("#tokenShopList > .tokenList").index(this);
   });
   $(".tokenBuy").click(function () {
     setTimeout(function() {
-      if (tokenUpgradePrice[clickedA] <= token && tokenUpgradeCap[clickedA] > tokenUpgrade[clickedA]) {
-        token = token - tokenUpgradePrice[clickedA];
-        tokenUpgrade[clickedA]++;
-        switch (clickedA) {
-          case 0:
-            tokenUpgradePrice[clickedA] = Number((tokenUpgradePrice[clickedA]+tokenUpgrade[clickedA]+3).toFixed(0));
-            break;
-          case 1:
-            tokenUpgradePrice[clickedA] = Number((tokenUpgradePrice[clickedA]+tokenUpgrade[clickedA]*2).toFixed(0));
-            break;
-          case 2:
-            tokenUpgradePrice[clickedA] = Number((tokenUpgradePrice[clickedA]+10+tokenUpgrade[clickedA]*4).toFixed(0));
-            break;
-          case 3:
-            tokenUpgradePrice[clickedA] = Number((tokenUpgradePrice[clickedA]*1.7).toFixed(0));
-            break;
-          case 4:
-            tokenUpgradePrice[clickedA] = Number((tokenUpgradePrice[clickedA]+(tokenUpgrade[clickedA])**1.5+1).toFixed(0));
-            break;
-          case 5:
-            tokenUpgradePrice[clickedA] = Number((tokenUpgradePrice[clickedA]*1.2).toFixed(0));
-            tokenTimer = tokenBuff5N;
-            break;
-          case 6:
-            tokenUpgradePrice[clickedA] = Number((tokenUpgradePrice[clickedA]+100).toFixed(0));
-            break;
+      for (var i = 0; i < tokenBulk; i++) {
+        if (tokenUpgradePrice[clickedA] <= token && tokenUpgradeCap[clickedA] > tokenUpgrade[clickedA]) {
+          token = token - tokenUpgradePrice[clickedA];
+          tokenUpgrade[clickedA]++;
+          switch (clickedA) {
+            case 0:
+              tokenUpgradePrice[clickedA] = Number((tokenUpgradePrice[clickedA]+tokenUpgrade[clickedA]+3).toFixed(0));
+              break;
+            case 1:
+              tokenUpgradePrice[clickedA] = Number((tokenUpgradePrice[clickedA]+tokenUpgrade[clickedA]*2).toFixed(0));
+              break;
+            case 2:
+              tokenUpgradePrice[clickedA] = Number((tokenUpgradePrice[clickedA]+10+tokenUpgrade[clickedA]*4).toFixed(0));
+              break;
+            case 3:
+              tokenUpgradePrice[clickedA] = Number((tokenUpgradePrice[clickedA]*1.7).toFixed(0));
+              break;
+            case 4:
+              tokenUpgradePrice[clickedA] = Number((tokenUpgradePrice[clickedA]+(tokenUpgrade[clickedA])**1.5+1).toFixed(0));
+              break;
+            case 5:
+              tokenUpgradePrice[clickedA] = Number((tokenUpgradePrice[clickedA]*1.2).toFixed(0));
+              tokenTimer = tokenBuff5N;
+              break;
+            case 6:
+              tokenUpgradePrice[clickedA] = Number((tokenUpgradePrice[clickedA]+100).toFixed(0));
+              break;
+          }
+          tokenShop();
+          playerStatus();
         }
-        tokenShop();
-        playerStatus();
       }
     }, 0);
   });
@@ -1404,6 +1423,7 @@ $(function (){
   playerDmg = 1;
   playerHitPS = 1;
   bulkOpen = 1;
+  tokenBulk = 1;
   translateNum = 0;
   ehhhhhhhhhhh = '이예ㅔㅔㅔㅔㅔ';
   debugStr = 0;
