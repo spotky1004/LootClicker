@@ -404,7 +404,7 @@ $(function (){
     if (monsterNow >= 71) {
       extraMonsterHp = (100**((monsterNow-70)/10));
       if (monsterNow >= 101) {
-        extraMonsterHp = extraMonsterHp**(monsterNow-99)
+        extraMonsterHp = extraMonsterHp**(monsterNow-98.5)
       }
     }
     if (masteryBuff10R != 1 && Math.random() < masteryBuff10) {
