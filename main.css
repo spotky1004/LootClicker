@@ -487,8 +487,8 @@ body {
   color: #777777;
 }
 #extraStatus {
-  width: 100%;
-  padding-left: 30px;
+  width: 99%;
+  padding-left: 1vw;
   text-align: left;
   color: white;
   background-image: url(bg/bg.png);
@@ -496,7 +496,6 @@ body {
   overflow-y: hidden;
   font-size: 15pt;
   height: 300px;
-  overflow-y: scroll;
 }
 .rareMob {
   color: #77eb34;
@@ -673,7 +672,11 @@ body {
 }
 .gotArtifact {
   color: #86e81e;
-  text-shadow: 0 0 5px #86e81e;
+  text-shadow: 0 0 7px #86e81e;
+}
+.gotChest {
+  color: #ebe53b;
+  text-shadow: 0 0 7px #ebe53b;
 }
 #settingDiv > div {
   margin-bottom: 8px;

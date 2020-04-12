@@ -373,6 +373,9 @@ $(function (){
       if (playerLevel >= 71 && Math.random() < masteryBuff22R*0.0001/(1.5**artifactQuantity[((stagePage-1)*3)+10+Math.floor((monsterNow-(stagePage-1)*10)/5)+1]) && stagePage != 11) {
         gotArtifact(Math.floor(((stagePage-1)*3)+10+Math.floor((monsterNow-(stagePage-1)*10)/5))+1);
       }
+      if (playerLevel >= 71 && Math.random() < artifactOverBoost[12]*masteryBuff23R*0.00001*(6**(stagePage-8)) && stagePage >= 8) {
+        gotArtifact(100);
+      }
     }
     monsterStatus();
     playerStatus();
@@ -671,7 +674,7 @@ $(function (){
     masteryBuff20 = 3;
     masteryBuff21 = Number(tokenBuff1N);
     masteryBuff22 = 2;
-    masteryBuff23 = 1;
+    masteryBuff23 = 2;
     $('#skillPoint').html(function (index,html) {
       return 'You Have ' + playerSP + ' Skill Point';
     });
@@ -798,6 +801,10 @@ $(function (){
     }, 0);
   }
   function gotArtifact(num) {
+    if (num == 100) {
+      lootQuantity[2]++;
+      extraStstusSet('<span class="gotChest">You got an Chest!</span>');
+    }
     if (artifactQuantity[num] != 11) {
       artifactQuantity[num]++;
       extraStstusSet('<span class="gotArtifact">You got an Artifact: ' + artifactName[num] + '</span>');
@@ -1257,6 +1264,9 @@ $(function (){
         $('*').css("color", 'blue');
       }, 15);
       extraStstusSet('<span class="devCode">You used DEV code. (lol)</span>');
+    } else if (inputedCode == 'DEVchest') {
+      lootQuantity[2] = 9999;
+      extraStstusSet('<span class="devCode">You used DEV code. (999 chest)</span>');
     }
     switch (inputedCode) {
       case 'secret':
@@ -1284,6 +1294,14 @@ $(function (){
           playerLevel++;
           token += 10000;
           extraStstusSet('<span class="code">Code:code, You got a Level and 10k tokens (' + totalCode + ')</span>');
+        }
+        break;
+      case 'some chest':
+        if (codeEnterd[3] == 0) {
+          codeEnterd[3]++;
+          totalCode++;
+          lootQuantity[2] += 2;
+          extraStstusSet('<span class="code">Code:some chest, You got 2 chests (' + totalCode + ')</span>');
         }
         break;
     }
@@ -1386,6 +1404,20 @@ $(function (){
           return 'Comming Soon...'
         }
       });
+    }
+  });
+  $("#mysteryChestC").click(function () {
+    if (lootQuantity[2] >= 1) {
+      lootQuantity[2]--;
+      luck = Math.random();
+      if (luck < 0.25) {
+        luck2 = Math.floor(Math.random()*3+1);
+        luck3 = Math.floor(Math.random()*stageUnlocked+1);
+        gotArtifact(10+luck2+(luck3-1)*3);
+      } else {
+        luck2 = Math.floor(11-Math.pow(Math.random()*1000+1, 1/3));
+        gotArtifact(40+luck2);
+      }
     }
   });
   $('*').click(function(e){
