@@ -453,12 +453,18 @@ $(function (){
       $("#monsterHpProgressNum").attr({
         'class' : ' '
       });
+      $("#tCS").attr({
+        'class' : 'totalCombatStatus black'
+      });
     } else  {
       $("#monsterStatus").attr({
         'class' : 'spaceText'
       });
       $("#monsterHpProgressNum").attr({
         'class' : 'spaceText'
+      });
+      $("#tCS").attr({
+        'class' : 'totalCombatStatus black spaceText'
       });
     }
   }
