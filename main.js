@@ -1505,16 +1505,18 @@ $(function (){
     }
   });
   $('*').click(function(e){
-    var sWidth = window.innerWidth;
-		var sHeight = window.innerHeight;
-		var oWidth = $('.popupLayer').width();
-		var oHeight = $('.popupLayer').height();
-		divLeft = e.clientX + 10;
-		divTop = e.clientY - 50;
-		if( divLeft + oWidth > sWidth ) divLeft -= oWidth;
-		if( divTop + oHeight > sHeight ) divTop -= oHeight;
-		if( divLeft < 0 ) divLeft = 0;
-		if( divTop < 0 ) divTop = 0;
+    if (ldm == 0) {
+      var sWidth = window.innerWidth;
+  		var sHeight = window.innerHeight;
+  		var oWidth = $('.popupLayer').width();
+  		var oHeight = $('.popupLayer').height();
+  		divLeft = e.clientX + 10;
+  		divTop = e.clientY - 50;
+  		if( divLeft + oWidth > sWidth ) divLeft -= oWidth;
+  		if( divTop + oHeight > sHeight ) divTop -= oHeight;
+  		if( divLeft < 0 ) divLeft = 0;
+  		if( divTop < 0 ) divTop = 0;
+    }
 	});
 
   playerLevel = 1;
@@ -1526,6 +1528,7 @@ $(function (){
   playerSP = 0;
   token = 0;
   ldm = 0;
+  ldmCount = 5;
   totalToken = 0;
   artiCh = 1;
   coin = 0;
@@ -1603,7 +1606,12 @@ $(function (){
     artifact();
   }, 10000);
   setInterval( function (){
-    gameSave();
-    gameDisplay();
+    if (ldm == 0 || ldmCount == 0) {
+      ldmCount = 5;
+      gameSave();
+      gameDisplay();
+    } else {
+      ldmCount--;
+    }
   }, 1000);
 });
