@@ -318,11 +318,15 @@ $(function (){
     if (monsterHp <= 0) {
       monsterWeakness = 1;
       gotLoot = (1+artifactOverBoost[5]);
+      artiCh = 1;
       if (Math.random() < 1-masteryBuff01R) {
         gotLoot = gotLoot * 2;
       }
       if (rareMob == 1) {
         gotLoot = gotLoot * 100;
+      }
+      if (rareMob == 1) {
+        artiCh = artiCh*100;
       }
       playerExp = playerExp + Math.random()*(tokenBuff3N**(monsterNow))*tokenBuff2N*masteryBuff02*gotLoot*artifactOverBoost[2];
       luck = Math.floor(Math.random()*100);
@@ -386,13 +390,13 @@ $(function (){
       }
       summonMonster();
       masteryQuest();
-      if (playerLevel >= 71 && Math.random() < masteryBuff22R*0.0003/(1.7**artifactQuantity[stagePage]) && stagePage != 11) {
+      if (playerLevel >= 71 && Math.random() < artiCh*masteryBuff22R*0.0003/(1.7**artifactQuantity[stagePage]) && stagePage != 11) {
         gotArtifact(stagePage);
       }
-      if (playerLevel >= 71 && Math.random() < masteryBuff22R*0.00003/(1.7**artifactQuantity[((stagePage-1)*3)+10+Math.floor((monsterNow-(stagePage-1)*10)/5)+1]) && stagePage != 11) {
+      if (playerLevel >= 71 && Math.random() < artiCh*masteryBuff22R*0.00003/(1.7**artifactQuantity[((stagePage-1)*3)+10+Math.floor((monsterNow-(stagePage-1)*10)/5)+1]) && stagePage != 11) {
         gotArtifact(Math.floor(((stagePage-1)*3)+10+Math.floor((monsterNow-(stagePage-1)*10)/5))+1);
       }
-      if (playerLevel >= 71 && Math.random() < artifactOverBoost[12]*masteryBuff23R*0.000005*(4**(stagePage-8)) && stagePage >= 8) {
+      if (playerLevel >= 71 && Math.random() < artiCh*artifactOverBoost[12]*masteryBuff23R*0.000005*(4**(stagePage-8)) && stagePage >= 8) {
         gotArtifact(100);
       }
     }
@@ -1499,6 +1503,7 @@ $(function (){
   playerSP = 0;
   token = 0;
   totalToken = 0;
+  artiCh = 1;
   coin = 0;
   cps = 0;
   monsterNow = 1
