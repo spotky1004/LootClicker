@@ -256,6 +256,17 @@ $(function (){
       a++;
     }
   }
+  function ldmD() {
+    if (ldm == 0) {
+      $('#LDM').html(function (index,html) {
+        return 'Enable Low Detail Mod';
+      });
+    } else {
+      $('#LDM').html(function (index,html) {
+        return 'Disable Low Detail Mod';
+      });
+    }
+  }
   function gotWeaponCalc(num, quantity) {
     if (quantity > 0) {
       if (weaponLevel[num] < 999) {
@@ -800,34 +811,38 @@ $(function (){
     }, 0);
   }
   function setDmg(msg) {
-    setTimeout(function() {
-      $('#popupDmg').html(function (index,html) {
-        return '-' + notation(msg) + ' hp';
-      });
-  		$('#popupDmg').css({
-  			"top": divTop,
-  			"left": divLeft,
-  			"position": "absolute"
-  		}).show();
-      var timerId1 = setTimeout(function() {
-        $('#popupDmg').hide();
-      }, 100);
-    }, 0);
+    if (ldm == 0) {
+      setTimeout(function() {
+        $('#popupDmg').html(function (index,html) {
+          return '-' + notation(msg) + ' hp';
+        });
+    		$('#popupDmg').css({
+    			"top": divTop,
+    			"left": divLeft,
+    			"position": "absolute"
+    		}).show();
+        var timerId1 = setTimeout(function() {
+          $('#popupDmg').hide();
+        }, 100);
+      }, 0);
+    }
   }
   function setToken(msg) {
-    setTimeout(function() {
-      $('#popupToken').html(function (index,html) {
-        return '+' + notation(msg) + ' token';
-      });
-  		$('#popupToken').css({
-  			"top": divTop,
-  			"left": divLeft,
-  			"position": "absolute"
-  		}).show();
-      var timerId1 = setTimeout(function() {
-        $('#popupToken').hide();
-      }, 500);
-    }, 0);
+    if (ldm == 0) {
+      setTimeout(function() {
+        $('#popupToken').html(function (index,html) {
+          return '+' + notation(msg) + ' token';
+        });
+    		$('#popupToken').css({
+    			"top": divTop,
+    			"left": divLeft,
+    			"position": "absolute"
+    		}).show();
+        var timerId1 = setTimeout(function() {
+          $('#popupToken').hide();
+        }, 500);
+      }, 0);
+    }
   }
   function gotArtifact(num) {
     if (num == 100) {
@@ -1368,6 +1383,14 @@ $(function (){
       notationForm = 0;
     }
   });
+  $("#LDM").click(function () {
+    if (ldm == 0) {
+      ldm++;
+    } else {
+      ldm--;
+    }
+    ldmD();
+  });
   $("#tokenBulkOpen > div").click(function () {
     a = $("#tokenBulkOpen > div").index(this);
     switch (a) {
@@ -1502,6 +1525,7 @@ $(function (){
   playerExpNeed = 10;
   playerSP = 0;
   token = 0;
+  ldm = 0;
   totalToken = 0;
   artiCh = 1;
   coin = 0;
@@ -1536,6 +1560,7 @@ $(function (){
   $("#menusWarp > div").hide();
   $("#menusWarp > div:eq(0)").show();
   gameLoad();
+  ldmD();
   setTimeout(function(){
     gameDisplay();
   }, 0);
