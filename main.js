@@ -695,8 +695,13 @@ $(function (){
     tokenBuff1L = (1 + ((tokenUpgrade[1]+1)**1.1)/5).toFixed(1);
     tokenBuff2N = 1 + tokenUpgrade[2]*0.1;
     tokenBuff2L = 1 + (tokenUpgrade[2]+1)*0.1;
-    tokenBuff3N = (2.8 + upgradeBuff03R + tokenUpgrade[3]*0.01).toFixed(2);
-    tokenBuff3L = (2.8 + upgradeBuff03R + (tokenUpgrade[3]+1)*0.01).toFixed(2)
+    if (upgradeBuff03R != 1) {
+      tokenBuff3N = (2.8 + upgradeBuff03R + tokenUpgrade[3]*0.01).toFixed(2);
+      tokenBuff3L = (2.8 + upgradeBuff03R + (tokenUpgrade[3]+1)*0.01).toFixed(2);
+    } else {
+      tokenBuff3N = (2.8 + tokenUpgrade[3]*0.01).toFixed(2);
+      tokenBuff3L = (2.8 + (tokenUpgrade[3]+1)*0.01).toFixed(2);
+    }
     tokenBuff4N = 1 + tokenUpgrade[4];
     tokenBuff4L = 1 + (tokenUpgrade[4]+1)*1;
     tokenBuff5N = 600*0.9**tokenUpgrade[5];
