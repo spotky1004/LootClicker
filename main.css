@@ -581,7 +581,7 @@ body {
   text-shadow: 0 0 5px #000;
   background: linear-gradient(0deg, #7ad6c4, #63b9db);
 
-  transition: all 0.7s;
+  transition: all 0.3s;
 }
 .trN {
   background: linear-gradient(0deg, #474747, #7d7d7d);
@@ -599,7 +599,7 @@ body {
   text-shadow: 0 0 5px #000;
   background: linear-gradient(0deg, #9c46e3, #464be3);
 
-  transition: all 0.7s;
+  transition: all 0.3s;
 }
 .meN {
   background: linear-gradient(0deg, #474747, #7d7d7d);
@@ -853,6 +853,26 @@ body {
   to {
     color: #7926a6;
     text-shadow: 0 0 7px #7926a6;
+  }
+}
+.brokeInf {
+  animation-duration: 5s;
+  animation-name: brokeInfShiny;
+  animation-iteration-count: infinite;
+  animation-direction: alternate;
+}
+@keyframes brokeInfShiny {
+  from {
+    color: #7fd7e3;
+    text-shadow: 0 0 7px #7fd7e3;
+  }
+  50% {
+    color: #d94a9d;
+    text-shadow: 0 0 10px #d94a9d;
+  }
+  to {
+    color: #7fd7e3;
+    text-shadow: 0 0 7px #7fd7e3;
   }
 }
 #settingDiv > div {

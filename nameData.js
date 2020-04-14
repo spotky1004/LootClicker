@@ -23,7 +23,7 @@ monNameKor = [
   '8-1', '8-2', '8-3', '8-4', '8-5', '8-6', '8-7', '8-8', '8-9', '8-0',
   '9-1', '9-2', '9-3', '9-4', '9-5', '9-6', '9-7', '9-8', '9-9', '9-0',
   '0-1', '0-2', '0-3', '0-4', '0-5', '0-6', '0-7', '0-8', '0-9', '0-0',
-  '우주'
+  '우주', '무한의 코어'
 ];
 monNameEng = [
   '0',
@@ -37,7 +37,7 @@ monNameEng = [
   '8-1', '8-2', '8-3', '8-4', '8-5', '8-6', '8-7', '8-8', '8-9', '8-0',
   '9-1', '9-2', '9-3', '9-4', '9-5', '9-6', '9-7', '9-8', '9-9', '9-0',
   '0-1', '0-2', '0-3', '0-4', '0-5', '0-6', '0-7', '0-8', '0-9', '0-0',
-  'Universe'
+  'Universe', 'Core Of Infinity'
 ];
 mobKilled = [
   '0',
@@ -312,8 +312,10 @@ masteryBought = [
 masteryPrice = [
   12, 12, 15, 30,
   40, 42, 55, 70,
-  85, 85, 120, 130
-]
+  85, 85, 120, 130,
+  200, 400, 900, 1200,
+  3000, 4000, 8000, 9999
+];
 masteryInfo = [
   '',
   '',
@@ -340,7 +342,19 @@ masteryInfoKor = [
   '몬스터 처치 스탯 x3',
   '토큰 클릭 업그레이드가 자동 클릭에도 적용',
   '아티팩트 발견 확률 x2',
-  '의문의 상자 발견 확률 x2'
+  '의문의 상자 발견 확률 x2',
+  '',
+  '',
+  '',
+  '',
+  '',
+  '',
+  '',
+  '',
+  '',
+  '',
+  '',
+  ''
 ];
 masteryInfoEng = [
   'Additional damage based on level',
@@ -354,7 +368,19 @@ masteryInfoEng = [
   'Monster Kill Stat x3',
   'Token click upgrade applies to automatic clicks, too',
   'Chance to Discover Artifact x2',
-  'Chance to Discover Mysterious Chest x2'
+  'Chance to Discover Mysterious Chest x2',
+  '',
+  '',
+  '',
+  '',
+  '',
+  '',
+  '',
+  '',
+  '',
+  '',
+  '',
+  ''
 ];
 artifactQuantity = [
   '0',
