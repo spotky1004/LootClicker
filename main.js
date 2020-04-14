@@ -135,7 +135,6 @@ $(function (){
         return ' - ' + notation(playerExp) + '/' + notation(playerExpNeed) + ' EXP (' + expPer + '%)';
       } else if (meta == 0) {
         playerExp = 0;
-        playerLevel = 101;
         return ' - Max Power'
       } else if (meta == 1) {
         expPer = (playerExp / playerExpNeed * 100).toFixed(2);
