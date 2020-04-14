@@ -373,7 +373,7 @@ $(function (){
       }
       playerExp = playerExp + Math.random()*(tokenBuff3N**(monsterNow))*tokenBuff2N*masteryBuff02*gotLoot*artifactOverBoost[2]*upgradeBuff01R;
       luck = Math.floor(Math.random()*100);
-      if (playerLevel >= 31) {
+      if (playerLevel >= 31 && otherworldyCount >= 1) {
         if (monsterNow < 101) {
           mobKilled[monsterNow] += 1*masteryBuff20R+artifactOverBoost[9]+upgradeBuff11R;
         } else {
