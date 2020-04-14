@@ -199,21 +199,21 @@ extraStatusTips = [
   'The maximum level of the weapon is +999!',
   'Rare-grade sword damage is low, but with experience bottle!',
   'The amount of experience required is x3.2 each time the level goes up.!',
-  'There are 100 monsters!',
+  'There are 100 monsters, and 2 bosses!',
   '???'
 ];
 extraStatusTipsKor = [
   '무기의 최대 레벨은 +999 입나다!',
   '희귀등급 검은 데미지는 낮지만 경험치 병이 딸려옵니다!',
   '필요 경험치량은 레벨이 오를때마다 3.2배씩 증가합니다!',
-  '몬스터는 101마리가 있습니다!',
+  '이 게임에는 몬스터 100마리와 보스 2마리가 있습니다!',
   '???'
 ];
 extraStatusTipsEng = [
   'The maximum level of the weapon is +999!',
   'Rare-grade sword damage is low, but with experience bottle!',
   'The amount of experience required is x3.2 each time the level goes up.!',
-  'There are 101 monsters!',
+  'There are 100 monsters, and 2 bosses!',
   '???'
 ];
 varData = [
@@ -222,7 +222,8 @@ varData = [
   'weaponLevel', 'lootQuantity', 'tokenUpgrade', 'tokenUpgradePrice', 'tokenUpgrade',
   'tokenUpgradePrice', 'mobKilled', 'brokeUniverse', 'masteryCompeleted', 'playerSP',
   'masteryBought', 'playtime', 'codeEnterd', 'totalCode', 'notationForm',
-  'totalToken', 'artifactQuantity', 'ldm'
+  'totalToken', 'artifactQuantity', 'ldm', 'meta', 'otherworldyCount',
+  'tp', 'upgradeCost', 'upgradeBought'
 ];
 resetData = {
   0: 0, 1: 0, 2: 0, 3: 10, 4: 0,
@@ -237,14 +238,19 @@ resetData = {
   17: 0,
   18: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
   19: 0,
-  20: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+  20: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
   21: 0,
   22: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
   23: 0,
   24: 0,
   25: 0,
   26: ['0', 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-  27: 0
+  27: 0,
+  28: 0,
+  29: 0,
+  30: 0,
+  31: [1, 2, 10, 5, 3000, 50, 5000, 7000, 130000, 250000, 400000, 25, 0, 0, 0, 0, 0, 0, 0, 0],
+  32: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
 };
 popupMsg = [
   'Reached max stage!', 'Reach Level', 'to Open', 'Break The Universe to Open'
@@ -299,7 +305,9 @@ masteryCompeleted = [
 masteryBought = [
   0, 0, 0, 0,
   0, 0, 0, 0,
-  0, 0, 0, 0
+  0, 0, 0, 0,
+  0, 0, 0, 0,
+  0, 0, 0, 0,
 ];
 masteryPrice = [
   12, 12, 15, 30,
@@ -398,6 +406,51 @@ artifactOverBoost = [
   0, 0, 0, 0, 0,
   0, 0
 ];
+upgradeInfo = [
+
+];
+upgradeBought = [
+  0, 0, 0, 0,
+  0, 0, 0, 0,
+  0, 0, 0, 0,
+  0, 0, 0, 0,
+  0, 0, 0, 0
+];
+upgradeInfoKor = [
+  '아더월디 횟수에 비례한 데미지 부스트',
+  'TP개수에 비례한 경험치 부스트',
+  'meta world 해금',
+  '몬스터 경험치가 ^a+0.01 에서 시작',
+  'Loot x3',
+  '몬스터 킬 스텟 +1',
+  '멀티 레이어 퀘스트',
+  '스킬 4, 5번째 줄 해금',
+  '아티팩트 보존',
+  'Weakness제한 풀기',
+  '모든 레벨 제한 풀기',
+  'TP x2',
+];
+upgradeInfoEng = [
+  'Dmg boost based on Otherworldy count',
+  'Exp boost based on Transcesion Point',
+  'Unlock meta world',
+  'Monster EXP start at ^a+0.01',
+  'Loot x3',
+  'Monster kill stat +1',
+  'Multi Layer Quest',
+  'Skill line 4, 5',
+  'Artifact wont reset',
+  'Break Weakness Cap',
+  'Break Max Level',
+  'TP gain x2'
+];
+upgradeCost = [
+  1, 2, 10, 5,
+  3000, 50, 5000, 7000,
+  130000, 250000, 400000, 25,
+  0, 0, 0, 0,
+  0, 0, 0, 0
+];
 codeEnterd = [
   0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
   0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
@@ -415,5 +468,5 @@ translate = [
 ];
 toTranslate = [
   'monName', 'lootName', 'weaponName', 'extraStatusTips', 'popupMsg',
-  'tokenUpgradeName', 'masteryInfo', 'artifactName'
+  'tokenUpgradeName', 'masteryInfo', 'artifactName', 'upgradeInfo'
 ];
