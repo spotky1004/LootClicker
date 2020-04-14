@@ -587,9 +587,15 @@ $(function (){
     $("#fieldWarp").attr({
       'style' : 'background-image: url(bg/world' + stagePage + '.png);'
     });
-    $('#stageNum').html(function (index,html) {
-      return stagePage;
-    });
+    if (meta == 0) {
+      $('#stageNum').html(function (index,html) {
+        return stagePage;
+      });
+    } else {
+      $('#stageNum').html(function (index,html) {
+        return (stagePage+10);
+      });
+    }
     if (stagePage < 10) {
       $("#monsterStatus").attr({
         'class' : ' '
