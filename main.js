@@ -84,6 +84,9 @@ $(function (){
     $('#playtime').html(function (index,html) {
       return 'Total Play Time: ' + playtime.toFixed(3) + 'h';
     });
+    $('#resetButton').html(function (index,html) {
+      return 'Reset Game (' + resetTimer + ')';
+    });
   }
   function playerStatus() {
     stageUnlocked = Math.floor((playerLevel-1)/10)+1;
@@ -164,8 +167,8 @@ $(function (){
       $('#fieldWarp > span:eq(0)').attr( 'style', 'width: 79.999%;' );
       $('#fieldWarp > span:eq(1)').show();
       $('#masteryWarp > .skillLine:eq(2)').show();
-      $('#masteryWarp > .skillLine:eq(3)').hide();
-      $('#masteryWarp > .skillLine:eq(4)').hide();
+      $('#masteryWarp > .skillLine:eq(3)').show();
+      $('#masteryWarp > .skillLine:eq(4)').show();
       $('#coin').show();
       $('#mainNav > div:eq(6)').show();
       $('#mainNav > div:eq(5)').show();
@@ -1514,7 +1517,11 @@ $(function (){
     bulkOpen = 10000000;
   });
   $("#resetButton").click(function () {
-    if(confirm("Reset game?") == true){
+    resetTimer--;
+    $('#resetButton').html(function (index,html) {
+      return 'Reset Game (' + resetTimer + ')';
+    });
+    if(resetTimer == 0){
       gameReset();
     }
     else{
@@ -1929,6 +1936,7 @@ $(function (){
   totalCode = 0;
   notationForm = 0;
   tokenBuff1N = 1;
+  resetTimer = 10;
   mastery();
   artifact();
   otherworldy();
@@ -1995,6 +2003,9 @@ $(function (){
       gameDisplay();
     } else {
       ldmCount--;
+    }
+    if (resetTimer < 10) {
+      resetTimer++;
     }
   }, 1000);
 });
