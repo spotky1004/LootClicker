@@ -375,7 +375,11 @@ $(function (){
       luck = Math.floor(Math.random()*100);
       if (playerLevel >= 31 || otherworldyCount >= 1) {
         if (monsterNow < 101) {
-          mobKilled[monsterNow] += 1*masteryBuff20R+artifactOverBoost[9]+upgradeBuff11R;
+          if (upgradeBuff11R != 1) {
+            mobKilled[monsterNow] += 1*masteryBuff20R+artifactOverBoost[9]+upgradeBuff11R;
+          } else {
+            mobKilled[monsterNow] += 1*masteryBuff20R+artifactOverBoost[9];
+          }
         } else {
           if (brokeUniverse == 0) {
             extraStstusSet('<span class="brokeUniv">You Broke Universe! (Unlocked Otherworldy)</span>');
@@ -866,7 +870,7 @@ $(function (){
     upgradeBuff02 = -1;
     upgradeBuff03 = 0.01*upgradeBought[3];
     upgradeBuff10 = 3;
-    upgradeBuff11 = upgradeBought[5];
+    upgradeBuff11 = upgradeBought[5]*2;
     upgradeBuff12 = -1;
     upgradeBuff13 = -1;
     upgradeBuff20 = -1;
