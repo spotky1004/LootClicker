@@ -1108,7 +1108,7 @@ $(function (){
   function gotArtifact(num) {
     if (num == 100) {
       lootQuantity[2]++;
-      extraStstusSet('<span class="gotChest">You got an Chest!</span>');
+      extraStstusSet('<span class="gotChest">You got a Chest!</span>');
     }
     if (artifactQuantity[num] != 11 || upgradeBuff22R == -1) {
       artifactQuantity[num]++;
