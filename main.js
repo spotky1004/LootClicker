@@ -565,7 +565,7 @@ $(function (){
         extraMonsterHp = extraMonsterHp**1.1*10;
       }
     }
-    if (masteryBuff10R != 1 && Math.random() < masteryBuff10) {
+    if (masteryBuff10R != 1 && Math.random() < masteryBuff10 && monsterNow != 101 && monsterNow != 201) {
       $("#monLevel").attr({
         'style' : 'rareMob'
       });
