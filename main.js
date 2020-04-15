@@ -1771,7 +1771,7 @@ $(function (){
   });
   $("#mysteryChestC").click(function () {
     disableMessage = 0;
-    if (lootQuantity[2] >= 1 && playerLevel >= 71) {
+    if (lootQuantity[2] >= 1 && (playerLevel >= 71 || meta == 1)) {
       if (lootQuantity[2] >= 1) {
         if (lootQuantity[2] < bulkOpen) {
           bulk = lootQuantity[2];
