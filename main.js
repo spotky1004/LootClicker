@@ -1860,6 +1860,7 @@ $(function (){
       }
       meta = 1;
       monsterNow = 0;
+      stageNow = 1;
       monsterHpCalc();
       otherworldy();
     }
