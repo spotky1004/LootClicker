@@ -153,7 +153,7 @@ $(function (){
     });
     setTimeout(function(){
       $('.totalCombatStatus').html(function (index,html) {
-        if (playerLevel < 71 || otherworldyCount == 1) {
+        if (playerLevel < 71 || otherworldyCount >= 1) {
           return 'Total Status<br>Dmg: ' + notation(upgradeBuff00R*playerDmg*tokenBuff0N*masteryBuff00R*artifactOverBoost[1]) + '<br>' + 'Hit/s: ' + (playerHitPS+1);
         } else {
           return 'Total Status<br>Dmg: ' + notation(upgradeBuff00R*playerDmg*tokenBuff0N*masteryBuff00R*artifactOverBoost[1]*monsterWeakness) + ' (Weakness: x' + monsterWeakness.toFixed(2) + ')<br>' + 'Hit/s: ' + (playerHitPS+1);
