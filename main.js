@@ -1116,6 +1116,8 @@ $(function (){
       artifactQuantity[num]++;
       if (disableMessage == 0) {
         extraStstusSet('<span class="gotArtifact">You got an Artifact: ' + artifactName[num] + '</span>');
+      } else {
+        extraStstusSet('<span class="gotArtifact">You opened ' + bulk + ' Chests</span>')
       }
     }
   }
