@@ -446,6 +446,9 @@ $(function (){
         }
       }
       loot1Chance = 100-(50+(stagePage-1)*3);
+      console.log(0 + '~' + (50+(stagePage-1)*3))
+      console.log((50+(stagePage-1)*3) + '~' + (50+(stagePage-1)*3+loot1Chance*(1-(((monsterNow-1)%5))*0.25)))
+      console.log((50+(stagePage-1)*3+loot1Chance*(1-(((monsterNow-1)%5))*0.25)) + '~' + 100)
       if (0 <= luck &&  luck < 50+(stagePage-1)*3) {
 
       } else if (50+(stagePage-1)*3 <= luck && luck < (50+(stagePage-1)*3+loot1Chance*(1-(((monsterNow-1)%5))*0.25))) {
@@ -477,7 +480,7 @@ $(function (){
         loot();
       } else if (50+(stagePage-1)*3+loot1Chance*(1-(((monsterNow-1)%5))*0.25) <= luck && luck < 100) {
         if (meta == 0) {
-          lootNum = (Math.ceil((monsterNow)/5)*2)+1;
+          lootNum = (Math.ceil((monsterNow)/5)*2)+2;
         } else {
           lootNum = (Math.ceil((monsterNow-100)/5)*2)+1;
         }
