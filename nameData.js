@@ -447,13 +447,13 @@ upgradeInfoKor = [
   'TP개수에 비례한 경험치 부스트',
   'meta world 해금',
   '몬스터 경험치가 ^a+0.01 에서 시작',
-  'Loot x3',
+  '레벨 제한 풀기',
   '몬스터 킬 스텟 +2',
   '멀티 레이어 퀘스트',
   '스킬 4, 5번째 줄 해금',
   '아티팩트 보존',
   'Weakness제한 풀기',
-  '모든 레벨 제한 풀기',
+  'Loot x3',
   'TP x2',
 ];
 upgradeInfoEng = [
@@ -461,13 +461,13 @@ upgradeInfoEng = [
   'Exp boost based on Transcesion Point',
   'Unlock meta world',
   'Monster EXP start at ^a+0.01',
-  'Loot x3',
+  'Break Max Level',
   'Monster kill stat +2',
   'Multi Layer Quest',
   'Skill line 4, 5',
   'Artifact wont reset',
   'Break Weakness Cap',
-  'Break Max Level',
+  'Loot x3',
   'TP gain x2'
 ];
 upgradeCost = [

@@ -343,8 +343,8 @@ $(function (){
   }
   function gotWeaponCalc(num, quantity) {
     if (quantity > 0) {
-      if (weaponLevel[num] < 999 || upgradeBuff22R == -1) {
-        if (weaponLevel[num] + quantity > 999 && upgradeBuff22R == 1) {
+      if (weaponLevel[num] < 999 || upgradeBuff10R == -1) {
+        if (weaponLevel[num] + quantity > 999 && upgradeBuff10R == 1) {
           quantity = 999 - weaponLevel[num];
         }
         weaponLevel[num] = weaponLevel[num] + quantity;
@@ -416,9 +416,9 @@ $(function (){
         gotLoot = gotLoot * 100;
       }
       if (meta == 1) {
-        artiCh = artiCh * 100;
+        artiCh = artiCh * 10;
       }
-      if (upgradeBuff10R == -1) {
+      if (upgradeBuff22R == -1) {
         gotLoot = gotLoot * 3;
       }
       playerExp = playerExp + Math.random()*(tokenBuff3N**(monsterNow))*tokenBuff2N*masteryBuff02*gotLoot*artifactOverBoost[2]*upgradeBuff01R;
@@ -524,8 +524,15 @@ $(function (){
           gotArtifact(100);
         }
       } else {
-        if (Math.random() < artiCh*gotLoot*artifactOverBoost[12]*masteryBuff23R*0.000005*(4**(stagePage-1))) {
+        if (artiCh*gotLoot*artifactOverBoost[12]*masteryBuff23R*0.000005*(1.5**(stagePage-1)) < 2) {
+          if (Math.random() < artiCh*gotLoot*artifactOverBoost[12]*masteryBuff23R*0.000005*(1.5**(stagePage-1))) {
+            gotArtifact(100);
+          }
+        } else {
+          chestBulk = Math.floor(artiCh*gotLoot*artifactOverBoost[12]*masteryBuff23R*0.000005*(1.5**(stagePage-1)));
+          disableMessage = 1;
           gotArtifact(100);
+          disableMessage = 0;
         }
       }
     }
@@ -934,6 +941,9 @@ $(function (){
     for (var i = 1; i < artifactQuantity.length; i++) {
       effNum = artifactEffect[i];
       artifactOverBoost[effNum] += (artifactQuantity[i]*artifactEffectPow[i]);
+      if (artifactOverBoost[12] >= 25) {
+        artifactOverBoost[12] = 25;
+      }
     }
     artiStr = '';
     for (var i = 1; i < artifactOverBoost.length; i++) {
@@ -982,13 +992,13 @@ $(function (){
     upgradeBuff01 = 1+tp/3;
     upgradeBuff02 = -1;
     upgradeBuff03 = 0.01*upgradeBought[3];
-    upgradeBuff10 = 3;
+    upgradeBuff10 = -1;
     upgradeBuff11 = upgradeBought[5]*2;
     upgradeBuff12 = -1;
     upgradeBuff13 = -1;
     upgradeBuff20 = -1;
     upgradeBuff21 = -1;
-    upgradeBuff22 = -1;
+    upgradeBuff22 = 3;
     upgradeBuff23 = 2**upgradeBought[11];
     for (var i = 0; i < 3; i++) {
       for (var j = 0; j < 4; j++) {
@@ -1118,14 +1128,17 @@ $(function (){
   }
   function gotArtifact(num) {
     if (num == 100) {
-      lootQuantity[2]++;
-      extraStstusSet('<span class="gotChest">You got a Chest!</span>');
-    } else if (artifactQuantity[num] != 11 || upgradeBuff22R == -1) {
+      if (disableMessage == 0) {
+        lootQuantity[2]++;
+        extraStstusSet('<span class="gotChest">You got a Chest!</span>');
+      } else {
+        lootQuantity[2] += chestBulk;
+        extraStstusSet('<span class="gotChest">You got ' + chestBulk + ' Chests!</span>');
+      }
+    } else if (artifactQuantity[num] != 11 || upgradeBuff10R == -1) {
       artifactQuantity[num]++;
       if (disableMessage == 0) {
         extraStstusSet('<span class="gotArtifact">You got an Artifact: ' + artifactName[num] + '</span>');
-      } else {
-        extraStstusSet('<span class="gotArtifact">You opened ' + bulk + ' Chests</span>')
       }
     }
   }
@@ -1790,6 +1803,7 @@ $(function (){
         }
         if (bulk >= 100) {
           disableMessage = 1;
+          extraStstusSet('<span class="gotArtifact">You opened ' + bulk + ' Chests</span>');
         }
         lootQuantity[2] = lootQuantity[2] - bulk;
         g = 1;
@@ -1936,6 +1950,7 @@ $(function (){
   tokenBulk = 1;
   translateNum = 0;
   debugStr = 0;
+  disableMessage = 0;
   brokeUniverse = 0;
   ehhhhhhhhhhh = '이예ㅔㅔㅔㅔㅔ';
   otherworldyCount = 0;
