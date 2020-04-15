@@ -87,6 +87,15 @@ $(function (){
     $('#resetButton').html(function (index,html) {
       return 'Reset Game (' + resetTimer + ')';
     });
+    if (meta == 0) {
+      $('#stageNum').html(function (index,html) {
+        return stagePage;
+      });
+    } else {
+      $('#stageNum').html(function (index,html) {
+        return (stagePage+10);
+      });
+    }
   }
   function playerStatus() {
     stageUnlocked = Math.floor((playerLevel-1)/10)+1;
