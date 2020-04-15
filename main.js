@@ -1038,7 +1038,7 @@ $(function (){
         'class' : 'trY'
       });
       $('#transcensionButton').html(function (index,html) {
-        return 'Go to other world (' + (2+(playerLevel-100)**2*upgradeBuff23R) + ' TP)! +' + otherworldyCount;
+        return 'Go to other world (' + ((2+Math.floor(Math.pow(otherworldyCount, 0.25))+(playerLevel-100)**2)*upgradeBuff23R) + ' TP)! +' + otherworldyCount;
       });
     } else {
       $('#transcensionButton').attr({
@@ -1809,7 +1809,7 @@ $(function (){
   });
   $("#transcensionButton").click(function () {
     if (brokeUniverse >= 1 && playerLevel >= 101) {
-      tp += 2+(playerLevel-100)**2*upgradeBuff23R;
+      tp += ((2+Math.floor(Math.pow(otherworldyCount, 0.25))+(playerLevel-100)**2)*upgradeBuff23R);
       playerLevel = 1;
       playerExp = 0;
       playerExpNeed = 10;
