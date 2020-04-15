@@ -1111,8 +1111,7 @@ $(function (){
     if (num == 100) {
       lootQuantity[2]++;
       extraStstusSet('<span class="gotChest">You got a Chest!</span>');
-    }
-    if (artifactQuantity[num] != 11 || upgradeBuff22R == -1) {
+    } else if (artifactQuantity[num] != 11 || upgradeBuff22R == -1) {
       artifactQuantity[num]++;
       if (disableMessage == 0) {
         extraStstusSet('<span class="gotArtifact">You got an Artifact: ' + artifactName[num] + '</span>');
@@ -1926,9 +1925,9 @@ $(function (){
   bulkOpen = 1;
   tokenBulk = 1;
   translateNum = 0;
-  ehhhhhhhhhhh = '이예ㅔㅔㅔㅔㅔ';
   debugStr = 0;
   brokeUniverse = 0;
+  ehhhhhhhhhhh = '이예ㅔㅔㅔㅔㅔ';
   otherworldyCount = 0;
   tp = 0;
   rareMob = 0;
