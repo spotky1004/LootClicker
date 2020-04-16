@@ -1977,6 +1977,7 @@ $(function (){
   notationForm = 0;
   tokenBuff1N = 1;
   upgradeBuff12R = 1;
+  upgradeBuff13R = 1;
   resetTimer = 10;
   mastery();
   artifact();
