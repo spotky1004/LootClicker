@@ -918,7 +918,7 @@ $(function (){
           }
         });
         $('.skillLine:eq(' + i + ') > .skillSel:eq(' + j + ') > p:eq(1)').html(function (index,html) {
-          return masteryPrice[i*4+j] + ' SP';
+          return Math.floor(masteryPrice[i*4+j]*upgradeBuff12R) + ' SP';
         });
         if (masteryBought[i*4+j] == 1) {
           $('.skillLine:eq(' + i + ') > .skillSel:eq(' + j + ')').attr({
@@ -988,14 +988,14 @@ $(function (){
     $('#transcensionDisplay').html(function (index,html) {
       return 'You Have ' + tp + ' Transcension Point';
     });
-    upgradeCost = [1, 2, 10, (5*4**upgradeBought[3]), 20, 9999999, 9999999, 9999999, 3000, (50*2**upgradeBought[9]), 5000, 7000, 130000, 250000, 400000, (25*5**upgradeBought[15]), 0, 0, 0, 0];
+    upgradeCost = [1, 2, 10, (5*4**upgradeBought[3]), 20, (50*6**upgradeBought[5]), (150*6**upgradeBought[6]), 1200, 3000, (50*2**upgradeBought[9]), 5000, 7000, 130000, 250000, 400000, (25*5**upgradeBought[15]), 0, 0, 0, 0];
     upgradeBuff00 = 1+otherworldyCount*3*((otherworldyCount*2.5)**Math.sqrt(Math.floor(otherworldyCount/50)));
     upgradeBuff01 = 1+tp/3;
     upgradeBuff02 = -1;
     upgradeBuff03 = 0.01*upgradeBought[3];
     upgradeBuff10 = 5;
-    upgradeBuff11 = -1;
-    upgradeBuff12 = -1;
+    upgradeBuff11 = 25*upgradeBought[5];
+    upgradeBuff12 = 0.9**upgradeBought[6];
     upgradeBuff13 = -1;
     upgradeBuff20 = -1;
     upgradeBuff21 = upgradeBought[9]*2;
@@ -1009,9 +1009,9 @@ $(function (){
       for (var j = 0; j < 4; j++) {
         eval('upgradeBuff' + i + j + 'R = (upgradeBought[' + (i*4+j) + '] >= 1) ? upgradeBuff' + i + j + ' : 1');
         $('.upgradeLine:eq(' + i + ') > .upgradeSel:eq(' + j + ') > p:eq(0)').html(function (index,html) {
-          if (eval('upgradeBuff' + i + j) != -1 && i*4+j != 3 && i*4+j != 9) {
+          if (eval('upgradeBuff' + i + j) != -1 && i*4+j != 3 && i*4+j != 9 && i*4+j != 5) {
             return upgradeInfo[i*4+j] + '<br>' + ((eval('upgradeBuff' + i + j) >= 1) ? "x" + eval('upgradeBuff' + i + j).toFixed(2) : (eval('upgradeBuff' + i + j)*100).toFixed(0) + "%");
-          } else if (i*4+j == 3 || i*4+j == 9) {
+          } else if (i*4+j == 3 || i*4+j == 5 || i*4+j == 9) {
             return upgradeInfo[i*4+j] + '<br> +' + eval('upgradeBuff' + i + j).toFixed(2);
           } else {
             return upgradeInfo[i*4+j];
@@ -1022,7 +1022,7 @@ $(function (){
         });
         if (upgradeBought[i*4+j] >= 1) {
           a = i*4+j;
-          if (a == 0 || a == 1 || a == 2 || a == 4 || a == 5 || a == 6 || a == 7 || a == 8 || a == 10 || a == 11 || a == 12 || a == 13 || a == 14) {
+          if (a == 0 || a == 1 || a == 2 || a == 4 || a == 7 || a == 8 || a == 10 || a == 11 || a == 12 || a == 13 || a == 14) {
             $('.upgradeLine:eq(' + i + ') > .upgradeSel:eq(' + j + ')').attr({
               'class' : 'upgradeSel upgradeY'
             });
@@ -1757,11 +1757,11 @@ $(function (){
     a = $(".skillLine > .skillSel").index(this);
     if (masteryBought[a] != 1) {
       if (playerSP >= masteryPrice[a]) {
-        playerSP -= masteryPrice[a];
+        playerSP -= Math.floor(masteryPrice[a]*upgradeBuff12R);
         masteryBought[a] = 1;
       }
     } else {
-      playerSP += masteryPrice[a];
+      playerSP += Math.floor(masteryPrice[a]*upgradeBuff12R);
       masteryBought[a] = 0;
     }
     mastery();
@@ -1852,7 +1852,7 @@ $(function (){
       mobKilled = ['0', 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
       brokeUniverse = 0;
       masteryCompeleted = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
-      playerSP = 0;
+      playerSP = upgradeBuff11R;
       masteryBought = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
       totalToken = 0;
       if (upgradeBuff30R != -1) {
@@ -1862,6 +1862,7 @@ $(function (){
       stageNow = 1;
       monsterNow = 1;
       otherworldyCount++;
+      $("#menusWarp > div:eq(6)").hide();
       artifact();
       gameDisplay();
       stageChange();
@@ -1881,6 +1882,7 @@ $(function (){
       meta = 1;
       monsterNow = 0;
       stageNow = 1;
+      $("#menusWarp > div:eq(6)").hide();
       stageChange();
       monsterHpCalc();
       otherworldy();
@@ -1888,7 +1890,7 @@ $(function (){
   });
   $(".upgradeSel").click(function () {
     a = $(".upgradeLine > .upgradeSel").index(this);
-    if (a == 0 || a == 1 || a == 2 || a == 4 || a == 5 || a == 6 || a == 7 || a == 8 || a == 10 || a == 11 || a == 12 || a == 13 || a == 14) {
+    if (a == 0 || a == 1 || a == 2 || a == 4 || a == 7 || a == 8 || a == 10 || a == 11 || a == 12 || a == 13 || a == 14) {
       if (tp >= upgradeCost[a] && upgradeBought[a] == 0) {
         tp -= upgradeCost[a];
         upgradeBought[a] = 1;
@@ -1958,6 +1960,7 @@ $(function (){
   totalCode = 0;
   notationForm = 0;
   tokenBuff1N = 1;
+  upgradeBuff12R = 1;
   resetTimer = 10;
   mastery();
   artifact();
