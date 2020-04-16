@@ -2004,13 +2004,15 @@ $(function (){
   }, 0);
 
   extraStstusSet('<span class="discord"><a href="https://discord.gg/wkdVQxT" target="_blank">Join My Discord Server!</a></span>');
-  if (otherworldyCount < 1) {
-    rand = Math.floor(Math.random()*4);
-    extraStstusSet(extraStatusTips[rand]);
-  } else {
-    rand = Math.floor(Math.random()*2+5);
-    extraStstusSet(extraStatusTips[rand]);
-  }
+  setTimeout(function(){
+    if (otherworldyCount < 1) {
+      rand = Math.floor(Math.random()*4);
+      extraStstusSet(extraStatusTips[rand]);
+    } else {
+      rand = Math.floor(Math.random()*3+4);
+      extraStstusSet(extraStatusTips[rand]);
+    }
+  }, 0);
   setTimeout(function(){
     $('#warpAll2').show();
     $("#warpAll").attr({
