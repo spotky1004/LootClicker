@@ -350,10 +350,6 @@ masteryInfoKor = [
   '',
   '',
   '',
-  '',
-  '',
-  '',
-  '',
   ''
 ];
 masteryInfoEng = [
@@ -369,10 +365,6 @@ masteryInfoEng = [
   'Token click upgrade applies to automatic clicks, too',
   'Chance to Discover Artifact x2',
   'Chance to Discover Mysterious Chest x2',
-  '',
-  '',
-  '',
-  '',
   '',
   '',
   '',
@@ -447,6 +439,10 @@ upgradeInfoKor = [
   'TP개수에 비례한 경험치 부스트',
   'meta world 해금',
   '몬스터 경험치가 ^a+0.01 에서 시작',
+  '토큰 x5',
+  '',
+  '',
+  '',
   '레벨 제한 풀기',
   '몬스터 킬 스텟 +2',
   '멀티 레이어 퀘스트',
@@ -461,6 +457,10 @@ upgradeInfoEng = [
   'Exp boost based on Transcesion Point',
   'Unlock meta world',
   'Monster EXP start at ^a+0.01',
+  'token x5',
+  '',
+  '',
+  '',
   'Break Max Level',
   'Monster kill stat +2',
   'Multi Layer Quest',
@@ -472,9 +472,9 @@ upgradeInfoEng = [
 ];
 upgradeCost = [
   1, 2, 10, 5,
+  0, 0, 0, 0,
   3000, 50, 5000, 7000,
   130000, 250000, 400000, 25,
-  0, 0, 0, 0,
   0, 0, 0, 0
 ];
 codeEnterd = [
