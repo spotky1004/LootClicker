@@ -1116,7 +1116,7 @@ $(function (){
           return '+' + notation(msg) + ' token';
         });
     		$('#popupToken').css({
-    			"top": divTop,
+    			"top": divTop-30,
     			"left": divLeft,
     			"position": "absolute"
     		}).show();
