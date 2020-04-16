@@ -2005,9 +2005,9 @@ $(function (){
 
   extraStstusSet('<span class="discord"><a href="https://discord.gg/wkdVQxT" target="_blank">Join My Discord Server!</a></span>');
   if (otherworldyCount < 1) {
-    rand = Math.floor(Math.random()*5);
+    rand = Math.floor(Math.random()*4);
   } else {
-    rand = Math.floor(Math.random()*4+4);
+    rand = Math.floor(Math.random()*3+5);
   }
   extraStstusSet(extraStatusTips[rand]);
   setTimeout(function(){
