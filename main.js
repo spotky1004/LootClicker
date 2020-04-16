@@ -1856,11 +1856,11 @@ $(function (){
       meta = 0;
       stageNow = 1;
       monsterNow = 1;
-      stageChange();
-      monsterHpCalc();
       otherworldyCount++;
       artifact();
       gameDisplay();
+      stageChange();
+      monsterHpCalc();
       otherworldy();
     }
   });
