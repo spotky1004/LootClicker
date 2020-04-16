@@ -1947,7 +1947,6 @@ $(function (){
     if (menuCheck == 1) {
       $("#transcensionWarp > div").hide();
       $("#transcensionWarp > div:eq(" + a + ")").show();
-      menuPage = $("#switchUnC > div").index(this);
       gameDisplay();
     }
   });
@@ -2034,6 +2033,8 @@ $(function (){
 
   $("#menusWarp > div").hide();
   $("#menusWarp > div:eq(0)").show();
+  $("#transcensionWarp > div").hide();
+  $("#transcensionWarp > div:eq(0)").show();
   gameLoad();
   ldmD();
   setTimeout(function(){
