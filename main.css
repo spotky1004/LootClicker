@@ -875,6 +875,26 @@ body {
     text-shadow: 0 0 7px #7fd7e3;
   }
 }
+.chestTP {
+  animation-duration: 2s;
+  animation-name: chestTPShiny;
+  animation-iteration-count: infinite;
+  animation-direction: alternate;
+}
+@keyframes chestTPShiny {
+  from {
+    color: #50e6cd;
+    text-shadow: 0 0 7px #50e6cd;
+  }
+  50% {
+    color: #50b9e6;
+    text-shadow: 0 0 10px #50b9e6;
+  }
+  to {
+    color: #50e6cd;
+    text-shadow: 0 0 7px #50e6cd;
+  }
+}
 #settingDiv > div {
   margin-bottom: 8px;
 }

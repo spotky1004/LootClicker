@@ -405,6 +405,9 @@ $(function (){
   function hitMonster(dmg) {
     monsterHp = monsterHp - dmg*tokenBuff0N*masteryBuff00R*artifactOverBoost[1]*monsterWeakness*upgradeBuff00R;
     if (monsterHp <= 0) {
+      if (Math.random() < 0.1 && otherworldyCount >= 1) {
+        token++;
+      }
       monsterWeakness = 1;
       monsterWeakness2 = 1;
       gotLoot = (1+artifactOverBoost[5]);
@@ -1078,7 +1081,7 @@ $(function (){
         'class' : 'trY'
       });
       $('#transcensionButton').html(function (index,html) {
-        return 'Go to other world (' + ((2+Math.floor(Math.pow(otherworldyCount, 0.5))+(playerLevel-100)**2)*upgradeBuff33R) + ' TP)! +' + otherworldyCount;
+        return 'Go to other world (' + ((2+chestTP+Math.floor(Math.pow(otherworldyCount, 0.5))+(playerLevel-100)**2)*upgradeBuff33R) + ' TP)! +' + otherworldyCount;
       });
     } else {
       $('#transcensionButton').attr({
@@ -1814,6 +1817,7 @@ $(function (){
     }
   });
   $("#mysteryChestC").click(function () {
+    chestTP
     disableMessage = 0;
     if (lootQuantity[2] >= 1 && (playerLevel >= 71 || meta == 1)) {
       if (lootQuantity[2] >= 1) {
@@ -1846,13 +1850,19 @@ $(function (){
         artifact();
         disableMessage = 0;
       }
+      for (var i = 0; i < bulk; i++) {
+        if (Math.random() < 0.0005 && playerLevel >= 101 && chestTP < 10 && (otherworldyCount >= 1 || brokeUniverse >= 1)) {
+          chestTP++;
+          extraStstusSet('<span class="chestTP">You got a bonus TP (' + chestTP + '/10)</span>');
+        }
+      }
     } else if (lootQuantity[2] >= 1 && playerLevel < 71) {
       setPopup('Need at least 71 lever to open Chest');
     }
   });
   $("#transcensionButton").click(function () {
     if (brokeUniverse >= 1 && playerLevel >= 101) {
-      tp += ((2+Math.floor(Math.pow(otherworldyCount, 0.5))+(playerLevel-100)**2)*upgradeBuff33R);
+      tp += ((2+chestTP+Math.floor(Math.pow(otherworldyCount, 0.5))+(playerLevel-100)**2)*upgradeBuff33R);
       playerLevel = 1;
       playerExp = 0;
       playerExpNeed = 10;
@@ -1941,6 +1951,7 @@ $(function (){
   monsterDefeated = 0;
   playerExp = 0;
   playerExpNeed = 10;
+  chestTP = 0;
   playerSP = 0;
   token = 0;
   ldm = 0;
@@ -1993,7 +2004,11 @@ $(function (){
   }, 0);
 
   extraStstusSet('<span class="discord"><a href="https://discord.gg/wkdVQxT" target="_blank">Join My Discord Server!</a></span>');
-  rand = Math.floor(Math.random()*4);
+  if (otherworldyCount < 1) {
+    rand = Math.floor(Math.random()*5);
+  } else {
+    rand = Math.floor(Math.random()*3+4);
+  }
   extraStstusSet(extraStatusTips[rand]);
   setTimeout(function(){
     $('#warpAll2').show();
