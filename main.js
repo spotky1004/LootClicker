@@ -2007,7 +2007,7 @@ $(function (){
   if (otherworldyCount < 1) {
     rand = Math.floor(Math.random()*5);
   } else {
-    rand = Math.floor(Math.random()*3+4);
+    rand = Math.floor(Math.random()*4+4);
   }
   extraStstusSet(extraStatusTips[rand]);
   setTimeout(function(){

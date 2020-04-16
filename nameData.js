@@ -208,7 +208,8 @@ extraStatusTipsKor = [
   '필요 경험치량은 레벨이 오를때마다 3.2배씩 증가합니다!',
   '이 게임에는 몬스터 100마리와 보스 2마리가 있습니다!',
   '<span class="chestTP">아더월디 1화 이상부터 몬스터들이 10% 확률로 토큰을 드랍합니다</span>',
-  '<span class="chestTP">우주를 격파하면 상자가 확률적으로 TP를 줍니다</span>'
+  '<span class="chestTP">우주를 격파하면 상자가 확률적으로 TP를 줍니다</span>',
+  '<span class="chestTP">아더월디 횟수에 비례해 TP획득량이 증가합니다</span>'
 ];
 extraStatusTipsEng = [
   'The maximum level of the weapon is +999!',
@@ -216,7 +217,8 @@ extraStatusTipsEng = [
   'The amount of experience required is x3.2 each time the level goes up.!',
   'There are 100 monsters, and 2 bosses!',
   '<span class="chestTP">If Otherworld count is greater than 1, monster will drop token(10% chance)</span>',
-  '<span class="chestTP">After Universe is broken, chest will drop TP</span>'
+  '<span class="chestTP">After Universe is broken, chest will drop TP</span>',
+  '<span class="chestTP">TP gain increase based on Otherworldy Count</span>'
 ];
 varData = [
   'playerLevel', 'stageUnlocked', 'playerExp', 'playerExpNeed', 'token',
