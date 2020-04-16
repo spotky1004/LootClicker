@@ -1887,6 +1887,7 @@ $(function (){
       meta = 0;
       stageNow = 1;
       monsterNow = 1;
+      chestTP = 0;
       otherworldyCount++;
       $("#menusWarp > div:eq(6)").hide();
       artifact();
