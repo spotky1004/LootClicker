@@ -343,9 +343,9 @@ $(function (){
   }
   function gotWeaponCalc(num, quantity) {
     if (quantity > 0) {
-      if (weaponLevel[num] < 999 || upgradeBuff20R == -1) {
-        if (weaponLevel[num] + quantity > 999 && upgradeBuff20R == 1) {
-          quantity = 999 - weaponLevel[num];
+      if (weaponLevel[num] < 999 || weaponLevel[num]  < upgradeBuff20R*999) {
+        if (upgradeBuff20R*999 + quantity > 999) {
+          quantity = upgradeBuff20R*999 - weaponLevel[num];
         }
         weaponLevel[num] = weaponLevel[num] + quantity;
         if (meta == 0) {
@@ -354,13 +354,13 @@ $(function (){
           playerDmg = playerDmg + (((num+50)*2)**(1+((num+50)*2)/5)*10)/(1+((num+50)*2)**3)*quantity;
         }
         collectedWeapon = collectedWeapon + quantity;
-        if (weaponLevel[num] == 999) {
+        if (weaponLevel[num] == upgradeBuff20R*999) {
           switch (translateNum) {
             case 0:
-              translateTxt = 'reached 999Level!'
+              translateTxt = 'reached ' + weaponLevel[num] + ' Level!'
               break;
             case 1:
-              translateTxt = '999레벨 달성!'
+              translateTxt =  weaponLevel[num] + ' 레벨 달성!'
               break;
           }
           strA = '<span class="maxLv">' + weaponName[num] + ' ' + translateTxt + ' +' + (weaponLevel[num]-quantity) + ' ▶ +' + weaponLevel[num] + '</span>'
@@ -960,8 +960,8 @@ $(function (){
     for (var i = 1; i < artifactQuantity.length; i++) {
       effNum = artifactEffect[i];
       artifactOverBoost[effNum] += (artifactQuantity[i]*artifactEffectPow[i]);
-      if (artifactOverBoost[12] >= 25) {
-        artifactOverBoost[12] = 25;
+      if (artifactOverBoost[12] >= 10) {
+        artifactOverBoost[12] = Math.sqrt(artifactOverBoost[12])+6.84;
       }
     }
     artiStr = '';
@@ -1007,7 +1007,7 @@ $(function (){
     $('#transcensionDisplay').html(function (index,html) {
       return 'You Have ' + tp + ' Transcension Point';
     });
-    upgradeCost = [1, 2, 10, (5*4**upgradeBought[3]), 20, (50*6**upgradeBought[5]), (150*6**upgradeBought[6]), 1200, 3000, (50*2**upgradeBought[9]), 5000, 7000, 130000, 250000, 400000, (25*5**upgradeBought[15]), 0, 0, 0, 0];
+    upgradeCost = [1, 2, 10, (5*4**upgradeBought[3]), 20, (50*6**upgradeBought[5]), (150*6**upgradeBought[6]), 1200, (3000*3**upgradeBought[8]), (50*2**upgradeBought[9]), 5000, 7000, 130000, 250000, 400000, (25*5**upgradeBought[15]), 0, 0, 0, 0];
     upgradeBuff00 = 1+otherworldyCount*3*((otherworldyCount*2.5)**Math.sqrt(Math.floor(otherworldyCount/50)));
     upgradeBuff01 = 1+tp/3;
     upgradeBuff02 = -1;
@@ -1016,7 +1016,7 @@ $(function (){
     upgradeBuff11 = 25*upgradeBought[5];
     upgradeBuff12 = 0.9**upgradeBought[6];
     upgradeBuff13 = -1;
-    upgradeBuff20 = -1;
+    upgradeBuff20 = 1+upgradeBought[8];
     upgradeBuff21 = upgradeBought[9]*2;
     upgradeBuff22 = -1;
     upgradeBuff23 = -1;
@@ -1041,7 +1041,7 @@ $(function (){
         });
         if (upgradeBought[i*4+j] >= 1) {
           a = i*4+j;
-          if (a == 0 || a == 1 || a == 2 || a == 4 || a == 7 || a == 8 || a == 10 || a == 11 || a == 12 || a == 13 || a == 14) {
+          if (a == 0 || a == 1 || a == 2 || a == 4 || a == 7 || a == 10 || a == 11 || a == 12 || a == 13 || a == 14) {
             $('.upgradeLine:eq(' + i + ') > .upgradeSel:eq(' + j + ')').attr({
               'class' : 'upgradeSel upgradeY'
             });
@@ -1159,7 +1159,7 @@ $(function (){
         lootQuantity[2] += chestBulk;
         extraStstusSet('<span class="gotChest">You got ' + chestBulk + ' Chests!</span>');
       }
-    } else if (artifactQuantity[num] != 11 || (upgradeBuff20R == -1 && artifactQuantity[num] < 10000)) {
+    } else if (artifactQuantity[num] < 11 || artifactQuantity[num]  < upgradeBuff20R*11) {
       artifactQuantity[num]++;
       if (disableMessage == 0) {
         extraStstusSet('<span class="gotArtifact">You got an Artifact: ' + artifactName[num] + '</span>');
@@ -1914,9 +1914,44 @@ $(function (){
       otherworldy();
     }
   });
+  $("#switchUnC > div").click(function () {
+    a = $("#switchUnC > div").index(this);
+    menuCheck = 0;
+    switch (a) {
+      case 1:
+        if (otherworldyCount >= 3) {
+          menuCheck = 1;
+        } else {
+          setPopup('Reach 3 Otherworldy Count to Open');
+        }
+        break;
+      case 2:
+        if (otherworldyCount >= 5) {
+          menuCheck = 1;
+        } else {
+          setPopup('Reach 5 Otherworldy Count to Open');
+        }
+        break;
+      case 3:
+        if (otherworldyCount >= 25) {
+          menuCheck = 1;
+        } else {
+          setPopup('Reach 25 Otherworldy Count to Open');
+        }
+        break;
+      default:
+        menuCheck = 1;
+    }
+    if (menuCheck == 1) {
+      $("#transcensionWarp > div").hide();
+      $("#transcensionWarp > div:eq(" + a + ")").show();
+      menuPage = $("#switchUnC > div").index(this);
+      gameDisplay();
+    }
+  });
   $(".upgradeSel").click(function () {
     a = $(".upgradeLine > .upgradeSel").index(this);
-    if (a == 0 || a == 1 || a == 2 || a == 4 || a == 7 || a == 8 || a == 10 || a == 11 || a == 12 || a == 13 || a == 14) {
+    if (a == 0 || a == 1 || a == 2 || a == 4 || a == 7 || a == 10 || a == 11 || a == 12 || a == 13 || a == 14) {
       if (tp >= upgradeCost[a] && upgradeBought[a] == 0) {
         tp -= upgradeCost[a];
         upgradeBought[a] = 1;
