@@ -216,7 +216,7 @@ extraStatusTipsEng = [
   'Rare-grade sword damage is low, but with experience bottle!',
   'The amount of experience required is x3.2 each time the level goes up.!',
   'There are 100 monsters, and 2 bosses!',
-  '<span class="chestTP">If Otherworld count is greater than 1, monster will drop token(10% chance)</span>',
+  '<span class="chestTP">If Otherworld count is greater than 1, monster will drop token (10% chance)</span>',
   '<span class="chestTP">After Universe is broken, chest will drop TP</span>',
   '<span class="chestTP">TP gain increase based on Otherworldy Count</span>'
 ];
