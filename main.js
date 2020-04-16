@@ -458,8 +458,8 @@ $(function (){
         }
       }
       loot1Chance = 100-(50+(stagePage-1)*3);
-      if (0 <= luck &&  luck < 50+(stagePage-1)*3) {
-      } else if (50+(stagePage-1)*3 <= luck && luck < (50+(stagePage-1)*3+loot1Chance*(1-(((monsterNow-1)%5))*0.25))) {
+      if (0 <= luck &&  luck < 50+(stagePage-1)*3 && rareMob == 0) {
+      } else if ((50+(stagePage-1)*3 <= luck && luck < (50+(stagePage-1)*3+loot1Chance*(1-(((monsterNow-1)%5))*0.25))) || (rareMob == 1 && Math.random() < 0.5)) {
         if (meta == 0) {
           lootNum = (Math.ceil((monsterNow)/5)*2)+1;
         } else {
@@ -486,7 +486,7 @@ $(function (){
           }
         }
         loot();
-      } else if (50+(stagePage-1)*3+loot1Chance*(1-(((monsterNow-1)%5))*0.25) <= luck && luck < 100) {
+      } else if ((50+(stagePage-1)*3+loot1Chance*(1-(((monsterNow-1)%5))*0.25) <= luck && luck < 100) || (rareMob == 1)) {
         if (meta == 0) {
           lootNum = (Math.ceil((monsterNow)/5)*2)+2;
         } else {
