@@ -892,13 +892,29 @@ $(function (){
     }
   }
   function mastery() {
-    masteryBuff00 = (playerLevel >= 30) ? (playerLevel - 30)*0.05 + 2 : 2;
+    if (upgradeBuff13R != -1) {
+      masteryBuff00 = (playerLevel >= 30) ? (playerLevel - 30)*0.05 + 2 : 2;
+    } else {
+      masteryBuff00 = playerLevel*0.05 + 2;
+    }
     masteryBuff01 = 0.5;
-    masteryBuff02 = collectedWeapon/9990 + 1;
-    masteryBuff03 = (playerLevel >= 30) ? (playerLevel - 30)*0.15 + 2 : 2;
+    if (upgradeBuff13R != -1) {
+      masteryBuff02 = collectedWeapon/9990 + 1;
+    } else {
+      masteryBuff02 = collectedWeapon/1000 + 1;
+    }
+    if (upgradeBuff13R != -1) {
+      masteryBuff03 = (playerLevel >= 30) ? (playerLevel - 30)*0.15 + 2 : 2;
+    } else {
+      masteryBuff03 = playerLevel*0.15 + 2;
+    }
     masteryBuff10 = 0.01;
     masteryBuff11 = 0.02;
-    masteryBuff12 = (playerLevel >= 30) ? (playerLevel - 30)*0.5 + 5 : 5;
+    if (upgradeBuff13R != -1) {
+      masteryBuff12 = (playerLevel >= 30) ? (playerLevel - 30)*0.5 + 5 : 5;
+    } else {
+      masteryBuff12 = playerLevel*0.5 + 5 : 5;
+    }
     masteryBuff13 = 0.99;
     masteryBuff20 = 3;
     masteryBuff21 = Number(tokenBuff1N);
@@ -1009,7 +1025,7 @@ $(function (){
       for (var j = 0; j < 4; j++) {
         eval('upgradeBuff' + i + j + 'R = (upgradeBought[' + (i*4+j) + '] >= 1) ? upgradeBuff' + i + j + ' : 1');
         $('.upgradeLine:eq(' + i + ') > .upgradeSel:eq(' + j + ') > p:eq(0)').html(function (index,html) {
-          if (eval('upgradeBuff' + i + j) != -1 && i*4+j != 3 && i*4+j != 9 && i*4+j != 5) {
+          if (eval('upgradeBuff' + i + j) != -1 && i*4+j != 3 && i*4+j != 9 && i*4+j != 5 && i*4+j != 7) {
             return upgradeInfo[i*4+j] + '<br>' + ((eval('upgradeBuff' + i + j) >= 1) ? "x" + eval('upgradeBuff' + i + j).toFixed(2) : (eval('upgradeBuff' + i + j)*100).toFixed(0) + "%");
           } else if (i*4+j == 3 || i*4+j == 5 || i*4+j == 9) {
             return upgradeInfo[i*4+j] + '<br> +' + eval('upgradeBuff' + i + j).toFixed(2);
@@ -1140,7 +1156,7 @@ $(function (){
         lootQuantity[2] += chestBulk;
         extraStstusSet('<span class="gotChest">You got ' + chestBulk + ' Chests!</span>');
       }
-    } else if (artifactQuantity[num] != 11 || upgradeBuff20R == -1) {
+    } else if (artifactQuantity[num] != 11 || (upgradeBuff20R == -1 && artifactQuantity[num] < 10000)) {
       artifactQuantity[num]++;
       if (disableMessage == 0) {
         extraStstusSet('<span class="gotArtifact">You got an Artifact: ' + artifactName[num] + '</span>');
