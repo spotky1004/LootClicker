@@ -344,7 +344,7 @@ $(function (){
   function gotWeaponCalc(num, quantity) {
     if (quantity > 0) {
       if (weaponLevel[num] < 999 || weaponLevel[num]  < upgradeBuff20R*999) {
-        if (upgradeBuff20R*999 + quantity > 999) {
+        if (weaponLevel[num] + quantity > upgradeBuff20R*999) {
           quantity = upgradeBuff20R*999 - weaponLevel[num];
         }
         weaponLevel[num] = weaponLevel[num] + quantity;
