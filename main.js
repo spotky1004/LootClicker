@@ -406,7 +406,8 @@ $(function (){
     monsterHp = monsterHp - dmg*tokenBuff0N*masteryBuff00R*artifactOverBoost[1]*monsterWeakness*upgradeBuff00R;
     if (monsterHp <= 0) {
       if (Math.random() < 0.1 && otherworldyCount >= 1) {
-        token++;
+        token +=  masteryBuff03R*artifactOverBoost[6]*upgradeBuff10R;
+        totalToken + =  masteryBuff03R*artifactOverBoost[6]*upgradeBuff10R
       }
       monsterWeakness = 1;
       monsterWeakness2 = 1;
