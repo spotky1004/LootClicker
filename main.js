@@ -913,7 +913,7 @@ $(function (){
     if (upgradeBuff13R != -1) {
       masteryBuff12 = (playerLevel >= 30) ? (playerLevel - 30)*0.5 + 5 : 5;
     } else {
-      masteryBuff12 = playerLevel*0.5 + 5 : 5;
+      masteryBuff12 = playerLevel*0.5 + 5;
     }
     masteryBuff13 = 0.99;
     masteryBuff20 = 3;
