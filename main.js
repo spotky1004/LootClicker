@@ -809,8 +809,8 @@ $(function (){
     tokenBuff2N = 1 + tokenUpgrade[2]*0.1;
     tokenBuff2L = 1 + (tokenUpgrade[2]+1)*0.1;
     if (upgradeBuff03R != 1) {
-      tokenBuff3N = (2.8 + upgradeBuff03R + tokenUpgrade[3]*0.01).toFixed(2);
-      tokenBuff3L = (2.8 + upgradeBuff03R + (tokenUpgrade[3]+1)*0.01).toFixed(2);
+      tokenBuff3N = (2.8 + upgradeBuff03R + tokenUpgrade[3]*0.05).toFixed(2);
+      tokenBuff3L = (2.8 + upgradeBuff03R + (tokenUpgrade[3]+1)*0.05).toFixed(2);
     } else {
       tokenBuff3N = (2.8 + tokenUpgrade[3]*0.01).toFixed(2);
       tokenBuff3L = (2.8 + (tokenUpgrade[3]+1)*0.01).toFixed(2);
