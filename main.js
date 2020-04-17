@@ -2083,6 +2083,8 @@ $(function (){
   resetTimer = 10;
   tick1 = 0;
   tick2 = 0;
+  tickCount = 0;
+  tickStack = 0;
   mastery();
   artifact();
   otherworldy();
@@ -2148,10 +2150,14 @@ $(function (){
     }
     tick1 = tick2;
     tick2 = new Date().getTime();
-    if (menuPage == 7) {
+    tickCount++;
+    tickStack += tick2-tick1
+    if (menuPage == 7 && tickCount >= 100) {
       $('#tickRate').html(function (index,html) {
-        return 'Tick rate: ' + (tick2-tick1) + 'ms/10ms';
+        return 'Tick rate: ' + (tickStack/100).toFixed(2) + 'ms/10ms';
       });
+      tickCount = 0;
+      tickStack = 0;
     }
     playerStatus();
   }, 10);
