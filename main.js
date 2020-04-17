@@ -407,7 +407,7 @@ $(function (){
     if (monsterHp <= 0) {
       if (Math.random() < 0.1 && otherworldyCount >= 1) {
         token +=  masteryBuff03R*artifactOverBoost[6]*upgradeBuff10R;
-        totalToken +=  masteryBuff03R*artifactOverBoost[6]*upgradeBuff10R
+        totalToken +=  masteryBuff03R*artifactOverBoost[6]*upgradeBuff10R;
       }
       monsterWeakness = 1;
       monsterWeakness2 = 1;
@@ -1164,6 +1164,61 @@ $(function (){
       artifactQuantity[num]++;
       if (disableMessage == 0) {
         extraStstusSet('<span class="gotArtifact">You got an Artifact: ' + artifactName[num] + '</span>');
+      }
+    }
+  }
+  function lootOpen(num) {
+    a = num-1
+    if (lootQuantity[num] >= 1) {
+      if (lootQuantity[num] < bulkOpen) {
+        bulk = lootQuantity[num]
+      } else {
+        bulk = bulkOpen;
+      }
+      lootQuantity[num] = lootQuantity[num] - bulk;
+      c = 1;
+      gotWeapon = [0, 0, 0];
+      luckP = 0;
+      if (masteryBuff11R != 1) {
+        luckP = masteryBuff11R*100;
+      }
+      while (c <= bulk) {
+        luck = Math.floor(Math.random()*100);
+        if ((num-2)%2 == 1) {
+          if (0 <= luck && luck< 20+(lootPage-1)*2) {
+            playerExp = playerExp + Math.random()*(2.8**((num-2)*2))*tokenBuff2N*masteryBuff02*artifactOverBoost[2]*upgradeBuff01R;
+          } else if (20+(lootPage-1)*2-luckP <= luck && luck < 85+(lootPage-1)-luckP) {
+            gotWeapon[0]++;
+          } else if (85+(lootPage-1)-luckP <= luck && luck < 98-luckP) {
+            gotWeapon[1]++;
+          } else if (98-luckP <= luck && luck <= 100 && a == 3) {
+            lootQuantity[1] = lootQuantity[1] + Math.floor(Math.random()*(5+(num-3)));
+            gotWeapon[2]++;
+          }
+        } else {
+          if (0 <= luck && luck< 20+(lootPage-1)*2) {
+            playerExp = playerExp + Math.random()*(2.8**(num*2))*tokenBuff2N*masteryBuff02*artifactOverBoost[2]*upgradeBuff01R;
+          } else if (20+(lootPage-1)*2-luckP <= luck && luck < 85+(lootPage-1)-luckP) {
+            gotWeapon[0]++;
+          } else if (85+(lootPage-1)-luckP <= luck && luck < 98-luckP) {
+            gotWeapon[1]++;
+          } else if (98-luckP <= luck && luck <= 100 && a == 3) {
+            lootQuantity[1] = lootQuantity[1] + Math.floor(Math.random()*(5+(num-3)));
+            gotWeapon[2]++;
+          }
+        }
+        c++;
+      }
+      if ((num-2)%2 == 1) {
+        lootCo = a;
+        gotWeaponCalc(((lootPage-1)*5+1+lootCo), gotWeapon[0]);
+        gotWeaponCalc(((lootPage-1)*5+2+lootCo), gotWeapon[1]);
+        gotWeaponCalc(((lootPage)*5), gotWeapon[2]);
+      } else {
+        lootCo = a;
+        gotWeaponCalc(((lootPage-1)*5+1+lootCo), gotWeapon[0]);
+        gotWeaponCalc(((lootPage-1)*5+lootCo), gotWeapon[1]);
+        gotWeaponCalc(((lootPage)*5), gotWeapon[2]);
       }
     }
   }
