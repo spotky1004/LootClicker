@@ -227,7 +227,7 @@ varData = [
   'tokenUpgradePrice', 'mobKilled', 'brokeUniverse', 'masteryCompeleted', 'playerSP',
   'masteryBought', 'playtime', 'codeEnterd', 'totalCode', 'notationForm',
   'totalToken', 'artifactQuantity', 'ldm', 'meta', 'otherworldyCount',
-  'tp', 'upgradeCost', 'upgradeBought', 'chestTP'
+  'tp', 'upgradeCost', 'upgradeBought', 'chestTP', 'dtr'
 ];
 resetData = {
   0: 0, 1: 0, 2: 0, 3: 10, 4: 0,
@@ -255,7 +255,8 @@ resetData = {
   30: 0,
   31: [1, 2, 10, 5, 3000, 50, 5000, 7000, 130000, 250000, 400000, 25, 0, 0, 0, 0, 0, 0, 0, 0],
   32: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-  33: 0
+  33: 0,
+  34: 0
 };
 popupMsg = [
   'Reached max stage!', 'Reach Level', 'to Open', 'Break The Universe to Open'

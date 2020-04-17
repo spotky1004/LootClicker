@@ -160,6 +160,9 @@ $(function (){
     $('#token').html(function (index,html) {
       return notation(token) + ' token (' + tokenTimer.toFixed(1) + 's)';
     });
+    $('#displayTickRate').html(function (index,html) {
+      return 'Tick Rate: '+ tickSave + 'ms';
+    });
     setTimeout(function(){
       $('.totalCombatStatus').html(function (index,html) {
         if (playerLevel >= 71 || otherworldyCount >= 1) {
@@ -1774,6 +1777,15 @@ $(function (){
     }
     ldmD();
   });
+  $("#tickRateDisp").click(function () {
+    if (dtr == 0) {
+      dtr++;
+      $("#displayTickRate").show();
+    } else {
+      dtr--;
+      $("#displayTickRate").hide();
+    }
+  });
   $("#tokenBulkOpen > div").click(function () {
     a = $("#tokenBulkOpen > div").index(this);
     switch (a) {
@@ -2087,6 +2099,8 @@ $(function (){
   tick2 = 0;
   tickCount = 0;
   tickStack = 0;
+  tickSave = 0;
+  dtr = 0;
   mastery();
   artifact();
   otherworldy();
@@ -2098,6 +2112,11 @@ $(function (){
   $("#transcensionWarp > div:eq(0)").show();
   gameLoad();
   ldmD();
+  if (dtr == 0) {
+    $("#displayTickRate").hide();
+  } else {
+    $("#displayTickRate").show();
+  }
   setTimeout(function(){
     gameDisplay();
   }, 0);
@@ -2150,18 +2169,17 @@ $(function (){
       }
       monsterWeakness += monsterWeakness2;
     }
-    if (menuPage == 7) {
-      tick1 = tick2;
-      tick2 = new Date().getTime();
-      tickCount++;
-      tickStack += tick2-tick1;
-      if (tickCount >= 100) {
-        $('#tickRate').html(function (index,html) {
-          return 'Tick rate: ' + (tickStack/100).toFixed(2) + 'ms/10ms';
-        });
-        tickCount = 0;
-        tickStack = 0;
-      }
+    tick1 = tick2;
+    tick2 = new Date().getTime();
+    tickCount++;
+    tickStack += tick2-tick1;
+    if (tickCount >= 100) {
+      $('#tickRate').html(function (index,html) {
+        return 'Tick rate: ' + (tickStack/100).toFixed(2) + 'ms/10ms';
+      });
+      tickSave = (tickStack/100).toFixed(2);
+      tickCount = 0;
+      tickStack = 0;
     }
     playerStatus();
   }, 10);
