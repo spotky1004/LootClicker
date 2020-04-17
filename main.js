@@ -1344,6 +1344,8 @@ $(function (){
       menuPage = $("#mainNav > div").index(this);
       gameDisplay();
     }
+    tick1 = new Date().getTime();
+    tick2 = new Date().getTime();
   });
   $(".lootItem").click(function () {
     setTimeout( function (){
@@ -2148,16 +2150,18 @@ $(function (){
       }
       monsterWeakness += monsterWeakness2;
     }
-    tick1 = tick2;
-    tick2 = new Date().getTime();
-    tickCount++;
-    tickStack += tick2-tick1
-    if (menuPage == 7 && tickCount >= 100) {
-      $('#tickRate').html(function (index,html) {
-        return 'Tick rate: ' + (tickStack/100).toFixed(2) + 'ms/10ms';
-      });
-      tickCount = 0;
-      tickStack = 0;
+    if (menuPage == 7) {
+      tick1 = tick2;
+      tick2 = new Date().getTime();
+      tickCount++;
+      tickStack += tick2-tick1;
+      if (tickCount >= 100) {
+        $('#tickRate').html(function (index,html) {
+          return 'Tick rate: ' + (tickStack/100).toFixed(2) + 'ms/10ms';
+        });
+        tickCount = 0;
+        tickStack = 0;
+      }
     }
     playerStatus();
   }, 10);
