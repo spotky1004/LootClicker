@@ -2148,9 +2148,11 @@ $(function (){
     }
     tick1 = tick2;
     tick2 = new Date().getTime();
-    $('#tickRate').html(function (index,html) {
-      return 'Tick rate: ' + (tick2-tick1) + 'ms/10ms';
-    });
+    if (menuPage == 7) {
+      $('#tickRate').html(function (index,html) {
+        return 'Tick rate: ' + (tick2-tick1) + 'ms/10ms';
+      });
+    }
     playerStatus();
   }, 10);
   setInterval( function () {
