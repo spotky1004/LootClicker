@@ -425,7 +425,7 @@ $(function (){
       if (upgradeBuff32R == -1) {
         gotLoot = gotLoot * 3;
       }
-      playerExp = playerExp + Math.random()*(tokenBuff3N**(monsterNow))*tokenBuff2N*masteryBuff02*gotLoot*artifactOverBoost[2]*upgradeBuff01R;
+      playerExp = playerExp + (Math.random()*0.4+0.8)*(tokenBuff3N**(monsterNow))*tokenBuff2N*masteryBuff02*gotLoot*artifactOverBoost[2]*upgradeBuff01R;
       luck = Math.floor(Math.random()*100);
       if (playerLevel >= 31 || otherworldyCount >= 1 || meta == 1) {
         if (meta == 0) {
