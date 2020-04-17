@@ -161,7 +161,7 @@ $(function (){
       return notation(token) + ' token (' + tokenTimer.toFixed(1) + 's)';
     });
     $('#displayTickRate').html(function (index,html) {
-      return 'Tick Rate: '+ tickSave + 'ms';
+      return 'Tick Rate: '+ tickSave + ' ms';
     });
     setTimeout(function(){
       $('.totalCombatStatus').html(function (index,html) {
@@ -711,49 +711,49 @@ $(function (){
     });
     $('#tokenBuy1').html(function (index,html) {
       if (tokenUpgrade[0] != tokenUpgradeCap[0]) {
-        return 'Buy (' + tokenUpgradePrice[0] + ' Token)'
+        return 'Buy (' + notation(tokenUpgradePrice[0]) + ' Token)'
       } else {
         return 'Maxed!'
       }
     });
     $('#tokenBuy2').html(function (index,html) {
       if (tokenUpgrade[1] != tokenUpgradeCap[1]) {
-        return 'Buy (' + tokenUpgradePrice[1] + ' Token)'
+        return 'Buy (' + notation(tokenUpgradePrice[1]) + ' Token)'
       } else {
         return 'Maxed!'
       }
     });
     $('#tokenBuy3').html(function (index,html) {
       if (tokenUpgrade[2] != tokenUpgradeCap[2]) {
-        return 'Buy (' + tokenUpgradePrice[2] + ' Token)'
+        return 'Buy (' + notation(tokenUpgradePrice[2]) + ' Token)'
       } else {
         return 'Maxed!'
       }
     });
     $('#tokenBuy4').html(function (index,html) {
       if (tokenUpgrade[3] != tokenUpgradeCap[3]) {
-        return 'Buy (' + tokenUpgradePrice[3] + ' Token)'
+        return 'Buy (' + notation(tokenUpgradePrice[3]) + ' Token)'
       } else {
         return 'Maxed!'
       }
     });
     $('#tokenBuy5').html(function (index,html) {
       if (tokenUpgrade[4] != tokenUpgradeCap[4]) {
-        return 'Buy (' + tokenUpgradePrice[4] + ' Token)'
+        return 'Buy (' + notation(tokenUpgradePrice[4]) + ' Token)'
       } else {
         return 'Maxed!'
       }
     });
     $('#tokenBuy6').html(function (index,html) {
       if (tokenUpgrade[5] != tokenUpgradeCap[5]) {
-        return 'Buy (' + tokenUpgradePrice[5] + ' Token)'
+        return 'Buy (' + notation(tokenUpgradePrice[5]) + ' Token)'
       } else {
         return 'Maxed!'
       }
     });
     $('#tokenBuy7').html(function (index,html) {
       if (tokenUpgrade[6] != tokenUpgradeCap[6]) {
-        return 'Buy (' + tokenUpgradePrice[6] + ' Token)'
+        return 'Buy (' + notation(tokenUpgradePrice[6]) + ' Token)'
       } else {
         return 'Maxed!'
       }
