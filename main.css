@@ -125,7 +125,7 @@ body {
   transition: color 0.3s ease 0s, background-color 0.3s ease 0s;
 }
 #menusWarp {
-  padding-top: 58px;
+  padding-top: 57px;
 }
 #menusWarp > div {
   padding-top: 20px;
