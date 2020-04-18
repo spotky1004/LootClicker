@@ -434,9 +434,9 @@ $(function (){
         if (meta == 0) {
           if (monsterNow < 101) {
             if (upgradeBuff21R != 1) {
-              mobKilled[monsterNow] += 1*masteryBuff20R+artifactOverBoost[9]+upgradeBuff21R;
+              mobKilled[monsterNow] += masteryBuff20R*(artifactOverBoost[9]+upgradeBuff21R);
             } else {
-              mobKilled[monsterNow] += 1*masteryBuff20R+artifactOverBoost[9];
+              mobKilled[monsterNow] += masteryBuff20R*(artifactOverBoost[9]+upgradeBuff21R);
             }
           } else {
             if (brokeUniverse == 0) {
