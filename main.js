@@ -2344,7 +2344,7 @@ $(function (){
       lootOpenNow++;
     }
     if (autoActive[1] == 1) {
-      if (menuPage == 0 && stagePage <= stageUnlocked) {
+      if (menuPage == 0 && stagePage < stageUnlocked) {
         stagePage = stageUnlocked;
         if (stageUnlocked == 11) {
           stagePage = 10;
