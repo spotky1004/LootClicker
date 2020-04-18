@@ -72,7 +72,7 @@ body {
   cursor: pointer;
 }
 #basicStatus {
-  padding: 2px 5px 4px 5px;
+  padding: 2px 5px 6px 5px;
   position: fixed;
   z-index: 9998;
   width: 100vw;
