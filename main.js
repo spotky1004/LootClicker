@@ -2358,7 +2358,7 @@ $(function (){
       }
     }
     if (autoActive[2] == 1) {
-      for (var j = 0; j < 6; j++) {
+      for (var j = 0; j < 7; j++) {
         for (var i = 0; i < tokenBulk; i++) {
           if (tokenUpgradePrice[j] <= token && tokenUpgradeCap[j] > tokenUpgrade[j]) {
             token = token - tokenUpgradePrice[j];
