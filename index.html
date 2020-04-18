@@ -10,7 +10,7 @@
   <script src="main.js"></script>
   <link href="https://fonts.googleapis.com/css?family=Do+Hyeon&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="main.css">
-    <title>Loot Clicker v2.1.57</title>
+    <title>Loot Clicker v2.2</title>
   </head>
   <body>
     <div id="warpAll" style="background-image: url(bg/loading.png);">
@@ -19,9 +19,9 @@
           <div id="levelStat">
             <span id="playerLevel">Level 1</span>
             <span id="playerExp"> - 0/10 EXP (0.00%)</span>
+            <span id="displayTickRate">10ms</span>
           </div>
           <div id="token">0 Token (120s)</div>
-          <div id="displayTickRate">10ms</div>
         </div>
         <div id="mainNav">
           <div class="mainMenu">Field</div>
@@ -296,188 +296,218 @@
             <p>Click Bought Skill again to Refund</p>
           </div>
           <div id="artifactWarp">
-            <div id="artifactStatus">
-              <div id="artifactName" class="rank0">None +0</div>
-              <div id="aArtifactStatus">
-                DMG Boost: +x0
+            <div>
+              <div id="artifactCollection">
+                <div class="artifactLine">
+                  <div class="artifactBg" style="background-image: url(etc/mystery_weapon.png);">
+                    <img class="artifact" src="artifact/0.png"></img>
+                  </div>
+                  <div class="artifactBg" style="background-image: url(etc/mystery_weapon.png);">
+                    <img class="artifact" src="artifact/0.png"></img>
+                  </div>
+                  <div class="artifactBg" style="background-image: url(etc/mystery_weapon.png);">
+                    <img class="artifact" src="artifact/0.png"></img>
+                  </div>
+                  <div class="artifactBg" style="background-image: url(etc/mystery_weapon.png);">
+                    <img class="artifact" src="artifact/0.png"></img>
+                  </div>
+                  <div class="artifactBg" style="background-image: url(etc/mystery_weapon.png);">
+                    <img class="artifact" src="artifact/0.png"></img>
+                  </div>
+                  <div class="artifactBg" style="background-image: url(etc/mystery_weapon.png);">
+                    <img class="artifact" src="artifact/0.png"></img>
+                  </div>
+                  <div class="artifactBg" style="background-image: url(etc/mystery_weapon.png);">
+                    <img class="artifact" src="artifact/0.png"></img>
+                  </div>
+                  <div class="artifactBg" style="background-image: url(etc/mystery_weapon.png);">
+                    <img class="artifact" src="artifact/0.png"></img>
+                  </div>
+                  <div class="artifactBg" style="background-image: url(etc/mystery_weapon.png);">
+                    <img class="artifact" src="artifact/0.png"></img>
+                  </div>
+                  <div class="artifactBg" style="background-image: url(etc/mystery_weapon.png);">
+                    <img class="artifact" src="artifact/0.png"></img>
+                  </div>
+                </div>
+                <div class="artifactLine">
+                  <div class="artifactBg" style="background-image: url(etc/mystery_weapon.png);">
+                    <img class="artifact" src="artifact/0.png"></img>
+                  </div>
+                  <div class="artifactBg" style="background-image: url(etc/mystery_weapon.png);">
+                    <img class="artifact" src="artifact/0.png"></img>
+                  </div>
+                  <div class="artifactBg" style="background-image: url(etc/mystery_weapon.png);">
+                    <img class="artifact" src="artifact/0.png"></img>
+                  </div>
+                  <div class="artifactBg" style="background-image: url(etc/mystery_weapon.png);">
+                    <img class="artifact" src="artifact/0.png"></img>
+                  </div>
+                  <div class="artifactBg" style="background-image: url(etc/mystery_weapon.png);">
+                    <img class="artifact" src="artifact/0.png"></img>
+                  </div>
+                  <div class="artifactBg" style="background-image: url(etc/mystery_weapon.png);">
+                    <img class="artifact" src="artifact/0.png"></img>
+                  </div>
+                  <div class="artifactBg" style="background-image: url(etc/mystery_weapon.png);">
+                    <img class="artifact" src="artifact/0.png"></img>
+                  </div>
+                  <div class="artifactBg" style="background-image: url(etc/mystery_weapon.png);">
+                    <img class="artifact" src="artifact/0.png"></img>
+                  </div>
+                  <div class="artifactBg" style="background-image: url(etc/mystery_weapon.png);">
+                    <img class="artifact" src="artifact/0.png"></img>
+                  </div>
+                  <div class="artifactBg" style="background-image: url(etc/mystery_weapon.png);">
+                    <img class="artifact" src="artifact/0.png"></img>
+                  </div>
+                </div>
+                <div class="artifactLine">
+                  <div class="artifactBg" style="background-image: url(etc/mystery_weapon.png);">
+                    <img class="artifact" src="artifact/0.png"></img>
+                  </div>
+                  <div class="artifactBg" style="background-image: url(etc/mystery_weapon.png);">
+                    <img class="artifact" src="artifact/0.png"></img>
+                  </div>
+                  <div class="artifactBg" style="background-image: url(etc/mystery_weapon.png);">
+                    <img class="artifact" src="artifact/0.png"></img>
+                  </div>
+                  <div class="artifactBg" style="background-image: url(etc/mystery_weapon.png);">
+                    <img class="artifact" src="artifact/0.png"></img>
+                  </div>
+                  <div class="artifactBg" style="background-image: url(etc/mystery_weapon.png);">
+                    <img class="artifact" src="artifact/0.png"></img>
+                  </div>
+                  <div class="artifactBg" style="background-image: url(etc/mystery_weapon.png);">
+                    <img class="artifact" src="artifact/0.png"></img>
+                  </div>
+                  <div class="artifactBg" style="background-image: url(etc/mystery_weapon.png);">
+                    <img class="artifact" src="artifact/0.png"></img>
+                  </div>
+                  <div class="artifactBg" style="background-image: url(etc/mystery_weapon.png);">
+                    <img class="artifact" src="artifact/0.png"></img>
+                  </div>
+                  <div class="artifactBg" style="background-image: url(etc/mystery_weapon.png);">
+                    <img class="artifact" src="artifact/0.png"></img>
+                  </div>
+                  <div class="artifactBg" style="background-image: url(etc/mystery_weapon.png);">
+                    <img class="artifact" src="artifact/0.png"></img>
+                  </div>
+                </div>
+                <div class="artifactLine">
+                  <div class="artifactBg" style="background-image: url(etc/mystery_weapon.png);">
+                    <img class="artifact" src="artifact/0.png"></img>
+                  </div>
+                  <div class="artifactBg" style="background-image: url(etc/mystery_weapon.png);">
+                    <img class="artifact" src="artifact/0.png"></img>
+                  </div>
+                  <div class="artifactBg" style="background-image: url(etc/mystery_weapon.png);">
+                    <img class="artifact" src="artifact/0.png"></img>
+                  </div>
+                  <div class="artifactBg" style="background-image: url(etc/mystery_weapon.png);">
+                    <img class="artifact" src="artifact/0.png"></img>
+                  </div>
+                  <div class="artifactBg" style="background-image: url(etc/mystery_weapon.png);">
+                    <img class="artifact" src="artifact/0.png"></img>
+                  </div>
+                  <div class="artifactBg" style="background-image: url(etc/mystery_weapon.png);">
+                    <img class="artifact" src="artifact/0.png"></img>
+                  </div>
+                  <div class="artifactBg" style="background-image: url(etc/mystery_weapon.png);">
+                    <img class="artifact" src="artifact/0.png"></img>
+                  </div>
+                  <div class="artifactBg" style="background-image: url(etc/mystery_weapon.png);">
+                    <img class="artifact" src="artifact/0.png"></img>
+                  </div>
+                  <div class="artifactBg" style="background-image: url(etc/mystery_weapon.png);">
+                    <img class="artifact" src="artifact/0.png"></img>
+                  </div>
+                  <div class="artifactBg" style="background-image: url(etc/mystery_weapon.png);">
+                    <img class="artifact" src="artifact/0.png"></img>
+                  </div>
+                </div>
+                <div class="artifactLine">
+                  <div class="artifactBg" style="background-image: url(etc/mystery_weapon.png);">
+                    <img class="artifact" src="artifact/0.png"></img>
+                  </div>
+                  <div class="artifactBg" style="background-image: url(etc/mystery_weapon.png);">
+                    <img class="artifact" src="artifact/0.png"></img>
+                  </div>
+                  <div class="artifactBg" style="background-image: url(etc/mystery_weapon.png);">
+                    <img class="artifact" src="artifact/0.png"></img>
+                  </div>
+                  <div class="artifactBg" style="background-image: url(etc/mystery_weapon.png);">
+                    <img class="artifact" src="artifact/0.png"></img>
+                  </div>
+                  <div class="artifactBg" style="background-image: url(etc/mystery_weapon.png);">
+                    <img class="artifact" src="artifact/0.png"></img>
+                  </div>
+                  <div class="artifactBg" style="background-image: url(etc/mystery_weapon.png);">
+                    <img class="artifact" src="artifact/0.png"></img>
+                  </div>
+                  <div class="artifactBg" style="background-image: url(etc/mystery_weapon.png);">
+                    <img class="artifact" src="artifact/0.png"></img>
+                  </div>
+                  <div class="artifactBg" style="background-image: url(etc/mystery_weapon.png);">
+                    <img class="artifact" src="artifact/0.png"></img>
+                  </div>
+                  <div class="artifactBg" style="background-image: url(etc/mystery_weapon.png);">
+                    <img class="artifact" src="artifact/0.png"></img>
+                  </div>
+                  <div class="artifactBg" style="background-image: url(etc/mystery_weapon.png);">
+                    <img class="artifact" src="artifact/0.png"></img>
+                  </div>
+                </div>
+                <div class="artifactLine">
+                  <div class="artifactBg" style="background-image: url(etc/mystery_weapon.png);">
+                    <img class="artifact" src="artifact/0.png"></img>
+                  </div>
+                  <div class="artifactBg" style="background-image: url(etc/mystery_weapon.png);">
+                    <img class="artifact" src="artifact/0.png"></img>
+                  </div>
+                  <div class="artifactBg" style="background-image: url(etc/mystery_weapon.png);">
+                    <img class="artifact" src="artifact/0.png"></img>
+                  </div>
+                  <div class="artifactBg" style="background-image: url(etc/mystery_weapon.png);">
+                    <img class="artifact" src="artifact/0.png"></img>
+                  </div>
+                  <div class="artifactBg" style="background-image: url(etc/mystery_weapon.png);">
+                    <img class="artifact" src="artifact/0.png"></img>
+                  </div>
+                  <div class="artifactBg" style="background-image: url(etc/mystery_weapon.png);">
+                    <img class="artifact" src="artifact/0.png"></img>
+                  </div>
+                  <div class="artifactBg" style="background-image: url(etc/mystery_weapon.png);">
+                    <img class="artifact" src="artifact/0.png"></img>
+                  </div>
+                  <div class="artifactBg" style="background-image: url(etc/mystery_weapon.png);">
+                    <img class="artifact" src="artifact/0.png"></img>
+                  </div>
+                  <div class="artifactBg" style="background-image: url(etc/mystery_weapon.png);">
+                    <img class="artifact" src="artifact/0.png"></img>
+                  </div>
+                  <div class="artifactBg" style="background-image: url(etc/mystery_weapon.png);">
+                    <img class="artifact" src="artifact/0.png"></img>
+                  </div>
+                </div>
               </div>
-            </div>
-            <div id="artifactCollection">
-              <div class="artifactLine">
-                <div class="artifactBg" style="background-image: url(etc/mystery_weapon.png);">
-                  <img class="artifact" src="artifact/0.png"></img>
-                </div>
-                <div class="artifactBg" style="background-image: url(etc/mystery_weapon.png);">
-                  <img class="artifact" src="artifact/0.png"></img>
-                </div>
-                <div class="artifactBg" style="background-image: url(etc/mystery_weapon.png);">
-                  <img class="artifact" src="artifact/0.png"></img>
-                </div>
-                <div class="artifactBg" style="background-image: url(etc/mystery_weapon.png);">
-                  <img class="artifact" src="artifact/0.png"></img>
-                </div>
-                <div class="artifactBg" style="background-image: url(etc/mystery_weapon.png);">
-                  <img class="artifact" src="artifact/0.png"></img>
-                </div>
-                <div class="artifactBg" style="background-image: url(etc/mystery_weapon.png);">
-                  <img class="artifact" src="artifact/0.png"></img>
-                </div>
-                <div class="artifactBg" style="background-image: url(etc/mystery_weapon.png);">
-                  <img class="artifact" src="artifact/0.png"></img>
-                </div>
-                <div class="artifactBg" style="background-image: url(etc/mystery_weapon.png);">
-                  <img class="artifact" src="artifact/0.png"></img>
-                </div>
-                <div class="artifactBg" style="background-image: url(etc/mystery_weapon.png);">
-                  <img class="artifact" src="artifact/0.png"></img>
-                </div>
-                <div class="artifactBg" style="background-image: url(etc/mystery_weapon.png);">
-                  <img class="artifact" src="artifact/0.png"></img>
+              <div id="artifactOverall">
+                <p id="overallArtifactTxt">Overall Boost</p>
+                <div id="overallArtifact">
+                  DMG Boost: x1<br>
+                  EXP Boost: x1<br>
+                  Crit Chance: +0%<br>
+                  Crit DMG: x1<br>
+                  Bonus Loot: +0<br>
+                  Token Boost (All): x1<br>
+                  Token Boost (Timer): x1<br>
+                  Token Boost (Click): x1<br>
+                  Monster Kill Stat: +0<br>
+                  Monster Weakness: +x0<br>
+                  Monster Weakness Cap: x2<br>
+                  Mysterious Chest Chance: x1<br>
                 </div>
               </div>
-              <div class="artifactLine">
-                <div class="artifactBg" style="background-image: url(etc/mystery_weapon.png);">
-                  <img class="artifact" src="artifact/0.png"></img>
-                </div>
-                <div class="artifactBg" style="background-image: url(etc/mystery_weapon.png);">
-                  <img class="artifact" src="artifact/0.png"></img>
-                </div>
-                <div class="artifactBg" style="background-image: url(etc/mystery_weapon.png);">
-                  <img class="artifact" src="artifact/0.png"></img>
-                </div>
-                <div class="artifactBg" style="background-image: url(etc/mystery_weapon.png);">
-                  <img class="artifact" src="artifact/0.png"></img>
-                </div>
-                <div class="artifactBg" style="background-image: url(etc/mystery_weapon.png);">
-                  <img class="artifact" src="artifact/0.png"></img>
-                </div>
-                <div class="artifactBg" style="background-image: url(etc/mystery_weapon.png);">
-                  <img class="artifact" src="artifact/0.png"></img>
-                </div>
-                <div class="artifactBg" style="background-image: url(etc/mystery_weapon.png);">
-                  <img class="artifact" src="artifact/0.png"></img>
-                </div>
-                <div class="artifactBg" style="background-image: url(etc/mystery_weapon.png);">
-                  <img class="artifact" src="artifact/0.png"></img>
-                </div>
-                <div class="artifactBg" style="background-image: url(etc/mystery_weapon.png);">
-                  <img class="artifact" src="artifact/0.png"></img>
-                </div>
-                <div class="artifactBg" style="background-image: url(etc/mystery_weapon.png);">
-                  <img class="artifact" src="artifact/0.png"></img>
-                </div>
-              </div>
-              <div class="artifactLine">
-                <div class="artifactBg" style="background-image: url(etc/mystery_weapon.png);">
-                  <img class="artifact" src="artifact/0.png"></img>
-                </div>
-                <div class="artifactBg" style="background-image: url(etc/mystery_weapon.png);">
-                  <img class="artifact" src="artifact/0.png"></img>
-                </div>
-                <div class="artifactBg" style="background-image: url(etc/mystery_weapon.png);">
-                  <img class="artifact" src="artifact/0.png"></img>
-                </div>
-                <div class="artifactBg" style="background-image: url(etc/mystery_weapon.png);">
-                  <img class="artifact" src="artifact/0.png"></img>
-                </div>
-                <div class="artifactBg" style="background-image: url(etc/mystery_weapon.png);">
-                  <img class="artifact" src="artifact/0.png"></img>
-                </div>
-                <div class="artifactBg" style="background-image: url(etc/mystery_weapon.png);">
-                  <img class="artifact" src="artifact/0.png"></img>
-                </div>
-                <div class="artifactBg" style="background-image: url(etc/mystery_weapon.png);">
-                  <img class="artifact" src="artifact/0.png"></img>
-                </div>
-                <div class="artifactBg" style="background-image: url(etc/mystery_weapon.png);">
-                  <img class="artifact" src="artifact/0.png"></img>
-                </div>
-                <div class="artifactBg" style="background-image: url(etc/mystery_weapon.png);">
-                  <img class="artifact" src="artifact/0.png"></img>
-                </div>
-                <div class="artifactBg" style="background-image: url(etc/mystery_weapon.png);">
-                  <img class="artifact" src="artifact/0.png"></img>
-                </div>
-              </div>
-              <div class="artifactLine">
-                <div class="artifactBg" style="background-image: url(etc/mystery_weapon.png);">
-                  <img class="artifact" src="artifact/0.png"></img>
-                </div>
-                <div class="artifactBg" style="background-image: url(etc/mystery_weapon.png);">
-                  <img class="artifact" src="artifact/0.png"></img>
-                </div>
-                <div class="artifactBg" style="background-image: url(etc/mystery_weapon.png);">
-                  <img class="artifact" src="artifact/0.png"></img>
-                </div>
-                <div class="artifactBg" style="background-image: url(etc/mystery_weapon.png);">
-                  <img class="artifact" src="artifact/0.png"></img>
-                </div>
-                <div class="artifactBg" style="background-image: url(etc/mystery_weapon.png);">
-                  <img class="artifact" src="artifact/0.png"></img>
-                </div>
-                <div class="artifactBg" style="background-image: url(etc/mystery_weapon.png);">
-                  <img class="artifact" src="artifact/0.png"></img>
-                </div>
-                <div class="artifactBg" style="background-image: url(etc/mystery_weapon.png);">
-                  <img class="artifact" src="artifact/0.png"></img>
-                </div>
-                <div class="artifactBg" style="background-image: url(etc/mystery_weapon.png);">
-                  <img class="artifact" src="artifact/0.png"></img>
-                </div>
-                <div class="artifactBg" style="background-image: url(etc/mystery_weapon.png);">
-                  <img class="artifact" src="artifact/0.png"></img>
-                </div>
-                <div class="artifactBg" style="background-image: url(etc/mystery_weapon.png);">
-                  <img class="artifact" src="artifact/0.png"></img>
-                </div>
-              </div>
-              <div class="artifactLine">
-                <div class="artifactBg" style="background-image: url(etc/mystery_weapon.png);">
-                  <img class="artifact" src="artifact/0.png"></img>
-                </div>
-                <div class="artifactBg" style="background-image: url(etc/mystery_weapon.png);">
-                  <img class="artifact" src="artifact/0.png"></img>
-                </div>
-                <div class="artifactBg" style="background-image: url(etc/mystery_weapon.png);">
-                  <img class="artifact" src="artifact/0.png"></img>
-                </div>
-                <div class="artifactBg" style="background-image: url(etc/mystery_weapon.png);">
-                  <img class="artifact" src="artifact/0.png"></img>
-                </div>
-                <div class="artifactBg" style="background-image: url(etc/mystery_weapon.png);">
-                  <img class="artifact" src="artifact/0.png"></img>
-                </div>
-                <div class="artifactBg" style="background-image: url(etc/mystery_weapon.png);">
-                  <img class="artifact" src="artifact/0.png"></img>
-                </div>
-                <div class="artifactBg" style="background-image: url(etc/mystery_weapon.png);">
-                  <img class="artifact" src="artifact/0.png"></img>
-                </div>
-                <div class="artifactBg" style="background-image: url(etc/mystery_weapon.png);">
-                  <img class="artifact" src="artifact/0.png"></img>
-                </div>
-                <div class="artifactBg" style="background-image: url(etc/mystery_weapon.png);">
-                  <img class="artifact" src="artifact/0.png"></img>
-                </div>
-                <div class="artifactBg" style="background-image: url(etc/mystery_weapon.png);">
-                  <img class="artifact" src="artifact/0.png"></img>
-                </div>
-              </div>
-            </div>
-            <p id="overallArtifactTxt">Overall Boost</p>
-            <div id="overallArtifact">
-              DMG Boost: x1<br>
-              EXP Boost: x1<br>
-              Crit Chance: +0%<br>
-              Crit DMG: x1<br>
-              Bonus Loot: +0<br>
-              Token Boost (All): x1<br>
-              Token Boost (Timer): x1<br>
-              Token Boost (Click): x1<br>
-              Monster Kill Stat: +0<br>
-              Monster Weakness: +x0<br>
-              Monster Weakness Cap: x2<br>
-              Mysterious Chest Chance: x1<br>
             </div>
           </div>
           <div id="otherworldyWarp">
@@ -577,15 +607,26 @@
                     <p>Otherworldy chest</p>
                     <p>1 TP</p>
                   </div>
-                  <div class="shopSel upgradeN">
-                    <p>Otherworldy chest</p>
-                    <p>1 TP</p>
+                </div>
+                <div id="transcensionAuto" class="clearFix">
+                  <div class="autoSel upgradeN">
+                    <p>Auto Loot</p>
+                    <p>7 TP</p>
+                  </div>
+                  <div class="autoSel upgradeN">
+                    <p>Auto Stage</p>
+                    <p>8 TP</p>
+                  </div>
+                  <div class="autoSel upgradeN">
+                    <p>Auto Token</p>
+                    <p>15 TP</p>
+                  </div>
+                  <div class="autoSel upgradeN">
+                    <p>Auto Quest</p>
+                    <p>30 TP</p>
                   </div>
                 </div>
-                <div id="transcensionShop" class="clearFix">
-                  Comming soon...
-                </div>
-                <div id="transcensionShop" class="clearFix">
+                <div id="transcensionSChallenge" class="clearFix">
                   Comming soon...
                 </div>
               </div>
@@ -634,6 +675,9 @@
             +1
           </div>
           <div id="popupDmg">
+            -0
+          </div>
+          <div id="popupArti">
             -0
           </div>
         </div>

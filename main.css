@@ -28,6 +28,7 @@ body {
 
 }
 #popupLayer {
+  z-index: 9999;
   padding: 0 30px 20px 30px;
   font-size: 1.5em;
   background-color: rgba(94, 94, 94, 0.6);
@@ -72,11 +73,20 @@ body {
 }
 #basicStatus {
   padding: 2px 5px;
+  position: fixed;
+  z-index: 9998;
+  width: 100vw;
   background-image: url(bg/bg.png);
   color: white;
 }
+#basicStatus > div {
+  font-size: 16px;
+}
 #basicStatus > div:not(:last-child) {
   margin-bottom: 2px;
+}
+#displayTickRate {
+  font-size: 0.8em;
 }
 .levelup {
   color: #fcf44e;
@@ -89,12 +99,16 @@ body {
   transition: color 10s ease 0s, text-shadow 10s ease 0s;
 }
 #mainNav {
-
+  position: fixed;
+  z-index: 9998;
+  padding-top: 50px;
+  width: 100vw;
 }
 #mainNav > div {
   padding: 5px 0;
   width: 12.49999999%;
   height: 18px;
+  font-size: 16px;
   font-style: 9pt;
   float: left;
   cursor: pointer;
@@ -109,6 +123,9 @@ body {
   background-color: #ebb173;
 
   transition: color 0.3s ease 0s, background-color 0.3s ease 0s;
+}
+#menusWarp {
+  padding-top: 58px;
 }
 #menusWarp > div {
   padding-top: 20px;
@@ -438,22 +455,29 @@ body {
   background-color: white;
 }
 #artifactWarp {
-  padding: 20px 0;
+  padding: 20px 0 0 20px;
   background-image: url(bg/artifact_bg.png);
+  width: 100vw;
+  height: 80vh;
   text-align: center;
 }
+#artifactWarp > div {
+  width: auto;
+  height: 80vh;
+}
 #artifactCollection {
-  margin: 20px auto 20px auto;
-  width: 90%;
+  width: 75.999%;
+  background-image: url(bg/artifact_bg.png);
+  float: left;
 }
 .artifactLine {
-  margin-bottom: 8px;
-  height: 8vw;
+  margin-bottom: 0.5vw;
+  height: 6vw;
 }
 .artifactBg {
   padding-top: 1vw;
-  width: 8vw;
-  height: 7vw;
+  width: 6vw;
+  height: 5vw;
   text-align: center;
   float: left;
   background-size: cover;
@@ -462,10 +486,19 @@ body {
   margin-right: 0.99vw;
 }
 .artifact {
-  height: 6.5vw;
-  width: 6.5vw;
+  height: 4.5vw;
+  width: 4.5vw;
+}
+#artifactOverall {
+  width: 19.999%;
+  height: 39vh;
+  float: left;
+  border: 5px solid #468ca6;
+  border-radius: 3px;
+  background-color: #93becf;
 }
 #overallArtifactTxt {
+  margin: 0 auto;
   font-size: 1.2em;
   color: #2b6f82;
   text-shadow: 0 0 2px #2b6f82;
@@ -479,6 +512,12 @@ body {
 }
 #artifactName {
   background-color: #d6d6d6;
+}
+.artiDesBg {
+  padding: 5px;
+  border: 5px solid #468ca6;
+  border-radius: 3px;
+  background-color: #93becf;
 }
 #transcensionDisplay {
   width: 100vw;
@@ -512,6 +551,10 @@ body {
   width: 100%;
   height: auto;
 }
+#transcensionWarp > div {
+  margin: 0 auto;
+  width: 80%;
+}
 #transcensionDisplay {
   text-align: center;
   float: left;
@@ -522,10 +565,6 @@ body {
 }
 #transcensionQuest > div {
   float: left;
-}
-#transcensionUpgrade {
-  margin: 0 auto;
-  width: 80%;
 }
 #transcensionQuest {
   margin: 0 auto 10px auto;
@@ -636,6 +675,23 @@ body {
 .upgradeY {
   color: black;
   background-color: rgba(82, 127, 199, 0.5);
+}
+.upgradeA {
+  color: black;
+  cursor: pointer;
+  background-color: rgba(183, 82, 199, 0.5);
+
+  transition: all 0.2s;
+}
+.upgradeA:hover {
+  color: #e04a4a;
+  cursor: pointer;
+  background-color: rgba(183, 82, 199, 0.8);
+
+  transition: all 0.2s;
+}
+.autoSel {
+  margin-bottom: 8px;
 }
 #settingDiv > p {
   font-size: 4em;

@@ -167,7 +167,7 @@ artifactNameKor = [
   '4-2', '4-3', '5-1', '5-2', '5-3', '6-1', '6-2', '6-3', '7-1', '7-2',
   '7-3', '8-1', '8-2', '8-3', '9-1', '9-2', '9-3', '0-1', '0-2', '0-3',
   'A-1', 'A-2', 'A-3', 'A-4', 'A-5', 'A-6', 'A-7', 'A-8', 'A-9', 'A-0',
-  '', '', '', '', '', '', '', '', '', '',
+  'O-1', 'O-2', 'O-3', 'O-4', 'O-5', 'O-6', 'O-7', 'O-8', 'O-9', 'O-0',
   '', '', '', '', '', '', '', '', '', '',
   '', '', '', '', '', '', '', '', '', '',
   '', '', '', '', '', '', '', '', '', '',
@@ -180,7 +180,7 @@ artifactNameEng = [
   '4-2', '4-3', '5-1', '5-2', '5-3', '6-1', '6-2', '6-3', '7-1', '7-2',
   '7-3', '8-1', '8-2', '8-3', '9-1', '9-2', '9-3', '0-1', '0-2', '0-3',
   'A-1', 'A-2', 'A-3', 'A-4', 'A-5', 'A-6', 'A-7', 'A-8', 'A-9', 'A-0',
-  '', '', '', '', '', '', '', '', '', '',
+  'O-1', 'O-2', 'O-3', 'O-4', 'O-5', 'O-6', 'O-7', 'O-8', 'O-9', 'O-0',
   '', '', '', '', '', '', '', '', '', '',
   '', '', '', '', '', '', '', '', '', '',
   '', '', '', '', '', '', '', '', '', '',
@@ -209,7 +209,8 @@ extraStatusTipsKor = [
   '이 게임에는 몬스터 100마리와 보스 2마리가 있습니다!',
   '<span class="chestTP">아더월디 1화 이상부터 몬스터들이 10% 확률로 토큰을 드랍합니다</span>',
   '<span class="chestTP">우주를 격파하면 상자가 확률적으로 TP를 줍니다</span>',
-  '<span class="chestTP">아더월디 횟수에 비례해 TP획득량이 증가합니다</span>'
+  '<span class="chestTP">아더월디 횟수에 비례해 TP획득량이 증가합니다</span>',
+  '<span class="chestTP">아티팩트 51~60은 초기화 되지 않습니다</span>'
 ];
 extraStatusTipsEng = [
   'The maximum level of the weapon is +999!',
@@ -218,7 +219,8 @@ extraStatusTipsEng = [
   'There are 100 monsters, and 2 bosses!',
   '<span class="chestTP">If Otherworld count is greater than 1, monster will drop token (10% chance)</span>',
   '<span class="chestTP">After Universe is broken, chest will drop TP</span>',
-  '<span class="chestTP">TP gain increase based on Otherworldy Count</span>'
+  '<span class="chestTP">TP gain increase based on Otherworldy Count</span>',
+  '<span class="chestTP">Artifact 51~60 wont destoried</span>'
 ];
 varData = [
   'playerLevel', 'stageUnlocked', 'playerExp', 'playerExpNeed', 'token',
@@ -227,7 +229,8 @@ varData = [
   'tokenUpgradePrice', 'mobKilled', 'brokeUniverse', 'masteryCompeleted', 'playerSP',
   'masteryBought', 'playtime', 'codeEnterd', 'totalCode', 'notationForm',
   'totalToken', 'artifactQuantity', 'ldm', 'meta', 'otherworldyCount',
-  'tp', 'upgradeCost', 'upgradeBought', 'chestTP', 'dtr'
+  'tp', 'upgradeCost', 'upgradeBought', 'chestTP', 'dtr',
+  'autoBought', 'autoActive', 'otherworldyChest', 'nextArti'
 ];
 resetData = {
   0: 0, 1: 0, 2: 0, 3: 10, 4: 0,
@@ -256,7 +259,11 @@ resetData = {
   31: [1, 2, 10, 5, 3000, 50, 5000, 7000, 130000, 250000, 400000, 25, 0, 0, 0, 0, 0, 0, 0, 0],
   32: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
   33: 0,
-  34: 0
+  34: 0,
+  35: [0, 0, 0, 0, 0, 0, 0, 0],
+  36: [0, 0, 0, 0, 0, 0, 0, 0],
+  37: 0,
+  38: 51
 };
 popupMsg = [
   'Reached max stage!', 'Reach Level', 'to Open', 'Break The Universe to Open'
@@ -400,7 +407,7 @@ artifactEffect = [
   4, 12, 10, 9, 2, 4, 7, 7, 11, 6,
   8, 3, 10, 11, 12, 10, 10, 4, 5, 11,
   4, 5, 2, 11, 1, 8, 9, 10, 12, 4,
-  0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+  1, 6, 13, 7, 8, 14, 15, 4, 5, 15,
   0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
   0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
   0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
@@ -413,7 +420,7 @@ artifactEffectPow = [
   0.2, 0.1, 0.01, 0.02, 0.1, 0.2, 0.1, 1, 0.1, 0.02,
   0.5, 1, 0.01, 1, 0.05, 0.1, 0.3, 5, 1, 10,
   1, 1, 1, 15, 10, 5, 10, 1, 0.2, 100,
-  0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+  40, 5, 0.05, 20, 30, 1, 0.1, 250, 3, 1,
   0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
   0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
   0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
@@ -422,13 +429,13 @@ artifactEffectPow = [
 artiBuffNameStr = [
   'DMG Boost', 'EXP Boost', 'Crit Chance', 'Crit DMG', 'Bonus Loot',
   'Token Boost (All)', 'Token Boost (Timer)', 'Token Boost (Click)', 'Monster Kill Stat', 'Monster Weakness',
-  'Monster Weakness Cap', 'Mysterious Chest Chance'
+  'Monster Weakness Cap', 'Mysterious Chest Chance', 'TP Mult', 'Chest TP Cap', 'Artifact Chance'
 ];
 artifactOverBoost = [
   '0',
   0, 0, 0, 0, 0,
   0, 0, 0, 0, 0,
-  0, 0
+  0, 0, 0, 0, 0
 ];
 upgradeInfo = [
 
@@ -482,6 +489,18 @@ upgradeCost = [
   3000, 50, 5000, 7000,
   130000, 250000, 400000, 25,
   0, 0, 0, 0
+];
+autoBought = [
+  0, 0, 0, 0,
+  0, 0, 0, 0
+];
+autoActive = [
+  0, 0, 0, 0,
+  0, 0, 0, 0
+];
+autoCost = [
+  7, 8, 15, 30,
+  9999, 9999, 9999, 9999,
 ];
 codeEnterd = [
   0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
