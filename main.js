@@ -2089,6 +2089,7 @@ $(function (){
       stagePage = 1;
       $("#menusWarp > div:eq(6)").hide();
       stageChange();
+      artifact();
       monsterHpCalc();
       otherworldy();
     }
@@ -2337,7 +2338,7 @@ $(function (){
       lootOpenNow++;
     }
     if (autoActive[1] == 1) {
-      if (menuPage == 0 && stagePage < stageUnlocked) {
+      if (menuPage == 0 && stagePage < stageUnlocked && stagePage != 11 && meta != 1) {
         if (meta == 0) {
           stagePage = stageUnlocked;
         } else {
@@ -2355,9 +2356,46 @@ $(function (){
         } else {
           stagePage = stageUnlocked-10;
         }
-        if (stageUnlocked == 11) {
-          stagePage = 10;
+        if (stageUnlocked >= 11 && meta == 0) {
+          stagePage = 11;
+        } else if (stageUnlocked >= 21 && meta == 1) {
+          stagePage = 11;
         }
+      }
+    }
+    if (menuPage == 0) {
+      $("#fieldWarp").attr({
+        'style' : 'background-image: url(bg/world' + stagePage + '.png);'
+      });
+      if (meta == 0) {
+        $('#stageNum').html(function (index,html) {
+          return stagePage;
+        });
+      } else {
+        $('#stageNum').html(function (index,html) {
+          return (stagePage+10);
+        });
+      }
+      if (stagePage < 10) {
+        $("#monsterStatus").attr({
+          'class' : ' '
+        });
+        $("#monsterHpProgressNum").attr({
+          'class' : ' '
+        });
+        $("#tCS").attr({
+          'class' : 'totalCombatStatus black'
+        });
+      } else  {
+        $("#monsterStatus").attr({
+          'class' : 'spaceText'
+        });
+        $("#monsterHpProgressNum").attr({
+          'class' : 'spaceText'
+        });
+        $("#tCS").attr({
+          'class' : 'totalCombatStatus black spaceText'
+        });
       }
     }
     if (autoActive[2] == 1) {
