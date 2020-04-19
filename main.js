@@ -286,9 +286,15 @@ $(function (){
         translateTxt = '의문의 상자'
         break;
     }
-    $('#mysteryChestQ').html(function (index,html) {
-      return translateTxt + ' - ' + lootQuantity[2];
-    });
+    if (brokeUniverse == 0) {
+      $('#mysteryChestQ').html(function (index,html) {
+        return translateTxt + ' - ' + lootQuantity[2];
+      });
+    } else {
+      $('#mysteryChestQ').html(function (index,html) {
+        return translateTxt + ' - ' + lootQuantity[2] + ' <span class="chestTP">(' + chestTP + '/' + (10+artifactOverBoost[14]) + ' TP)</span>';
+      });
+    }
     switch (translateNum) {
       case 0:
         translateTxt = 'Tier'
@@ -1226,11 +1232,12 @@ $(function (){
   }
   function setArti(msg) {
     setTimeout(function() {
+      scrollPosition = window.scrollY || document.documentElement.scrollTop;
       $('#popupArti').html(function (index,html) {
         return msg;
       });
       $('#popupArti').css({
-        "top": divTop-30,
+        "top": divTop-30+scrollPosition,
         "left": divLeft,
         "position": "absolute"
       });
@@ -1949,6 +1956,7 @@ $(function (){
     mastery();
   });
   $('.artifactBg').hover(function(e) {
+    a = ($(".artifactBg").index(this)+1);
     var sWidth = window.innerWidth;
     var sHeight = window.innerHeight;
     var oWidth = $('.popupLayer').width();
@@ -1959,7 +1967,6 @@ $(function (){
     if( divTop + oHeight > sHeight ) divTop -= oHeight;
     if( divLeft < 0 ) divLeft = 0;
     if( divTop < 0 ) divTop = 0;
-    a = ($(".artifactBg").index(this)+1);
     if (artifactQuantity[a] >= 1) {
       artirank = artifactQuantity[a];
       if (artifactQuantity[a] >= 11) {
@@ -1982,28 +1989,6 @@ $(function (){
     }
   }, function(){
     $('#popupArti').hide();
-  });
-  $(".artifactBg").click(function () {
-    a = ($(".artifactBg").index(this)+1);
-    if (artifactQuantity[a] >= 1) {
-      artirank = artifactQuantity[a];
-      if (artifactQuantity[a] >= 11) {
-        artirank = 11;
-      }
-      i = artifactEffect[a];
-      if (i == 1 || i == 2 || i == 4 || i == 6 || i == 7 || i == 8 || i == 11 || i == 12 || i == 13 || i == 15) {
-        artiStr =  artiBuffNameStr[i-1] + ': +x' + (artifactQuantity[a]*artifactEffectPow[a]).toFixed(2);
-      } else if (i == 3) {
-        artiStr = artiBuffNameStr[i-1] + ': +' + (artifactQuantity[a]*artifactEffectPow[a]).toFixed(2) + '%';
-      } else if (i == 5 || i == 9 || i == 14) {
-        artiStr = artiBuffNameStr[i-1] + ': +' + (artifactQuantity[a]*artifactEffectPow[a]).toFixed(2);
-      } else if (i == 10) {
-        artiStr = artiBuffNameStr[i-1] + ': +x' + (artifactQuantity[a]*artifactEffectPow[a]).toFixed(2);
-      } else {
-        artiStr = 'Comming Soon...'
-      }
-      setArti('<div class="artiDesBg"><span class=rank' + artirank + '>' + artifactName[a] + ' +' + artifactQuantity[a] + '</span><br><span>' + artiStr + '</span></div>');
-    }
   });
   $("#mysteryChestC").click(function () {
     chestTP
@@ -2233,6 +2218,7 @@ $(function (){
   translateNum = 0;
   debugStr = 0;
   disableMessage = 0;
+  disableWeaponMessagee = 0;
   brokeUniverse = 0;
   ehhhhhhhhhhh = '이예ㅔㅔㅔㅔㅔ';
   otherworldyCount = 0;
