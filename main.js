@@ -2345,13 +2345,23 @@ $(function (){
     }
     if (autoActive[1] == 1) {
       if (menuPage == 0 && stagePage < stageUnlocked) {
-        stagePage = stageUnlocked;
-        if (stageUnlocked == 11) {
-          stagePage = 10;
+        if (meta == 0) {
+          stagePage = stageUnlocked;
+        } else {
+          stagePage = stageUnlocked-10;
+        }
+        if (stageUnlocked >= 11 && meta == 0) {
+          stagePage = 11;
+        } else if (stageUnlocked >= 21 && meta == 1) {
+          stagePage = 11;
         }
         stageChange();
       } else {
-        stagePage = stageUnlocked;
+        if (meta == 0) {
+          stagePage = stageUnlocked;
+        } else {
+          stagePage = stageUnlocked-10;
+        }
         if (stageUnlocked == 11) {
           stagePage = 10;
         }
