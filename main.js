@@ -1962,7 +1962,11 @@ $(function (){
     var oWidth = $('.popupLayer').width();
     var oHeight = $('.popupLayer').height();
     divLeft = e.clientX + 10;
-    divTop = e.clientY - 50;
+    if (a <= 10) {
+      divTop = e.clientY + 50;
+    } else {
+      divTop = e.clientY - 50;
+    }
     if( divLeft + oWidth > sWidth ) divLeft -= oWidth;
     if( divTop + oHeight > sHeight ) divTop -= oHeight;
     if( divLeft < 0 ) divLeft = 0;
