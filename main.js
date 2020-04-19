@@ -1152,7 +1152,7 @@ $(function (){
         'class' : 'shopSel upgradeN'
       });
     }
-    for (var i = 0; i < 4; i++) {
+    for (var i = 0; i < 5; i++) {
       if (autoActive[i] == 1) {
         $('#transcensionAuto > div:eq(' + i + ')').attr({
           'class' : 'autoSel upgradeA'
@@ -1995,7 +1995,6 @@ $(function (){
     $('#popupArti').hide();
   });
   $("#mysteryChestC").click(function () {
-    chestTP
     disableMessage = 0;
     if (lootQuantity[2] >= 1 && (playerLevel >= 71 || meta == 1)) {
       if (lootQuantity[2] >= 1) {
@@ -2433,6 +2432,47 @@ $(function (){
       }
       tokenShop();
       playerStatus();
+    }
+    if (autoActive[4] == 1) {
+      disableMessage = 0;
+      if (lootQuantity[2] >= 1 && (playerLevel >= 71 || meta == 1)) {
+        if (lootQuantity[2] >= 1) {
+          if (lootQuantity[2] < 10000000) {
+            bulk = lootQuantity[2];
+          } else {
+            bulk = 10000000;
+          }
+          if (bulk >= 100) {
+            disableMessage = 1;
+            extraStstusSet('<span class="gotArtifact">You opened ' + bulk + ' Chests</span>');
+          }
+          lootQuantity[2] = lootQuantity[2] - bulk;
+          g = 1;
+          while (g <= bulk) {
+            luck = Math.random();
+            if (luck < 0.1) {
+              luck2 = Math.floor(Math.random()*3+1);
+              luck3 = Math.floor(Math.random()*stageUnlocked+1);
+              gotArtifact(10+luck2+(luck3-1)*3);
+            } else {
+              luck2 = Math.floor(11-Math.pow(Math.random()*100, 1/2));
+              gotArtifact(40+luck2);
+            }
+            luck4 = Math.random();
+            token += (luck4*0.4+0.8)*10000000*upgradeBuff10R;
+            totalToken += (luck4*0.4+0.8)*10000000*upgradeBuff10R;
+            g++;
+          }
+          artifact();
+          disableMessage = 0;
+        }
+        for (var i = 0; i < bulk; i++) {
+          if (Math.random() < 0.0005 && playerLevel >= 101 && chestTP < (10+artifactOverBoost[14]) && (otherworldyCount >= 1 || brokeUniverse >= 1)) {
+            chestTP++;
+            extraStstusSet('<span class="chestTP">You got a bonus TP (' + chestTP + '/' + (10+artifactOverBoost[14]) + ')</span>');
+          }
+        }
+      }
     }
   }, 10);
   setInterval( function () {
