@@ -2259,6 +2259,9 @@ $(function (){
   }
   setTimeout(function(){
     gameDisplay();
+    weaponChange();
+    stageChange();
+    lootChange();
   }, 0);
 
   extraStstusSet('<span class="discord"><a href="https://discord.gg/wkdVQxT" target="_blank">Join My Discord Server!</a></span>');

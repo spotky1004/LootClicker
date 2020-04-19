@@ -230,7 +230,8 @@ varData = [
   'masteryBought', 'playtime', 'codeEnterd', 'totalCode', 'notationForm',
   'totalToken', 'artifactQuantity', 'ldm', 'meta', 'otherworldyCount',
   'tp', 'upgradeCost', 'upgradeBought', 'chestTP', 'dtr',
-  'autoBought', 'autoActive', 'otherworldyChest', 'nextArti'
+  'autoBought', 'autoActive', 'otherworldyChest', 'nextArti', 'stagePage',
+  'lootPage', 'weaponPage'
 ];
 resetData = {
   0: 0, 1: 0, 2: 0, 3: 10, 4: 0,
@@ -263,7 +264,10 @@ resetData = {
   35: [0, 0, 0, 0, 0, 0, 0, 0],
   36: [0, 0, 0, 0, 0, 0, 0, 0],
   37: 0,
-  38: 51
+  38: 51,
+  39: 1,
+  40: 1,
+  41: 1
 };
 popupMsg = [
   'Reached max stage!', 'Reach Level', 'to Open', 'Break The Universe to Open'
