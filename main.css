@@ -531,15 +531,15 @@ body {
 @keyframes transcensionShiny {
   from {
     color: #ffffff;
-    text-shadow: 0 0 10px #ffffff;
+    text-shadow: 0 0 10px #616161;
   }
   50% {
-    color: #000000;
+    color: #d6d6d6;
     text-shadow: 0 0 15px #000000;
   }
   to {
     color: #ffffff;
-    text-shadow: 0 0 10px #ffffff;
+    text-shadow: 0 0 10px #616161;
   }
 }
 #otherworldyWarp {
