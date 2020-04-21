@@ -988,7 +988,7 @@ $(function (){
           $('.skillLine:eq(' + i + ') > .skillSel:eq(' + j + ')').attr({
             'class' : 'skillSel skillY'
           });
-        } else if (masteryPrice[i*4+j] <= playerSP) {
+        } else if (Math.floor(masteryPrice[i*4+j]*upgradeBuff12R) <= playerSP) {
           $('.skillLine:eq(' + i + ') > .skillSel:eq(' + j + ')').attr({
             'class' : 'skillSel skillM'
           });
@@ -1946,7 +1946,7 @@ $(function (){
   $(".skillSel").click(function () {
     a = $(".skillLine > .skillSel").index(this);
     if (masteryBought[a] != 1) {
-      if (playerSP >= masteryPrice[a]) {
+      if (playerSP >= Math.floor(masteryPrice[a]*upgradeBuff12R)) {
         playerSP -= Math.floor(masteryPrice[a]*upgradeBuff12R);
         masteryBought[a] = 1;
       }
