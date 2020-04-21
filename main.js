@@ -489,7 +489,7 @@ $(function (){
             case 0:
               translateTxt = 'You got '
               translateTxt2 = ''
-              translateTxt3 = 'Have '
+              translateTxt3 = 'You Own '
               translateTxt4 = ''
               break;
             case 1:
@@ -516,7 +516,7 @@ $(function (){
             case 0:
               translateTxt = 'You got '
               translateTxt2 = ''
-              translateTxt3 = 'Have '
+              translateTxt3 = 'You Own '
               translateTxt4 = ''
               break;
             case 1:
