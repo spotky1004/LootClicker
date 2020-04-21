@@ -481,7 +481,7 @@ upgradeInfoEng = [
   'Increase Max Level',
   'Monster kill stat +2',
   'Multi Layer Quest',
-  'Skill line 4, 5',
+  'Skill line 4, 5 (Not implemented yet)',
   'Artifact wont reset',
   'Break Weakness Cap',
   'Loot x3',
