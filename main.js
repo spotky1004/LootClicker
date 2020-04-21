@@ -1005,9 +1005,12 @@ $(function (){
     for (var i = 1; i < artifactQuantity.length; i++) {
       effNum = artifactEffect[i];
       artifactOverBoost[effNum] += (artifactQuantity[i]*artifactEffectPow[i]);
-      if (artifactOverBoost[12] >= 10) {
-        artifactOverBoost[12] = Math.sqrt(artifactOverBoost[12])+6.84;
-      }
+    }
+    if (artifactOverBoost[12] >= 10) {
+      artifactOverBoost[12] = Math.sqrt(artifactOverBoost[12])+6.84;
+    }
+    if (artifactOverBoost[13] >= 5) {
+      artifactOverBoost[13] = Math.sqrt(artifactOverBoost[13])+2.7639;
     }
     artiStr = '';
     if (otherworldyCount >= 3) {
