@@ -292,7 +292,7 @@ $(function (){
       });
     } else {
       $('#mysteryChestQ').html(function (index,html) {
-        return translateTxt + ' - ' + lootQuantity[2] + ' <span class="chestTP">(' + chestTP + '/' + (10+artifactOverBoost[14]) + ' TP)</span>';
+        return translateTxt + ' - ' + lootQuantity[2] + ' <span class="chestTPD">(' + chestTP + '/' + (10+artifactOverBoost[14]) + ' TP)</span>';
       });
     }
     switch (translateNum) {
