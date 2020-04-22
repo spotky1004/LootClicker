@@ -968,10 +968,23 @@ $(function (){
     masteryBuff21 = Number(tokenBuff1N);
     masteryBuff22 = 2;
     masteryBuff23 = 2;
+    masteryBuff30 = 1;
+    masteryBuff31 = 1;
+    masteryBuff32 = 1;
+    masteryBuff33 = 1;
+    masteryBuff40 = 1;
+    masteryBuff41 = 1;
+    masteryBuff42 = 1;
+    masteryBuff43 = 1;
     $('#skillPoint').html(function (index,html) {
       return 'You Have ' + playerSP + ' Skill Point';
     });
-    for (var i = 0; i < 3; i++) {
+    if (upgradeBuff23R != -1) {
+      iCap = 3;
+    } else {
+      iCap = 5;
+    }
+    for (var i = 0; i < iCap; i++) {
       for (var j = 0; j < 4; j++) {
         eval('masteryBuff' + i + j + 'R = (masteryBought[' + (i*4+j) + '] == 1) ? masteryBuff' + i + j + ' : 1');
         $('.skillLine:eq(' + i + ') > .skillSel:eq(' + j + ') > p:eq(0)').html(function (index,html) {
@@ -2017,7 +2030,15 @@ $(function (){
           luck = Math.random();
           if (luck < 0.1) {
             luck2 = Math.floor(Math.random()*3+1);
-            luck3 = Math.floor(Math.random()*stageUnlocked+1);
+            if (meta == 0) {
+              luck3 = Math.floor(Math.random()*stageUnlocked+1);
+            } else {
+              if (stageUnlocked >= 21) {
+                luck3 = Math.floor(Math.random()*10+1);
+              } else {
+                luck3 = Math.floor(Math.random()*(stageUnlocked-10)+1);
+              }
+            }
             gotArtifact(10+luck2+(luck3-1)*3);
           } else {
             luck2 = Math.floor(11-Math.pow(Math.random()*100, 1/2));
@@ -2240,6 +2261,7 @@ $(function (){
   tokenBuff1N = 1;
   upgradeBuff12R = 1;
   upgradeBuff13R = 1;
+  upgradeBuff23R = 1;
   resetTimer = 10;
   tick1 = 0;
   tick2 = 0;

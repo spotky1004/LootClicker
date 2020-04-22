@@ -382,7 +382,7 @@ masteryInfoEng = [
   'Token click upgrade applies to automatic clicks, too',
   'Chance to Discover Artifact x2',
   'Chance to Discover Mysterious Chest x2',
-  '',
+  'DMG mult based on monster level',
   '',
   '',
   '',
