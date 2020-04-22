@@ -2152,15 +2152,34 @@ $(function (){
       gameDisplay();
     }
   });
+  $("#shopBulkOpen > div").click(function () {
+    a = $("#shopBulkOpen > div").index(this);
+    switch (a) {
+      case 0:
+        shopBulk = 1;
+        break;
+      case 1:
+        shopBulk = 10;
+        break;
+      case 2:
+        shopBulk = 100;
+        break;
+      case 3:
+        shopBulk = 1000;
+        break;
+    }
+  });
   $("#transcensionShop > div").click(function () {
     a = $("#transcensionShop > div").index(this);
     switch (a) {
       case 0:
-        if (tp >= otherworldyChest+10) {
-          tp -= otherworldyChest+2;
-          gotArtifact(nextArti);
-          nextArti = 50+Math.floor(11-Math.pow(Math.random()*100, 1/2));
-          otherworldyChest++;
+        for (var i = 0; i < shopBulk; i++) {
+          if (tp >= otherworldyChest+10) {
+            tp -= otherworldyChest+2;
+            gotArtifact(nextArti);
+            nextArti = 50+Math.floor(11-Math.pow(Math.random()*100, 1/2));
+            otherworldyChest++;
+          }
         }
         break;
       default:
