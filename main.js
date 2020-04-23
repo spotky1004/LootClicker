@@ -1169,7 +1169,7 @@ $(function (){
         'class' : 'shopSel upgradeN'
       });
     }
-    for (var i = 0; i < 5; i++) {
+    for (var i = 0; i < 7; i++) {
       if (autoActive[i] == 1) {
         $('#transcensionAuto > div:eq(' + i + ')').attr({
           'class' : 'autoSel upgradeA'
@@ -2518,6 +2518,53 @@ $(function (){
             extraStstusSet('<span class="chestTP">You got a bonus TP (' + chestTP + '/' + (10+artifactOverBoost[14]) + ')</span>');
           }
         }
+      }
+    }
+    if (autoActive[5] == 1) {
+      for (var l = 0; l < 12; l++) {
+        if (masteryBought[l] != 1) {
+          if (playerSP >= Math.floor(masteryPrice[l]*upgradeBuff12R)) {
+            playerSP -= Math.floor(masteryPrice[l]*upgradeBuff12R);
+            masteryBought[l] = 1;
+          }
+        }
+        mastery();
+      }
+    }
+    if (autoActive[6] == 1) {
+      if (brokeUniverse >= 1 && playerLevel >= 101) {
+        tp += Math.floor((2+chestTP+(Math.pow(otherworldyCount, 0.5))+(playerLevel-100)**2)*upgradeBuff33R*artifactOverBoost[13]);
+        playerLevel = 1;
+        playerExp = 0;
+        playerExpNeed = 10;
+        token = 0;
+        playerHitPS = 0;
+        collectedWeapon = 0;
+        weaponMastery = 0;
+        playerDmg = 1;
+        weaponLevel = ['0', 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
+        lootQuantity = ['0', 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
+        tokenUpgrade = [0, 0, 0, 0, 0, 0, 0];
+        tokenUpgradePrice = [3, 5, 10, 50, 5, 10, 100];
+        mobKilled = ['0', 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
+        brokeUniverse = 0;
+        masteryCompeleted = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
+        playerSP = upgradeBuff11R;
+        masteryBought = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
+        totalToken = 0;
+        if (upgradeBuff30R != -1) {
+          artifactQuantity = ['0', 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, artifactQuantity[51], artifactQuantity[52], artifactQuantity[53], artifactQuantity[54], artifactQuantity[55], artifactQuantity[56], artifactQuantity[57], artifactQuantity[58], artifactQuantity[59], artifactQuantity[60], 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
+        }
+        meta = 0;
+        stagePage = 1;
+        monsterNow = 1;
+        chestTP = 0;
+        otherworldyCount++;
+        artifact();
+        gameDisplay();
+        summonMonster();
+        monsterHpCalc();
+        otherworldy();
       }
     }
   }, 10);
