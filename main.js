@@ -2526,9 +2526,9 @@ $(function (){
           if (playerSP >= Math.floor(masteryPrice[l]*upgradeBuff12R)) {
             playerSP -= Math.floor(masteryPrice[l]*upgradeBuff12R);
             masteryBought[l] = 1;
+            mastery();
           }
         }
-        mastery();
       }
     }
     if (autoActive[6] == 1) {
