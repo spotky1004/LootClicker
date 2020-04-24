@@ -2175,7 +2175,7 @@ $(function (){
       case 0:
         for (var i = 0; i < shopBulk; i++) {
           if (tp >= otherworldyChest+10) {
-            tp -= otherworldyChest+2;
+            tp -= otherworldyChest+10;
             gotArtifact(nextArti);
             nextArti = 50+Math.floor(11-Math.pow(Math.random()*100, 1/2));
             otherworldyChest++;
